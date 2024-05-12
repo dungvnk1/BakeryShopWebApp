@@ -1,0 +1,3 @@
+CREATE DATABASE KingBakeryManagement
+GO
+
