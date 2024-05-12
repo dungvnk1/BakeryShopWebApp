@@ -66,20 +66,21 @@ CREATE TABLE Orders(
 )
 GO
 
-create table Bill(
-	ID int primary key,
-	DateTime date,
-	Status nvarchar(100)
+CREATE TABLE Bill(
+	ID INT PRIMARY KEY,
+	DateTime DATETIME,
+	Status NVARCHAR(100)
 )
 GO
 
-create table BillDetail(
-	BillID int primary key foreign key references Bill(ID) on delete cascade,
-	OrderID int foreign key references Orders(ID) on delete cascade,
-	StaffID int foreign key references Users(ID) on delete cascade,
-	CustomerAddress nvarchar(100),
-	Price float
+CREATE TABLE BillDetail(
+	BillID INT PRIMARY KEY FOREIGN KEY REFERENCES Bill(ID) ON DELETE CASCADE,
+	OrderID INT FOREIGN KEY REFERENCES Orders(ID) ON DELETE CASCADE,
+	StaffID INT FOREIGN KEY REFERENCES Users(ID) ON DELETE CASCADE,
+	CustomerAddress NVARCHAR(100),
+	Price FLOAT
 )
+GO
 
 CREATE TABLE Feedback(
 	ID int primary key,
