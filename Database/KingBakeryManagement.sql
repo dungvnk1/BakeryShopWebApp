@@ -29,7 +29,7 @@ GO
 CREATE TABLE Customer (
 	UserID INT PRIMARY KEY,
 	Ranking NVARCHAR(10) NOT NULL,
-	FOREIGN KEY (UserID) REFERENCES Users(ID) on delete cascade
+	FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE
 )
 GO
 
@@ -53,16 +53,16 @@ CREATE TABLE BakeryDetail(
 	Image VARCHAR(255),
 	Description NVARCHAR(4000),
 	CategoryID INT, 
-	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) on delete cascade,
-	FOREIGN KEY (CategoryID) REFERENCES Category(ID) on delete cascade
+	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE,
+	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE Orders(
-	ID int primary key,
-	BakeryID int,
-	CustomerID int,
-	Quantity int
+	ID INT PRIMARY KEY,
+	BakeryID INT,
+	CustomerID INT,
+	Quantity INT
 )
 GO
 
@@ -83,13 +83,12 @@ CREATE TABLE BillDetail(
 GO
 
 CREATE TABLE Feedback(
-	ID int primary key,
-	ContentFB nvarchar(4000),
-	CustomerID int,
-	BillID int,
-	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
-	Foreign key (BillID) references Bill(ID) on delete cascade
+	ID INT PRIMARY KEY,
+	ContentFB NVARCHAR(4000),
+	CustomerID INT,
+	BillID INT,
+	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
+	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
 )
 GO
-
 
