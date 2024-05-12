@@ -4,4 +4,33 @@ GO
 USE KingBakeryManagement
 GO
 
-select * from Bill
+CREATE TABLE Users (
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	FullName NVARCHAR(100) NOT NULL,
+	Username NVARCHAR(100) NOT NULL,
+	Password NVARCHAR(100) NOT NULL,
+	Address NVARCHAR(200) NOT NULL,
+	BirthDate DateTime NOT NULL,
+	Email NVARCHAR(100) NOT NULL,
+    PhoneNumber NVARCHAR(100) NOT NULL,
+	Role INT NOT NULL
+)
+GO
+
+CREATE TABLE Employee (
+	UserID INT PRIMARY KEY,
+	Salary FLOAT NOT NULL,
+	HiredDate DateTime NOT NULL,
+	Status NVARCHAR(100) NOT NULL,
+
+	FOREIGN KEY (UserID) REFERENCES Users(ID) on delete cascade
+)
+GO
+
+CREATE TABLE Customer (
+	UserID INT PRIMARY KEY,
+	Ranking NVARCHAR(10) NOT NULL,
+
+	FOREIGN KEY (UserID) REFERENCES Users(ID) on delete cascade
+)
+GO
