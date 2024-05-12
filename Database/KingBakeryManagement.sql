@@ -54,7 +54,27 @@ CREATE TABLE BakeryDetail(
 	Image VARCHAR(255),
 	Description NVARCHAR(4000),
 	CategoryID INT, 
-	FOREIGN KEY (BakeryID) REFERENCES Bakery(BakeryID) on delete cascade,
-	FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID) on delete cascade
+	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) on delete cascade,
+	FOREIGN KEY (CategoryID) REFERENCES Category(ID) on delete cascade
 )
 GO
+
+CREATE TABLE Orders(
+	ID int primary key,
+	BakeryID int,
+	CustomerID int,
+	Quantity int
+);
+GO
+
+CREATE TABLE Feedback(
+	ID int primary key,
+	ContentFB nvarchar(4000),
+	CustomerID int,
+	BillID int,
+	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
+	Foreign key (BillID) references Bill(ID) on delete cascade
+);
+GO
+
+
