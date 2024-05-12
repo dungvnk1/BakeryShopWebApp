@@ -74,7 +74,7 @@ create table Bill(
 GO
 
 create table BillDetail(
-	BillID int foreign key references Bill(ID) on delete cascade,
+	BillID int primary key foreign key references Bill(ID) on delete cascade,
 	OrderID int foreign key references Orders(ID) on delete cascade,
 	StaffID int foreign key references Users(ID) on delete cascade,
 	CustomerAddress nvarchar(100),
