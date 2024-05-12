@@ -4,7 +4,4 @@ GO
 USE KingBakeryManagement
 GO
 
-CREATE TABLE Test (
-	ID INT,
-	Name Nvarchar(50)
-)
+select * from Bill
