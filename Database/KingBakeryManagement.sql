@@ -67,6 +67,22 @@ CREATE TABLE Orders(
 );
 GO
 
+create table Bill(
+	ID int primary key,
+	DateTime date,
+	Status nvarchar(100)
+)
+
+GO
+
+create table BillDetail(
+	BillID int foreign key references Bill on delete cascade,
+	OrderID int foreign key references Orders on delete cascade,
+	StaffID int foreign key references Employee on delete cascade,
+	CustomerAddress nvarchar(100),
+	Price float
+)
+
 CREATE TABLE Feedback(
 	ID int primary key,
 	ContentFB nvarchar(4000),
