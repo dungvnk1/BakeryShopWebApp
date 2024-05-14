@@ -1,10 +1,10 @@
---USE [master]
---GO
---alter database [KingBakeryManagement] set single_user with rollback immediate
+USE [master]
+GO
+alter database [KingBakeryManagement] set single_user with rollback immediate
 
---IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
---	DROP DATABASE KingBakeryManagement
---GO
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
+	DROP DATABASE KingBakeryManagement
+GO
 
 CREATE DATABASE KingBakeryManagement
 GO
@@ -67,36 +67,38 @@ CREATE TABLE BakeryDetail(
 )
 GO
 
-CREATE TABLE Orders(
-	ID INT PRIMARY KEY,
-	BakeryID INT,
-	CustomerID INT,
-	Quantity INT
-)
-GO
-
 CREATE TABLE Bill(
 	ID INT PRIMARY KEY,
+	CustomerID INT,
+	StaffID INT,
 	DateTime DATETIME,
-	Status NVARCHAR(100)
+	Status NVARCHAR(100),
+	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
+	FOREIGN KEY (StaffID) REFERENCES Employee(UserID)
 )
 GO
 
 CREATE TABLE BillDetail(
 	BillID INT PRIMARY KEY FOREIGN KEY REFERENCES Bill(ID) ON DELETE CASCADE,
-	OrderID INT FOREIGN KEY REFERENCES Orders(ID) ON DELETE CASCADE,
-	StaffID INT FOREIGN KEY REFERENCES Users(ID) ON DELETE CASCADE,
 	CustomerAddress NVARCHAR(100),
 	Price FLOAT
+)
+GO
+
+CREATE TABLE Orders(
+	ID INT PRIMARY KEY,
+	BakeryID INT,
+	BillID INT,
+	Quantity INT,
+	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE,
+	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE Feedback(
 	ID INT PRIMARY KEY,
 	ContentFB NVARCHAR(4000),
-	CustomerID INT,
 	BillID INT,
-	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
 	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
 )
 GO
@@ -109,4 +111,5 @@ CREATE TABLE Favourite(
 	Foreign key (BakeryID) references Bakery(ID) on delete cascade
 )
 GO
+
 
