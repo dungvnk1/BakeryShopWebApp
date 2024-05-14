@@ -1,3 +1,11 @@
+--USE [master]
+--GO
+--alter database [KingBakeryManagement] set single_user with rollback immediate
+
+--IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
+--	DROP DATABASE KingBakeryManagement
+--GO
+
 CREATE DATABASE KingBakeryManagement
 GO
 
