@@ -43,7 +43,8 @@ CREATE TABLE Bakery(
 	ID INT Identity(1,1) PRIMARY KEY,
 	Size INT,
 	Quantity INT,
-	Price FLOAT
+	Price FLOAT,
+	Rating FLOAT
 )
 GO
 
@@ -89,6 +90,15 @@ CREATE TABLE Feedback(
 	BillID INT,
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
 	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
+)
+GO
+
+CREATE TABLE Favourite(
+	CustomerID INT,
+	BakeryID INT,
+	PRIMARY KEY(CustomerID,BakeryID),
+	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
+	Foreign key (BakeryID) references Bakery(ID) on delete cascade
 )
 GO
 
