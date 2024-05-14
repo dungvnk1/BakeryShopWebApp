@@ -47,7 +47,7 @@ CREATE TABLE Category(
 )
 GO
 
-CREATE TABLE Bakery(
+CREATE TABLE BakeryDetail(
 	ID INT Identity(1,1) PRIMARY KEY,
 	Size INT,
 	Quantity INT,
@@ -56,23 +56,25 @@ CREATE TABLE Bakery(
 )
 GO
 
-CREATE TABLE BakeryDetail(
+CREATE TABLE Bakery(
 	BakeryID INT PRIMARY KEY,
 	Name NVARCHAR(255),
 	Image VARCHAR(255),
 	Description NVARCHAR(4000),
 	CategoryID INT, 
-	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE,
+	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE,
 	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
 )
 GO
 
-CREATE TABLE Bill(
+CREATE TABLE Orders(
 	ID INT PRIMARY KEY,
 	CustomerID INT,
 	StaffID INT,
 	ShipperID INT,
 	DateTime DATETIME,
+	AdrDelivery NVARCHAR(300),
+	TotalPrice FLOAT,
 	Status NVARCHAR(100),
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
@@ -80,28 +82,24 @@ CREATE TABLE Bill(
 )
 GO
 
-CREATE TABLE BillDetail(
-	BillID INT PRIMARY KEY FOREIGN KEY REFERENCES Bill(ID) ON DELETE CASCADE,
-	CustomerAddress NVARCHAR(100),
-	Price FLOAT
-)
-GO
-
-CREATE TABLE Orders(
-	ID INT PRIMARY KEY,
+CREATE TABLE OrderItem(
+	ID INT Identity(1,1) PRIMARY KEY,
 	BakeryID INT,
 	BillID INT,
 	Quantity INT,
-	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE,
-	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
+	Price FLOAT,
+	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE,
+	FOREIGN KEY (BillID) REFERENCES Orders(ID) ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE Feedback(
-	ID INT PRIMARY KEY,
+	ID INT Identity(1,1) PRIMARY KEY,
+	CustomerID INT,
+	BakeryID INT,
 	ContentFB NVARCHAR(4000),
-	BillID INT,
-	FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE
+	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
+	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE
 )
 GO
 
@@ -110,7 +108,7 @@ CREATE TABLE Favourite(
 	BakeryID INT,
 	PRIMARY KEY(CustomerID,BakeryID),
 	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
-	Foreign key (BakeryID) references Bakery(ID) on delete cascade
+	Foreign key (BakeryID) references BakeryDetail(ID) on delete cascade
 )
 GO
 
