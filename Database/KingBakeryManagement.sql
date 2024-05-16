@@ -1,10 +1,10 @@
-USE [master]
-GO
-alter database [KingBakeryManagement] set single_user with rollback immediate
+--USE [master]
+--GO
+--alter database [KingBakeryManagement] set single_user with rollback immediate
 
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
-	DROP DATABASE KingBakeryManagement
-GO
+--IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
+--	DROP DATABASE KingBakeryManagement
+--GO
 
 CREATE DATABASE KingBakeryManagement
 GO
@@ -52,7 +52,8 @@ CREATE TABLE BakeryDetail(
 	Size INT,
 	Quantity INT,
 	Price FLOAT,
-	Rating FLOAT
+	Rating FLOAT,
+	Discount INT
 )
 GO
 
@@ -62,8 +63,16 @@ CREATE TABLE Bakery(
 	Image VARCHAR(255),
 	Description NVARCHAR(4000),
 	CategoryID INT, 
+	
 	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE,
 	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
+)
+GO
+
+CREATE TABLE Vouchers(
+	VoucherID INT Identity(1,1) PRIMARY KEY,
+	Code VARCHAR(255),
+	VPercent INT
 )
 GO
 
@@ -72,13 +81,15 @@ CREATE TABLE Orders(
 	CustomerID INT,
 	StaffID INT,
 	ShipperID INT,
+	VoucherID INT,
 	DateTime DATETIME,
 	AdrDelivery NVARCHAR(300),
 	TotalPrice FLOAT,
 	Status NVARCHAR(100),
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
-	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID)
+	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID),
+	FOREIGN KEY (VoucherID) REFERENCES Vouchers(VoucherID) ON DELETE CASCADE
 )
 GO
 
