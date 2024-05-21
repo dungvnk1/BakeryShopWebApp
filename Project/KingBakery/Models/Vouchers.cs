@@ -8,6 +8,5 @@ namespace KingBakery.Models
         public int VoucherID { get; set; }
         public string? Code { get; set; }
         public int? VPercent { get; set; }
-
     }
 }
