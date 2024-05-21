@@ -137,15 +137,19 @@ GO
 --Employee
 INSERT INTO Employee(UserID,Salary,HiredDate,Status)
 VALUES
-	(3,3000000,'2024-04-24',N'Đang làm việc'),
-	(4,2500000,'2024-05-01',N'Đang nghỉ')
+	(6,3000000,'2024-04-24',N'Đang làm việc'),
+	(7,2500000,'2024-05-01',N'Đang nghỉ')
 GO
 
 --Customer
 INSERT INTO Customer(UserID,Ranking)
 VALUES
-	(1,N'Đồng')
+	
+	(2,N'Bạc '),
+	(3,N'Vàng'),
+	(4,N'Kim cương')
 GO
+
 
 --Category
 INSERT INTO Category(Name)
@@ -183,5 +187,27 @@ GO
 INSERT INTO Favourite(CustomerID,BakeryID)
 VALUES   
 	(1,1),
-	(1,3)
+	(1,2)
 GO
+
+--Feedback
+INSERT INTO Feedback(CustomerID,BakeryID,ContentFB)
+VALUES 
+( 1, 1, 'Bánh rất ngon và phục vụ thân thiện'),
+( 1, 2, 'Không gian quán rất ấm cúng, bánh mì tươi ngon'),
+( 1, 3, 'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng')
+GO
+--OrderItem
+INSERT INTO OrderItem ( BakeryID, BillID, Quantity, Price) VALUES
+( 1, 1, 2, 50.00),
+( 2, 2, 1, 30.00),
+( 2, 3, 5, 15.00)
+GO
+
+--Orders
+INSERT INTO Orders (ID, CustomerID, StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalPrice, Status) VALUES
+(1, 1, 3, 3, 1, '2024-05-01 10:30:00', '123 Đường ABC, Quận 1, TP HCM', 150.00, 'Completed'),
+(2, 1, 4, 4, 2, '2024-05-02 11:00:00', '456 Đường DEF, Quận 2, TP HCM', 200.00, 'Pending'),
+(3, 1, 3, 3, 1, '2024-05-03 12:15:00', '789 Đường GHI, Quận 3, TP HCM', 75.00, 'Shipped')
+GO
+

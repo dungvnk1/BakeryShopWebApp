@@ -7927,19 +7927,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
+    "C:\\Users\\HUYMANH COMPUTER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+      "projectUniqueName": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
       "projectName": "KingBakery",
-      "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
+      "projectPath": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+      "packagesPath": "C:\\Users\\HUYMANH COMPUTER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HUYMANH COMPUTER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8008,7 +8008,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
