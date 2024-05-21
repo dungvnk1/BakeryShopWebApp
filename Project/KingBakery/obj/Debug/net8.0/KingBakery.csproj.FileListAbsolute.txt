@@ -29,3 +29,34 @@ E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.pdb
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.staticwebassets.runtime.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.exe
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.deps.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.runtimeconfig.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.pdb
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.AssemblyInfoInputs.cache
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.AssemblyInfo.cs
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.RazorAssemblyInfo.cache
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.RazorAssemblyInfo.cs
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.sourcelink.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets\msbuild.KingBakery.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets\msbuild.build.KingBakery.props
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.KingBakery.props
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.KingBakery.props
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\scopedcss\bundle\KingBakery.styles.css
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\scopedcss\projectbundle\KingBakery.bundle.scp.css
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\refint\KingBakery.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.pdb
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
