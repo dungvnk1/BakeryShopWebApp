@@ -15,5 +15,7 @@ namespace KingBakery.Data
         }
 
         public DbSet<KingBakery.Models.Users> Users { get; set; } = default!;
+        public DbSet<KingBakery.Models.Employee> Employee { get; set; } = default!;
+        public DbSet<KingBakery.Models.Customer> Customer { get; set; } = default!;
     }
 }
