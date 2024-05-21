@@ -126,19 +126,29 @@ GO
 
 -----INSERT DATA-----
 --Users
-INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role)
+INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role)--*Role: 1_admin,2_cus,3_staff,4_shipper
 VALUES    
-	(N'Mạnh Hùng',N'hung123',N'123',NULL,'2004-01-08',NULL,'0123456789',2),  --*Role: 1_admin,2_cus,3_staff,4_shipper
-	(N'Năng Dũng',N'dung123',N'123',NULL,'2004-05-12','dung@gmail.com','0123456789',1),
-	(N'Chử Hồng Phúc',N'hongphuc',N'123',NULL,'2004-05-12',NULL,'0123456789',3),
-	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-011-12','sonle@gmail.com','0987654321',3)
-GO
 
+	   (N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2),
+    (N'Hoàng Văn D', N'hoangvand', N'passwordD', NULL, '2001-06-30', 'hoangvand@example.com', '0934567890', 1),
+    (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3),
+    (N'Phạm Văn F', N'phamvanf', N'passwordF', N'12 Pham Ngoc Thach', '1999-04-01', 'phamvanf@example.com', '0956789012', 4),
+    (N'Nguyễn Văn G', N'nguyenvang', N'passwordG', NULL, '1998-03-15', 'nguyenvang@example.com', '0967890123', 2),
+    (N'Trần Thị H', N'tranthih', N'passwordH', N'34 Tran Quoc Toan', '1997-02-20', 'tranthih@example.com', '0978901234', 3),
+    (N'Đỗ Minh I', N'dominhi', N'passwordI', N'56 Ly Thuong Kiet', '1996-01-10', 'dominhi@example.com', '0989012345', 1);
+GO
+select * from Users
 --Employee
 INSERT INTO Employee(UserID,Salary,HiredDate,Status)
 VALUES
-	(6,3000000,'2024-04-24',N'Đang làm việc'),
-	(7,2500000,'2024-05-01',N'Đang nghỉ')
+	 (6, 3000000, '2024-04-24', N'Đang làm việc'),
+    (7, 2500000, '2024-05-01', N'Đang nghỉ'),
+    (8, 3500000, '2024-03-15', N'Đang làm việc'),
+    (9, 2800000, '2024-02-20', N'Đang nghỉ'),
+    (10, 4000000, '2024-01-10', N'Đang làm việc'),
+    (11, 2200000, '2024-04-01', N'Đang nghỉ'),
+    (12, 3200000, '2024-03-01', N'Đang làm việc'),
+    (13, 2600000, '2024-02-15', N'Đang nghỉ');
 GO
 
 --Customer
@@ -157,7 +167,13 @@ VALUES
 	(N'Bánh mì'),
 	(N'Bánh ngọt'),
 	(N'Bánh sinh nhật'),
-	(N'Bánh quy')
+	(N'Bánh quy'),
+	(N'Bánh kem'),
+    (N'Bánh trung thu'),
+    (N'Bánh gạo lứt'),
+    (N'Bánh bao'),
+    (N'Bánh đậu xanh'),
+    (N'Bánh gạo nếp');
 GO
 
 --BakeryDetail
