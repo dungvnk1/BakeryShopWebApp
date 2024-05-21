@@ -1,10 +1,10 @@
---USE [master]
---GO
---alter database [KingBakeryManagement] set single_user with rollback immediate
+﻿USE [master]
+GO
+alter database [KingBakeryManagement] set single_user with rollback immediate
 
---IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
---	DROP DATABASE KingBakeryManagement
---GO
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'KingBakeryManagement')
+	DROP DATABASE KingBakeryManagement
+GO
 
 CREATE DATABASE KingBakeryManagement
 GO
@@ -124,3 +124,64 @@ CREATE TABLE Favourite(
 GO
 
 
+-----INSERT DATA-----
+--Users
+INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role)
+VALUES    
+	(N'Mạnh Hùng',N'hung123',N'123',NULL,'2004-01-08',NULL,'0123456789',2),  --*Role: 1_admin,2_cus,3_staff,4_shipper
+	(N'Năng Dũng',N'dung123',N'123',NULL,'2004-05-12','dung@gmail.com','0123456789',1),
+	(N'Chử Hồng Phúc',N'hongphuc',N'123',NULL,'2004-05-12',NULL,'0123456789',3),
+	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-011-12','sonle@gmail.com','0987654321',3)
+GO
+
+--Employee
+INSERT INTO Employee(UserID,Salary,HiredDate,Status)
+VALUES
+	(3,3000000,'2024-04-24',N'Đang làm việc'),
+	(4,2500000,'2024-05-01',N'Đang nghỉ')
+GO
+
+--Customer
+INSERT INTO Customer(UserID,Ranking)
+VALUES
+	(1,N'Đồng')
+GO
+
+--Category
+INSERT INTO Category(Name)
+VALUES
+	(N'Bánh mì'),
+	(N'Bánh ngọt'),
+	(N'Bánh sinh nhật'),
+	(N'Bánh quy')
+GO
+
+--BakeryDetail
+INSERT INTO BakeryDetail(Size,Quantity,Price,Rating,Discount)
+VALUES
+	(28,5,200000,0,10),
+	(30,6,250000,0,5),
+	(5,10,50000,0,0)
+GO
+
+--Bakery
+INSERT INTO Bakery(BakeryID,Name,Image,Description,CategoryID)
+VALUES   --Image tạm thời để NULL hết nhé
+	(1,N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...',3),
+	(2,N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...',3),
+	(3,N'Bánh quy nho khô',NULL,N'Món ăn vặt hấp dẫn...',4)
+GO
+
+--Vouchers
+INSERT INTO Vouchers(Code,VPercent)
+VALUES   
+	('QUATANG55',15),
+	('QUATANG66',10)
+GO
+
+--Favourite
+INSERT INTO Favourite(CustomerID,BakeryID)
+VALUES   
+	(1,1),
+	(1,3)
+GO
