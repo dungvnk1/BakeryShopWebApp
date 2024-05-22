@@ -9,6 +9,6 @@ namespace KingBakery.Models
         [ForeignKey("Users")]
         public int UserID { get; set; }
         public string Ranking { get; set; }
-        public virtual Users? user { get; set; }
+        public virtual Users? Users { get; set; }
     }
 }

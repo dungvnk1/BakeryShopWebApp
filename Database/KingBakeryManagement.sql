@@ -155,10 +155,10 @@ GO
 INSERT INTO Customer(UserID,Ranking)
 VALUES
 	(1,N'Đồng'),
-	(2,N'Bạc '),
-	(3,N'Vàng'),
-	(4,N'Kim cương')
+	(5,N'Bạc '),
+	(9,N'Vàng')
 GO
+
 
 --Category
 INSERT INTO Category(Name)
