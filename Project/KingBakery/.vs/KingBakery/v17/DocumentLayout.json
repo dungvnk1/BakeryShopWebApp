@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\controllers\\favouritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:controllers\\favouritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\controllers\\bakeriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:controllers\\bakeriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\bakeryoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\bakeryoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\favourite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,28 +39,28 @@
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\bakeryoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\bakeryoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\controllers\\bakeryoptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:controllers\\bakeryoptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\models\\bakery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\bakery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\pc\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,27 +75,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FavouritesController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\FavouritesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\FavouritesController.cs",
-              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\FavouritesController.cs",
-              "RelativeToolTip": "Controllers\\FavouritesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:09:54.627Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAHEBAAAAAAAAAAAAAIABAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-23T20:34:14.912Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Favourite.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Favourite.cs",
-              "RelativeDocumentMoniker": "Models\\Favourite.cs",
-              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Favourite.cs",
-              "RelativeToolTip": "Models\\Favourite.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:59:20.363Z",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Orders\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Orders\\Create.cshtml",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Orders\\Create.cshtml",
+              "RelativeToolTip": "Views\\Orders\\Create.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABsAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-23T19:36:42.369Z",
               "EditorCaption": ""
             },
             {
@@ -86,53 +106,144 @@
               "RelativeDocumentMoniker": "Models\\BakeryOption.cs",
               "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\BakeryOption.cs",
               "RelativeToolTip": "Models\\BakeryOption.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAsAAAAXAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:45:15.065Z",
+              "WhenOpened": "2024-05-23T19:13:34.651Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BakeryOptionsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\BakeryOptionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BakeryOptionsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\BakeryOptionsController.cs",
-              "RelativeToolTip": "Controllers\\BakeryOptionsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:42:34.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-05-23T15:27:45.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Employee.cs",
               "RelativeDocumentMoniker": "Models\\Employee.cs",
               "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Employee.cs",
               "RelativeToolTip": "Models\\Employee.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAqAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-23T15:17:22.39Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\OrderItem.cs",
+              "RelativeToolTip": "Models\\OrderItem.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T15:50:13.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Orders.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Orders.cs",
+              "RelativeDocumentMoniker": "Models\\Orders.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Orders.cs",
+              "RelativeToolTip": "Models\\Orders.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAA3wBAAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T15:50:22.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BakeriesController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\BakeriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BakeriesController.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\BakeriesController.cs",
+              "RelativeToolTip": "Controllers\\BakeriesController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAYwD8AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T18:27:56.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T18:57:22.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Bakery.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Bakery.cs",
+              "RelativeDocumentMoniker": "Models\\Bakery.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Bakery.cs",
+              "RelativeToolTip": "Models\\Bakery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T19:11:43.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Favourite.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Favourite.cs",
+              "RelativeDocumentMoniker": "Models\\Favourite.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Favourite.cs",
+              "RelativeToolTip": "Models\\Favourite.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T19:19:00.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Feedback.cs",
+              "RelativeDocumentMoniker": "Models\\Feedback.cs",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Feedback.cs",
+              "RelativeToolTip": "Models\\Feedback.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T19:19:13.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Views\\Users\\Index.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAADQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-23T17:57:39.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "KingBakeryContext.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Data\\KingBakeryContext.cs",
               "RelativeDocumentMoniker": "Data\\KingBakeryContext.cs",
@@ -145,33 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\OrderItem.cs",
-              "RelativeDocumentMoniker": "Models\\OrderItem.cs",
-              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\OrderItem.cs",
-              "RelativeToolTip": "Models\\OrderItem.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:50:13.957Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Orders.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Orders.cs",
-              "RelativeDocumentMoniker": "Models\\Orders.cs",
-              "ToolTip": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Orders.cs",
-              "RelativeToolTip": "Models\\Orders.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBEAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T15:50:22.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",

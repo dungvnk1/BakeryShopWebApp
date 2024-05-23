@@ -14,7 +14,7 @@ namespace KingBakery.Models
         public int Quantity { get; set; }
         public double Price { get; set; }
 
-        public virtual BakeryOption BakeryOption { get; set; }
-        public virtual Orders Orders { get; set; }
+        public virtual BakeryOption? BakeryOption { get; set; }
+        public virtual Orders? Orders { get; set; }
     }
 }

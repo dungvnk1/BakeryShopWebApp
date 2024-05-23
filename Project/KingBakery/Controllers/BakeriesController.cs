@@ -48,7 +48,7 @@ namespace KingBakery.Controllers
         // GET: Bakeries/Create
         public IActionResult Create()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID");
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID);
             return View(bakery);
         }
 

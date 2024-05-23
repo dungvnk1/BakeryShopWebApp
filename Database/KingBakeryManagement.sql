@@ -43,16 +43,16 @@ GO
 
 CREATE TABLE Category(
 	ID INT Identity(1,1) PRIMARY KEY,
-	Name NVARCHAR(255)
+	Name NVARCHAR(255) NOT NULL
 )
 GO
 
 CREATE TABLE Bakery(
 	ID INT Identity(1,1) PRIMARY KEY,
-	Name NVARCHAR(255),
+	Name NVARCHAR(255) NOT NULL,
 	Image VARCHAR(255),
 	Description NVARCHAR(4000),
-	CategoryID INT,
+	CategoryID INT NOT NULL,
 	
 	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
 )
@@ -65,7 +65,7 @@ CREATE TABLE BakeryOption(
 	Price FLOAT,
 	Rating FLOAT,
 	Discount INT,
-	BakeryID INT,
+	BakeryID INT NOT NULL,
 	
 	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE
 )

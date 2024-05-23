@@ -13,7 +13,7 @@ namespace KingBakery.Models
         public int BakeryID { get; set; }
         public string ContentFB { get; set; }
 
-        public virtual Customer Customer { get; set; }
-        public virtual BakeryOption BakeryOption { get; set; }
+        public virtual Customer? Customer { get; set; }
+        public virtual BakeryOption? BakeryOption { get; set; }
     }
 }
