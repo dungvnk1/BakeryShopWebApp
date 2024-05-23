@@ -226,4 +226,3 @@ INSERT INTO OrderItem ( BakeryID, BillID, Quantity, Price) VALUES
 ( 3, 1, 1, 50000),
 ( 1, 3, 1, 200000)
 GO
-

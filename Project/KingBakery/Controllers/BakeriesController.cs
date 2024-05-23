@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: Bakeries
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Bakery.Include(b => b.BakeryOption);
+            var kingBakeryContext = _context.Bakery.Include(b => b.Category);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace KingBakery.Controllers
             }
 
             var bakery = await _context.Bakery
-                .Include(b => b.BakeryOption)
+                .Include(b => b.Category)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bakery == null)
             {
@@ -48,7 +48,7 @@ namespace KingBakery.Controllers
         // GET: Bakeries/Create
         public IActionResult Create()
         {
-            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID");
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -82,7 +82,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -118,7 +118,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -131,7 +131,7 @@ namespace KingBakery.Controllers
             }
 
             var bakery = await _context.Bakery
-                .Include(b => b.BakeryOption)
+                .Include(b => b.Category)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bakery == null)
             {

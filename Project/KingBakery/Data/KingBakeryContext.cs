@@ -18,12 +18,13 @@ namespace KingBakery.Data
         public DbSet<KingBakery.Models.Employee> Employee { get; set; } = default!;
         public DbSet<KingBakery.Models.Customer> Customer { get; set; } = default!;
         public DbSet<KingBakery.Models.Bakery> Bakery { get; set; } = default!;
-        public DbSet<KingBakery.Models.BakeryOption> BakeryDetail { get; set; } = default!;
+        public DbSet<KingBakery.Models.BakeryOption> BakeryOption { get; set; } = default!;
         public DbSet<KingBakery.Models.Category> Category { get; set; } = default!;
         public DbSet<KingBakery.Models.Vouchers> Vouchers { get; set; } = default!;
         public DbSet<KingBakery.Models.Orders> Orders { get; set; } = default!;
         public DbSet<KingBakery.Models.OrderItem> OrderItem { get; set; } = default!;
         public DbSet<KingBakery.Models.Feedback> Feedback { get; set; } = default!;
+        public DbSet<KingBakery.Models.Favourite> Favourite { get; set; } = default!;
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -40,6 +41,5 @@ namespace KingBakery.Data
             //    .WithMany()
             //    .HasForeignKey(o => o.ShipperID);
         }
-        public DbSet<KingBakery.Models.Favourite> Favourite { get; set; } = default!;
     }
 }

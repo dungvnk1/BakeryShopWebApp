@@ -11,10 +11,10 @@ namespace KingBakery.Models
         public string? Image { get; set; }
         public string? Description { get; set; }
 
-        [ForeignKey("BakeryOption")]
+        [ForeignKey("Category")]
         public int CategoryID { get; set; }
         
-        public virtual BakeryOption BakeryOption { get; set; }
+        public virtual Category Category { get; set; }
         
     }
 }

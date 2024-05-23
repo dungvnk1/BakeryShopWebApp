@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: BakeryOptions
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.BakeryDetail.Include(b => b.Bakery);
+            var kingBakeryContext = _context.BakeryOption.Include(b => b.Bakery);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryOption = await _context.BakeryDetail
+            var bakeryOption = await _context.BakeryOption
                 .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bakeryOption == null)
@@ -77,7 +77,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryOption = await _context.BakeryDetail.FindAsync(id);
+            var bakeryOption = await _context.BakeryOption.FindAsync(id);
             if (bakeryOption == null)
             {
                 return NotFound();
@@ -130,7 +130,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryOption = await _context.BakeryDetail
+            var bakeryOption = await _context.BakeryOption
                 .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (bakeryOption == null)
@@ -146,10 +146,10 @@ namespace KingBakery.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bakeryOption = await _context.BakeryDetail.FindAsync(id);
+            var bakeryOption = await _context.BakeryOption.FindAsync(id);
             if (bakeryOption != null)
             {
-                _context.BakeryDetail.Remove(bakeryOption);
+                _context.BakeryOption.Remove(bakeryOption);
             }
 
             await _context.SaveChangesAsync();
@@ -158,7 +158,7 @@ namespace KingBakery.Controllers
 
         private bool BakeryOptionExists(int id)
         {
-            return _context.BakeryDetail.Any(e => e.ID == id);
+            return _context.BakeryOption.Any(e => e.ID == id);
         }
     }
 }
