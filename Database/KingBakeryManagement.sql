@@ -18,7 +18,7 @@ CREATE TABLE Users (
 	Username NVARCHAR(100) NOT NULL,
 	Password NVARCHAR(100) NOT NULL,
 	Address NVARCHAR(200),
-	BirthDate DateTime NOT NULL,
+	BirthDate Date NOT NULL,
 	Email NVARCHAR(100),
     PhoneNumber NVARCHAR(100) NOT NULL,
 	Role INT NOT NULL
@@ -28,7 +28,7 @@ GO
 CREATE TABLE Employee (
 	UserID INT PRIMARY KEY,
 	Salary FLOAT NOT NULL,
-	HiredDate DateTime NOT NULL,
+	HiredDate Date NOT NULL,
 	Status NVARCHAR(100) NOT NULL,
 	FOREIGN KEY (UserID) REFERENCES Users(ID) on delete cascade
 )
@@ -117,9 +117,9 @@ CREATE TABLE Feedback(
 GO
 
 CREATE TABLE Favourite(
+	ID INT Identity(1,1) PRIMARY KEY,
 	CustomerID INT,
 	BakeryID INT,
-	PRIMARY KEY(CustomerID,BakeryID),
 	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
 	Foreign key (BakeryID) references BakeryOption(ID) on delete cascade
 )
@@ -133,7 +133,7 @@ VALUES
 	(N'Mạnh Hùng',N'hung123',N'123',NULL,'2004-01-08',NULL,'0123456789',2),  --*Role: 1_admin,2_cus,3_staff,4_shipper
 	(N'Năng Dũng',N'dung123',N'123',NULL,'2004-05-12','dung@gmail.com','0123456789',1),
 	(N'Chử Hồng Phúc',N'hongphuc',N'123',NULL,'2004-05-12',NULL,'0123456789',3),
-	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-011-12','sonle@gmail.com','0987654321',3),
+	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3),
 	(N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2),
     (N'Hoàng Văn D', N'hoangvand', N'passwordD', NULL, '2001-06-30', 'hoangvand@example.com', '0934567890', 1),
     (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3),
@@ -226,3 +226,4 @@ INSERT INTO OrderItem ( BakeryID, BillID, Quantity, Price) VALUES
 ( 3, 1, 1, 50000),
 ( 1, 3, 1, 200000)
 GO
+

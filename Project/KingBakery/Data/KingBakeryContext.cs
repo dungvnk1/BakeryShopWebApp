@@ -27,19 +27,19 @@ namespace KingBakery.Data
         public DbSet<KingBakery.Models.Favourite> Favourite { get; set; } = default!;
 
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
 
-            builder.Entity<Favourite>().HasKey(p => new{ p.BakeryID, p.CustomerID });
-            //builder.Entity<Orders>()
-            //    .HasOne<Employee>()
-            //    .WithMany()
-            //    .HasForeignKey(o => o.StaffID);
-            //builder.Entity<Orders>()
-            //    .HasOne<Employee>()
-            //    .WithMany()
-            //    .HasForeignKey(o => o.ShipperID);
-        }
+        //    builder.Entity<Favourite>().HasKey(p => new { p.BakeryID, p.CustomerID });
+        //    //builder.Entity<Orders>()
+        //    //    .HasOne<Employee>()
+        //    //    .WithMany()
+        //    //    .HasForeignKey(o => o.StaffID);
+        //    //builder.Entity<Orders>()
+        //    //    .HasOne<Employee>()
+        //    //    .WithMany()
+        //    //    .HasForeignKey(o => o.ShipperID);
+        //}
     }
 }

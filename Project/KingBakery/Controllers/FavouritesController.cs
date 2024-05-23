@@ -37,7 +37,7 @@ namespace KingBakery.Controllers
             var favourite = await _context.Favourite
                 .Include(f => f.BakeryOption)
                 .Include(f => f.Customer)
-                .FirstOrDefaultAsync(m => m.BakeryID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (favourite == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerID,BakeryID")] Favourite favourite)
+        public async Task<IActionResult> Create([Bind("ID,CustomerID,BakeryID")] Favourite favourite)
         {
             if (ModelState.IsValid)
             {
@@ -95,9 +95,9 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,BakeryID")] Favourite favourite)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,CustomerID,BakeryID")] Favourite favourite)
         {
-            if (id != favourite.BakeryID)
+            if (id != favourite.ID)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace KingBakery.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FavouriteExists(favourite.BakeryID))
+                    if (!FavouriteExists(favourite.ID))
                     {
                         return NotFound();
                     }
@@ -138,7 +138,7 @@ namespace KingBakery.Controllers
             var favourite = await _context.Favourite
                 .Include(f => f.BakeryOption)
                 .Include(f => f.Customer)
-                .FirstOrDefaultAsync(m => m.BakeryID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (favourite == null)
             {
                 return NotFound();
@@ -164,7 +164,7 @@ namespace KingBakery.Controllers
 
         private bool FavouriteExists(int id)
         {
-            return _context.Favourite.Any(e => e.BakeryID == id);
+            return _context.Favourite.Any(e => e.ID == id);
         }
     }
 }

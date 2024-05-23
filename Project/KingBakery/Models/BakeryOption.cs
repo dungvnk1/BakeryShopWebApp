@@ -9,8 +9,8 @@ namespace KingBakery.Models
         public int ID { get; set; }
         public int? Size { get; set; }
         public int? Quantity { get; set; }
-        public float? Price { get; set; }
-        public float? Rating { get; set; }
+        public double? Price { get; set; }
+        public double? Rating { get; set; }
         public int? Discount { get; set; }
         [ForeignKey("Bakery")]
         public int BakeryID {  get; set; }

@@ -17,7 +17,7 @@ namespace KingBakery.Models
         public int? VoucherID { get; set; }
         public DateTime? DateTime { get; set; }
         public string? AdrDelivery { get; set; }
-        public float? TotalPrice { get; set; }
+        public double? TotalPrice { get; set; }
         public string? Status { get; set; }
 
         public virtual Customer Customer { get; set; }

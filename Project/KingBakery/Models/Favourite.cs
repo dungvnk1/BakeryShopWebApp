@@ -6,12 +6,9 @@ namespace KingBakery.Models
     public class Favourite
     {
         [Key]
-        [Column(Order = 1)]
+        public int ID { get; set; }
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         [ForeignKey("BakeryOption")]
         public int BakeryID { get; set; }
 
