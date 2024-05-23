@@ -11,6 +11,6 @@ namespace KingBakery.Models
         public float Salary { get; set; }
         public DateTime HiredDate { get; set; }
         public string Status { get; set; }
-        public virtual Users? user { get; set; }
+        public virtual Users? User { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: Favourites
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Favourite.Include(f => f.customer);
+            var kingBakeryContext = _context.Favourite.Include(f => f.BakeryOption).Include(f => f.Customer);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -35,7 +35,8 @@ namespace KingBakery.Controllers
             }
 
             var favourite = await _context.Favourite
-                .Include(f => f.customer)
+                .Include(f => f.BakeryOption)
+                .Include(f => f.Customer)
                 .FirstOrDefaultAsync(m => m.BakeryID == id);
             if (favourite == null)
             {
@@ -48,6 +49,7 @@ namespace KingBakery.Controllers
         // GET: Favourites/Create
         public IActionResult Create()
         {
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID");
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID");
             return View();
         }
@@ -65,6 +67,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", favourite.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", favourite.CustomerID);
             return View(favourite);
         }
@@ -82,6 +85,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", favourite.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", favourite.CustomerID);
             return View(favourite);
         }
@@ -118,6 +122,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", favourite.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", favourite.CustomerID);
             return View(favourite);
         }
@@ -131,7 +136,8 @@ namespace KingBakery.Controllers
             }
 
             var favourite = await _context.Favourite
-                .Include(f => f.customer)
+                .Include(f => f.BakeryOption)
+                .Include(f => f.Customer)
                 .FirstOrDefaultAsync(m => m.BakeryID == id);
             if (favourite == null)
             {

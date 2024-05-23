@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VoucherID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DateTime)
             </th>
             <th>
@@ -28,13 +25,16 @@
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.customer)
+                @Html.DisplayNameFor(model => model.Customer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.staff)
+                @Html.DisplayNameFor(model => model.Staff)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.shipper)
+                @Html.DisplayNameFor(model => model.Shipper)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vouchers)
             </th>
             <th></th>
         </tr>
@@ -42,9 +42,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoucherID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
             </td>
@@ -58,13 +55,16 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.customer.UserID)
+                @Html.DisplayFor(modelItem => item.Customer.UserID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.staff.UserID)
+                @Html.DisplayFor(modelItem => item.Staff.UserID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.shipper.UserID)
+                @Html.DisplayFor(modelItem => item.Shipper.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vouchers.VoucherID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: Feedbacks
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Feedback.Include(f => f.customer);
+            var kingBakeryContext = _context.Feedback.Include(f => f.BakeryOption).Include(f => f.Customer);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -35,7 +35,8 @@ namespace KingBakery.Controllers
             }
 
             var feedback = await _context.Feedback
-                .Include(f => f.customer)
+                .Include(f => f.BakeryOption)
+                .Include(f => f.Customer)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (feedback == null)
             {
@@ -48,6 +49,7 @@ namespace KingBakery.Controllers
         // GET: Feedbacks/Create
         public IActionResult Create()
         {
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID");
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID");
             return View();
         }
@@ -65,6 +67,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", feedback.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", feedback.CustomerID);
             return View(feedback);
         }
@@ -82,6 +85,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", feedback.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", feedback.CustomerID);
             return View(feedback);
         }
@@ -118,6 +122,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", feedback.BakeryID);
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", feedback.CustomerID);
             return View(feedback);
         }
@@ -131,7 +136,8 @@ namespace KingBakery.Controllers
             }
 
             var feedback = await _context.Feedback
-                .Include(f => f.customer)
+                .Include(f => f.BakeryOption)
+                .Include(f => f.Customer)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (feedback == null)
             {

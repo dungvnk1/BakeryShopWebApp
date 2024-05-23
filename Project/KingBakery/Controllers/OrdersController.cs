@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Orders.Include(o => o.customer).Include(o => o.shipper).Include(o => o.staff);
+            var kingBakeryContext = _context.Orders.Include(o => o.Customer).Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -35,9 +35,10 @@ namespace KingBakery.Controllers
             }
 
             var orders = await _context.Orders
-                .Include(o => o.customer)
-                .Include(o => o.shipper)
-                .Include(o => o.staff)
+                .Include(o => o.Customer)
+                .Include(o => o.Shipper)
+                .Include(o => o.Staff)
+                .Include(o => o.Vouchers)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (orders == null)
             {
@@ -53,6 +54,7 @@ namespace KingBakery.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID");
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID");
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID");
+            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID");
             return View();
         }
 
@@ -72,6 +74,7 @@ namespace KingBakery.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
+            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
             return View(orders);
         }
 
@@ -91,6 +94,7 @@ namespace KingBakery.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
+            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
             return View(orders);
         }
 
@@ -129,6 +133,7 @@ namespace KingBakery.Controllers
             ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
+            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
             return View(orders);
         }
 
@@ -141,9 +146,10 @@ namespace KingBakery.Controllers
             }
 
             var orders = await _context.Orders
-                .Include(o => o.customer)
-                .Include(o => o.shipper)
-                .Include(o => o.staff)
+                .Include(o => o.Customer)
+                .Include(o => o.Shipper)
+                .Include(o => o.Staff)
+                .Include(o => o.Vouchers)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (orders == null)
             {

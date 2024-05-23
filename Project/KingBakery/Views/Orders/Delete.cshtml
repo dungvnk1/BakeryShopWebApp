@@ -12,12 +12,6 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VoucherID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VoucherID)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DateTime)
         </dt>
         <dd class = "col-sm-10">
@@ -42,22 +36,28 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.customer)
+            @Html.DisplayNameFor(model => model.Customer)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.customer.UserID)
+            @Html.DisplayFor(model => model.Customer.UserID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.staff)
+            @Html.DisplayNameFor(model => model.Staff)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.staff.UserID)
+            @Html.DisplayFor(model => model.Staff.UserID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.shipper)
+            @Html.DisplayNameFor(model => model.Shipper)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.shipper.UserID)
+            @Html.DisplayFor(model => model.Shipper.UserID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vouchers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vouchers.VoucherID)
         </dd>
     </dl>
     

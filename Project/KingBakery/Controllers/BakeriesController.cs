@@ -22,7 +22,8 @@ namespace KingBakery.Controllers
         // GET: Bakeries
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Bakery.ToListAsync());
+            var kingBakeryContext = _context.Bakery.Include(b => b.BakeryOption);
+            return View(await kingBakeryContext.ToListAsync());
         }
 
         // GET: Bakeries/Details/5
@@ -34,7 +35,8 @@ namespace KingBakery.Controllers
             }
 
             var bakery = await _context.Bakery
-                .FirstOrDefaultAsync(m => m.BakeryId == id);
+                .Include(b => b.BakeryOption)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (bakery == null)
             {
                 return NotFound();
@@ -46,6 +48,7 @@ namespace KingBakery.Controllers
         // GET: Bakeries/Create
         public IActionResult Create()
         {
+            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BakeryId,Name,Image,Description,CategoryID")] Bakery bakery)
+        public async Task<IActionResult> Create([Bind("ID,Name,Image,Description,CategoryID")] Bakery bakery)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -78,6 +82,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -86,9 +91,9 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BakeryId,Name,Image,Description,CategoryID")] Bakery bakery)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Image,Description,CategoryID")] Bakery bakery)
         {
-            if (id != bakery.BakeryId)
+            if (id != bakery.ID)
             {
                 return NotFound();
             }
@@ -102,7 +107,7 @@ namespace KingBakery.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BakeryExists(bakery.BakeryId))
+                    if (!BakeryExists(bakery.ID))
                     {
                         return NotFound();
                     }
@@ -113,6 +118,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
 
@@ -125,7 +131,8 @@ namespace KingBakery.Controllers
             }
 
             var bakery = await _context.Bakery
-                .FirstOrDefaultAsync(m => m.BakeryId == id);
+                .Include(b => b.BakeryOption)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (bakery == null)
             {
                 return NotFound();
@@ -151,7 +158,7 @@ namespace KingBakery.Controllers
 
         private bool BakeryExists(int id)
         {
-            return _context.Bakery.Any(e => e.BakeryId == id);
+            return _context.Bakery.Any(e => e.ID == id);
         }
     }
 }

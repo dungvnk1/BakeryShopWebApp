@@ -22,7 +22,8 @@ namespace KingBakery.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customer.ToListAsync());
+            var kingBakeryContext = _context.Customer.Include(c => c.Users);
+            return View(await kingBakeryContext.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -34,6 +35,7 @@ namespace KingBakery.Controllers
             }
 
             var customer = await _context.Customer
+                .Include(c => c.Users)
                 .FirstOrDefaultAsync(m => m.UserID == id);
             if (customer == null)
             {
@@ -46,6 +48,7 @@ namespace KingBakery.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
+            ViewData["UserID"] = new SelectList(_context.Users, "ID", "ID");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserID"] = new SelectList(_context.Users, "ID", "ID", customer.UserID);
             return View(customer);
         }
 
@@ -78,6 +82,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["UserID"] = new SelectList(_context.Users, "ID", "ID", customer.UserID);
             return View(customer);
         }
 
@@ -113,6 +118,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserID"] = new SelectList(_context.Users, "ID", "ID", customer.UserID);
             return View(customer);
         }
 
@@ -125,6 +131,7 @@ namespace KingBakery.Controllers
             }
 
             var customer = await _context.Customer
+                .Include(c => c.Users)
                 .FirstOrDefaultAsync(m => m.UserID == id);
             if (customer == null)
             {

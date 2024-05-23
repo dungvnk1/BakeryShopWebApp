@@ -9,11 +9,11 @@ namespace KingBakery.Models
         public int ID { get; set; }
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
-        [ForeignKey("BakeryDetail")]
+        [ForeignKey("BakeryOption")]
         public int BakeryID { get; set; }
         public string ContentFB { get; set; }
 
-        public virtual Customer customer { get; set; }
-        public virtual BakeryDetail bakeryDetail { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual BakeryOption BakeryOption { get; set; }
     }
 }

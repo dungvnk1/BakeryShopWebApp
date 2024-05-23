@@ -22,7 +22,8 @@ namespace KingBakery.Controllers
         // GET: OrderItems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderItem.ToListAsync());
+            var kingBakeryContext = _context.OrderItem.Include(o => o.BakeryOption).Include(o => o.Orders);
+            return View(await kingBakeryContext.ToListAsync());
         }
 
         // GET: OrderItems/Details/5
@@ -34,6 +35,8 @@ namespace KingBakery.Controllers
             }
 
             var orderItem = await _context.OrderItem
+                .Include(o => o.BakeryOption)
+                .Include(o => o.Orders)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (orderItem == null)
             {
@@ -46,6 +49,8 @@ namespace KingBakery.Controllers
         // GET: OrderItems/Create
         public IActionResult Create()
         {
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID");
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID");
             return View();
         }
 
@@ -62,6 +67,8 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", orderItem.BakeryID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
             return View(orderItem);
         }
 
@@ -78,6 +85,8 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", orderItem.BakeryID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
             return View(orderItem);
         }
 
@@ -113,6 +122,8 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BakeryID"] = new SelectList(_context.BakeryDetail, "ID", "ID", orderItem.BakeryID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
             return View(orderItem);
         }
 
@@ -125,6 +136,8 @@ namespace KingBakery.Controllers
             }
 
             var orderItem = await _context.OrderItem
+                .Include(o => o.BakeryOption)
+                .Include(o => o.Orders)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (orderItem == null)
             {

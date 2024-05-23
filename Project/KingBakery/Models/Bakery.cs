@@ -5,13 +5,16 @@ namespace KingBakery.Models
 {
     public class Bakery
     {
-        
-        public int BakeryId { get; set; }
+        [Key]
+        public int ID { get; set; }
         public string Name { get; set; }
         public string? Image { get; set; }
         public string? Description { get; set; }
+
+        [ForeignKey("BakeryOption")]
         public int CategoryID { get; set; }
         
+        public virtual BakeryOption BakeryOption { get; set; }
         
     }
 }

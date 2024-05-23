@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KingBakery.Models
 {
-    public class BakeryDetail
+    public class BakeryOption
     {
         [Key]
-        [ForeignKey("Bakery")]
         public int ID { get; set; }
         public int? Size { get; set; }
         public int? Quantity { get; set; }
         public float? Price { get; set; }
         public float? Rating { get; set; }
         public int? Discount { get; set; }
-        public virtual Bakery? BakeryID { get; set; }
+        [ForeignKey("Bakery")]
+        public int BakeryID {  get; set; }
+
+        public virtual Bakery Bakery { get; set; }
     }
 }

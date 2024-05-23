@@ -10,22 +10,23 @@ using KingBakery.Models;
 
 namespace KingBakery.Controllers
 {
-    public class BakeryDetailsController : Controller
+    public class BakeryOptionsController : Controller
     {
         private readonly KingBakeryContext _context;
 
-        public BakeryDetailsController(KingBakeryContext context)
+        public BakeryOptionsController(KingBakeryContext context)
         {
             _context = context;
         }
 
-        // GET: BakeryDetails
+        // GET: BakeryOptions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.BakeryDetail.ToListAsync());
+            var kingBakeryContext = _context.BakeryDetail.Include(b => b.Bakery);
+            return View(await kingBakeryContext.ToListAsync());
         }
 
-        // GET: BakeryDetails/Details/5
+        // GET: BakeryOptions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryDetail = await _context.BakeryDetail
+            var bakeryOption = await _context.BakeryDetail
+                .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (bakeryDetail == null)
+            if (bakeryOption == null)
             {
                 return NotFound();
             }
 
-            return View(bakeryDetail);
+            return View(bakeryOption);
         }
 
-        // GET: BakeryDetails/Create
+        // GET: BakeryOptions/Create
         public IActionResult Create()
         {
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID");
             return View();
         }
 
-        // POST: BakeryDetails/Create
+        // POST: BakeryOptions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Size,Quantity,Price,Rating,Discount")] BakeryDetail bakeryDetail)
+        public async Task<IActionResult> Create([Bind("ID,Size,Quantity,Price,Rating,Discount,BakeryID")] BakeryOption bakeryOption)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bakeryDetail);
+                _context.Add(bakeryOption);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(bakeryDetail);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            return View(bakeryOption);
         }
 
-        // GET: BakeryDetails/Edit/5
+        // GET: BakeryOptions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryDetail = await _context.BakeryDetail.FindAsync(id);
-            if (bakeryDetail == null)
+            var bakeryOption = await _context.BakeryDetail.FindAsync(id);
+            if (bakeryOption == null)
             {
                 return NotFound();
             }
-            return View(bakeryDetail);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            return View(bakeryOption);
         }
 
-        // POST: BakeryDetails/Edit/5
+        // POST: BakeryOptions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Size,Quantity,Price,Rating,Discount")] BakeryDetail bakeryDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Size,Quantity,Price,Rating,Discount,BakeryID")] BakeryOption bakeryOption)
         {
-            if (id != bakeryDetail.ID)
+            if (id != bakeryOption.ID)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace KingBakery.Controllers
             {
                 try
                 {
-                    _context.Update(bakeryDetail);
+                    _context.Update(bakeryOption);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BakeryDetailExists(bakeryDetail.ID))
+                    if (!BakeryOptionExists(bakeryOption.ID))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(bakeryDetail);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            return View(bakeryOption);
         }
 
-        // GET: BakeryDetails/Delete/5
+        // GET: BakeryOptions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,32 +130,33 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var bakeryDetail = await _context.BakeryDetail
+            var bakeryOption = await _context.BakeryDetail
+                .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (bakeryDetail == null)
+            if (bakeryOption == null)
             {
                 return NotFound();
             }
 
-            return View(bakeryDetail);
+            return View(bakeryOption);
         }
 
-        // POST: BakeryDetails/Delete/5
+        // POST: BakeryOptions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bakeryDetail = await _context.BakeryDetail.FindAsync(id);
-            if (bakeryDetail != null)
+            var bakeryOption = await _context.BakeryDetail.FindAsync(id);
+            if (bakeryOption != null)
             {
-                _context.BakeryDetail.Remove(bakeryDetail);
+                _context.BakeryDetail.Remove(bakeryOption);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BakeryDetailExists(int id)
+        private bool BakeryOptionExists(int id)
         {
             return _context.BakeryDetail.Any(e => e.ID == id);
         }

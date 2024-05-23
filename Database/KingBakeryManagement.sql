@@ -47,25 +47,27 @@ CREATE TABLE Category(
 )
 GO
 
-CREATE TABLE BakeryDetail(
+CREATE TABLE Bakery(
+	ID INT Identity(1,1) PRIMARY KEY,
+	Name NVARCHAR(255),
+	Image VARCHAR(255),
+	Description NVARCHAR(4000),
+	CategoryID INT,
+	
+	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
+)
+GO
+
+CREATE TABLE BakeryOption(
 	ID INT Identity(1,1) PRIMARY KEY,
 	Size INT,
 	Quantity INT,
 	Price FLOAT,
 	Rating FLOAT,
-	Discount INT
-)
-GO
-
-CREATE TABLE Bakery(
-	BakeryID INT PRIMARY KEY,
-	Name NVARCHAR(255),
-	Image VARCHAR(255),
-	Description NVARCHAR(4000),
-	CategoryID INT, 
+	Discount INT,
+	BakeryID INT,
 	
-	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE,
-	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
+	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE
 )
 GO
 
@@ -99,7 +101,7 @@ CREATE TABLE OrderItem(
 	BillID INT,
 	Quantity INT,
 	Price FLOAT,
-	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE,
+	FOREIGN KEY (BakeryID) REFERENCES BakeryOption(ID) ON DELETE CASCADE,
 	FOREIGN KEY (BillID) REFERENCES Orders(ID) ON DELETE CASCADE
 )
 GO
@@ -110,7 +112,7 @@ CREATE TABLE Feedback(
 	BakeryID INT,
 	ContentFB NVARCHAR(4000),
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
-	FOREIGN KEY (BakeryID) REFERENCES BakeryDetail(ID) ON DELETE CASCADE
+	FOREIGN KEY (BakeryID) REFERENCES BakeryOption(ID) ON DELETE CASCADE
 )
 GO
 
@@ -119,7 +121,7 @@ CREATE TABLE Favourite(
 	BakeryID INT,
 	PRIMARY KEY(CustomerID,BakeryID),
 	Foreign key (CustomerID) references Customer(UserID) on delete cascade,
-	Foreign key (BakeryID) references BakeryDetail(ID) on delete cascade
+	Foreign key (BakeryID) references BakeryOption(ID) on delete cascade
 )
 GO
 
@@ -174,20 +176,19 @@ VALUES
     (N'Bánh gạo nếp');
 GO
 
---BakeryDetail
-INSERT INTO BakeryDetail(Size,Quantity,Price,Rating,Discount)
-VALUES
-	(28,5,200000,0,10),
-	(30,6,250000,0,5),
-	(5,10,50000,0,0)
+--Bakery
+INSERT INTO Bakery(Name,Image,Description,CategoryID)
+VALUES   --Image tạm thời để NULL hết nhé
+	(N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...',3),
+	(N'Bánh quy nho khô',NULL,N'Món ăn vặt hấp dẫn...',4)
 GO
 
---Bakery
-INSERT INTO Bakery(BakeryID,Name,Image,Description,CategoryID)
-VALUES   --Image tạm thời để NULL hết nhé
-	(1,N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...',3),
-	(2,N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...',3),
-	(3,N'Bánh quy nho khô',NULL,N'Món ăn vặt hấp dẫn...',4)
+--BakeryDetail
+INSERT INTO BakeryOption(Size,Quantity,Price,Rating,Discount,BakeryID)
+VALUES
+	(28,5,200000,0,10,1),
+	(30,6,250000,0,5,1),
+	(5,10,50000,0,0,2)
 GO
 
 --Vouchers
@@ -207,9 +208,9 @@ GO
 --Feedback
 INSERT INTO Feedback(CustomerID,BakeryID,ContentFB)
 VALUES 
-( 1, 1, 'Bánh rất ngon và phục vụ thân thiện'),
-( 1, 2, 'Không gian quán rất ấm cúng, bánh mì tươi ngon'),
-( 1, 3, 'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng')
+( 1, 1, N'Bánh rất ngon và phục vụ thân thiện'),
+( 1, 2, N'Không gian quán rất ấm cúng, bánh mì tươi ngon'),
+( 1, 3, N'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng')
 GO
 
 --Orders

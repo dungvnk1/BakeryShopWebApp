@@ -5,13 +5,17 @@ namespace KingBakery.Models
 {
     public class Favourite
     {
+        [Key]
+        [Column(Order = 1)]
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
 
-        [ForeignKey("BakeryDetail")]
+        [Key]
+        [Column(Order = 2)]
+        [ForeignKey("BakeryOption")]
         public int BakeryID { get; set; }
 
-        public virtual Customer customer { get; set; }
-        public virtual BakeryDetail bakeryDetail { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual BakeryOption BakeryOption { get; set; }
     }
 }
