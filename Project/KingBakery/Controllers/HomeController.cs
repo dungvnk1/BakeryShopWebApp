@@ -46,6 +46,26 @@ namespace KingBakery.Controllers
         {
             return View();
         }
+        public IActionResult Blog()
+        {
+            return View();
+        }
+        public IActionResult Cart()
+        {
+            return View();
+        }
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+        public IActionResult Elements()
+        {
+            return View();
+        }
+        public IActionResult SingleBlog()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
