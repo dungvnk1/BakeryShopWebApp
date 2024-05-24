@@ -18,6 +18,30 @@ namespace KingBakery.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult ProductList()
+        {
+            return View();
+        }
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult ProductDetail()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

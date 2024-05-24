@@ -18,10 +18,10 @@
                     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="Index.cshtml">Home</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="About.cshtml">about</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="About">about</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="Blog.cshtml" id="navbarDropdown_1"
@@ -29,8 +29,8 @@
                                     product
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                    <a class="dropdown-item" href="ProductList.cshtml"> product list</a>
-                                    <a class="dropdown-item" href="Single-product.cshtml">product details</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="ProductList"> product list</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="ProductDetail">product details</a>
 
                                 </div>
                             </li>
@@ -40,11 +40,11 @@
                                     pages
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="Login.cshtml">
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Login">
                                         login
 
                                     </a>
-                                    <a class="dropdown-item" href="Checkout.cshtml">product checkout</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Checkout">product checkout</a>
                                     <a class="dropdown-item" href="Cart.cshtml">shopping cart</a>
                                     <a class="dropdown-item" href="Confirmation.cshtml">confirmation</a>
                                     <a class="dropdown-item" href="Elements.cshtml">elements</a>
@@ -63,7 +63,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="Contact.cshtml">Contact</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
                         </ul>
                     </div>
