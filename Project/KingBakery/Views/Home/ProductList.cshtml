@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<KingBakery.Models.Bakery>
-@model IEnumerable<KingBakery.Models.Category>
+
 <!doctype html>
 <html lang="zxx">
 <head>
@@ -59,13 +59,7 @@
                             <div class="select_option">
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
                                 <div class="select_option_dropdown">
-                                    @foreach (var category in Model)
-                                    {
-
-
-                                        <p><a href="#">@category.Name </a></p>
-                                        
-                                    }
+                                    
                                 </div>
                             </div>
                         </div>
