@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {}
+    "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {
+    "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+        "projectUniqueName": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
         "projectName": "KingBakery",
-        "projectPath": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
+        "projectPath": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+        "packagesPath": "C:\\Users\\HUYMANH COMPUTER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HUYMANH COMPUTER\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\HUYMANH COMPUTER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

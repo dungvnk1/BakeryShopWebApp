@@ -22,7 +22,8 @@ namespace KingBakery.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            var category = _context.Category.ToList();
+            return View(category);  
         }
 
         // GET: Categories/Details/5

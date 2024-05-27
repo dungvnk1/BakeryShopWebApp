@@ -20,10 +20,10 @@ namespace KingBakery.Controllers
         }
 
         // GET: Bakeries
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
-            var kingBakeryContext = _context.Bakery.Include(b => b.Category);
-            return View(await kingBakeryContext.ToListAsync());
+            var bakery = _context.Bakery.ToList();
+            return View(bakery);
         }
 
         // GET: Bakeries/Details/5

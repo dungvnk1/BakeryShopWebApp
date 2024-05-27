@@ -1,3 +1,4 @@
+using KingBakery.Data;
 using KingBakery.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,12 +7,15 @@ namespace KingBakery.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly KingBakeryContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, KingBakeryContext context)
         {
             _logger = logger;
+            _context = context;
         }
+        
 
         public IActionResult Index()
         {
@@ -28,7 +32,8 @@ namespace KingBakery.Controllers
         }
         public IActionResult ProductList()
         {
-            return View();
+            var bakery = _context.Bakery.ToList();
+            return View(bakery);         
         }
         public IActionResult Checkout()
         {
@@ -72,5 +77,8 @@ namespace KingBakery.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
     }
-}
+
+    
+    }
