@@ -6,8 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>pillloMart</title>
-    <link rel="icon" href="img/favicon.png">
+    <title>Danh sách sản phẩm</title>
+    <link rel="icon" href="/img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- animate CSS -->
@@ -59,7 +59,6 @@
                             <div class="select_option">
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
                                 <div class="select_option_dropdown">
-                                    
                                 </div>
                             </div>
                         </div>
@@ -78,19 +77,26 @@
                 </div>
                 <div class="col-md-8">
                     <div class="product_list">
+                        <div class="row">
                         @foreach (var bakery in Model)
                         {
-                            <div>
-                                <h2>@bakery.Name</h2>
-                                 @if (!string.IsNullOrEmpty(bakery.Image))
-                {
-                    <img src="@bakery.Image" alt="@bakery.Name";" />
-                }
-                      <p>@bakery.Description</p>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_product_item">
+                                    <img src="/img/product/product_list_1.png" alt="#" class="img-fluid">
+                                    <h3 style="color:black; font-weight:bold">
+                                        <a href="single-product.html">
+                                            @bakery.Name
+                                        </a>
+                                    </h3>
+                                    <p>@bakery.Description</p>
+                                </div>
                             </div>
                         }
-            </div>
-        </div>
+                        </div>
+                    </div>
+                </div>
+
+
     </section>
     <!-- product list part end-->
     <!-- client review part here -->
