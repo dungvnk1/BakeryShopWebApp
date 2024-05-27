@@ -225,5 +225,30 @@ INSERT INTO OrderItem ( BakeryID, BillID, Quantity, Price) VALUES
 ( 1, 1, 2, 400000),
 ( 3, 1, 1, 50000),
 ( 1, 3, 1, 200000)
-GO
+Go
 
+SET IDENTITY_INSERT Bakery ON;
+
+-- Insert into the Bakery table
+INSERT INTO Bakery (ID, Name, Image, Description, CategoryID) VALUES
+(3, 'Apple Crepe', NULL, 'Bánh crepe ngọt có nhân táo thơm ngon và phủ kem ngọt lên trên', 2),
+(4, 'Apple Danish', NULL, 'Món ăn thú vị kết hợp hương vị dễ chịu của táo và gia vị với kết cấu mềm mại, dễ chịu của bánh ngọt Đan Mạch', 2),
+(6, 'Bánh Croissant', NULL, 'Lớp vỏ giòn tan và hình dáng hình lưỡi liềm. Được làm từ bột mì, men, sữa, bơ, đường và muối, croissant là một món bánh yêu thích vào bữa sáng hay bữa ăn nhẹ', 2),
+(7, 'Bánh Cuộn socola', NULL, 'Bánh ngọt hấp dẫn với lớp bánh bông lan mềm mại cuộn quanh lớp nhân socola thơm ngon', 4),
+(8, 'Bánh Dứa', NULL, 'Hương vị đặc trưng của dừa, với lớp bánh mềm mại kết hợp cùng lớp dừa nạo giòn ngọt hoặc dừa khô', 3),
+(9, 'Bánh Mỳ Ruốc', NULL, 'Đây là loại bánh mỳ mềm, thường có nhân hoặc phủ ruốc, hương vị mặn ngọt hài hòa, với lớp bánh mềm mịn kết hợp cùng ruốc thơm ngon.', 2),
+(10, 'Bánh Ốc Quế Kem', NULL, 'Một món ăn độc đáo và hấp dẫn, kết hợp giữa hai yếu tố: lớp bánh mì mềm mại và phần kem ngọt mát bên trong', 4),
+(11, 'Bánh Paté chaud', NULL, 'Được làm từ lớp vỏ bánh giòn và nhân pâté thơm ngon bên trong', 1),
+(12, 'Black Croffle Chocolate', NULL, 'Sự kết hợp độc đáo giữa croissant và sô cô la', 2),
+(13, 'Bánh Caramel', NULL, 'Lớp bánh ẩm mịn, phủ trên cùng bởi lớp caramel sệt và thường được trang trí bằng các hạt đậu, hạt dẻ cười hoặc sô cô la.', 2),
+(14, 'Bánh Choco Santa', NULL, 'Hình dạng và trang trí giống như xe quà của ông già Noel, được làm từ sô cô la và bánh ngọt.', 4),
+(15, 'Bánh Crepe Xoài', NULL, 'Món ăn vừa ngon miệng, vừa hấp dẫn, kết hợp giữa chiếc crepe mềm mịn và mùi vị ngọt ngào của xoài', 2),
+(16, 'Bánh Plan', NULL, 'Nước sốt caramel mịn mượt được làm từ đường và nước, lót dưới đáy khuôn, được chế biến với hỗn hợp trứng, sữa đặc có đường và đôi khi là nước cốt dừa, mang lại kết cấu béo ngậy', 2),
+(17, 'Bánh Madeleines', NULL, 'Bánh nhỏ, có hình dạng và kích thước tương tự như chiếc vỏ sò,được làm từ bột mì, bơ, đường, trứng và hương vani', 2),
+(18, 'NewYork Cheese Rolls', NULL, 'Bánh cuộn được làm từ bột mì mềm mịn và nhân phô mai đậm đà', 3),
+(19, 'NewYork Strawberry Rolls', NULL, 'hình dạng cuộn tròn, với lớp vỏ ngoài giòn và màu vàng đẹp, bên trong là lớp nhân dâu ngọt ngào và mềm mịn', 3),
+(20, 'Bánh Ruốc Cheese Croffle', NULL, 'sự kết hợp giữa hai món ăn ngon là ruốc (ruột cá) và croffle (bánh waffle được làm từ croissant),Ruốc được phối trộn với phô mai và các gia vị khác, sau đó được đặt giữa hai lớp croffle và nướng cho đến khi phô mai tan chảy và bánh croffle giòn rụm.', 1),
+(21, 'Salted Egg Pastry', NULL, 'Một món ăn phổ biến trong nhiều nền văn hóa, thường được làm từ bột mì và nhân trứng muối', 1),
+(22, 'Swedish Princess Pie', NULL, 'Được làm từ mứt, trứng, sữa, kem và cốt bánh bông lan, bao phủ phía trên là lớp bánh hạnh nhân (thường có màu xanh)', 2);
+-- Disable IDENTITY_INSERT for Bakery
+SET IDENTITY_INSERT Bakery OFF;
