@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using KingBakery.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace KingBakery
 {
     public class Program
@@ -13,6 +14,14 @@ namespace KingBakery
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Users/Login";
+                options.LogoutPath = "/Users/Logout";
+                options.SlidingExpiration = true;
+                // Set the cookie expiration time
+                options.ExpireTimeSpan = TimeSpan.FromDays(14);
+            });
 
             var app = builder.Build();
 
@@ -28,7 +37,8 @@ namespace KingBakery
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

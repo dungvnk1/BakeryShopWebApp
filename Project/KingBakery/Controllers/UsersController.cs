@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace KingBakery.Controllers
 {
@@ -43,9 +46,48 @@ namespace KingBakery.Controllers
             return View(users);
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return View("Login");
+        }
+        [HttpPost]
+        public IActionResult Login(string username, string password, bool rememberMe)
+        {
+            var user = _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault<Users>();
+            if (user == null || _context.Users == null)
+            {
+                return View();
+            }
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.FullName),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = rememberMe,
+            };
+
+            HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: Users/Create
         public IActionResult Create()
         {
+            var isAdmin = User.IsInRole("1");
+            ViewBag.IsAdmin = isAdmin;
             return View();
         }
 
