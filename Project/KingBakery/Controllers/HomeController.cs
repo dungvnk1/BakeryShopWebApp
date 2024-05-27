@@ -24,7 +24,7 @@ namespace KingBakery.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View("~/Views/Users/Login.cshtml");
         }
         public IActionResult About()
         {
