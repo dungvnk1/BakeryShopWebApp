@@ -60,15 +60,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_user"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @User.Identity.Name
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
+                                        <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
+                                            logout
+                                        </a>
+                                    </div>
+                                </li>
+                            }
                         </ul>
                     </div>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link">@User.Identity.Name</a>
-                        </li>
-                    }
 
                     <div class="hearer_icon d-flex align-items-center">
                         <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>

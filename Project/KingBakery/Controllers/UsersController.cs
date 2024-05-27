@@ -52,8 +52,8 @@ namespace KingBakery.Controllers
         }
         public IActionResult Logout()
         {
-            HttpContext.SignOutAsync();
-            return View("Login");
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
@@ -61,6 +61,7 @@ namespace KingBakery.Controllers
             var user = _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault<Users>();
             if (user == null || _context.Users == null)
             {
+                ViewBag.LoginError = "Tên đăng nhập hoặc mật khẩu không chính xác!";
                 return View();
             }
             var claims = new List<Claim>

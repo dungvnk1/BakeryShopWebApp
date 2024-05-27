@@ -66,6 +66,12 @@
                                 Welcome Back ! <br>
                                 Please Sign in now
                             </h3>
+                            
+                            @if (!string.IsNullOrEmpty(ViewBag.LoginError))
+                            {
+                                <p class="text-danger">@ViewBag.LoginError</p>
+                            }
+
                             <form class="row contact_form" asp-action="Login" asp-controller="Users" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="username" name="username" value=""
