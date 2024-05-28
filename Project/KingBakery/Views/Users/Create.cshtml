@@ -6,11 +6,12 @@
     var isAdmin = ViewBag.IsAdmin as bool? ?? false;
 }
 
-<h1>Create</h1>
+
+@* <h1>Create</h1>
 
 <h4>Users</h4>
-<hr />
-<div class="row">
+<hr /> *@
+@* <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -66,8 +67,160 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
+
+
+<!DOCTYPE html>
+<head>
+    <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/css/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+    <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js' type='text/javascript'></script>
+    <script src='https://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js' type='text/javascript'></script>
+</head>
+<body>
+    <div class='container'>
+        <div class='panel panel-primary dialog-panel'>
+            <div class='panel-heading'>
+                <h5>Đăng ký tài khoản</h5>
+            </div>
+            <div class='panel-body'>
+                <form asp-action="Create" class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Họ và tên</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="FullName" class='form-control' id='id_first_name' placeholder='Full Name' type='text'>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Tên đăng nhập</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Username" class='form-control' id='id_user_name' placeholder='User Name' type='text'>
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Mật khẩu</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Password" class='form-control' id='id_password' placeholder='Password' type='password'>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Nhập lại mật khẩu</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="FullName" class='form-control' id='id_re_password' placeholder='Full Name' type='password'>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Địa chỉ</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Address" class='form-control' id='id_address' placeholder='Address' type='text'>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Ngày sinh</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8'>
+                                <div class='form-group internal input-group'>
+                                    <input asp-for="BirthDate" class='form-control datepicker' id='id_checkin'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Email</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Email" class='form-control' id='id_email' placeholder='Email' type='text'>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Số điện thoại</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="PhoneNumber" class='form-control' id='id_phone_number' placeholder='PhoneNumber' type='text'>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (isAdmin)
+                    {
+                        <div class='form-group'>
+                            <label class='control-label col-md-2 col-md-offset-2' for='id_role'>Vai trò</label>
+                            <div class='col-md-2'>
+                                <select asp-for="Role" class='form-control' id='id_accomodation'>
+                                    <option>Admin</option>
+                                    <option>Khách hàng</option>
+                                    <option>Nhân viên quán</option>
+                                    <option>Shipper</option>
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit'>Tạo tài khoản</button>
+                        </div>
+                    </div>
+                </form>
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                <div class='form-group'>
+                    <label class="control-label col-md-2 col-md-offset-2">Bạn đã có tài khoản?</label>
+                    <div class='col-md-4'>
+                        <a asp-action="Login" asp-controller="Users" class='btn-lg btn-info'>Đăng nhập</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

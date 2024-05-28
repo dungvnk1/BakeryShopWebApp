@@ -101,9 +101,17 @@ namespace KingBakery.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Check if the user is not logged in
+                if (!User.Identity.IsAuthenticated)
+                {
+                    // Set the Role to 2 if the user is not logged in
+                    users.Role = 2;
+                }
+
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = "Tài khoản của bạn đã được tạo thành công!";
+                return View(users);
             }
             return View(users);
         }
