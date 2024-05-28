@@ -22,7 +22,7 @@
     <div class='container'>
         <div class='panel panel-primary dialog-panel'>
             <div class='panel-heading'>
-                <h5>Đăng ký tài khoản</h5>
+                <h5>Tạo tài khoản mới</h5>
             </div>
             <div class='panel-body'>
                 <form asp-action="Create" class='form-horizontal' role='form'>
@@ -64,8 +64,8 @@
                         <div class='col-md-8'>
                             <div class='col-md-8 indent-small'>
                                 <div class='form-group internal'>
-                                    <input asp-for="FullName" class='form-control' id='id_re_password' placeholder='Full Name' type='password'>
-
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -122,12 +122,8 @@
                         <div class='form-group'>
                             <label class='control-label col-md-2 col-md-offset-2' for='id_role'>Vai trò</label>
                             <div class='col-md-2'>
-                                <select asp-for="Role" class='form-control' id='id_accomodation'>
-                                    <option>Admin</option>
-                                    <option>Khách hàng</option>
-                                    <option>Nhân viên quán</option>
-                                    <option>Shipper</option>
-                                </select>
+                                <select asp-for="Role" asp-items="@ViewData["RoleSelectList"] as SelectList" class="form-control" id="id_role"></select>
+                                <span asp-validation-for="Role" class="text-danger"></span>
                             </div>
                         </div>
                     }
@@ -143,12 +139,26 @@
                         @TempData["SuccessMessage"]
                     </div>
                 }
-                <div class='form-group'>
-                    <label class="control-label col-md-2 col-md-offset-2">Bạn đã có tài khoản?</label>
-                    <div class='col-md-4'>
-                        <a asp-action="Login" asp-controller="Users" class='btn-lg btn-info'>Đăng nhập</a>
+                @if (!isAdmin)
+                {
+                    <div class='form-group'>
+                        <label class="control-label col-md-2 col-md-offset-2">Bạn đã có tài khoản?</label>
+                        <div class='col-md-3'>
+                            <a asp-action="Login" asp-controller="Users" class='btn-lg btn-info'>Đăng nhập</a>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <a class='btn-lg btn-primary' asp-action="Index" asp-controller="Users">Quản lí người dùng</a>
+                        </div>
+                        <div class='col-md-3'>
+                            <a class='btn-lg btn-danger' asp-action="Index" asp-controller="Home">Về trang chủ</a>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

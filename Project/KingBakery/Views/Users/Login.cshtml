@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner">
-                        <h2>login</h2>
+                        <h2>đăng nhập</h2>
                     </div>
                 </div>
             </div>
@@ -50,21 +50,20 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
-                            <h2>New to our Shop?</h2>
+                            <h2>Bạn chưa có tài khoản?</h2>
                             <p>
-                                There are advances being made in science and technology
-                                everyday, and a good example of this is the
+                                Mỗi ngày King Bakery đều cung cấp tới khách hàng những sản phẩm tốt nhất!
                             </p>
-                            <a asp-action="Create" asp-controller="Users" class="btn_3">Create an Account</a>
+                            <a asp-action="Create" asp-controller="Users" class="btn_3">Tạo tài khoản mới</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>
-                                Welcome Back ! <br>
-                                Please Sign in now
+                            <h3 style="font-family:Arial">
+                                Chào mừng trở lại! <br>
+                                Làm ơn hãy đăng nhập trước
                             </h3>
                             
                             @if (!string.IsNullOrEmpty(ViewBag.LoginError))
@@ -75,21 +74,21 @@
                             <form class="row contact_form" asp-action="Login" asp-controller="Users" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="username" name="username" value=""
-                                           placeholder="Username">
+                                           placeholder="Tên đăng nhập">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                           placeholder="Password">
+                                           placeholder="Mật khẩu">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="rememberMe" value="true">
-                                        <label for="f-option">Remember me</label>
+                                        <input type="checkbox" id="f-option" name="rememberMe">
+                                        <label for="f-option">Ghi nhớ tài khoản</label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">
-                                        log in
+                                        đăng nhập
                                     </button>
-                                    <a class="lost_pass" href="#">forget password?</a>
+                                    <a class="lost_pass" href="#">quên mật khẩu?</a>
                                 </div>
                             </form>
                         </div>
@@ -103,31 +102,31 @@
     @await Component.InvokeAsync("Footer")
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="/js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="/js/popper.min.js"></script>
     <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="/js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
+    <script src="/js/swiper.min.js"></script>
     <!-- swiper js -->
-    <script src="js/mixitup.min.js"></script>
+    <script src="/js/mixitup.min.js"></script>
     <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
     <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <script src="/js/custom.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KingBakery.Models
 {
@@ -15,5 +16,11 @@ namespace KingBakery.Models
         public string? Email { get; set; }
         public string PhoneNumber { get; set; }
         public int Role { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [NotMapped] // Indicates that this property should not be mapped to any database column
+        public string ConfirmPassword { get; set; }
     }
 }

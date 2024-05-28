@@ -58,6 +58,7 @@ namespace KingBakery.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
         {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var user = _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault<Users>();
             if (user == null || _context.Users == null)
             {
@@ -89,6 +90,13 @@ namespace KingBakery.Controllers
         {
             var isAdmin = User.IsInRole("1");
             ViewBag.IsAdmin = isAdmin;
+            ViewData["RoleSelectList"] = new SelectList(new[]
+                {
+                        new { Value = "1", Text = "Admin" },
+                        new { Value = "2", Text = "Khách hàng" },
+                        new { Value = "3", Text = "Nhân viên" },
+                        new { Value = "4", Text = "Shipper" }
+                    }, "Value", "Text");
             return View();
         }
 
@@ -102,7 +110,7 @@ namespace KingBakery.Controllers
             if (ModelState.IsValid)
             {
                 // Check if the user is not logged in
-                if (!User.Identity.IsAuthenticated)
+                if (!User.Identity.IsAuthenticated && !User.IsInRole("1"))
                 {
                     // Set the Role to 2 if the user is not logged in
                     users.Role = 2;

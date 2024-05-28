@@ -16,11 +16,11 @@ namespace KingBakery
             builder.Services.AddControllersWithViews();
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/Users/Login";
+                options.LoginPath = new PathString("/Users/Login");
                 options.LogoutPath = "/Users/Logout";
                 options.SlidingExpiration = true;
-                // Set the cookie expiration time
-                options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                //Set the cookie expiration time
+                options.ExpireTimeSpan = TimeSpan.FromDays(2);
             });
 
             var app = builder.Build();
