@@ -30,10 +30,22 @@ namespace KingBakery.Controllers
         // GET: Bakeries by CategoryID
         public async Task<IActionResult> Index(int id)
         {
-            var bakery = _context.Bakery
-                                        .Include(b => b.Category)
+            var bakery = _context.Bakery.Include(b => b.Category)
                                         .Include(b => b.BakeryOptions)
                                         .Where(b => b.CategoryID == id)
+                                        .ToList();
+            var categories = _context.Category.ToList();
+            ViewData["Categories"] = categories;
+            return View(bakery);
+        }
+
+        //Search Bakery
+        [HttpPost]
+        public async Task<IActionResult> Index(string? keyword)
+        {
+            var bakery = _context.Bakery.Include(b => b.Category)
+                                        .Include(b => b.BakeryOptions)
+                                        .Where(b => b.Name.Contains(keyword))
                                         .ToList();
             var categories = _context.Category.ToList();
             ViewData["Categories"] = categories;
