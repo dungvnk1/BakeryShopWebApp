@@ -8,5 +8,7 @@ namespace KingBakery.Models
         [Key]
         public int ID { get; set; }
         public required string Name { get; set; }
+
+        public virtual ICollection<Bakery>? Bakery { get; set; }
     }
 }

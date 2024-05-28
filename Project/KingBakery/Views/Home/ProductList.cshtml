@@ -59,6 +59,13 @@
                             <div class="select_option">
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
                                 <div class="select_option_dropdown">
+                                    @foreach (var category in (IEnumerable<KingBakery.Models.Category>)ViewData["Categories"])
+                                    {
+                                        if(category != null)
+                                        {
+                                            <p><a asp-controller="Bakeries" asp-action="Index" asp-route-id="@category.ID">@category.Name</a></p>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -78,20 +85,21 @@
                 <div class="col-md-8">
                     <div class="product_list">
                         <div class="row">
-                        @foreach (var bakery in Model)
-                        {
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="/img/product/product_list_1.png" alt="#" class="img-fluid">
-                                    <h3 style="color:black; font-weight:bold">
-                                        <a href="single-product.html">
-                                            @bakery.Name
-                                        </a>
-                                    </h3>
-                                    <p>@bakery.Description</p>
+                            @foreach (var bakery in Model)
+                            {
+                                var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="single_product_item">
+                                        <img src="/img/product/product_list_1.png" alt="#" class="img-fluid">
+                                        <h3 style="color:black; font-weight:bold">
+                                            <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@bakery.ID">
+                                                @bakery.Name
+                                            </a>
+                                        </h3>
+                                        <p>@($"Price: {minPrice.ToString("#,##0")}đ")</p>
+                                    </div>
                                 </div>
-                            </div>
-                        }
+                            }
                         </div>
                     </div>
                 </div>

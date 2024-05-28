@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace KingBakery.Controllers
 {
@@ -20,10 +21,23 @@ namespace KingBakery.Controllers
         }
 
         // GET: Bakeries
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var kingBakeryContext = _context.Bakery.Include(b => b.Category);
+        //    return View(await kingBakeryContext.ToListAsync());
+        //}
+
+        // GET: Bakeries by CategoryID
+        public async Task<IActionResult> Index(int id)
         {
-            var kingBakeryContext = _context.Bakery.Include(b => b.Category);
-            return View(await kingBakeryContext.ToListAsync());
+            var bakery = _context.Bakery
+                                        .Include(b => b.Category)
+                                        .Include(b => b.BakeryOptions)
+                                        .Where(b => b.CategoryID == id)
+                                        .ToList();
+            var categories = _context.Category.ToList();
+            ViewData["Categories"] = categories;
+            return View(bakery);
         }
 
         // GET: Bakeries/Details/5
@@ -36,12 +50,19 @@ namespace KingBakery.Controllers
 
             var bakery = await _context.Bakery
                 .Include(b => b.Category)
+                .Include(b => b.BakeryOptions)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (bakery == null)
             {
                 return NotFound();
             }
-
+            var bakeryOption = _context.BakeryOption.Include(b => b.Bakery).FirstOrDefault(b => b.BakeryID == id);
+            if (bakeryOption == null)
+            {
+                return NotFound();
+            }
+            ViewData["BakeryOption"] = bakeryOption;
             return View(bakery);
         }
 

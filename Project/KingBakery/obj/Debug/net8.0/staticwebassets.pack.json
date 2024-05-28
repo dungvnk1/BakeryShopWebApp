@@ -5,6 +5,86 @@
       "PackagePath": "staticwebassets\\KingBakery.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\AppleCrepe.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\AppleCrepe.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\AppleDanish.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\AppleDanish.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhCroissant.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhCroissant.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhCuonChocolate.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhCuonChocolate.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhDua.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhDua.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhMyRuoc.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhMyRuoc.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhOcQueKem.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhOcQueKem.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BanhPateChaud.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BanhPateChaud.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\BlackCroffleChocolate.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\BlackCroffleChocolate.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\Caramel.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\Caramel.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\ChocoSanta.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\ChocoSanta.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\CrepeXoai.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\CrepeXoai.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\FlanCake.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\FlanCake.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\MadeleinesPie.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\MadeleinesPie.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\NewYorkCheeseRolls.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\NewYorkCheeseRolls.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\NewYorkStrawberryRolls.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\NewYorkStrawberryRolls.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\PassionFestive.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\PassionFestive.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\RuocCheeseCroffle.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\RuocCheeseCroffle.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\SaltedEggPastry.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\SaltedEggPastry.png"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\Bánh Ngọt\\SwedishPrincessPie.png",
+      "PackagePath": "staticwebassets\\Bánh Ngọt\\SwedishPrincessPie.png"
+    },
+    {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\all.css",
       "PackagePath": "staticwebassets\\css\\all.css"
     },
@@ -19,6 +99,10 @@
     {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\detail.css",
+      "PackagePath": "staticwebassets\\css\\detail.css"
     },
     {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\flaticon.css",

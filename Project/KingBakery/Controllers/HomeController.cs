@@ -1,6 +1,7 @@
 using KingBakery.Data;
 using KingBakery.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace KingBakery.Controllers
@@ -32,8 +33,14 @@ namespace KingBakery.Controllers
         }
         public IActionResult ProductList()
         {
-            var bakery = _context.Bakery.ToList();
-            return View(bakery);         
+            var bakeries = _context.Bakery
+            .Include(b => b.BakeryOptions)
+            .Include(b => b.Category)
+            .ToList();
+
+            var categories = _context.Category.ToList();
+            ViewData["Categories"] = categories;
+            return View(bakeries);       
         }
         public IActionResult Checkout()
         {

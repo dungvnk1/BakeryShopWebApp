@@ -15,6 +15,8 @@ namespace KingBakery.Models
         public int CategoryID { get; set; }
         
         public virtual Category? Category { get; set; }
-        
+
+        public virtual ICollection<BakeryOption>? BakeryOptions { get; set; }
+
     }
 }

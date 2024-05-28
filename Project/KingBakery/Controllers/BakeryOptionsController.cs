@@ -37,11 +37,12 @@ namespace KingBakery.Controllers
             var bakeryOption = await _context.BakeryOption
                 .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (bakeryOption == null)
             {
                 return NotFound();
             }
-
+            ViewData["BakeryOptions"] = _context.BakeryOption.Include(b => b.Bakery).Where(bo => bo.BakeryID == bakeryOption.BakeryID).ToList();
             return View(bakeryOption);
         }
 
