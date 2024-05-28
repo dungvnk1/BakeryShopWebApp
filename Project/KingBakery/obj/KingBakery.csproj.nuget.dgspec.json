@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {}
+    "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\KingBakery.csproj": {}
   },
   "projects": {
-    "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {
+    "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\KingBakery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+        "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\KingBakery.csproj",
         "projectName": "KingBakery",
-        "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+        "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\KingBakery.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
+        "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",

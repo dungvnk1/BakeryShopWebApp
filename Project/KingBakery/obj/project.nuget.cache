@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YWFfVTBqH7aagnI+jN7mbaX0/gV/QYQ+rv1EoYlDpk6de8qyWAMmP8iP/TRr/ug06miwESEkEga67nLvRcD3cg==",
+  "dgSpecHash": "vQXCt28Hnlf6o9Y6meI7Daazjtvtgu8QCqoW28DXR9Ir9eZeqMFJii8djLLqDpNKOJf6PwBp3zFxpE/YbLU5Wg==",
   "success": true,
-  "projectFilePath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
+  "projectFilePath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\\Project\\KingBakery\\KingBakery.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Acer\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
