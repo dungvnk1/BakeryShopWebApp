@@ -4327,3 +4327,42 @@ readers do not read off random characters that represent icons */
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.breadcrumb_part {
+    position: relative;
+    width: 100%;
+    padding: 50px 0;
+ 
+}
+
+.container.background {
+    position: relative;
+    width: 100%;
+    min-height: 100%; /* Ensure the row has enough height to show the background image */
+    background: url('https://cdn.tgdd.vn/2020/10/content/02-800x450.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+}
+
+.breadcrumb_iner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    border-radius: 8px; /* Optional: rounded corners for breadcrumb_iner */
+}
+
+    .breadcrumb_iner h2 {
+        margin: 0;
+        
+    }
+.banner_text_iner{
+    padding-left: 15%;
+}
