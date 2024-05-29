@@ -58,36 +58,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach(var item in Model)
                             {
                                 <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex">
-                                                <img src="/img/arrivel/arrivel_1.png" alt="" />
-                                            </div>
-                                            <div class="media-body">
-                                                <p></p>
-                                            </div>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/arrivel/arrivel_1.png" alt="" />
                                         </div>
-                                    </td>
-                                    <td>
-                                        <h5>@item.Price</h5>
-                                    </td>
-                                    <td>
-                                        <div class="product_count">
-                                            <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                            <input class="input-number" type="text" value="1" min="0" max="10">
-                                            <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                        <div class="media-body">
+                                            <p>@item.BakeryOption.Bakery.Name</p>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <h5>$720.00</h5>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>@item.Price</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
+                                        <input class="input-number" type="text" value="1" min="0" max="10">
+                                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$720.00</h5>
+                                </td>
+                            </tr>
                             }
-
-
+                            
+                            
                             <tr class="bottom_button">
                                 <td>
                                     <a class="btn_1" href="#">Update Cart</a>
@@ -247,58 +247,3 @@
 </body>
 
 </html>
-
-
-@* @model IEnumerable<KingBakery.Models.OrderItem>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BakeryOption)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orders)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BakeryOption.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orders.ID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table> *@

@@ -22,7 +22,7 @@ namespace KingBakery.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Orders.Include(o => o.Customer).Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
+            var kingBakeryContext = _context.Orders.Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace KingBakery.Controllers
             }
 
             var orders = await _context.Orders
-                .Include(o => o.Customer)
                 .Include(o => o.Shipper)
                 .Include(o => o.Staff)
                 .Include(o => o.Vouchers)
@@ -71,7 +70,6 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
             ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
@@ -91,7 +89,6 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
             ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
@@ -130,7 +127,6 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", orders.CustomerID);
             ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
             ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
             ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
@@ -146,7 +142,6 @@ namespace KingBakery.Controllers
             }
 
             var orders = await _context.Orders
-                .Include(o => o.Customer)
                 .Include(o => o.Shipper)
                 .Include(o => o.Staff)
                 .Include(o => o.Vouchers)

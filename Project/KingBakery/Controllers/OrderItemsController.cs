@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using KingBakery.Extensions;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -20,10 +22,58 @@ namespace KingBakery.Controllers
         }
 
         // GET: OrderItems
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var kingBakeryContext = _context.OrderItem.Include(o => o.BakeryOption).Include(o => o.Orders);
+        //    return View(await kingBakeryContext.ToListAsync());
+        //}
+
+        //Show cart
+        public IActionResult Index()
         {
-            var kingBakeryContext = _context.OrderItem.Include(o => o.BakeryOption).Include(o => o.Orders);
-            return View(await kingBakeryContext.ToListAsync());
+            return View(Orders);
+        }
+
+        public List<OrderItem> Orders
+        {
+            get
+            {
+                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var data = _context.OrderItem.Include(o => o.BakeryOption)
+                                             .Where(o => o.CustomerID == 1)
+                                             .ToList();
+                if(data == null)
+                {
+                    data = new List<OrderItem>();
+                }
+                return data;
+            }
+        }
+
+        public IActionResult AddToCart(int id)
+        {
+            var myCart = Orders;
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var item = myCart.FirstOrDefault(c => c.ID == id);
+
+            if(item == null)
+            {
+                var bakery = _context.BakeryOption.Include(b => b.Bakery).FirstOrDefault(b => b.ID == id);
+                item = new OrderItem()
+                {
+                    BakeryID = bakery.ID,
+                    CustomerID = int.Parse(userID),
+                    Price = bakery.Price,
+                    Quantity = 1,
+                    BakeryOption = bakery
+                };
+            }
+            else
+            {
+                item.Quantity++;
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: OrderItems/Details/5
@@ -68,7 +118,7 @@ namespace KingBakery.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", orderItem.BakeryID);
-            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.OrderID);
             return View(orderItem);
         }
 
@@ -86,7 +136,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
             ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", orderItem.BakeryID);
-            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.OrderID);
             return View(orderItem);
         }
 
@@ -123,7 +173,7 @@ namespace KingBakery.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", orderItem.BakeryID);
-            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.BillID);
+            ViewData["BillID"] = new SelectList(_context.Orders, "ID", "ID", orderItem.OrderID);
             return View(orderItem);
         }
 
