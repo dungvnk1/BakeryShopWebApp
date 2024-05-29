@@ -31,6 +31,7 @@ namespace KingBakery.Controllers
         //Show cart
         public IActionResult Index()
         {
+            ViewData["Bakery"] = _context.Bakery.ToList();
             return View(Orders);
         }
 
@@ -39,8 +40,15 @@ namespace KingBakery.Controllers
             get
             {
                 var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                int uid = 0;
+                if(userID != null)
+                {
+                    uid = int.Parse(userID);
+                }
+
                 var data = _context.OrderItem.Include(o => o.BakeryOption)
-                                             .Where(o => o.CustomerID == 1)
+                                             .Where(o => o.CustomerID == uid)
+                                             .Where(o => o.OrderID == 0)
                                              .ToList();
                 if(data == null)
                 {
@@ -49,12 +57,12 @@ namespace KingBakery.Controllers
                 return data;
             }
         }
-
-        public IActionResult AddToCart(int id)
+        public IActionResult AddToCart(int id, int quantity)
         {
             var myCart = Orders;
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var item = myCart.FirstOrDefault(c => c.ID == id);
+            //int quan = quantity;//int.Parse(quantity);
+            var item = myCart.FirstOrDefault(c => c.BakeryID == id);
 
             if(item == null)
             {
@@ -62,15 +70,33 @@ namespace KingBakery.Controllers
                 item = new OrderItem()
                 {
                     BakeryID = bakery.ID,
-                    CustomerID = int.Parse(userID),
+                    CustomerID = userID==null ? 0:int.Parse(userID),
+                    OrderID = 0,
                     Price = bakery.Price,
-                    Quantity = 1,
-                    BakeryOption = bakery
+                    Quantity = quantity
                 };
+                _context.OrderItem.Add(item);
+                _context.SaveChanges();
             }
             else
             {
-                item.Quantity++;
+                var orderItem = _context.OrderItem.Find(item.ID);
+                orderItem.Quantity = quantity;
+                _context.OrderItem.Update(orderItem);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteItem(int id)
+        {
+            var item = _context.OrderItem.Find(id);
+
+            if (item != null)
+            {
+                _context.OrderItem.Remove(item);
+                _context.SaveChanges();
             }
 
             return RedirectToAction("Index");

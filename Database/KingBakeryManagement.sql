@@ -238,6 +238,11 @@ INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalP
 (7, 8, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', 200.00, N'Đã đặt hàng'),
 (3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', 200000, N'Đang giao hàng')
 GO
+SET IDENTITY_INSERT Orders ON;
+INSERT INTO Orders (ID, StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalPrice, Status) VALUES
+(0,NULL, NULL, NULL,NULL,NULL,NULL,NULL)
+GO
+SET IDENTITY_INSERT Orders OFF;
 
 --OrderItem
 INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
@@ -245,6 +250,4 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 3, 1, 1, 1, 50000),
 ( 1, 1, 3, 1, 200000)
 Go
-
-
-
+--select * from OrderItem
