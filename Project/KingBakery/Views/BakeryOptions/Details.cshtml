@@ -100,9 +100,9 @@
                                     <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                 </div>
                                 <p>@Model.Price</p>
-                            </div>
+                            </div> 
                             <div class="add_to_cart">
-                                <a href="#" class="btn_3">add to cart</a>
+                                <a asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="btn_3">add to cart</a>
                             </div>
                         </div>
                     </div>

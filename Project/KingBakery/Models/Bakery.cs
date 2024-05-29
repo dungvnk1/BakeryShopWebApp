@@ -10,6 +10,7 @@ namespace KingBakery.Models
         public string Name { get; set; }
         public string? Image { get; set; }
         public string? Description { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         [ForeignKey("Category")]
         public int CategoryID { get; set; }
