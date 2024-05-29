@@ -1,5 +1,8 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
+
 <header class="main_menu home_menu">
     <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -71,6 +74,9 @@
                                         @User.Identity.Name
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
+                                        <a class="dropdown-item" asp-controller="Users" asp-action="Details" asp-route-id="@userId">
+                                            Profile
+                                        </a>
                                         <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
                                             Logout
                                         </a>
