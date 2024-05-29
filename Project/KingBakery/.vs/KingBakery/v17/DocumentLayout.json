@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\home\\confirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\home\\confirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\shared\\components\\footer\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\shared\\components\\footer\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\views\\shared\\components\\header\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -68,6 +72,19 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Footer\\Default.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Footer\\Default.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Footer\\Default.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Footer\\Default.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T06:04:34.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Header\\Default.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Components\\Header\\Default.cshtml",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Header\\Default.cshtml",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Contact.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Contact.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
@@ -92,33 +109,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "About.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\About.cshtml",
               "RelativeToolTip": "Views\\Home\\About.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB8AAAAbAAAA",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAAAL8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T17:58:09.814Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Confirmation.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Confirmation.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Confirmation.cshtml",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Confirmation.cshtml",
               "RelativeToolTip": "Views\\Home\\Confirmation.cshtml",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAAAB4AAAArAAAA",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAqwKMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T17:49:23.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ProductDetail.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\ProductDetail.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\ProductDetail.cshtml",
@@ -130,7 +147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -142,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ProductList.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\ProductList.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\ProductList.cshtml",
@@ -154,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -166,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\Users\\Login.cshtml",
@@ -178,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
@@ -190,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Users\\Create.cshtml",
@@ -202,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
