@@ -58,7 +58,7 @@ namespace KingBakery.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var user = _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault<Users>();
             if (user == null || _context.Users == null)
             {
@@ -106,7 +106,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,Address,BirthDate,Email,PhoneNumber,Role")] Users users)
+        public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role")] Users users)
         {
             if (ModelState.IsValid)
             {
