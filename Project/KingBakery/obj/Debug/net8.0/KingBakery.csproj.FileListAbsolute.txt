@@ -1,5 +1,4 @@
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.Development.json
-E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.json
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.staticwebassets.runtime.json
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.exe
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.deps.json
