@@ -94,8 +94,20 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
                                         <a class="dropdown-item" asp-controller="Users" asp-action="Details" asp-route-id="@userId">
-                                            Profile
+                                            Thông tin tài khoản
                                         </a>
+                                        @if (userId == "1")
+                                        {
+                                            <a class="dropdown-item" asp-controller="Users" asp-action="Details" asp-route-id="@userId">
+                                                Quản lí cửa hàng
+                                            </a>
+                                        }
+                                        @if (userId == "2")
+                                        {
+                                            <a class="dropdown-item" asp-controller="Users" asp-action="Details" asp-route-id="@userId">
+                                                Món yêu thích
+                                            </a>
+                                        }
                                         <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
                                             Logout
                                         </a>

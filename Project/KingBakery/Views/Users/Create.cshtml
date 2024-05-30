@@ -48,7 +48,7 @@
     <!--create user part-->
     <div class='container'>
         <div class='panel panel-primary dialog-panel'>
-            <div class='panel-heading' style="text-align:center; background-color:mediumpurple">
+            <div class='panel-heading' style="text-align:center; background-color:#B08EAD">
                 <h5 style="font-weight:bold; font-size:16px">Tạo tài khoản mới</h5>
             </div>
             <div class='panel-body'>
@@ -113,10 +113,7 @@
                         <div class='col-md-8'>
                             <div class='col-md-8'>
                                 <div class='form-group internal input-group'>
-                                    <input asp-for="BirthDate" class='form-control datepicker' id='id_checkin'>
-                                    <span class='input-group-addon'>
-                                        <i class='glyphicon glyphicon-calendar'></i>
-                                    </span>
+                                    <input asp-for="BirthDate" type="date" class='form-control datepicker' id='id_checkin'>
                                     <span asp-validation-for="BirthDate" class="text-danger"></span>
                                 </div>
                             </div>
@@ -156,7 +153,7 @@
                     }
                     <div class='form-group'>
                         <div class='col-md-offset-4 col-md-3'>
-                            <button class='btn-lg btn-primary' type='submit' style="background-color:mediumpurple">Tạo tài khoản</button>
+                            <button class='btn-lg btn-primary' type='submit' style="background-color:#B08EAD">Tạo tài khoản</button>
                         </div>
                     </div>
                 </form>
