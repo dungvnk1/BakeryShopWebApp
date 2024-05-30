@@ -212,5 +212,67 @@ namespace KingBakery.Controllers
         {
             return _context.Users.Any(e => e.ID == id);
         }
+        public IActionResult Favourites()
+        {
+            // Lấy userId từ Claims
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdString, out int userId))
+            {
+                return BadRequest("Invalid user ID");
+            }
+
+            // Truy vấn danh sách Favourite của người dùng hiện tại và bao gồm thông tin BakeryOption
+            var favourites = _context.Favourite
+                .Include(f => f.BakeryOption)
+                .Where(f => f.CustomerID == userId)
+                .ToList();
+
+            var model = new FavouritesViewModel
+            {
+                FavouriteList = favourites
+            };
+
+            // Lấy danh sách BakeryOptions để hiển thị trong form Create
+            
+
+            return View(model);
+        }
+
+        // Các hành động CRUD khác (Create, Update, Delete)
+        [HttpPost]
+        public IActionResult Create(Favourite favourite)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Favourite.Add(favourite);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Favourites));
+            }
+            return View(favourite);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Favourite favourite)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Favourite.Update(favourite);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Favourites));
+            }
+            return View(favourite);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var favourite = _context.Favourite.Find(id);
+            if (favourite != null)
+            {
+                _context.Favourite.Remove(favourite);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(Favourites));
+        }
     }
 }

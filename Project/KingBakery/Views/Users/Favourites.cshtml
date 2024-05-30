@@ -1,0 +1,12 @@
+﻿@page
+@model KingBakery.Models.FavouritesViewModel
+
+<h2>Your Favourites</h2>
+
+<ul>
+    @foreach (var favourite in Model.FavouriteList)
+    {
+        <li>@favourite.BakeryID</li>
+    }
+</ul>
+
