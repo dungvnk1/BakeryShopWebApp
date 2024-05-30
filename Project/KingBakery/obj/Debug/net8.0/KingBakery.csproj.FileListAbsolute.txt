@@ -755,7 +755,6 @@ E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.csproj.AssemblyReference.cache
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.csproj.Up2Date
 C:\Users\Admin\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\Admin\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.json
 C:\Users\Admin\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.staticwebassets.runtime.json
 C:\Users\Admin\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.exe
 C:\Users\Admin\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.deps.json

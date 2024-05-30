@@ -179,27 +179,27 @@ GO
 --Bakery
 INSERT INTO Bakery(Name,Image,Description,ReleaseDate,CategoryID)
 VALUES   --Image tạm thời để NULL hết nhé
-(N'Bánh kem Socola',NULL,N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...','2024-05-29',3),
-(N'Bánh quy nho khô',NULL,N'Món ăn vặt hấp dẫn...','2024-05-29',4),
-(N'Apple Crepe',NULL,N'Bánh crepe ngọt có nhân táo thơm ngon và phủ kem ngọt lên trên.','2024-05-29',2),
-(N'Apple Danish',NULL,N'Món ăn thú vị kết hợp hương vị dễ chịu của táo và gia vị với kết cấu mềm mại, dễ chịu của bánh ngọt Đan Mạch.', '2024-05-29',2),
-(N'Bánh Croissant',NULL,N'Lớp vỏ giòn tan và hình dáng hình lưỡi liềm. Được làm từ bột mì, men, sữa, bơ, đường và muối, croissant là một món bánh yêu thích vào bữa sáng hay bữa ăn nhẹ','2024-05-29',2),
-(N'Bánh Cuộn socola',NULL,N'Bánh ngọt hấp dẫn với lớp bánh bông lan mềm mại cuộn quanh lớp nhân socola thơm ngon', '2024-05-29', 4),
-(N'Bánh Dứa',NULL,N'Hương vị đặc trưng của dừa, với lớp bánh mềm mại kết hợp cùng lớp dừa nạo giòn ngọt hoặc dừa khô', '2024-05-29', 3),
-(N'Bánh Mỳ Ruốc',NULL,N'Đây là loại bánh mỳ mềm, thường có nhân hoặc phủ ruốc, hương vị mặn ngọt hài hòa, với lớp bánh mềm mịn kết hợp cùng ruốc thơm ngon.', '2024-05-29', 2),
-(N'Bánh Ốc Quế Kem',NULL,N'Một món ăn độc đáo và hấp dẫn, kết hợp giữa hai yếu tố: lớp bánh mì mềm mại và phần kem ngọt mát bên trong', '2024-05-29', 4),
-(N'Bánh Paté chaud',NULL,N'Được làm từ lớp vỏ bánh giòn và nhân pâté thơm ngon bên trong', '2024-05-29', 1),
-(N'Black Croffle Chocolate',NULL,N'Sự kết hợp độc đáo giữa croissant và sô cô la', '2024-05-29', 2),
-(N'Bánh Caramel',NULL,N'Lớp bánh ẩm mịn, phủ trên cùng bởi lớp caramel sệt và thường được trang trí bằng các hạt đậu, hạt dẻ cười hoặc sô cô la.', '2024-05-29', 2),
-(N'Bánh Choco Santa',NULL,N'Hình dạng và trang trí giống như xe quà của ông già Noel, được làm từ sô cô la và bánh ngọt.', '2024-05-29', 4),
-(N'Bánh Crepe Xoài',NULL,N'Món ăn vừa ngon miệng, vừa hấp dẫn, kết hợp giữa chiếc crepe mềm mịn và mùi vị ngọt ngào của xoài', '2024-05-29', 2),
-(N'Bánh Plan',NULL,N'Nước sốt caramel mịn mượt được làm từ đường và nước, lót dưới đáy khuôn, được chế biến với hỗn hợp trứng, sữa đặc có đường và đôi khi là nước cốt dừa, mang lại kết cấu béo ngậy', '2024-05-29', 2),
-(N'Bánh Madeleines',NULL,N'Bánh nhỏ, có hình dạng và kích thước tương tự như chiếc vỏ sò,được làm từ bột mì, bơ, đường, trứng và hương vani', '2024-05-29', 2),
-(N'NewYork Cheese Rolls',NULL,N'Bánh cuộn được làm từ bột mì mềm mịn và nhân phô mai đậm đà', '2024-05-29', 3),
-(N'NewYork Strawberry Rolls',NULL,N'Hình dạng cuộn tròn, với lớp vỏ ngoài giòn và màu vàng đẹp, bên trong là lớp nhân dâu ngọt ngào và mềm mịn', '2024-05-29', 3),
-(N'Bánh Ruốc Cheese Croffle',NULL,N'Sự kết hợp giữa hai món ăn ngon là ruốc (ruột cá) và croffle (bánh waffle được làm từ croissant),Ruốc được phối trộn với phô mai và các gia vị khác, sau đó được đặt giữa hai lớp croffle và nướng cho đến khi phô mai tan chảy và bánh croffle giòn rụm.', '2024-05-29', 1),
-(N'Salted Egg Pastry',NULL,N'Một món ăn phổ biến trong nhiều nền văn hóa, thường được làm từ bột mì và nhân trứng muối', '2024-05-29', 1),
-(N'Swedish Princess Pie',NULL,N'Được làm từ mứt, trứng, sữa, kem và cốt bánh bông lan, bao phủ phía trên là lớp bánh hạnh nhân (thường có màu xanh)', '2024-05-29', 2);
+(N'Bánh kem Socola','\Cake\ChocoSanta.png',N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...','2024-05-29',3),
+(N'Bánh quy nho khô','\Cake\banhquynhokho.png',N'Món ăn vặt hấp dẫn...','2024-05-29',4),
+(N'Apple Crepe','\Cake\AppleCrepe.png',N'Bánh crepe ngọt có nhân táo thơm ngon và phủ kem ngọt lên trên.','2024-05-29',2),
+(N'Apple Danish','\Cake\AppleDanish.png',N'Món ăn thú vị kết hợp hương vị dễ chịu của táo và gia vị với kết cấu mềm mại, dễ chịu của bánh ngọt Đan Mạch.', '2024-05-29',2),
+(N'Bánh Croissant','\Cake\BanhCroissant.png',N'Lớp vỏ giòn tan và hình dáng hình lưỡi liềm. Được làm từ bột mì, men, sữa, bơ, đường và muối, croissant là một món bánh yêu thích vào bữa sáng hay bữa ăn nhẹ','2024-05-29',2),
+(N'Bánh Cuộn socola','\Cake\BanhCuonChocolate.png',N'Bánh ngọt hấp dẫn với lớp bánh bông lan mềm mại cuộn quanh lớp nhân socola thơm ngon', '2024-05-29', 4),
+(N'Bánh Dứa','\Cake\BanhDua.png',N'Hương vị đặc trưng của dừa, với lớp bánh mềm mại kết hợp cùng lớp dừa nạo giòn ngọt hoặc dừa khô', '2024-05-29', 3),
+(N'Bánh Mỳ Ruốc','\Cake\BanhMyRuoc.png',N'Đây là loại bánh mỳ mềm, thường có nhân hoặc phủ ruốc, hương vị mặn ngọt hài hòa, với lớp bánh mềm mịn kết hợp cùng ruốc thơm ngon.', '2024-05-29', 2),
+(N'Bánh Ốc Quế Kem','\Cake\BanhOcQueKem.png',N'Một món ăn độc đáo và hấp dẫn, kết hợp giữa hai yếu tố: lớp bánh mì mềm mại và phần kem ngọt mát bên trong', '2024-05-29', 4),
+(N'Bánh Paté chaud','\Cake\BanhPateChaud.png',N'Được làm từ lớp vỏ bánh giòn và nhân pâté thơm ngon bên trong', '2024-05-29', 1),
+(N'Black Croffle Chocolate','\Cake\BlackCroffleChocolate.png',N'Sự kết hợp độc đáo giữa croissant và sô cô la', '2024-05-29', 2),
+(N'Bánh Caramel','\Cake\Caramel.png',N'Lớp bánh ẩm mịn, phủ trên cùng bởi lớp caramel sệt và thường được trang trí bằng các hạt đậu, hạt dẻ cười hoặc sô cô la.', '2024-05-29', 2),
+(N'Bánh Choco Santa','\Cake\ChocoSanta.png',N'Hình dạng và trang trí giống như xe quà của ông già Noel, được làm từ sô cô la và bánh ngọt.', '2024-05-29', 4),
+(N'Bánh Crepe Xoài','\Cake\CrepeXoai.png',N'Món ăn vừa ngon miệng, vừa hấp dẫn, kết hợp giữa chiếc crepe mềm mịn và mùi vị ngọt ngào của xoài', '2024-05-29', 2),
+(N'Bánh Plan','\Cake\FlanCake.png',N'Nước sốt caramel mịn mượt được làm từ đường và nước, lót dưới đáy khuôn, được chế biến với hỗn hợp trứng, sữa đặc có đường và đôi khi là nước cốt dừa, mang lại kết cấu béo ngậy', '2024-05-29', 2),
+(N'Bánh Madeleines','\Cake\MadeleinesPie.png',N'Bánh nhỏ, có hình dạng và kích thước tương tự như chiếc vỏ sò,được làm từ bột mì, bơ, đường, trứng và hương vani', '2024-05-29', 2),
+(N'NewYork Cheese Rolls','\Cake\NewYorkCheeseRolls.png',N'Bánh cuộn được làm từ bột mì mềm mịn và nhân phô mai đậm đà', '2024-05-29', 3),
+(N'NewYork Strawberry Rolls','\Cake\NewYorkStrawberryRolls.png',N'Hình dạng cuộn tròn, với lớp vỏ ngoài giòn và màu vàng đẹp, bên trong là lớp nhân dâu ngọt ngào và mềm mịn', '2024-05-29', 3),
+(N'Bánh Ruốc Cheese Croffle','\Cake\RuocCheeseCroffle.png',N'Sự kết hợp giữa hai món ăn ngon là ruốc (ruột cá) và croffle (bánh waffle được làm từ croissant),Ruốc được phối trộn với phô mai và các gia vị khác, sau đó được đặt giữa hai lớp croffle và nướng cho đến khi phô mai tan chảy và bánh croffle giòn rụm.', '2024-05-29', 1),
+(N'Salted Egg Pastry','\Cake\SaltedEggPastry.png',N'Một món ăn phổ biến trong nhiều nền văn hóa, thường được làm từ bột mì và nhân trứng muối', '2024-05-29', 1),
+(N'Swedish Princess Pie','\Cake\SwedishPrincessPie.png',N'Được làm từ mứt, trứng, sữa, kem và cốt bánh bông lan, bao phủ phía trên là lớp bánh hạnh nhân (thường có màu xanh)', '2024-05-29', 2);
 GO
 
 --BakeryDetail

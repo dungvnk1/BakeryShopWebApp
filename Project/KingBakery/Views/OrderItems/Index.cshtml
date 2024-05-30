@@ -53,7 +53,7 @@
                             <tr>
                                 <th scope="col">Bánh</th>
                                 <th scope="col">Giá</th>
-                                <th scope="col">Số lượng</th>
+                                <th scope="col" style="text-align:center;">Số lượng</th>
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Xoá</th>
                             </tr>
@@ -87,11 +87,13 @@
                                     <td>
                                         <h5>@($"{item.Price.ToString("#,##0")}đ")</h5>
                                     </td>
-                                    <td>
+
+                                    <td style="padding:25px;text-align:center;">
                                         <div class="product_count">
-                                            <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                            <input class="input-number" type="text" value="@item.Quantity" min="1" max="10">
-                                            <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                            @* <span class="input-number-decrement"> <i class="ti-minus"></i></span> *@
+                                            <input class="input-number" id="quantity" type="text" value="@item.Quantity"
+                                                   min="1" max="@item.BakeryOption.Quantity" style="text-align:center; padding:0;">
+                                            @* <span class="input-number-increment"> <i class="ti-plus"></i></span> *@
                                         </div>
                                     </td>
                                     @{
@@ -171,6 +173,7 @@
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
+    <script src="/js/quantitybt.js"></script>
 </body>
 
 </html>
