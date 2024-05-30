@@ -67,10 +67,10 @@
                         <h3>
                             @Model.Name
                         </h3>
-
+                        
                         @if (Model.BakeryOptions != null)
                         {
-                            <p class="sizepart">Available Sizes:</p>
+                            <p class="sizepart">Kích cỡ của bánh:</p>
                             var count = 1;
                             @foreach (var option in Model.BakeryOptions)
                             {
@@ -80,7 +80,7 @@
                                 {
                                     <a asp-controller="BakeryOptions" asp-action="Details" asp-route-id="@option.ID"
                                        class="size_option active">
-                                        @option.Size
+                                        @option.Size cm
                                     </a>
                                     count++;
                                 }
@@ -88,7 +88,7 @@
                                 {
                                     <a asp-controller="BakeryOptions" asp-action="Details" asp-route-id="@option.ID"
                                        class="size_option">
-                                        @option.Size
+                                        @option.Size cm
                                     </a>
                                 }
 
@@ -98,20 +98,24 @@
                         <p>
                             @Model.Description
                         </p>
-                        <div class="card_area">
-                            <div class="product_count_area">
-                                <p>@Model.BakeryOptions.ElementAt(0).Quantity</p>
-                                <div class="product_count d-inline-block">
-                                    <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="product_count_item input-number" type="text" value="1" min="1" max="@Model.BakeryOptions.ElementAt(0).Quantity">
-                                    <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                            <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" class="card_area">
+                                <div class="product_count_area">
+                                    <p>Còn @ViewData["Quantity"] bánh</p>
+                                    <div class="product_count d-inline-block" style="background-color:transparent">
+                                        <span class="product_count_item inumber-decrement" onclick="decreaseQuantity()"><i class="ti-minus"></i></span>
+                                        <input class="product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@ViewBag.Quantity">
+                                        <span class="product_count_item number-increment" onclick="increaseQuantity()"> <i class="ti-plus"></i></span>
+
+                                        <script type="text/javascript">
+                                            var maxQuantity = @ViewBag.Quantity;
+                                        </script>
+                                    </div>
+                                    <p>Giá: @($"{@ViewBag.Price.ToString("#,##0")}đ")</p>
                                 </div>
-                                <p>@Model.BakeryOptions.ElementAt(0).Price</p>
-                            </div>
-                            <div class="add_to_cart">
-                                <a href="#" class="btn_3">add to cart</a>
-                            </div>
-                        </div>
+                                <div class="add_to_cart">
+                                    <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                </div>
+                            </form>
                         }
                     </div>
                 </div>
@@ -211,11 +215,12 @@
     <script src="/js/waypoints.min.js"></script>
     <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
-    <script src="/js/jquery.form.js"></script>
+    <script src="js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
+    <script src="/js/quantitybt.js"></script>
 </body>
 
 </html>

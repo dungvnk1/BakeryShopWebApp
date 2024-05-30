@@ -68,7 +68,7 @@
                             @Model.Bakery?.Name
                         </h3>
 
-                        <p class="sizepart">Available Sizes:</p>
+                        <p class="sizepart">Kích cỡ của bánh:</p>
                             @foreach (var option in (IEnumerable<KingBakery.Models.BakeryOption>)ViewData["BakeryOptions"])
                             {
 
@@ -76,14 +76,14 @@
                             {
                                 <a asp-controller="BakeryOptions" asp-action="Details" asp-route-id="@option.ID"
                                    class="size_option active">
-                                    @option.Size
+                                    @option.Size cm
                                 </a>
                             }
                             else
                             {
                                 <a asp-controller="BakeryOptions" asp-action="Details" asp-route-id="@option.ID"
                                    class="size_option">
-                                    @option.Size
+                                    @option.Size cm
                                 </a>
                             }
 
@@ -91,20 +91,24 @@
                         <p>
                             @Model.Bakery?.Description
                         </p>
-                        <div class="card_area">
+                        <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="card_area">
                             <div class="product_count_area">
-                                <p>@Model.Quantity</p>
-                                <div class="product_count d-inline-block">
-                                    <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                    <input class="product_count_item input-number" type="text" value="1" min="1" max="@Model.Quantity">
-                                    <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                                <p>Còn @Model.Quantity bánh</p>
+                                <div class="product_count d-inline-block" style="background-color:transparent">
+                                    <span class="product_count_item inumber-decrement" onclick="decreaseQuantity()"><i class="ti-minus"></i></span>
+                                    <input class="product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@Model.Quantity">
+                                    <span class="product_count_item number-increment" onclick="increaseQuantity()"> <i class="ti-plus"></i></span>
+
+                                    <script type="text/javascript">
+                                        var maxQuantity = @Model.Quantity;
+                                    </script>
                                 </div>
-                                <p>@Model.Price</p>
-                            </div> 
-                            <div class="add_to_cart">
-                                <a asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="btn_3">add to cart</a>
+                                <p>Giá: @($"{@Model.Price.ToString("#,##0")}đ")</p>
                             </div>
-                        </div>
+                            <div class="add_to_cart">
+                                <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -208,6 +212,7 @@
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
+    <script src="/js/quantitybt.js"></script>
 </body>
 
 </html>

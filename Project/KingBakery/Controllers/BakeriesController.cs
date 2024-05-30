@@ -20,12 +20,12 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
-        // GET: Bakeries
-        //public async Task<IActionResult> Index()
-        //{
-        //    var kingBakeryContext = _context.Bakery.Include(b => b.Category);
-        //    return View(await kingBakeryContext.ToListAsync());
-        //}
+        // GET: Bakeries manager
+        public async Task<IActionResult> Manage()
+        {
+            var kingBakeryContext = _context.Bakery.Include(b => b.Category);
+            return View(await kingBakeryContext.ToListAsync());
+        }
 
         // GET: Bakeries by CategoryID
         public async Task<IActionResult> Index(int id)
@@ -74,7 +74,8 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-            ViewData["BakeryOption"] = bakeryOption;
+            ViewData["Quantity"] = bakeryOption.Quantity;
+            ViewData["Price"] = bakeryOption.Price;
             return View(bakery);
         }
 
