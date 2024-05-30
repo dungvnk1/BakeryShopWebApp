@@ -1,5 +1,5 @@
 ﻿@model KingBakery.Models.BakeryOption
-
+@using System.Security.Claims
 <!doctype html>
 <html>
 
@@ -69,10 +69,10 @@
                         </h3>
 
                         <p class="sizepart">Kích cỡ của bánh:</p>
-                            @foreach (var option in (IEnumerable<KingBakery.Models.BakeryOption>)ViewData["BakeryOptions"])
-                            {
+                        @foreach (var option in (IEnumerable<KingBakery.Models.BakeryOption>)ViewData["BakeryOptions"])
+                        {
 
-                            if(option.ID == Model.ID)
+                            if (option.ID == Model.ID)
                             {
                                 <a asp-controller="BakeryOptions" asp-action="Details" asp-route-id="@option.ID"
                                    class="size_option active">
@@ -87,7 +87,7 @@
                                 </a>
                             }
 
-                            }
+                        }
                         <p>
                             @Model.Bakery?.Description
                         </p>
@@ -105,9 +105,35 @@
                                 </div>
                                 <p>Giá: @($"{@Model.Price.ToString("#,##0")}đ")</p>
                             </div>
-                            <div class="add_to_cart">
-                                <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
-                            </div>
+                            @{
+                                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                var userRole = User.FindFirstValue(ClaimTypes.Role);
+                            }
+                            @if (userId != null)
+                            {
+                                @if (userRole != "2")
+                                {
+                                    <div class="add_to_cart">
+                                        <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                                    </div>
+                                    <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
+                                }
+                                else
+                                {
+                                    <div class="add_to_cart">
+                                        <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="add_to_cart">
+                                    <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                                </div>
+                                <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
+                            }
+
                         </form>
                     </div>
                 </div>
