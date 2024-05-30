@@ -30,19 +30,6 @@
     <!--::header part start::-->
     @await Component.InvokeAsync("Header")
     <!-- Header part end-->
-    <!-- breadcrumb part start-->
-    <section class="breadcrumb_part">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb_iner">
-                        <h2>đăng nhập</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb part end-->
     <!--================login_part Area =================-->
     <section class="login_part section_padding ">
         <div class="container">
@@ -50,8 +37,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
-                            <h2>Bạn chưa có tài khoản?</h2>
-                            <p>
+                            <h2 style="font-family:Arial">Bạn chưa có tài khoản?</h2>
+                            <p style="font-family:Arial">
                                 Mỗi ngày King Bakery đều cung cấp tới khách hàng những sản phẩm tốt nhất!
                             </p>
                             <a asp-action="Create" asp-controller="Users" class="btn_3">Tạo tài khoản mới</a>
@@ -82,7 +69,7 @@
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="rememberMe">
+                                        <input type="checkbox" id="f-option" name="rememberMe" value="true">
                                         <label for="f-option">Ghi nhớ tài khoản</label>
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">
