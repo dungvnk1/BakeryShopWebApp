@@ -1768,7 +1768,10 @@ D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBak
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
 E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.Development.json
+<<<<<<< Updated upstream
 E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.json
+=======
+>>>>>>> Stashed changes
 E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.staticwebassets.runtime.json
 E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.exe
 E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.deps.json

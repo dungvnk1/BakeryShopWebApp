@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "JUKLUqVc9DopPQSgiNHbaxfoTm4dqqruiGLZQTkcNSE=",
+=======
+  "Hash": "hjZ0cxHv18R1obVpdV38jaDVa8K7gTMg2EPC4j8xi7A=",
+>>>>>>> Stashed changes
   "Source": "KingBakery",
   "BasePath": "_content/KingBakery",
   "Mode": "Default",
@@ -4710,10 +4714,36 @@
       "OriginalItemSpec": "wwwroot\\js\\price_rangs.js"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\register_form.js",
       "SourceId": "KingBakery",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+=======
+      "Identity": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\quantitybt.js",
+      "SourceId": "KingBakery",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+      "BasePath": "_content/KingBakery",
+      "RelativePath": "js/quantitybt.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\quantitybt.js"
+    },
+    {
+      "Identity": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\register_form.js",
+      "SourceId": "KingBakery",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/KingBakery",
       "RelativePath": "js/register_form.js",
       "AssetKind": "All",

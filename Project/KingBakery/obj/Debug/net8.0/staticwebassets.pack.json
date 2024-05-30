@@ -985,6 +985,13 @@
       "PackagePath": "staticwebassets\\js\\price_rangs.js"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "Id": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\quantitybt.js",
+      "PackagePath": "staticwebassets\\js\\quantitybt.js"
+    },
+    {
+>>>>>>> Stashed changes
       "Id": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\register_form.js",
       "PackagePath": "staticwebassets\\js\\register_form.js"
     },

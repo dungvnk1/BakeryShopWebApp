@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\",
   "Documents": [
     {
@@ -49,6 +50,53 @@
     {
       "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|c:\\users\\admin\\documents\\github\\bakeryshopwebapp\\project\\kingbakery\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\favourites\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\favourites\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\favourites\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\favourites\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\favourites\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\favourites\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\favourites\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\favourites\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\favourites\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\favourites\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\views\\shared\\components\\header\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\shared\\components\\header\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\kingbakeryweb\\bakeryshopwebapp\\project\\kingbakery\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -58,6 +106,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 10,
           "Children": [
             {
@@ -76,22 +125,110 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-29T06:04:34.89Z",
               "EditorCaption": ""
+=======
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Favourites\\Details.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Details.cshtml",
+              "RelativeToolTip": "Views\\Favourites\\Details.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T13:57:06.867Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< Updated upstream
               "Title": "About.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\About.cshtml",
               "RelativeToolTip": "Views\\Home\\About.cshtml",
               "ViewState": "AQIAAJMAAAAAAAAAAAAAABwAAAAGAAAA",
+=======
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Favourites\\Edit.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Favourites\\Edit.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T13:54:03.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Favourites\\Delete.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Favourites\\Delete.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T13:53:46.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Favourites\\Create.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Create.cshtml",
+              "RelativeToolTip": "Views\\Favourites\\Create.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T13:49:02.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Favourites\\Index.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Favourites\\Index.cshtml",
+              "RelativeToolTip": "Views\\Favourites\\Index.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T13:24:04.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-30T12:55:22.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Create.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Create.cshtml",
+              "RelativeToolTip": "Views\\Users\\Create.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAHMAAABvAAAA",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T17:58:09.814Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 2,
               "Title": "Confirmation.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Confirmation.cshtml",
@@ -112,6 +249,39 @@
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AQIAACMBAAAAAAAAAAAAAAAAAAAAAAAA",
+=======
+              "DocumentIndex": 7,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Details.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Details.cshtml",
+              "RelativeToolTip": "Views\\Users\\Details.cshtml",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAADIAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T12:55:22.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Index.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Views\\Users\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T12:55:22.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Header\\Default.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Header\\Default.cshtml",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Shared\\Components\\Header\\Default.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Header\\Default.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAGEAAAAsAAAA",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T16:51:54.753Z",
               "EditorCaption": ""
@@ -203,6 +373,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 5,
               "Title": "Contact.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Contact.cshtml",
@@ -213,6 +384,17 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T18:02:29.159Z",
               "EditorCaption": ""
+=======
+              "DocumentIndex": 10,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "E:\\KingBakeryWeb\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAwwEYAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T12:55:22.578Z"
+>>>>>>> Stashed changes
             }
           ]
         }
