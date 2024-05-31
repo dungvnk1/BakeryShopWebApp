@@ -1,14 +1,9 @@
-﻿@model KingBakery.Models.Users
+﻿@model KingBakery.Models.Orders
 
 @{
     ViewData["Title"] = "Create";
 }
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["SuccessMessage"]
-    </div>
-}
+
 <h1>Create</h1>
 
 <h4>Orders</h4>
@@ -22,40 +17,39 @@
                 <input asp-for="ID" class="form-control" asp-items="ViewBag.ID"></input>
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" asp-items="ViewBag.FullName"></input>
+                <label asp-for="StaffID" class="control-label"></label>
+                <select asp-for="StaffID" class ="form-control" asp-items="ViewBag.StaffID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" asp-items="ViewBag.Username"></input>
+                <label asp-for="ShipperID" class="control-label"></label>
+                <select asp-for="ShipperID" class ="form-control" asp-items="ViewBag.ShipperID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" asp-items="ViewBag.Address"></input>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" asp-items="ViewBag.BirthDate" />
-
+                <label asp-for="VoucherID" class="control-label"></label>
+                <select asp-for="VoucherID" class ="form-control" asp-items="ViewBag.VoucherID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" asp-items="ViewBag.Email" />
-
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" asp-items="ViewBag.PhoneNumber" />
-
+                <label asp-for="AdrDelivery" class="control-label"></label>
+                <input asp-for="AdrDelivery" class="form-control" />
+                <span asp-validation-for="AdrDelivery" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
-            <label asp-for="Status" class="control-label"></label>
-            <input asp-for="Status" class="form-control" />
-            <span asp-validation-for="Status" class="text-danger"></span>
-            </div> *@
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -64,11 +58,9 @@
 </div>
 
 <div>
-    <a href="/Home/Index">Back to Home</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

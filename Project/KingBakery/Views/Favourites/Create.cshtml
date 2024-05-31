@@ -4,99 +4,33 @@
     ViewData["Title"] = "Create";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - KingBakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Font chữ */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<h1>Create</h1>
 
-        .form-container {
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            max-width: 600px; /* Đặt chiều rộng tối đa của form */
-            margin: 20px auto; /* Canh giữa form */
-        }
-
-            .form-container h1, .form-container h4 {
-                text-align: center;
-                color: #000000; /* Màu chữ màu đen */
-            }
-
-            .form-container h1 {
-                background-color: #ff69b4; /* Màu nền màu hồng */
-                padding: 10px;
-                border-radius: 8px;
-            }
-
-            .form-container .btn-primary {
-                display: block;
-                width: 100%;
-            }
-
-            .form-container label.control-label {
-                color: #ffffff; /* Màu chữ màu trắng */
-            }
-
-        .back-to-list {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="form-container">
-            <h1>@ViewData["Title"]</h1>
-            <h4>Favourite</h4>
-            <hr />
-            <div class="row">
-                <div class="col-md-12">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="CustomerID" class="control-label">Customer</label>
-                            <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
-                            <span asp-validation-for="CustomerID" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="BakeryID" class="control-label">Bakery Option</label>
-                            <select asp-for="BakeryID" class="form-control" asp-items="ViewBag.BakeryID"></select>
-                            <span asp-validation-for="BakeryID" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
-                        </div>
-                    </form>
-                </div>
+<h4>Favourite</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerID" class="control-label"></label>
+                <select asp-for="CustomerID" class ="form-control" asp-items="ViewBag.CustomerID"></select>
             </div>
-        </div>
-        <div class="back-to-list">
-            <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-        </div>
+            <div class="form-group">
+                <label asp-for="BakeryID" class="control-label"></label>
+                <select asp-for="BakeryID" class ="form-control" asp-items="ViewBag.BakeryID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
-    @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

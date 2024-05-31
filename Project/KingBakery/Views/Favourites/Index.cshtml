@@ -4,78 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - KingBakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <style>
-        body {
-        }
+<h1>Index</h1>
 
-        .table thead {
-            background-color: pink;
-        }
-
-        .table tbody {
-        }
-
-            .table tbody tr td {
-            }
-
-            .table tbody tr:nth-child(even) {
-            }
-
-        .centered-content {
-            text-align: center;
-            margin-top: 20px; /* Adjust this value to move the title further down */
-        }
-
-            .centered-content h1 {
-                margin-bottom: 20px;
-            }
-
-            .centered-content a {
-                margin-bottom: 20px;
-            }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="centered-content">
-            <h1>@ViewData["Title"]</h1>
-            <p>
-                <a class="btn btn-primary" asp-action="Create">Create New</a>
-            </p>
-        </div>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Customer)</th>
-                    <th>@Html.DisplayNameFor(model => model.BakeryOption)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Customer.UserID)</td>
-                        <td>@Html.DisplayFor(modelItem => item.BakeryOption.ID)</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-                            <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.ID">Details</a>
-                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BakeryOption)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakeryOption.ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
