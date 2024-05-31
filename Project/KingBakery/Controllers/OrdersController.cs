@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -50,11 +51,21 @@ namespace KingBakery.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID");
-            ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID");
-            ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID");
-            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID");
-            return View();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (int.TryParse(userId, out int parsedUserId))
+            {
+                var user = _context.Users.FirstOrDefault(u => u.ID == parsedUserId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return View(user);
+            }
+            else
+            {
+
+                return BadRequest("Invalid user ID.");
+            }
         }
 
         // POST: Orders/Create
@@ -66,14 +77,11 @@ namespace KingBakery.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(orders);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               
+                TempData["SuccessMessage"] = "Đặt hàng thành công!";
+                return RedirectToAction("Create"); // Chuyển hướng về trang chủ
             }
-            ViewData["ShipperID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.ShipperID);
-            ViewData["StaffID"] = new SelectList(_context.Employee, "UserID", "UserID", orders.StaffID);
-            ViewData["VoucherID"] = new SelectList(_context.Vouchers, "VoucherID", "VoucherID", orders.VoucherID);
-            return View(orders);
+            return View();
         }
 
         // GET: Orders/Edit/5
