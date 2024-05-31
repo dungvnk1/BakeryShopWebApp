@@ -65,11 +65,13 @@
                             @foreach (var item in Model)
                             {
                                 string bakeryName = "";
+                                string bakeryImg = "";
                                 @foreach (var bakery in (IEnumerable<KingBakery.Models.Bakery>)ViewData["Bakery"])
                                 {
                                     if (bakery != null && bakery.ID == item.BakeryOption.BakeryID)
                                     {
                                         bakeryName = bakery.Name;
+                                        bakeryImg = bakery.Image;
                                         break;
                                     }
                                 }
@@ -77,7 +79,7 @@
                                     <td>
                                         <div class="media">
                                             <div class="d-flex">
-                                                <img src="/img/arrivel/arrivel_1.png" alt="" />
+                                                <img src="@bakeryImg" alt="" />
                                             </div>
                                             <div class="media-body">
                                                 <h4>@bakeryName (Size: @item.BakeryOption.Size cm)</h4>
