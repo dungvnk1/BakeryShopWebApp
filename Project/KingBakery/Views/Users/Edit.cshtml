@@ -1,69 +1,204 @@
-﻿@model KingBakery.Models.Users
+﻿@using System.Security.Claims
+@model KingBakery.Models.Users
 
 @{
     ViewData["Title"] = "Edit";
+
+    var userRole = User.FindFirstValue(ClaimTypes.Role);
 }
 
-<h1>Edit</h1>
+<!DOCTYPE html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="~/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
 
-<h4>Users</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+    <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/css/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+    <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js' type='text/javascript'></script>
+    <script src='https://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js' type='text/javascript'></script>
+</head>
+<body>
+    <!--::header part start::-->
+    @await Component.InvokeAsync("Header")
+    <!-- Header part end-->
+    <!--create user part-->
+    <div class='container'>
+        <div class='panel panel-primary dialog-panel'>
+            <div class='panel-heading' style="text-align:center; background-color:#B08EAD">
+                <h5 style="font-weight:bold; font-size:16px">Cập nhật tài khoản</h5>
             </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
+            <div class='panel-body'>
+                <form asp-action="Edit" method="post" class='form-horizontal' role='form'>
+                    <input type="hidden" asp-for="ID" />
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Họ và tên</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="FullName" class='form-control' id='id_first_name' placeholder='Full Name' type='text'>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Tên đăng nhập</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Username" value="@Model.Username" class='form-control' id='id_user_name' placeholder='@Model.Username' type='text' readonly>
+                                    @* <span asp-validation-for="Username" class="text-danger"></span> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Mật khẩu</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Password" value="@Model.Password" class='form-control' id='id_password' placeholder='@Model.Password' type='password' readonly>
+                                    @* <span asp-validation-for="Password" class="text-danger"></span> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* <div class='form-group'>
+                    <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Nhập lại mật khẩu</label>
+                    <div class='col-md-8'>
+                    <div class='col-md-8 indent-small'>
+                    <div class='form-group internal'>
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Địa chỉ</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Address" class='form-control' id='id_address' placeholder='Address' type='text'>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Ngày sinh</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8'>
+                                <div class='form-group internal input-group'>
+                                    <input asp-for="BirthDate" type="date" class='form-control datepicker' id='id_checkin'>
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Email</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Email" class='form-control' id='id_email' placeholder='Email' type='email'>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Số điện thoại</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="PhoneNumber" class='form-control' id='id_phone_number' placeholder='PhoneNumber' type='text'>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Role" value="@Model.Role"/>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit' style="background-color:#B08EAD">Cập nhật tài khoản</button>
+                        </div>
+                    </div>
+                </form>
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                <div class='form-group'>
+                    <label class="control-label col-md-2 col-md-offset-2">Thay đổi mật khẩu</label>
+                    <div class='col-md-3'>
+                        <a asp-action="ChangePassword" asp-controller="Users" class='btn-lg btn-info'>Thay đổi mật khẩu</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
-                <span asp-validation-for="Role" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <!--end create user part-->
+    <!--::footer_part start::-->
+    @await Component.InvokeAsync("Footer")
+    <!--::footer_part end::-->
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

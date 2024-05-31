@@ -153,12 +153,19 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("Username");
+            ModelState.Remove("Password");
+            ModelState.Remove("ConfirmPassword");
+            ModelState.Remove("Role");
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(users);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Tài khoản của bạn đã được cập nhật thành công!";
+                    return View(users);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -171,7 +178,6 @@ namespace KingBakery.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(users);
         }
