@@ -138,6 +138,13 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            ViewData["RoleSelectList"] = new SelectList(new[]
+                {
+                        new { Value = "1", Text = "Admin" },
+                        new { Value = "2", Text = "Khách hàng" },
+                        new { Value = "3", Text = "Nhân viên" },
+                        new { Value = "4", Text = "Shipper" }
+                    }, "Value", "Text");
             return View(users);
         }
 
@@ -156,7 +163,6 @@ namespace KingBakery.Controllers
             ModelState.Remove("Username");
             ModelState.Remove("Password");
             ModelState.Remove("ConfirmPassword");
-            ModelState.Remove("Role");
 
             if (ModelState.IsValid)
             {

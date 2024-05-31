@@ -150,7 +150,7 @@ namespace KingBakery.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Manage));
             }
             ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
             return View(bakery);
@@ -187,7 +187,7 @@ namespace KingBakery.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Manage));
         }
 
         private bool BakeryExists(int id)
