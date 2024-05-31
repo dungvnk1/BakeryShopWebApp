@@ -146,12 +146,16 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FullName,Username,Password,Address,BirthDate,Email,PhoneNumber,Role")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FullName,Username,Password,Address,BirthDate,Email,PhoneNumber")] Users users)
         {
             if (id != users.ID)
             {
                 return NotFound();
             }
+
+            ModelState.Remove("Username");
+            ModelState.Remove("Password");
+            ModelState.Remove("ConfirmPassword");
 
             if (ModelState.IsValid)
             {
@@ -159,6 +163,8 @@ namespace KingBakery.Controllers
                 {
                     _context.Update(users);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Tài khoản của bạn đã được cập nhật thành công!";
+                    return View(users);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -171,7 +177,6 @@ namespace KingBakery.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(users);
         }
