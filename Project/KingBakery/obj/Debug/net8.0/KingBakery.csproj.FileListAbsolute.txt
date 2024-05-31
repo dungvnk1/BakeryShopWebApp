@@ -1512,7 +1512,6 @@ E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-c3f1938b2273094ddcdf3
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\BakeryShopWebApp-c3f1938b2273094ddcdf361397c4fd3ac1327878\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.Development.json
-D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\appsettings.json
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.staticwebassets.runtime.json
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.exe
 D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\KingBakery.deps.json
