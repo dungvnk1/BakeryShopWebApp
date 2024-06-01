@@ -28,6 +28,12 @@ namespace KingBakery.Controllers
         {
             return View("~/Views/Users/Login.cshtml");
         }
+
+        public IActionResult AdminDashboard()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             return View();

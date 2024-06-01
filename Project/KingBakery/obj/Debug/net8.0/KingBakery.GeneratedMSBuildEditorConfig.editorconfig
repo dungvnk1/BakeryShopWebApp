@@ -178,6 +178,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Home/AdminDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkRhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Home/Confirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -260,6 +264,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shared/Components/Header/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shared/Components/Sidebar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2lkZWJhclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shared/Error.cshtml]
