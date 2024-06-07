@@ -221,6 +221,10 @@ namespace KingBakery.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.ID == id);
