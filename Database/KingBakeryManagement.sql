@@ -251,3 +251,4 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 1, 1, 3, 1, 200000)
 Go
 --select * from OrderItem
+--select * from Orders
