@@ -31,8 +31,6 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                     <a class="dropdown-item" asp-controller="Home" asp-action="ProductList"> product list</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="ProductDetail">product details</a>
-
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -41,15 +39,11 @@
                                     pages
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Login">
-                                        login
-
-                                    </a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Checkout">product checkout</a>
                                     <a class="dropdown-item" asp-controller="Home" asp-action="Cart">shopping cart</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Confirmation">confirmation</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Elements">elements</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Elements">Bill history</a>
+                                    @if (userRole == "2")
+                                    {
+                                        <a class="dropdown-item" asp-controller="Bills" asp-action="Index">Bill history</a>
+                                    }
                                 </div>
                             </li>
 

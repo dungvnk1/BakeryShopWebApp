@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bu9n5kV72lph5TvTArI0lrV8iE5uyO3xGPXV9r8t/JE=",
+  "Hash": "yXBX0sPsj/KjwF7N3JSZ8ZDjDUmNiKV6Wd2BVvQ+m3U=",
   "Source": "KingBakery",
   "BasePath": "_content/KingBakery",
   "Mode": "Default",
@@ -4404,6 +4404,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\cells-by-column.js"
+    },
+    {
+      "Identity": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\checkout.js",
+      "SourceId": "KingBakery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+      "BasePath": "_content/KingBakery",
+      "RelativePath": "js/checkout.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\checkout.js"
     },
     {
       "Identity": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\contact.js",

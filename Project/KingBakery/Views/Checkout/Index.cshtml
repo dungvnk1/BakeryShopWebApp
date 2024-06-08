@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<KingBakery.Models.OrderItem>
+
 <!doctype html>
 <html>
 
@@ -56,28 +57,40 @@
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h2>Thông tin chi tiết</h2>
+                        <h2 style="margin-bottom:20px;">Thông tin chi tiết</h2>
                         <form class="row contact_form" asp-controller="Checkout" asp-action="CreateBill" method="post" novalidate="novalidate">
+                            <div class="check_title" style="margin-bottom:20px;">
+                                <h2>
+                                    Thông tin nhận hàng
+                                </h2>
+                            </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control ip" id="first" name="name" placeholder="Tên người đặt hàng" />
+                                <label for="name" style="font-weight:bold;">Tên người mua hàng</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.FullName" id="name" name="name" placeholder="Nhập tên" readonly/>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <label for="add" style="font-weight:bold;">Địa chỉ nhận hàng</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ"/>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control ip" id="number" name="number" placeholder="Số điện thoại" />
+                                <label for="phone" style="font-weight:bold;">Số điện thoại</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Phone" id="phone"  name="number" placeholder="Nhập số điện thoại" />
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control ip" id="email" name="email" placeholder="Email" />
+                                <label for="email" style="font-weight:bold;">Email</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Email" id="email" name="email" placeholder="Nhập Email" readonly/>
                             </div>
 
-                            <div class="cupon_area">
+                            <div class="cupon_area" style="margin:15px 0;">
                                 <div class="check_title">
                                     <h2>
-                                        Have a coupon?
-                                        <a href="#">Click here to enter your code</a>
+                                        Bạn muốn sử dụng mã giảm giá?
+                                        <a href="javascript:void(0)" onclick="showCP()">Nhấn vào đây để áp mã</a>
                                     </h2>
                                 </div>
-                                <div>
-                                    <input type="text" class="ip" placeholder="Enter coupon code" />
-                                    <a class="tp_btn" href="#">Apply Coupon</a>
+                                <div id="cpbox" style="display:none;transition: 2s ease;padding: 0 30px;">
+                                    <input type="text" class="ip" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
+                                    <a class="tp_btn" href="#" style="margin:0px;">Áp dụng</a>
                                 </div>
                             </div>
 
@@ -169,31 +182,32 @@
     @await Component.InvokeAsync("Footer")
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="/js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="/js/popper.min.js"></script>
     <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="/js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
+    <script src="/js/swiper.min.js"></script>
     <!-- swiper js -->
-    <script src="js/mixitup.min.js"></script>
+    <script src="/js/mixitup.min.js"></script>
     <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
     <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/checkout.js"></script>
 </body>
 
 </html>
