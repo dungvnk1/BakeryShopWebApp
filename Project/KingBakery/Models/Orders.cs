@@ -16,6 +16,7 @@ namespace KingBakery.Models
         public int? VoucherID { get; set; }
         public DateTime? DateTime { get; set; }
         public string? AdrDelivery { get; set; }
+        public string? PhoneNumber { get; set; }
         public double? TotalPrice { get; set; }
         public string? Status { get; set; }
 

@@ -85,6 +85,7 @@ CREATE TABLE Orders(
 	VoucherID INT,
 	DateTime DATETIME,
 	AdrDelivery NVARCHAR(300),
+	PhoneNumber NVARCHAR(100),
 	TotalPrice FLOAT,
 	Status NVARCHAR(100),	
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
@@ -233,10 +234,10 @@ VALUES
 GO
 
 --Orders
-INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalPrice, Status) VALUES
-(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', 450000, N'Đã giao hàng'),
-(7, 8, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', 200.00, N'Đã đặt hàng'),
-(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', 200000, N'Đang giao hàng')
+INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneNumber, TotalPrice, Status) VALUES
+(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 450000, N'Đã giao hàng'),
+(7, 8, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 200.00, N'Đã đặt hàng'),
+(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 200000, N'Đang giao hàng')
 GO
 SET IDENTITY_INSERT Orders ON;
 INSERT INTO Orders (ID, StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalPrice, Status) VALUES
@@ -251,3 +252,4 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 1, 1, 3, 1, 200000)
 Go
 --select * from OrderItem
+--select * from Orders
