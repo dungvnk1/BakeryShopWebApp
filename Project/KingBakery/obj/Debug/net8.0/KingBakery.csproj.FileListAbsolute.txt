@@ -2266,3 +2266,15 @@ E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-7a9c2ebba6decb28aa23b
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\Project\KingBakery\obj\Debug\net8.0\KingBakery.pdb
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\BakeryShopWebApp-7a9c2ebba6decb28aa23b39de06f55da4c6c9c20\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Mvc.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Razor.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Helpers.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Deployment.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Razor.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll

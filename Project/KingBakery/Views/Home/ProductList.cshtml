@@ -1,5 +1,6 @@
-﻿@model IEnumerable<KingBakery.Models.Bakery>
-
+﻿
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Bakery>
 <!doctype html>
 <html lang="zxx">
 <head>
@@ -84,11 +85,11 @@
                 </div>
                 <div class="col-md-8">
                     <div class="product_list">
-                        <div class="row">
+                        <div class="row" )">
                             @foreach (var bakery in Model)
                             {
                                 var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
-                                <div class="col-lg-6 col-sm-6">
+                                <div class="col-lg-6 col-sm-6" >
                                     <div class="single_product_item">
                                         <img style="width:90%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
                                         <h3 style="color:black; font-weight:bold">
@@ -103,7 +104,14 @@
                         </div>
                     </div>
                 </div>
-
+                @Html.PagedListPager(Model, page => Url.Action("Manage", new { page = page }),
+                         new PagedListRenderOptions()
+                {
+                    LiElementClasses = new List<String> { "page-item" },
+                    PageClasses = new List<String> { "page-link" }
+                }
+                         )
+               
 
     </section>
     <!-- product list part end-->
@@ -185,6 +193,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
     <!-- feature part end -->
