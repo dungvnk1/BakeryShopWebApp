@@ -1,4 +1,7 @@
-﻿@model IEnumerable<KingBakery.Models.Bakery>
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Bakery>
+
+
 
 @{
     ViewData["Title"] = "Manage";
@@ -11,44 +14,52 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-warning">
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+               Tên sản phẩm
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                Hình ảnh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Mô tả
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                Phân loại
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var bakery in Model)
         {
-            <tr>
+            <tr class="table-success">
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => @bakery.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Image)
+                    <img style="width:90%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => @bakery.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.ID)
+                    @Html.DisplayFor(modelItem => @bakery.Category.ID)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Edit" asp-route-id=" @bakery.ID">Edit</a> |
                     @* <a asp-action="Details" asp-route-id="@item.ID">Details</a> | *@
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Delete" asp-route-id=" @bakery.ID">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+@Html.PagedListPager(Model,page=>Url.Action("Manage",new {page=page}),
+     new PagedListRenderOptions()
+{
+LiElementClasses = new List<String>{"page-item"},
+    PageClasses = new List<String>{"page-link"}
+}
+)
+
