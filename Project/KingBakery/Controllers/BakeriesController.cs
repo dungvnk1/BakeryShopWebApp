@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using System.Drawing.Printing;
+using X.PagedList;
+using KingBakery.Extensions;
 
 namespace KingBakery.Controllers
 {
@@ -20,20 +23,32 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
+
+
+
         // GET: Bakeries manager
-        public async Task<IActionResult> Manage()
+        public async Task<IActionResult> Manage(int? page)
         {
-            var kingBakeryContext = _context.Bakery.Include(b => b.Category);
-            return View(await kingBakeryContext.ToListAsync());
-        }
+            var bakeries = _context.Bakery
+            .Include(b => b.BakeryOptions)
+            .Include(b => b.Category)
+            .ToList();
+            int pageSize = 6;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            PagedList<Bakery> lst = new PagedList<Bakery>(bakeries, pageNumber, pageSize);
+
+            var categories = _context.Category.ToList();
+            ViewData["Categories"] = categories;
+            return View(lst);       
+    }
 
         // GET: Bakeries by CategoryID
         public async Task<IActionResult> Index(int id)
         {
             var bakery = _context.Bakery.Include(b => b.Category)
-                                        .Include(b => b.BakeryOptions)
-                                        .Where(b => b.CategoryID == id)
-                                        .ToList();
+                                         .Include(b => b.BakeryOptions)
+                                          .Where(b => b.CategoryID == id)
+                                          .ToList();
             var categories = _context.Category.ToList();
             ViewData["Categories"] = categories;
             return View(bakery);
@@ -43,6 +58,10 @@ namespace KingBakery.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string? keyword)
         {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.Trim().RemoveDiacritics();
+            }
             var bakery = _context.Bakery.Include(b => b.Category)
                                         .Include(b => b.BakeryOptions)
                                         .Where(b => b.Name.Contains(keyword))
@@ -91,16 +110,44 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Image,Description,CategoryID")] Bakery bakery)
+        public async Task<IActionResult> Create(Bakery bakery, IFormFile uploadhinh)
         {
-            if (ModelState.IsValid)
+            if (uploadhinh == null)
             {
-                _context.Add(bakery);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.error = "Vui lòng chọn file";
+                ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID);
-            return View(bakery);
+
+            if (uploadhinh.Length == 0)
+            {
+                ViewBag.error = "File không có nội dung";
+                ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+            }
+
+            // Lưu dữ liệu vào cơ sở dữ liệu
+            _context.Add(bakery);
+            await _context.SaveChangesAsync();
+
+            if (uploadhinh != null && uploadhinh.Length > 0)
+            {
+                int id = bakery.ID; // Sau khi lưu, bakery.ID sẽ có giá trị ID mới
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/BakeryImg", uploadhinh.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await uploadhinh.CopyToAsync(stream); // Sử dụng phiên bản async của CopyTo
+                }
+
+                Bakery bake = _context.Bakery.FirstOrDefault(x => x.ID == id);
+                bake.Image = Path.Combine("/BakeryImg/", uploadhinh.FileName);
+                await _context.SaveChangesAsync();
+            }
+
+            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Bakeries/Edit/5
@@ -125,7 +172,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Image,Description,CategoryID")] Bakery bakery)
+        public async Task<IActionResult> Edit(int id,  Bakery bakery, IFormFile uploadhinh)
         {
             if (id != bakery.ID)
             {
@@ -136,8 +183,35 @@ namespace KingBakery.Controllers
             {
                 try
                 {
+                    if (uploadhinh == null)
+                    {
+                        ViewBag.error = "Vui lòng chọn file";
+                        ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                        return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+                    }
+
+                    if (uploadhinh.Length == 0)
+                    {
+                        ViewBag.error = "File không có nội dung";
+                        ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                        return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+                    }
                     _context.Update(bakery);
                     await _context.SaveChangesAsync();
+                    if (uploadhinh != null && uploadhinh.Length > 0)
+                    {
+                        int idB = bakery.ID; // Sau khi lưu, bakery.ID sẽ có giá trị ID mới
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/BakeryImg", uploadhinh.FileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await uploadhinh.CopyToAsync(stream); // Sử dụng phiên bản async của CopyTo
+                        }
+
+                        Bakery bake = _context.Bakery.FirstOrDefault(x => x.ID == idB);
+                        bake.Image = Path.Combine("/BakeryImg/", uploadhinh.FileName);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -183,7 +257,14 @@ namespace KingBakery.Controllers
             var bakery = await _context.Bakery.FindAsync(id);
             if (bakery != null)
             {
+                var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", bakery.Image.TrimStart('/'));
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+
                 _context.Bakery.Remove(bakery);
+
             }
 
             await _context.SaveChangesAsync();
