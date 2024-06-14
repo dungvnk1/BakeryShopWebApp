@@ -66,7 +66,7 @@ CREATE TABLE BakeryOption(
 	Rating FLOAT,
 	Discount INT,
 	BakeryID INT NOT NULL,
-	
+
 	FOREIGN KEY (BakeryID) REFERENCES Bakery(ID) ON DELETE CASCADE
 )
 GO
@@ -87,7 +87,7 @@ CREATE TABLE Orders(
 	AdrDelivery NVARCHAR(300),
 	PhoneNumber NVARCHAR(100),
 	TotalPrice FLOAT,
-	Status NVARCHAR(100),	
+	Status NVARCHAR(100),
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
 	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID),
 	FOREIGN KEY (VoucherID) REFERENCES Vouchers(VoucherID) ON DELETE CASCADE
@@ -130,7 +130,7 @@ GO
 -----INSERT DATA-----
 --Users
 INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role)--*Role: 1_admin,2_cus,3_staff,4_shipper
-VALUES    
+VALUES
 	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2),  --*Role: 1_admin,2_cus,3_staff,4_shipper
 	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1),
 	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3),
@@ -213,21 +213,21 @@ GO
 
 --Vouchers
 INSERT INTO Vouchers(Code,VPercent)
-VALUES   
+VALUES
 	('QUATANG55',15),
 	('QUATANG66',10)
 GO
 
 --Favourite
 INSERT INTO Favourite(CustomerID,BakeryID)
-VALUES   
+VALUES
 	(1,1),
 	(1,2)
 GO
 
 --Feedback
 INSERT INTO Feedback(CustomerID,BakeryID,ContentFB)
-VALUES 
+VALUES
 ( 1, 1, N'Bánh rất ngon và phục vụ thân thiện'),
 ( 1, 2, N'Không gian quán rất ấm cúng, bánh mì tươi ngon'),
 ( 1, 3, N'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng')
