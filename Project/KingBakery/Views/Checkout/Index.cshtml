@@ -1,0 +1,213 @@
+﻿@model IEnumerable<KingBakery.Models.OrderItem>
+
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .ip::placeholder {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!--::header part start::-->
+    @await Component.InvokeAsync("Header");
+    <!-- Header part end-->
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+    <!--================Checkout Area =================-->
+    <section class="checkout_area" style="padding: 50px 0;">
+        <div class="container">
+
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 style="margin-bottom:20px;">Thông tin chi tiết</h2>
+                        <form class="row contact_form" asp-controller="Checkout" asp-action="CreateBill" method="post" novalidate="novalidate">
+                            <div class="check_title" style="margin-bottom:20px;">
+                                <h2>
+                                    Thông tin nhận hàng
+                                </h2>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <label for="name" style="font-weight:bold;">Tên người mua hàng</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.FullName" id="name" name="name" placeholder="Nhập tên" readonly/>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <label for="add" style="font-weight:bold;">Địa chỉ nhận hàng</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ"/>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="phone" style="font-weight:bold;">Số điện thoại</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Phone" id="phone"  name="number" placeholder="Nhập số điện thoại" />
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="email" style="font-weight:bold;">Email</label>
+                                <input type="text" class="form-control ip" value="@ViewBag.Email" id="email" name="email" placeholder="Nhập Email" readonly/>
+                            </div>
+
+                            <div class="cupon_area" style="margin:15px 0;">
+                                <div class="check_title">
+                                    <h2>
+                                        Bạn muốn sử dụng mã giảm giá?
+                                        <a href="javascript:void(0)" onclick="showCP()">Nhấn vào đây để áp mã</a>
+                                    </h2>
+                                </div>
+                                <div id="cpbox" style="display:none;transition: 2s ease;padding: 0 30px;">
+                                    <input type="text" class="ip" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
+                                    <a class="tp_btn" href="#" style="margin:0px;">Áp dụng</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 form-group" style="text-align:center;">
+                                <button type="submit" value="submit" class="btn_3">
+                                    Đặt hàng
+                                </button>
+                            </div>
+
+                            @* <div class="col-md-12 form-group">
+                            <div class="creat_account">
+                            <h2>Lưu ý cho Shipper</h2>
+                            </div>
+                            <textarea class="form-control" name="message" id="message" rows="1"
+                            placeholder="Yêu cầu..."></textarea>
+                            </div> *@
+                        </form>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2 style="font-family:Arial; font-weight:bold;">Đơn hàng</h2>
+                            <ul class="list">
+                                <li>
+                                    <a href="#" style="font-weight:bold">
+                                        Bánh
+                                        <span>Giá</span>
+                                    </a>
+                                </li>
+                                @{
+                                    double subtotal = 0;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    string bakeryName = "";
+                                    @foreach (var bakery in (IEnumerable<KingBakery.Models.Bakery>)ViewData["Bakery"])
+                                    {
+                                        if (bakery != null && bakery.ID == item.BakeryOption.BakeryID)
+                                        {
+                                            bakeryName = bakery.Name;
+                                            break;
+                                        }
+                                    }
+
+                                    var total = item.Price * item.Quantity;
+                                    subtotal += total;
+
+                                    <li>
+                                        <a href="#">
+                                            @bakeryName
+                                            <span class="middle">x @item.Quantity</span>
+                                            <span class="last">@($"{total.ToString("#,##0")}đ")</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <ul class="list">
+                                <li>
+                                    <a href="#" style="font-weight:bold">
+                                        Tổng
+                                        <span>@($"{subtotal.ToString("#,##0")}đ")</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="font-weight:bold">
+                                        Shipping
+                                        <span>COD: 20.000đ</span>
+                                    </a>
+                                </li>
+                                @{
+                                    subtotal += 20000;
+                                }
+                                <li>
+                                    <a href="#" style="font-weight:bold">
+                                        Tổng tiền
+                                        <span>@($"{subtotal.ToString("#,##0")}đ")</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Checkout Area =================-->
+    <!--::footer_part start::-->
+    @await Component.InvokeAsync("Footer")
+    <!--::footer_part end::-->
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+    <script src="/js/checkout.js"></script>
+</body>
+
+</html>

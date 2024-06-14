@@ -86,6 +86,7 @@ CREATE TABLE Orders(
 	VoucherID INT,
 	DateTime DATETIME,
 	AdrDelivery NVARCHAR(300),
+	PhoneNumber NVARCHAR(255),
 	TotalPrice FLOAT,
 	Status NVARCHAR(100),	
 	Note NVARCHAR(2000),

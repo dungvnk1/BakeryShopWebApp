@@ -89,6 +89,10 @@
       "PackagePath": "staticwebassets\\BakeryImg\\SwedishPrincessPie.png"
     },
     {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\BakeryImg\\WIN_20220618_20_36_28_Pro.jpg",
+      "PackagePath": "staticwebassets\\BakeryImg\\WIN_20220618_20_36_28_Pro.jpg"
+    },
+    {
       "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\all.css",
       "PackagePath": "staticwebassets\\css\\all.css"
     },
@@ -919,6 +923,10 @@
     {
       "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\cells-by-column.js",
       "PackagePath": "staticwebassets\\js\\cells-by-column.js"
+    },
+    {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\checkout.js",
+      "PackagePath": "staticwebassets\\js\\checkout.js"
     },
     {
       "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\contact.js",

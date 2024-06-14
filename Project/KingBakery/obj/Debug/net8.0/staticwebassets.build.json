@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "m/pD9p7ffbYuLQ/qHNm3rDy0a8x+5325+M2rjP587h4=",
+  "Hash": "fO5BiB2XNlRVGFroyBWj6oHEa7TVu8eBAQP6w9HeCf0=",
   "Source": "KingBakery",
   "BasePath": "_content/KingBakery",
   "Mode": "Default",
@@ -1592,6 +1592,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\BakeryImg\\SwedishPrincessPie.png"
+    },
+    {
+      "Identity": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\BakeryImg\\WIN_20220618_20_36_28_Pro.jpg",
+      "SourceId": "KingBakery",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+      "BasePath": "_content/KingBakery",
+      "RelativePath": "BakeryImg/WIN_20220618_20_36_28_Pro.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\BakeryImg\\WIN_20220618_20_36_28_Pro.jpg"
     },
     {
       "Identity": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\all.css",
@@ -5544,6 +5563,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\cells-by-column.js"
+    },
+    {
+      "Identity": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\checkout.js",
+      "SourceId": "KingBakery",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\",
+      "BasePath": "_content/KingBakery",
+      "RelativePath": "js/checkout.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\checkout.js"
     },
     {
       "Identity": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\contact.js",
