@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Text.Encodings.Web;
 using KingBakery.ViewModel;
 using Microsoft.AspNet.Identity;
+using System.Linq;
 
 namespace KingBakery.Controllers
 {
@@ -397,6 +398,37 @@ namespace KingBakery.Controllers
             }
             TempData["ConfirmEmailSuccess"] = "Xác thực thành công! Vui lòng đăng nhập lại!";
             return RedirectToAction("Login");
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(u => u.ID == model.ID);
+                if(user.Password.Equals(model.OldPassword))
+                {
+                    user.Password = model.Password;
+                    user.ConfirmPassword = model.ConfirmPassword;
+                    _context.Update(user);
+                    _context.SaveChanges();
+
+                    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    TempData["ChangePasswordSuccess"] = "Mật khẩu của bạn đã thay đổi thành công! Vui lòng đăng nhập lại!";
+                    return RedirectToAction(nameof(Login));
+                }
+                else
+                {
+                    TempData["OldPasswordError"] = "Mật khẩu hiện tại không chính xác! Vui lòng nhập lại!";
+                    return View(model);
+                }
+            }
+            return View(model);
         }
 
         private bool UsersExists(int id)

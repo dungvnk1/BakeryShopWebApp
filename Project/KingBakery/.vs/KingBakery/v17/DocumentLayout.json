@@ -3,80 +3,24 @@
   "WorkspaceRootPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\confirmforgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\confirmforgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\viewmodel\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:viewmodel\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\viewmodel\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:viewmodel\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\helper\\emailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:helper\\emailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|e:\\intern c#\\bakeryshopwebapp\\bakeryshopwebapp\\project\\kingbakery\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\confirmemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\confirmemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:data\\kingbakerycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\helper\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:helper\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\kingbakery.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:kingbakery.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47DFAC71-A46E-4E37-9718-0491DBF26EFA}|KingBakery.csproj|solutionrelative:views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,205 +42,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ForgotPasswordViewModel.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\ForgotPasswordViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModel\\ForgotPasswordViewModel.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\ForgotPasswordViewModel.cs",
-              "RelativeToolTip": "ViewModel\\ForgotPasswordViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAzAAAA",
+              "DocumentIndex": 2,
+              "Title": "ChangePasswordViewModel.cs",
+              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\ChangePasswordViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\ChangePasswordViewModel.cs",
+              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\ChangePasswordViewModel.cs",
+              "RelativeToolTip": "ViewModel\\ChangePasswordViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T02:26:31.316Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ForgotPassword.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ForgotPassword.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\ForgotPassword.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ForgotPassword.cshtml",
-              "RelativeToolTip": "Views\\Users\\ForgotPassword.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADkAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T02:19:15.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\Edit.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Users\\Edit.cshtml",
-              "ViewState": "AQIAAEQAAAAAAAAAAAAuwE8AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T02:01:52.747Z",
+              "WhenOpened": "2024-06-14T01:16:48.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ConfirmForgotPassword.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ConfirmForgotPassword.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\ConfirmForgotPassword.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ConfirmForgotPassword.cshtml",
-              "RelativeToolTip": "Views\\Users\\ConfirmForgotPassword.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAIwF0AAAAqAAAA",
+              "Title": "ChangePassword.cshtml",
+              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ChangePassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\ChangePassword.cshtml",
+              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ChangePassword.cshtml",
+              "RelativeToolTip": "Views\\Users\\ChangePassword.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAADYAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T02:01:44.872Z",
+              "WhenOpened": "2024-06-13T13:18:43.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmailServices.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Helper\\EmailServices.cs",
-              "RelativeDocumentMoniker": "Helper\\EmailServices.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Helper\\EmailServices.cs",
-              "RelativeToolTip": "Helper\\EmailServices.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAuwCAAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T07:22:57.104Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "KingBakeryContext.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Data\\KingBakeryContext.cs",
-              "RelativeDocumentMoniker": "Data\\KingBakeryContext.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Data\\KingBakeryContext.cs",
-              "RelativeToolTip": "Data\\KingBakeryContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T02:36:50.211Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Register.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\Register.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Register.cshtml",
-              "RelativeToolTip": "Views\\Users\\Register.cshtml",
-              "ViewState": "AQIAAGwAAAAAAAAAAAAAAHMAAABJAAAA",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Edit.cshtml",
+              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Users\\Edit.cshtml",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAAAKsAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-11T01:44:05.747Z",
+              "WhenOpened": "2024-06-13T13:17:11.232Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\RegisterViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModel\\RegisterViewModel.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\ViewModel\\RegisterViewModel.cs",
-              "RelativeToolTip": "ViewModel\\RegisterViewModel.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAA5wB8AAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T01:39:51.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ConfirmEmail.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ConfirmEmail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\ConfirmEmail.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\ConfirmEmail.cshtml",
-              "RelativeToolTip": "Views\\Users\\ConfirmEmail.cshtml",
-              "ViewState": "AQIAACUAAAAAAAAAAAAkwDAAAABmAAAA",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Details.cshtml",
+              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Details.cshtml",
+              "RelativeToolTip": "Views\\Users\\Details.cshtml",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T15:13:54.88Z",
+              "WhenOpened": "2024-06-13T13:17:03.543Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\Login.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Login.cshtml",
-              "RelativeToolTip": "Views\\Users\\Login.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAC0AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T15:09:35.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T15:08:46.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABkAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-10T14:39:19.24Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "KingBakery",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
-              "RelativeDocumentMoniker": "KingBakery.csproj",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
-              "RelativeToolTip": "KingBakery.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-10T14:27:30.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\Create.cshtml",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Views\\Users\\Create.cshtml",
-              "RelativeToolTip": "Views\\Users\\Create.cshtml",
-              "ViewState": "AQIAAJAAAAAAAAAAAAAAAJ8AAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T14:16:54.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "EmailSettings.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Helper\\EmailSettings.cs",
-              "RelativeDocumentMoniker": "Helper\\EmailSettings.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Helper\\EmailSettings.cs",
-              "RelativeToolTip": "Helper\\EmailSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T07:14:27.837Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Users.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Users.cs",
-              "RelativeDocumentMoniker": "Models\\Users.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Models\\Users.cs",
-              "RelativeToolTip": "Models\\Users.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAowBkAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T06:22:26.728Z"
             },
             {
               "$type": "Document",
@@ -306,34 +100,10 @@
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
               "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Controllers\\UsersController.cs",
               "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAF0BAAAAAAAAAAA1wGUBAAAMAAAA",
+              "ViewState": "AQIAAJMBAAAAAAAAAAAkwJ4BAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-09T03:03:08.951Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABEAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T02:52:50.565Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA0AAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-31T08:17:07.118Z"
             }
           ]
         }
