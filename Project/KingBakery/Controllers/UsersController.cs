@@ -66,6 +66,7 @@ namespace KingBakery.Controllers
         }
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
@@ -96,6 +97,12 @@ namespace KingBakery.Controllers
             CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
+
+            int uid = user.ID;
+            
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
+
 
             return RedirectToAction("Index", "Home");
         }

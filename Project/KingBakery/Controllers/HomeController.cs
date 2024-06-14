@@ -24,6 +24,15 @@ namespace KingBakery.Controllers
 
         public IActionResult Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userId != null)
+            {
+                uid = Int32.Parse(userId);
+            }
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
             return View();
         }
 

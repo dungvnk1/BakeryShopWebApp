@@ -47,6 +47,7 @@ namespace KingBakery
 
             //Add session
             builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddSession(options =>
             {

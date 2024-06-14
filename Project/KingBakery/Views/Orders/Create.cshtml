@@ -9,63 +9,126 @@
         @TempData["SuccessMessage"]
     </div>
 }
-<h1>Create</h1>
+<link rel="icon" href="/img/favicon.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<!-- animate CSS -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="/css/all.css">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="/css/flaticon.css">
+<link rel="stylesheet" href="/css/themify-icons.css">
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="/css/magnific-popup.css">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="/css/slick.css">
+<!-- style CSS -->
+<link rel="stylesheet" href="/css/style.css">
 
-<h4>Orders</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <input asp-for="ID" class="form-control" asp-items="ViewBag.ID"></input>
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" asp-items="ViewBag.FullName"></input>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" asp-items="ViewBag.Username"></input>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" asp-items="ViewBag.Address"></input>
-            </div>
+@await Component.InvokeAsync("Header");
+<div style="padding:60px 40px;border-top:solid 1px grey;border-bottom:solid 1px grey;">
+    <h1>Nhập đơn hàng vào hệ thống</h1>
 
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" asp-items="ViewBag.BirthDate" />
+    <h4>Đơn hàng</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create" >
+                @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+                <div style ="display:flex;">
+                <div class="col-md-5" style="margin-right:100px;">
+                    <div class="form-group">
+                        <label asp-for="ID" class="control-label">Mã đơn hàng</label>
+                        <input asp-for="ID" class="form-control" asp-items="ViewBag.ID"></input>
+                        <span asp-validation-for="ID" class="text-danger"></span>
+                    </div>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" asp-items="ViewBag.Email" />
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label">Nhân viên nhận đơn</label>
+                        <input asp-for="FullName" class="form-control" asp-items="ViewBag.FullName"></input>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label">Shipper</label>
+                        <input asp-for="Username" class="form-control" asp-items="ViewBag.Username"></input>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label">Ngày tạo đơn</label>
+                        <input asp-for="Address" class="form-control" asp-items="ViewBag.Address"></input>
+                    </div>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" asp-items="ViewBag.PhoneNumber" />
+                    <div class="form-group">
+                        <label asp-for="BirthDate" class="control-label">SĐT khách hàng</label>
+                        <input asp-for="BirthDate" class="form-control" asp-items="ViewBag.BirthDate" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Ghi chú</label>
+                        <input asp-for="Email" class="form-control" asp-items="ViewBag.Email" />
 
-            </div>
-            @* <div class="form-group">
-            <label asp-for="Status" class="control-label"></label>
-            <input asp-for="Status" class="form-control" />
-            <span asp-validation-for="Status" class="text-danger"></span>
-            </div> *@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                    </div>
+                </div>
+                    <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Tổng tiền</label>
+                        <input asp-for="PhoneNumber" class="form-control" asp-items="ViewBag.PhoneNumber" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Mã giảm giá</label>
+                        <input asp-for="PhoneNumber" class="form-control" asp-items="ViewBag.PhoneNumber" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Trạng thái đơn hàng</label>
+                        <input asp-for="PhoneNumber" class="form-control" asp-items="ViewBag.PhoneNumber" />
+                    </div>
+                </div>
+                </div>
+                @* <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+                </div> *@
+                <div class="form-group">
+                    <input type="submit" value="Nhập đơn" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a href="/Home/Index">Quay về Trang chủ</a>
     </div>
 </div>
+@await Component.InvokeAsync("Footer");
 
-<div>
-    <a href="/Home/Index">Back to Home</a>
-</div>
+<!-- jquery plugins here-->
+<script src="/js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="/js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- easing js -->
+<script src="/js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script src="/js/swiper.min.js"></script>
+<!-- swiper js -->
+<script src="/js/mixitup.min.js"></script>
+<!-- particles js -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- slick js -->
+<script src="/js/slick.min.js"></script>
+<script src="/js/jquery.counterup.min.js"></script>
+<script src="/js/waypoints.min.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<!-- custom js -->
+<script src="/js/custom.js"></script>
 
 @section Scripts {
     @{
