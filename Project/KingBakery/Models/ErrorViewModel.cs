@@ -1,4 +1,4 @@
-namespace KingBakery.ViewModel
+namespace KingBakery.Models
 {
     public class ErrorViewModel
     {

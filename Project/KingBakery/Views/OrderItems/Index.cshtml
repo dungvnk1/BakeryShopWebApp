@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="/css/nice-select.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/cart.css">
 </head>
 
 <body>
@@ -60,7 +59,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
                             @{
                                 double subtotal = 0;
                             }
@@ -89,44 +87,43 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h5>@($"{@item.BakeryOption.Price.ToString("#,##0")}đ")</h5>
+                                        <h5>@($"{item.Price.ToString("#,##0")}đ")</h5>
                                     </td>
 
                                     <td style="padding:25px;text-align:center;">
                                         <div class="product_count">
-                                            <span class="decrement" data-id="@item.ID" data-target="#quantity_@item.ID"><i class="ti-minus"></i></span>
-                                            <input class="qq product_count_item" type="text" name="quantity" id="quantity_@item.ID" value="@item.Quantity"
-                                                   min="1" max="@item.BakeryOption.Quantity" data-id="@item.ID" onchange="check(@item.ID)" 
-                                                   data-max="@item.BakeryOption.Quantity">
-                                            <span class="increment" data-id="@item.ID" data-target="#quantity_@item.ID"><i class="ti-plus"></i></span>
+                                            @* <span class="input-number-decrement"> <i class="ti-minus"></i></span> *@
+                                            <input class="input-number" id="quantity" type="text" value="@item.Quantity"
+                                                   min="1" max="@item.BakeryOption.Quantity" style="text-align:center; padding:0;">
+                                            @* <span class="input-number-increment"> <i class="ti-plus"></i></span> *@
                                         </div>
                                     </td>
                                     @{
-                                        var total = @item.BakeryOption.Price * item.Quantity;
+                                        var total = item.Price * item.Quantity;
                                         subtotal += total;
                                     }
                                     <td>
-                                        <h5 id="total_@item.ID">@($"{total.ToString("#,##0")}đ")</h5>
-
+                                        <h5>@($"{total.ToString("#,##0")}đ")</h5>
+                                        
                                     </td>
                                     <td>
-                                        <a class="del_cart" data-id="@item.ID" style="color:slategrey;">
+                                        <a asp-controller="OrderItems" asp-action="DeleteItem" asp-route-id="@item.ID" style="color:slategrey;">
                                             <i class="ti-trash" style="font-size:20px;"></i>
                                         </a>
                                     </td>
                                 </tr>
                             }
 
-                            @if (Model.Count() == 0)
-                            {
-                                <tr>
-                                    <td colspan="5">
-                                        <h3 style="text-align:center;color:lightpink;font-family:Arial;">Giỏ hàng trống!</h3>
-                                    </td>
-                                    
-                                </tr>
-                            }
-                            
+
+                            <tr class="bottom_button">
+                                <td>
+                                    <a class="btn_1" href="#">Cập nhật giỏ hàng</a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -135,10 +132,10 @@
                                     <h4>Tổng tiền: </h4>
                                 </td>
                                 <td>
-                                    <h4 id="subtotal">@($"{subtotal.ToString("#,##0")}đ")</h4>
+                                    <h4>@($"{subtotal.ToString("#,##0")}đ")</h4>
                                 </td>
                             </tr>
-
+                            
                         </tbody>
                     </table>
                     <div class="checkout_btn_inner float-right">
@@ -171,14 +168,14 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/jquery.counterup.min.js"></script>
     <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
     <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/updatecart.js"></script>
+    <script src="/js/quantitybt.js"></script>
 </body>
 
 </html>

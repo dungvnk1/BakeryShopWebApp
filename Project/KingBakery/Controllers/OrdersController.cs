@@ -20,19 +20,12 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            var orders = _context.Orders.ToList();
-            return View(orders);
-        }
-
-
         // GET: Orders
-        //public async Task<IActionResult> Index()
-        //{
-        //    var kingBakeryContext = _context.Orders.Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
-        //    return View(await kingBakeryContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var kingBakeryContext = _context.Orders.Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
+            return View(await kingBakeryContext.ToListAsync());
+        }
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -91,7 +84,7 @@ namespace KingBakery.Controllers
             }
             return View();
         }
-
+    
 
 
         // GET: Orders/Edit/5

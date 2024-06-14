@@ -17,13 +17,11 @@ namespace KingBakery.Models
         public DateTime? DateTime { get; set; }
         public string? AdrDelivery { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? Note { get; set; }
         public double? TotalPrice { get; set; }
         public string? Status { get; set; }
-        public string? DenyReason { get; set; }
+
         public virtual Employee? Staff { get; set; }
         public virtual Employee? Shipper { get; set; }
         public virtual Vouchers? Vouchers { get; set; }
-        public virtual ICollection<OrderItem>? OrderItems { get; set; }
     }
 }

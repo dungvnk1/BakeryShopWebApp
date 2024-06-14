@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KingBakery.Models
@@ -20,7 +19,6 @@ namespace KingBakery.Models
         public string? Email { get; set; }
         public string PhoneNumber { get; set; }
         public int Role { get; set; }
-        public string? VertificationCode { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword")]
