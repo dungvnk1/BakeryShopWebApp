@@ -34,6 +34,18 @@
     <section class="login_part section_padding ">
         <div class="container">
             <div class="row align-items-center">
+                @if (TempData["ConfirmEmailSuccess"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        @TempData["ConfirmEmailSuccess"]
+                    </div>
+                }
+                @if (TempData["ChangePasswordSuccess"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        @TempData["ChangePasswordSuccess"]
+                    </div>
+                }
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
@@ -41,7 +53,7 @@
                             <p style="font-family:Arial">
                                 Mỗi ngày King Bakery đều cung cấp tới khách hàng những sản phẩm tốt nhất!
                             </p>
-                            <a asp-action="Create" asp-controller="Users" class="btn_3">Tạo tài khoản mới</a>
+                            <a asp-action="Register" asp-controller="Users" class="btn_3">Tạo tài khoản mới</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +87,8 @@
                                     <button type="submit" value="submit" class="btn_3">
                                         đăng nhập
                                     </button>
-                                    <a class="lost_pass" href="#">quên mật khẩu?</a>
+                                    <a asp-action="LoginGoogle" asp-controller="Users" class="btn_3">đăng nhập với google</a>
+                                    <a class="lost_pass" asp-action="ConfirmForgotPassword" asp-controller="Users">quên mật khẩu?</a>
                                 </div>
                             </form>
                         </div>

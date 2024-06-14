@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
@@ -10,16 +6,34 @@ using KingBakery.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.Extensions.Options;
+using System.Net.Mail;
+using System.Net;
+using System.Configuration;
+using KingBakery.Helper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Text.Encodings.Web;
+using KingBakery.ViewModel;
+using Microsoft.AspNet.Identity;
+using System.Linq;
 
 namespace KingBakery.Controllers
 {
     public class UsersController : Controller
     {
         private readonly KingBakeryContext _context;
+        private readonly EmailServices _emailService;
 
-        public UsersController(KingBakeryContext context)
+        public UsersController(KingBakeryContext context, EmailServices emailServices)
         {
             _context = context;
+            _emailService = emailServices;
         }
 
         // GET: Users
@@ -86,6 +100,60 @@ namespace KingBakery.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public async Task LoginGoogle()
+        {
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+                new AuthenticationProperties
+                {
+                    RedirectUri = Url.Action("GoogleResponse")
+                }); 
+        }
+
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var email = result.Principal.FindFirstValue(ClaimTypes.Email);
+            var userCheck = _context.Users.Where(u => u.Email == email).FirstOrDefault<Users>();
+            if (userCheck == null)
+            {
+                Users user = new Users()
+                {
+                    FullName = result.Principal.FindFirstValue(ClaimTypes.Name),
+                    Username = "",
+                    Password = "",
+                    ConfirmPassword = "",
+                    Address = "",
+                    BirthDate = DateOnly.MinValue,
+                    Email = email,
+                    PhoneNumber = "",
+                    Role = 2
+                };
+                userCheck = user;
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, userCheck.ID.ToString()),
+                new Claim(ClaimTypes.Name, userCheck.FullName),
+                new Claim(ClaimTypes.Role, userCheck.Role.ToString())
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+            };
+
+            HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -106,8 +174,10 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role")] Users users)
+        public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role,VertificationCode")] Users users)
         {
+            ModelState.Remove("VertificationCode");
+
             if (ModelState.IsValid)
             {
                 // Check if the user is not logged in
@@ -119,11 +189,46 @@ namespace KingBakery.Controllers
 
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Tài khoản của bạn đã được tạo thành công!";
+                TempData["SuccessMessage"] = "Tài khoản đã được tạo thành công!";
                 return View(users);
             }
             return View(users);
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
+        {
+            var verificationCode = CreateVerificationCode();
+
+            var user = new Users()
+            {
+                FullName = model.FullName,
+                Username = model.Username,
+                Password = model.Password,
+                Email = model.Email,
+                Address = model.Address,
+                PhoneNumber = model.PhoneNumber,
+                BirthDate = model.Birthdate,
+                Role = 2,
+                ConfirmPassword = model.ConfirmPassword,
+                VertificationCode = verificationCode
+            };
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            var subject = "Verify Your Email";
+            var body = $"Your verification code is: {verificationCode}";
+            _emailService.SendEmail(model.Email, subject, body);
+
+            
+            return RedirectToAction("ConfirmEmail", new {id = user.ID});
+        }
+
 
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -221,10 +326,111 @@ namespace KingBakery.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult ConfirmForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmForgotPassword(string email)
+        {
+            var user = _context.Users.FirstOrDefault(m => m.Email == email);
+            if(user != null)
+            {
+                string code = CreateVerificationCode();
+
+                var subject = "Verify Your Email";
+                var body = $"Your verification code is: {code}";
+                _emailService.SendEmail(email, subject, body);
+                
+                return RedirectToAction("ForgotPassword", new {id = user.ID});
+            }
+            return NotFound();
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(int id, ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(u => u.ID == id);
+                user.Password = model.Password;
+                _context.Update(user);
+                _context.SaveChanges();
+
+                TempData["ChangePasswordSuccess"] = "Mật khẩu của bạn đã thay đổi thành công! Vui lòng đăng nhập lại!";
+                return RedirectToAction(nameof(Login));
+            }
+            return View(model);
+        }
+
+        private string CreateVerificationCode()
+        {
+            using (var rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+            {
+                byte[] tokenData = new byte[4];
+                rng.GetBytes(tokenData);
+
+                int token = BitConverter.ToInt32(tokenData, 0);
+                var code = Math.Abs(token % 1000000).ToString("D6");
+
+                return code;
+            }
+        }
+
+        public IActionResult ConfirmEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmEmail(int id, string code)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.ID == id);
+            if (code != user.VertificationCode)
+            {
+                return NotFound();
+            }
+            TempData["ConfirmEmailSuccess"] = "Xác thực thành công! Vui lòng đăng nhập lại!";
+            return RedirectToAction("Login");
+        }
+
         public IActionResult ChangePassword()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(u => u.ID == model.ID);
+                if(user.Password.Equals(model.OldPassword))
+                {
+                    user.Password = model.Password;
+                    user.ConfirmPassword = model.ConfirmPassword;
+                    _context.Update(user);
+                    _context.SaveChanges();
+
+                    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    TempData["ChangePasswordSuccess"] = "Mật khẩu của bạn đã thay đổi thành công! Vui lòng đăng nhập lại!";
+                    return RedirectToAction(nameof(Login));
+                }
+                else
+                {
+                    TempData["OldPasswordError"] = "Mật khẩu hiện tại không chính xác! Vui lòng nhập lại!";
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.ID == id);
