@@ -105,6 +105,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\cart.css",
+      "PackagePath": "staticwebassets\\css\\cart.css"
+    },
+    {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\css\\detail.css",
       "PackagePath": "staticwebassets\\css\\detail.css"
     },
@@ -913,6 +917,10 @@
       "PackagePath": "staticwebassets\\js\\aos.js"
     },
     {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\bills.js",
+      "PackagePath": "staticwebassets\\js\\bills.js"
+    },
+    {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
     },
@@ -985,6 +993,10 @@
       "PackagePath": "staticwebassets\\js\\mixitup.min.js"
     },
     {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\noti.addtocart.js",
+      "PackagePath": "staticwebassets\\js\\noti.addtocart.js"
+    },
+    {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\owl.carousel.min.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
     },
@@ -1035,6 +1047,10 @@
     {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\theme.js",
       "PackagePath": "staticwebassets\\js\\theme.js"
+    },
+    {
+      "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\updatecart.js",
+      "PackagePath": "staticwebassets\\js\\updatecart.js"
     },
     {
       "Id": "C:\\Users\\PC\\Documents\\GitHub\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\waypoints.min.js",

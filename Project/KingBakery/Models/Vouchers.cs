@@ -6,7 +6,8 @@ namespace KingBakery.Models
     {
         [Key]
         public int VoucherID { get; set; }
-        public string? Code { get; set; }
-        public int? VPercent { get; set; }
+        public required string Code { get; set; }
+        public int VPercent { get; set; }
+        public int Quantity { get; set; }
     }
 }
