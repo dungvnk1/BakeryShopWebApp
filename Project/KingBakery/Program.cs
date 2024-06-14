@@ -1,7 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using KingBakery.Data;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using KingBakery.Helper;
+using KingBakery.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Configuration;
+
 namespace KingBakery
 {
     public class Program
@@ -10,18 +15,35 @@ namespace KingBakery
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<KingBakeryContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("KingBakeryContext") ?? throw new InvalidOperationException("Connection string 'KingBakeryContext' not found.")));
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("KingBakeryContext") ?? throw new InvalidOperationException("Connection string 'KingBakeryContext' not found."));
+                
+            });
+
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddTransient<EmailServices>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            })
+                .AddCookie(options =>
             {
                 options.LoginPath = new PathString("/Users/Login");
                 options.LogoutPath = "/Users/Logout";
                 options.SlidingExpiration = true;
                 //Set the cookie expiration time
                 options.ExpireTimeSpan = TimeSpan.FromDays(2);
-            });
+            })
+                .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+                {
+                    options.ClientId = builder.Configuration.GetSection("GoogleKeys:ClientId").Value;
+                    options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientSecret").Value;
+                });
+
 
             //Add session
             builder.Services.AddDistributedMemoryCache();

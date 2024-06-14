@@ -21,7 +21,8 @@ CREATE TABLE Users (
 	BirthDate Date NOT NULL,
 	Email NVARCHAR(100),
     PhoneNumber NVARCHAR(100) NOT NULL,
-	Role INT NOT NULL
+	Role INT NOT NULL,
+	VertificationCode NVARCHAR(200)
 )
 GO
 
@@ -87,6 +88,7 @@ CREATE TABLE Orders(
 	AdrDelivery NVARCHAR(300),
 	TotalPrice FLOAT,
 	Status NVARCHAR(100),	
+	Note NVARCHAR(2000),
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
 	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID),
 	FOREIGN KEY (VoucherID) REFERENCES Vouchers(VoucherID) ON DELETE CASCADE
@@ -128,19 +130,19 @@ GO
 
 -----INSERT DATA-----
 --Users
-INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role)--*Role: 1_admin,2_cus,3_staff,4_shipper
+INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role, VertificationCode)--*Role: 1_admin,2_cus,3_staff,4_shipper
 VALUES    
-	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2),  --*Role: 1_admin,2_cus,3_staff,4_shipper
-	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1),
-	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3),
-	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3),
-	(N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2),
-    (N'Hoàng Văn D', N'hoangvand', N'passwordD', 'Ha Noi', '2001-06-30', 'hoangvand@example.com', '0934567890', 1),
-    (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3),
-    (N'Phạm Văn F', N'phamvanf', N'passwordF', N'12 Pham Ngoc Thach', '1999-04-01', 'phamvanf@example.com', '0956789012', 4),
-    (N'Nguyễn Văn G', N'nguyenvang', N'passwordG', 'Ha Noi', '1998-03-15', 'nguyenvang@example.com', '0967890123', 2),
-    (N'Trần Thị H', N'tranthih', N'passwordH', N'34 Tran Quoc Toan', '1997-02-20', 'tranthih@example.com', '0978901234', 3),
-    (N'Đỗ Minh I', N'dominhi', N'passwordI', N'56 Ly Thuong Kiet', '1996-01-10', 'dominhi@example.com', '0989012345', 1);
+	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2, ''),  --*Role: 1_admin,2_cus,3_staff,4_shipper
+	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1, ''),
+	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3, ''),
+	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3, ''),
+	(N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2, ''),
+    (N'Hoàng Văn D', N'hoangvand', N'passwordD', 'Ha Noi', '2001-06-30', 'hoangvand@example.com', '0934567890', 1, ''),
+    (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3, ''),
+    (N'Phạm Văn F', N'phamvanf', N'passwordF', N'12 Pham Ngoc Thach', '1999-04-01', 'phamvanf@example.com', '0956789012', 4, ''),
+    (N'Nguyễn Văn G', N'nguyenvang', N'passwordG', 'Ha Noi', '1998-03-15', 'nguyenvang@example.com', '0967890123', 2, ''),
+    (N'Trần Thị H', N'tranthih', N'passwordH', N'34 Tran Quoc Toan', '1997-02-20', 'tranthih@example.com', '0978901234', 3, ''),
+    (N'Đỗ Minh I', N'dominhi', N'passwordI', N'56 Ly Thuong Kiet', '1996-01-10', 'dominhi@example.com', '0989012345', 1, '');
 GO
 
 --Employee
