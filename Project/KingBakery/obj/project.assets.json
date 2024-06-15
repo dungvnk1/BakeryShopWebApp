@@ -705,6 +705,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/8.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.24": {
         "type": "package",
         "compile": {
@@ -3714,6 +3730,21 @@
         "lib/net45/System.Web.WebPages.xml",
         "microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
         "microsoft.aspnet.webpages.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/8.0.6": {
+      "sha512": "aOMroouD9EiSTduJYtN6PnqaQpbscr+3f8osFg/mGW5L6Cg8Igv9P93NLHqyBYvMilXEufgx5kK/5naxnw9VpA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/8.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.8.0.6.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.24": {
@@ -8161,6 +8192,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.AspNetCore.Authentication.Google >= 8.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.19.6",
@@ -8177,11 +8209,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj",
+      "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
       "projectName": "KingBakery",
-      "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj",
+      "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\obj\\",
+      "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8215,6 +8247,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[8.0.6, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[8.0.4, )"

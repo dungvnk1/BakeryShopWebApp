@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3R7tzRjNZBEfIeX1WTOMuPb2AsEp/vde17XYxW2XXS0pTcBZlwCXzunhjcYVX2EPSD6/wcasG760nMmcGn44VQ==",
+  "dgSpecHash": "5y2E4u7arIaZz21CZoQtxHeBrRp8AtWuD0kIoJOKLKQzVNSTkcsuedhAT5bo3NIbgnS4WXP/TN/haT3yjyJPYg==",
   "success": true,
-  "projectFilePath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj",
+  "projectFilePath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Acer\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -59,6 +59,7 @@
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.7\\microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\8.0.6\\microsoft.aspnetcore.authentication.google.8.0.6.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.build\\17.8.3\\microsoft.build.17.8.3.nupkg.sha512",

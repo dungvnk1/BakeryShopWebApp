@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj": {}
+    "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {}
   },
   "projects": {
-    "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj": {
+    "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj",
+        "projectUniqueName": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
         "projectName": "KingBakery",
-        "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\KingBakery.csproj",
+        "projectPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\KingBakery.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\Pre-version\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\\Project\\KingBakery\\obj\\",
+        "outputPath": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.4, )"
