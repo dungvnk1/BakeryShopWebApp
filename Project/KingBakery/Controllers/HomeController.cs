@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 using System.Diagnostics;
 using System.Security.Claims;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {

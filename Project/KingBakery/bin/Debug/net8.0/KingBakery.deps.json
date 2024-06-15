@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "KingBakery/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.4",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
@@ -636,6 +637,14 @@
           "lib/net45/System.Web.WebPages.dll": {
             "assemblyVersion": "3.0.0.0",
             "fileVersion": "3.0.61128.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/8.0.6": {
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "8.0.6.0",
+            "fileVersion": "8.0.624.26909"
           }
         }
       },
@@ -2359,6 +2368,13 @@
       "sha512": "sha512-2jwZFB7PvY+tbdz0ZP4iEo7gMrJxkCQUzoGLh6swUc6ZXl6DoKyDslmGcC/j9PFmJXCRMVIqtRorlPSMU2DuRA==",
       "path": "microsoft.aspnet.webpages/3.2.7",
       "hashPath": "microsoft.aspnet.webpages.3.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/8.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOMroouD9EiSTduJYtN6PnqaQpbscr+3f8osFg/mGW5L6Cg8Igv9P93NLHqyBYvMilXEufgx5kK/5naxnw9VpA==",
+      "path": "microsoft.aspnetcore.authentication.google/8.0.6",
+      "hashPath": "microsoft.aspnetcore.authentication.google.8.0.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.24": {
       "type": "package",

@@ -2541,3 +2541,16 @@ E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-3da22555ce08589c5eaa1
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\Project\KingBakery\obj\Debug\net8.0\KingBakery.pdb
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 E:\Intern C#\BakeryShopWebApp\Pre-version\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\BakeryShopWebApp-3da22555ce08589c5eaa140e74045752a168f912\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Mvc.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Razor.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Helpers.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Deployment.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Razor.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs
+E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll

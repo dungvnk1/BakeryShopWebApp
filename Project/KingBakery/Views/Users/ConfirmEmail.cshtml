@@ -1,0 +1,99 @@
+﻿@model KingBakery.Models.Users
+
+@{
+    var userID = ViewBag.UserID;
+}
+
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="~/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+    <!--::header part start::-->
+    @await Component.InvokeAsync("Header")
+    <!-- Header part end-->
+    <!--=================================-->
+    <div class='container'>
+        <div class='panel panel-primary dialog-panel'>
+            <div class='panel-heading' style="text-align:center; background-color:#B08EAD">
+                <h5 style="font-weight:bold; font-size:16px">Vui lòng lấy mã xác nhận trong gmail của bạn để xác minh gmail!</h5>
+            </div>
+            <div class='panel-body'>
+                <form asp-action="ConfirmEmail" method="post" class='form-horizontal' role='form'>
+                    @* <input type="hidden" name="id" value="@userID" /> *@
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Mã xác nhận</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input name="code" class='form-control' id='id_first_name' placeholder='Confirm code' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit' style="background-color:#B08EAD">Gửi mã xác nhận</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--=================================-->
+    <!--::footer_part start::-->
+    @await Component.InvokeAsync("Footer")
+    <!--::footer_part end::-->
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+</body>
+
+</html>
