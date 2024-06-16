@@ -1,0 +1,27 @@
+﻿@model IEnumerable<KingBakery.Models.Orders>
+
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.ID</td>
+            <td>@order.Status</td>
+            <td>
+                @if (order.Status == "Pending")
+                {
+                    <button asp-action="AcceptOrder" asp-route-id="@order.ID">Nhận đơn</button>
+                    <button asp-action="RejectOrder" asp-route-id="@order.ID">Từ chối</button>
+                }
+                else if (order.Status == "Accepted")
+                {
+                    <button asp-action="AssignToShipper" asp-route-id="@order.ID">Gán cho Shipper</button>
+                }
+            </td>
+        </tr>
+    }
+</table>

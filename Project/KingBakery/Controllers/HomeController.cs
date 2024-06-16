@@ -71,10 +71,10 @@ namespace KingBakery.Controllers
         {
             return View();
         }
-        public IActionResult Blog()
-        {
-            return View();
-        }
+        //public IActionResult Blog()
+        //{
+        //    return View();
+        //}
         public IActionResult Cart()
         {
             return View();

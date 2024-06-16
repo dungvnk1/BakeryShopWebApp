@@ -82,6 +82,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlsbHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/BlogPosts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1Bvc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/BlogPosts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1Bvc3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/BlogPosts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1Bvc3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/BlogPosts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1Bvc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/BlogPosts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1Bvc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -300,6 +320,50 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shippers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shippers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shippers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shippers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Shippers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/AssignShipper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXEFzc2lnblNoaXBwZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Staffs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Users/ChangePassword.cshtml]
