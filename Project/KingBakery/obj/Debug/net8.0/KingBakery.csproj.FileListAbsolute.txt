@@ -2554,3 +2554,16 @@ E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Mvc.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Razor.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Helpers.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Deployment.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Razor.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll
+E:\KingBakeryWeb\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs

@@ -70,14 +70,9 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="ID" />
                         <div class="form-group">
-                            <label asp-for="CustomerID" class="control-label">Customer</label>
-                            <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
-                            <span asp-validation-for="CustomerID" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="BakeryID" class="control-label">Bakery Option</label>
-                            <select asp-for="BakeryID" class="form-control" asp-items="ViewBag.BakeryID"></select>
-                            <span asp-validation-for="BakeryID" class="text-danger"></span>
+                            <label asp-for="BakeryOption.Size" class="control-label">Bakery Option (cm)</label>
+                            <select asp-for="BakeryOption.ID" class="form-control" asp-items="@ViewBag.Size"></select>
+                            <span asp-validation-for="BakeryOption.Size" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Save" class="btn btn-primary" />

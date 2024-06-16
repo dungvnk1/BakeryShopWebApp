@@ -91,7 +91,7 @@
                         <p>
                             @Model.Bakery?.Description
                         </p>
-                        <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="card_area">
+                        <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="card_area" id="form_card_product">
                             <div class="product_count_area">
                                 <p>Còn @Model.Quantity bánh</p>
                                 <div class="product_count d-inline-block" style="background-color:transparent">
@@ -105,36 +105,57 @@
                                 </div>
                                 <p>Giá: @($"{@Model.Price.ToString("#,##0")}đ")</p>
                             </div>
-                            @{
-                                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                                var userRole = User.FindFirstValue(ClaimTypes.Role);
-                            }
-                            @if (userId != null)
-                            {
-                                @if (userRole != "2")
-                                {
-                                    <div class="add_to_cart">
-                                        <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
-                                    </div>
-                                    <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
-                                }
-                                else
-                                {
-                                    <div class="add_to_cart">
-                                        <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
-                                    </div>
-                                }
-
-                            }
-                            else
+                        </form>
+                        @{
+                            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                            var userRole = User.FindFirstValue(ClaimTypes.Role);
+                        }
+                        @if (userId != null)
+                        {
+                            @if (userRole != "2")
                             {
                                 <div class="add_to_cart">
                                     <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
                                 </div>
-                                <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
+                                <div class="favourite_product">
+                                    <form>
+                                        <button type="submit" disabled><i class="far fa-star"></i></button>
+                                    </form>
+
+                                </div>
+
+                                <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
+                            }
+                            else
+                            {
+                                <div class="add_to_cart">
+                                    <button from="form_card_product" type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                </div>
+                                <div class="favourite_product">
+                                    <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.ID">
+                                        <button type="submit"><i class="far fa-star"></i></button>
+                                    </form>
+
+
+                                </div>
                             }
 
-                        </form>
+                        }
+                        else
+                        {
+                            <div class="add_to_cart">
+                                <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                            </div>
+                            <div class="favourite_product">
+                                <form>
+                                    <button type="submit" disabled><i class="far fa-star"></i></button>
+                                </form>
+
+                            </div>
+                            <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
+                        }
+
+
                     </div>
                 </div>
             </div>
