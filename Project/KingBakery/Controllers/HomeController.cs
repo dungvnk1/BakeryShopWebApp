@@ -1,9 +1,12 @@
+using Azure;
 using KingBakery.Data;
 using KingBakery.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 using System.Diagnostics;
 using System.Security.Claims;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -17,7 +20,7 @@ namespace KingBakery.Controllers
             _logger = logger;
             _context = context;
         }
-        
+
 
         public IActionResult Index()
         {
@@ -28,20 +31,29 @@ namespace KingBakery.Controllers
         {
             return View("~/Views/Users/Login.cshtml");
         }
+
+        public IActionResult AdminDashboard()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             return View();
         }
-        public IActionResult ProductList()
+        public IActionResult ProductList(int? page)
         {
             var bakeries = _context.Bakery
             .Include(b => b.BakeryOptions)
             .Include(b => b.Category)
             .ToList();
+            int pageSize = 6;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            PagedList<Bakery> lst = new PagedList<Bakery>(bakeries, pageNumber, pageSize);
 
             var categories = _context.Category.ToList();
             ViewData["Categories"] = categories;
-            return View(bakeries);       
+            return View(lst);
         }
         public IActionResult Checkout()
         {
@@ -85,8 +97,8 @@ namespace KingBakery.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-       
+
     }
 
-    
-    }
+
+}
