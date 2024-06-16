@@ -5,13 +5,13 @@ namespace KingBakery.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: AdminController
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
             return View();
         }
 
-        public ActionResult Dashboard()
+        // GET: AdminController
+        public ActionResult Index()
         {
             return View();
         }

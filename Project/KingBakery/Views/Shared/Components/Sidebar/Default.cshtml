@@ -38,18 +38,18 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Quản lý người dùng:</h6>
                 <a class="collapse-item" asp-action="Index" asp-controller="Users">Tổng quan người dùng</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <h6 class="collapse-header">Quản lý sản phẩm:</h6>
+                <a class="collapse-item" asp-action="Manage" asp-controller="Bakeries">Tổng quan sản phẩm</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Quản lý đơn hàng:</h6>
+                <a class="collapse-item" asp-action="Index" asp-controller="Orders">Tổng quan đơn hàng</a>
                 <div class="collapse-divider"></div>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    @* <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -82,7 +82,7 @@
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
         </div>
-    </li>
+    </li> *@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -138,6 +138,12 @@
     </div>
 
     <!-- Sidebar Message -->
+    <li class="nav-item">
+        <a class="nav-link" asp-action="Index" asp-controller="Home">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Quay lại trang chủ</span>
+        </a>
+    </li>
 
 </ul>
 <!-- End of Sidebar -->
