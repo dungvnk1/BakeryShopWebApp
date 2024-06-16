@@ -21,9 +21,35 @@
 
 </head>
 
-<body>
+<body id="page-top">
 
-    @await Component.InvokeAsync("Sidebar");
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        @await Component.InvokeAsync("Sidebar")
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                @await Component.InvokeAsync("TopBar")
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
