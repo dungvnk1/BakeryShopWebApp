@@ -125,6 +125,17 @@ CREATE TABLE Favourite(
 )
 GO
 
+CREATE TABLE BlogPosts (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(50) NOT NULL,
+    Content NVARCHAR(MAX) NOT NULL,
+    PublishedDate DATETIME NOT NULL,
+    ModifiedDate DATETIME NULL,
+    Author NVARCHAR(50) NOT NULL,
+    Image NVARCHAR(255) NULL
+);
+GO
+
 
 -----INSERT DATA-----
 --Users
@@ -251,3 +262,11 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 1, 1, 3, 1, 200000)
 Go
 --select * from OrderItem
+--BlogPosts
+INSERT INTO BlogPosts (Title, Content, PublishedDate, ModifiedDate, Author, Image)
+VALUES
+    ('Welcome to King Bakery!', 'This is our first blog post! We are excited to share our baking adventures with you.', '2022-01-01 10:00:00', NULL, 'John Doe', 'blog-post-1.jpg'),
+    ('Our Favorite Recipes', 'In this post, we share our top 5 favorite recipes that you must try!', '2022-01-15 14:00:00', '2022-01-20 12:00:00', 'Jane Smith', 'blog-post-2.jpg'),
+    ('Baking Tips and Tricks', 'Get ready to take your baking skills to the next level with these expert tips and tricks!', '2022-02-01 08:00:00', NULL, 'Bob Johnson', 'blog-post-3.jpg'),
+    ('New Arrivals: Spring Collection', 'Check out our new spring collection of baked goods, featuring fresh flavors and ingredients!', '2022-03-01 12:00:00', '2022-03-05 10:00:00', 'Emily Chen', 'blog-post-4.jpg'),
+    ('Behind the Scenes: Our Bakery', 'Ever wondered what goes on behind the scenes of our bakery? Take a peek at our latest blog post to find out!', '2022-04-01 10:00:00', NULL, 'Michael Brown', 'blog-post-5.jpg');

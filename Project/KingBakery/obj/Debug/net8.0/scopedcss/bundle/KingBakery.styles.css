@@ -43,6 +43,7 @@ button.accept-policy[b-1ve2shu53n] {
 .footer[b-1ve2shu53n] {
   position: absolute;
   bottom: 0;
+  width: 100%;
   white-space: nowrap;
   line-height: 60px;
 }
