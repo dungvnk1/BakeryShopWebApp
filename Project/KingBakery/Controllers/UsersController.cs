@@ -90,7 +90,7 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        /*
         public async Task LoginGoogle()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
@@ -144,6 +144,7 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        */
 
         // GET: Users/Create
         public IActionResult Create()
