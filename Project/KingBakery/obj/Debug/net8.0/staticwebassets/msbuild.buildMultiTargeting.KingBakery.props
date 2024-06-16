@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\KingBakery.props" />
-</Project>

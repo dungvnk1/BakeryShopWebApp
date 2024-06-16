@@ -50,36 +50,33 @@
                 <div class="col-md-4">
                     <div class="product_sidebar">
                         <div class="single_sedebar">
-                            <form asp-controller="Bakeries" asp-action="Index">
-                                <input type="text" name="keyword" placeholder="Search keyword">
-                                <i class="ti-search"></i>
-                            </form>
+                            <input type="text" name="keyword" id="keyword" placeholder="Search keyword">
+                            <i class="ti-search"></i>
                         </div>
                         <div class="single_sedebar">
                             <div class="select_option">
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
-                                <div class="select_option_dropdown">
+                                <select id="categoryID" name="categoryID">
+                                    <option value="">Chọn danh mục</option>
                                     @foreach (var category in (IEnumerable<KingBakery.Models.Category>)ViewData["Categories"])
                                     {
-                                        if (category != null)
-                                        {
-                                            <p><a asp-controller="Bakeries" asp-action="Index" asp-route-id="@category.ID">@category.Name</a></p>
-                                        }
+                                        <option value="@category.ID">@category.Name</option>
                                     }
-                                </div>
+                                </select>
                             </div>
                         </div>
                         <div class="single_sedebar">
                             <div class="select_option">
-                                <div class="select_option_list">Type <i class="right fas fa-caret-down"></i> </div>
-                                <div class="select_option_dropdown">
-                                    <p><a href="#">Type 1</a></p>
-                                    <p><a href="#">Type 2</a></p>
-                                    <p><a href="#">Type 3</a></p>
-                                    <p><a href="#">Type 4</a></p>
-                                </div>
+                                <select name="priceRange" id="priceRange">
+                                    <option value="">Select Price Range</option>
+                                    <option value="0-100000">0 - 100,000đ</option>
+                                    <option value="100000-200000">100,000đ - 200,000đ</option>
+                                    <option value="200000-500000">200,000đ - 500,000đ</option>
+                                    <option value="500000+">500,000đ+</option>
+                                </select>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-md-8">
