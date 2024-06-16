@@ -102,7 +102,7 @@ namespace KingBakery.Controllers
             });
         }
 
-        public IActionResult DeleteItem(int id)
+        public JsonResult DeleteItem(int id)
         {
             var item = _context.OrderItem.Find(id);
 
@@ -122,7 +122,13 @@ namespace KingBakery.Controllers
             var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
             HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
 
-            return RedirectToAction("Index");
+            var items = _context.OrderItem.Where(o => o.CustomerID == uid && o.OrderID == 0);
+            var total = items.Sum(o => o.Price);
+
+            return Json(new
+            {
+                total
+            });
         }
 
         public JsonResult IncOne(int id)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
@@ -11,8 +7,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using KingBakery.Helper;
-using Microsoft.AspNetCore.Authentication.Google;
-using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -57,9 +51,11 @@ namespace KingBakery.Controllers
         }
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
+
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
         {
@@ -87,6 +83,11 @@ namespace KingBakery.Controllers
             CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
+
+            int uid = user.ID;
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
 
             return RedirectToAction("Index", "Home");
         }
@@ -164,6 +165,7 @@ namespace KingBakery.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role,VertificationCode")] Users users)
@@ -444,7 +446,7 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
-
+        */
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.ID == id);

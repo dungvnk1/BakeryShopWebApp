@@ -86,6 +86,8 @@ $(document).ready(function () {
                 voucher
             },
             success: function () {
+                $("#order").css("display", "none");
+                $("#c_quantity").css("display", "none");
                 Swal.fire({
                     title: "Thành công!",
                     text: "Bạn đã đặt hàng thành công. Hãy theo dõi trạng thái đơn hàng, đơn hàng sẽ sớm được giao đến bạn.",

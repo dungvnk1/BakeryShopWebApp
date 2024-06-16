@@ -106,6 +106,8 @@ function check(id) {
 
 $(document).ready(function () {
     $(".del_cart").click(function () {
+        var id = $(this).data("id");
+
         Swal.fire({
             title: "Bạn có chắc chắn muốn xoá?",
             text: "Bạn sẽ không thể hoàn tác!",
@@ -121,7 +123,19 @@ $(document).ready(function () {
                 $.ajax({
                     url: "OrderItems/DeleteItem",
                     data: { id: $(this).data("id") },
-                    success: function () {
+                    success: function (data) {
+                        $("#item_" + id).css("display", "none");
+                        var subtotal = Intl.NumberFormat('en-US').format(data.total);
+                        $("#subtotal").text(subtotal + "đ");
+                        var cq = $("#c_quantity").text();
+                        var cqtt = parseInt(cq);
+                        cqtt--;
+                        if (cqtt > 0) {
+                            $("#c_quantity").text(cqtt);
+                        }
+                        else {
+                            $("#c_quantity").css("display", "none");
+                        }
                         Swal.fire({
                             title: "Thành công!",
                             text: "Sản phẩm đã được xoá khỏi đơn hàng.",
@@ -130,6 +144,7 @@ $(document).ready(function () {
                             if (result.isConfirmed) {
                                 window.location.reload();
                             }
+                            
                         });
                     },
                     error: function () {

@@ -29,27 +29,51 @@
     <link rel="stylesheet" href="/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css//styletk.css" />
     <style>
 
     </style>
 </head>
 
 <body>
-    <!--::header part start::-->
-    @await Component.InvokeAsync("Header");
-    <!-- Header part end-->
     <!-- breadcrumb part start-->
-    <section class="breadcrumb_part">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb_iner">
-                        <h2 style="font-family:Arial">Danh sách đơn hàng</h2>
-                    </div>
-                </div>
-            </div>
+    <div class="row d-flex justify-content-around">
+        <div class="col-lg-3 item">
+
+            <h3 class="item-name" style="text-align: center;">
+                SL đơn hàng đã bán
+            </h3>
+
+            <h2 class="item-info" style="text-align: center;">
+                @ViewBag.NumberOrders
+            </h2>
+
         </div>
-    </section>
+
+        <div class="col-lg-4 item">
+
+            <h3 class="item-name" style="text-align: center;">
+                Tổng doanh thu
+            </h3>
+
+            <h2 class="item-info" style="text-align: center;">
+                @ViewBag.Revenue
+            </h2>
+
+        </div>
+
+        <div class="col-lg-3 item">
+
+            <h3 class="item-name" style="text-align: center;">
+                Doanh thu hôm nay
+            </h3>
+
+            <h2 class="item-info" style="text-align: center;">
+                @ViewBag.RToday
+            </h2>
+
+        </div>
+    </div>
     <!-- breadcrumb part end-->
     <!--================Bill Area =================-->
     <section class="checkout_area" style="padding: 50px 0;">
@@ -86,13 +110,20 @@
                                     </p>
                                 </td>
                                 <td style="width:150px;text-align:center;">
-                                    <a asp-controller="Bills" asp-action="Detail" asp-route-id="@item.ID" class="genric-btn success-border radius">Xem chi tiết</a>
+                                    <a asp-controller="Orders" asp-action="Details" asp-route-id="@item.ID" class="genric-btn success-border radius">Xem chi tiết</a>
                                 </td>
 
                                 @if (item.Status == "Đã đặt hàng" || item.Status == "Đang giao hàng")
                                 {
                                     <td style="text-align:center;width:160px;">
                                         <a href="javascript:void(0)" data-id="@item.ID" id="canc_@item.ID" class="genric-btn success-border radius canc">Từ chối đơn</a>
+                                    </td>
+                                }
+                                else
+                                @if (item.Status == "Bị từ chối")
+                                {
+                                    <td style="text-align:center;width:160px;">
+                                        <a href="javascript:void(0)" data-id="@item.ID" class="genric-btn success-border radius reason" style="width:100%;">Xem lí do</a>
                                     </td>
                                 }
                                 else
@@ -111,9 +142,9 @@
         </div>
     </section>
     <!--================End Bill Area =================-->
-    <!--::footer_part start::-->
-    @await Component.InvokeAsync("Footer")
-    <!--::footer_part end::-->
+    <script>
+        console.log(1);
+    </script>
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
@@ -140,7 +171,10 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/bills.js"></script>
+    <script src="/js/orders.js"></script>
+    <script>
+        console.log(2);
+    </script>
 </body>
 
 </html>

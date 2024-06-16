@@ -94,7 +94,7 @@ namespace KingBakery.Controllers
                 var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
                 bakery.Quantity -= item.Quantity;
                 temp.OrderID = bill.ID;
-                total += temp.Price * temp.Quantity;
+                total += temp.Price;
                 _context.OrderItem.Update(temp);
                 _context.SaveChanges();
                 _context.BakeryOption.Update(bakery);
@@ -147,6 +147,12 @@ namespace KingBakery.Controllers
                     }
                 }
             }
+            if(remain && !inuse)
+            {
+                voucher.Quantity--;
+            }
+            _context.Vouchers.Update(voucher);
+            _context.SaveChanges();
             return Json(new
             {
                 exist,

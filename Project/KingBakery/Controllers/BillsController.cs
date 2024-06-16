@@ -121,9 +121,9 @@ namespace KingBakery.Controllers
             var reason = "Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm.";
             if (mess != null)
             {
-                if (mess.Note != null)
+                if (mess.DenyReason != null)
                 {
-                    reason = mess.Note;
+                    reason = mess.DenyReason;
                 }
             }
             return Json(new

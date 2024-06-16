@@ -249,18 +249,19 @@ VALUES
 GO
 
 --Orders
---Orders
 INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneNumber, TotalPrice, Status, Note, DenyReason) VALUES
-(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 450000, N'Đã giao hàng',N'Shop vui lòng gửi thêm thìa nhựa nhé',NULL),
-(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 400000, N'Đã đặt hàng',NULL,NULL),
-(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 200000, N'Đang giao hàng',NULL,NULL),
-(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 100000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm')
+(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Shop vui lòng gửi thêm thìa nhựa nhé',NULL),
+(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL),
+(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL),
+(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm'),
+(3, 8, NULL, getdate(), N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
 GO
 SET IDENTITY_INSERT Orders ON;
-INSERT INTO Orders (ID, StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, TotalPrice, Status) VALUES
-(0,NULL, NULL, NULL,NULL,NULL,NULL,NULL)
+INSERT INTO Orders (ID, DateTime) VALUES
+(0,'2000-01-01')
 GO
 SET IDENTITY_INSERT Orders OFF;
+--delete from Orders where id = 
 
 --OrderItem
 INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
@@ -268,9 +269,14 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 1, 1, 2, 2, 400000),
 ( 3, 1, 1, 1, 50000),
 ( 1, 1, 3, 1, 200000),
-( 3, 1, 4, 2, 100000)
+( 3, 1, 4, 2, 100000),
+( 3, 1, 5, 1, 50000),
+( 1, 1, 5, 2, 400000)
 Go
 --select * from OrderItem
+--select * from Orders
+--select * from Vouchers
+
 --BlogPosts
 INSERT INTO BlogPosts (Title, Content, PublishedDate, ModifiedDate, Author, Image)
 VALUES
