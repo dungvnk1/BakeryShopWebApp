@@ -937,6 +937,22 @@
       "PackagePath": "staticwebassets\\js\\custom.js"
     },
     {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\js\\demo\\datatables-demo.js"
+    },
+    {
       "Id": "E:\\Intern C#\\BakeryShopWebApp\\BakeryShopWebApp\\Project\\KingBakery\\wwwroot\\js\\gmaps.min.js",
       "PackagePath": "staticwebassets\\js\\gmaps.min.js"
     },
