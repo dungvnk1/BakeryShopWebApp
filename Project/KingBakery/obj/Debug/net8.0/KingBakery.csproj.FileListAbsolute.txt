@@ -2554,3 +2554,16 @@ E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs
 E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Mvc.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Razor.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.Helpers.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Deployment.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.Razor.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\System.Web.WebPages.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\X.PagedList.Web.Common.dll
+C:\Users\PC\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.MvcApplicationPartsAssemblyInfo.cs
