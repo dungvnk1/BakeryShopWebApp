@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Dashboard" asp-controller="Admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="~\Views\AdminDashboard\Dashboard.cshtml">
+        <a class="nav-link" asp-action="Dashboard" asp-controller="Admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Tổng quan</span>
         </a>
@@ -89,10 +89,10 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Tác vụ khác
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    @* <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
            aria-expanded="true" aria-controls="collapsePages">
@@ -111,7 +111,7 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> *@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
@@ -140,7 +140,7 @@
     <!-- Sidebar Message -->
     <li class="nav-item">
         <a class="nav-link" asp-action="Index" asp-controller="Home">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-home"></i>
             <span>Quay lại trang chủ</span>
         </a>
     </li>
