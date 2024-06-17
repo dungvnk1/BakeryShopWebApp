@@ -48,7 +48,7 @@ namespace KingBakery.Controllers
         public async Task<IActionResult> Index()
         {
             var bakery = _context.Bakery.Include(b => b.Category)
-                                         .Include(b => b.BakeryOptions)                                         
+                                         .Include(b => b.BakeryOptions)
                                           .ToList();
             var categories = _context.Category.ToList();
             ViewData["Categories"] = categories;
@@ -60,9 +60,7 @@ namespace KingBakery.Controllers
         public async Task<IActionResult> Index(string? keyword, int? categoryID, string? priceRange)
         {
             // Bắt đầu với truy vấn cơ bản
-            var bakeryQuery = _context.Bakery.Include(b => b.Category)
-                                             .Include(b => b.BakeryOptions)
-                                             .AsQueryable();
+            var bakeries = from b in _context.Bakery select b;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -72,32 +70,40 @@ namespace KingBakery.Controllers
                     ModelState.AddModelError("Keyword", "Từ khóa tìm kiếm không được vượt quá 100 ký tự.");
                     keyword = null;
                 }
-                else
-                {
-                    keyword = RemoveDiacritics(keyword);
-                    bakeryQuery = bakeryQuery.Where(b => RemoveDiacritics(b.Name).Contains(keyword, StringComparison.OrdinalIgnoreCase));
-                }
+                keyword = RemoveDiacritics(keyword);
+            }
+
+            var bakeryQuery = _context.Bakery.Include(b => b.Category)
+                                             .Include(b => b.BakeryOptions);
+
+            var bakeryList = await bakeryQuery.ToListAsync();
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                bakeryList = bakeryList.Where(b => RemoveDiacritics(b.Name).Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             if (categoryID.HasValue)
             {
-                bakeryQuery = bakeryQuery.Where(b => b.CategoryID == categoryID.Value);
+                bakeryList = bakeryList.Where(b => b.CategoryID == categoryID.Value).ToList();
             }
 
             if (!string.IsNullOrEmpty(priceRange))
             {
                 var priceParts = priceRange.Split('-');
-                if (priceParts.Length == 2 && Decimal.TryParse(priceParts[0], out decimal minPrice) && Decimal.TryParse(priceParts[1], out decimal maxPrice))
+                if (priceParts.Length == 2)
                 {
-                    bakeryQuery = bakeryQuery.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPrice && (decimal)bo.Price <= maxPrice));
+                    if (Decimal.TryParse(priceParts[0], out decimal minPrice) && Decimal.TryParse(priceParts[1], out decimal maxPrice))
+                    {
+                        bakeryList = bakeryList.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPrice && (decimal)bo.Price <= maxPrice)).ToList();
+                    }
                 }
                 else if (priceRange.EndsWith("+") && Decimal.TryParse(priceRange.TrimEnd('+'), out decimal minPriceOnly))
                 {
-                    bakeryQuery = bakeryQuery.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPriceOnly));
+                    bakeryList = bakeryList.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPriceOnly)).ToList();
                 }
             }
 
-            var bakeryList = await bakeryQuery.ToListAsync();
             var categories = await _context.Category.ToListAsync();
             ViewData["Categories"] = categories;
 
@@ -105,6 +111,12 @@ namespace KingBakery.Controllers
             {
                 return View("Error");
             }
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_BakeryListPartial", bakeryList);
+            }
+
+
 
             return View(bakeryList);
         }
@@ -124,11 +136,11 @@ namespace KingBakery.Controllers
 
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
-    
 
 
-    // GET: Bakeries/Details/5
-    public async Task<IActionResult> Details(int? id)
+
+        // GET: Bakeries/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -228,7 +240,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,  Bakery bakery, IFormFile uploadhinh)
+        public async Task<IActionResult> Edit(int id, Bakery bakery, IFormFile uploadhinh)
         {
             if (id != bakery.ID)
             {
@@ -293,10 +305,9 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-
             var bakery = await _context.Bakery
-                .Include(b => b.Category)
-                .FirstOrDefaultAsync(m => m.ID == id);
+                            .Include(b => b.Category)
+                            .FirstOrDefaultAsync(m => m.ID == id);
             if (bakery == null)
             {
                 return NotFound();
