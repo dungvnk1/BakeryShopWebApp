@@ -1,0 +1,17 @@
+﻿@model IEnumerable<YourNamespace.Models.Bakery>
+
+@foreach (var bakery in Model)
+{
+    var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
+    <div class="col-lg-6 col-sm-6">
+        <div class="single_product_item">
+            <img style="width:90%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
+            <h3 style="color:black; font-weight:bold">
+                <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@bakery.ID">
+                    @bakery.Name
+                </a>
+            </h3>
+            <p>@($"Price: {minPrice.ToString("#,##0")}đ")</p>
+        </div>
+    </div>
+}

@@ -95,6 +95,7 @@
                             }
 
 
+
                             <p>
                                 @Model.Description
                             </p>
@@ -112,6 +113,25 @@
                                     </div>
                                     <p>Giá: @($"{@ViewBag.Price.ToString("#,##0")}đ")</p>
                                 </div>
+                                @{
+                                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                    var userRole = User.FindFirstValue(ClaimTypes.Role);
+                                }
+                                @if (userId != null)
+                                {
+                                    @if (userRole != "2")
+                                    {
+                                        <div class="add_to_cart">
+                                            <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                                        </div>
+                                        <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="add_to_cart">
+                                            <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                        </div>
+                                    }
 
                             </form>
                             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -168,7 +188,7 @@
         </div>
     </div>
     <!--================End Single Product Area =================-->
-    
+
     <!--::footer_part start::-->
     @await Component.InvokeAsync("Footer")
     <!--::footer_part end::-->
