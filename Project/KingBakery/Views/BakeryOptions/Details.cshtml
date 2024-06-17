@@ -27,6 +27,12 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/detail.css" />
+    <style>
+        .swal2-popup {
+            top: 12% !important; /* Example to move it down from the top */
+            right: 0% !important; /* Center the modal */
+        }
+    </style>
 </head>
 
 <body>
@@ -91,12 +97,12 @@
                         <p>
                             @Model.Bakery?.Description
                         </p>
-                        <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="card_area" id="form_card_product">
+                        <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.ID" class="card_area">
                             <div class="product_count_area">
                                 <p>Còn @Model.Quantity bánh</p>
                                 <div class="product_count d-inline-block" style="background-color:transparent">
                                     <span class="product_count_item inumber-decrement" onclick="decreaseQuantity()"><i class="ti-minus"></i></span>
-                                    <input class="product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@Model.Quantity">
+                                    <input class="qq product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@Model.Quantity">
                                     <span class="product_count_item number-increment" onclick="increaseQuantity()"> <i class="ti-plus"></i></span>
 
                                     <script type="text/javascript">
@@ -121,7 +127,7 @@
                                 else
                                 {
                                     <div class="add_to_cart">
-                                        <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                        <button type="button" class="atc btn_3" data-id="@Model.ID">Thêm vào giỏ hàng</button>
                                     </div>
                                 }
 
@@ -131,54 +137,18 @@
                                 <div class="add_to_cart">
                                     <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
                                 </div>
-                                <div class="favourite_product">
-                                    <form>
-                                        <button type="submit" disabled><i class="far fa-star"></i></button>
-                                    </form>
-
-                                </div>
-
-                                <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
-                            }
-                            else
-                            {
-                                <div class="add_to_cart">
-                                    <button from="form_card_product" type="submit" class="btn_3">Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="favourite_product">
-                                    <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.ID">
-                                        <button type="submit"><i class="far fa-star"></i></button>
-                                    </form>
-
-
-                                </div>
+                                <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
                             }
 
-                        }
-                        else
-                        {
-                            <div class="add_to_cart">
-                                <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
-                            </div>
-                            <div class="favourite_product">
-                                <form>
-                                    <button type="submit" disabled><i class="far fa-star"></i></button>
-                                </form>
-
-                            </div>
-                            <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
-                        }
-
-
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--================End Single Product Area =================-->
-
     <!--::footer_part start::-->
-    @await Component.InvokeAsync("Footer")
+    @await Component.InvokeAsync("Footer");
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
@@ -199,7 +169,6 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/jquery.counterup.min.js"></script>
     <script src="/js/waypoints.min.js"></script>
-    <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
     <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
@@ -207,62 +176,9 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="/js/quantitybt.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/noti.addtocart.js"></script>
 </body>
 
 </html>
-
-
-@* @model KingBakery.Models.BakeryOption
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
-<div>
-    <h4>BakeryOption</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Bakery)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Bakery.ID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div> *@

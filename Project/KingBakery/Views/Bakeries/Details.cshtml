@@ -27,6 +27,12 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/detail.css" />
+    <style>
+        .swal2-popup {
+            top: 12% !important; /* Example to move it down from the top */
+            right: 0% !important; /* Center the modal */
+        }
+    </style>
 </head>
 
 <body>
@@ -95,16 +101,15 @@
                             }
 
 
-
                             <p>
                                 @Model.Description
                             </p>
-                            <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" class="card_area" id="form_card_product">
+                            <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" class="card_area">
                                 <div class="product_count_area">
                                     <p>Còn @ViewData["Quantity"] bánh</p>
                                     <div class="product_count d-inline-block" style="background-color:transparent">
                                         <span class="product_count_item inumber-decrement" onclick="decreaseQuantity()"><i class="ti-minus"></i></span>
-                                        <input class="product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@ViewBag.Quantity">
+                                        <input class="qq product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@ViewBag.Quantity">
                                         <span class="product_count_item number-increment" onclick="increaseQuantity()"> <i class="ti-plus"></i></span>
 
                                         <script type="text/javascript">
@@ -122,65 +127,26 @@
                                     @if (userRole != "2")
                                     {
                                         <div class="add_to_cart">
-                                            <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                                            <button type="button" class="btn_3" disabled>Thêm vào giỏ hàng</button>
                                         </div>
                                         <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
                                     }
                                     else
                                     {
                                         <div class="add_to_cart">
-                                            <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                            <button type="button" class="atc btn_3" data-id="@Model.BakeryOptions.ElementAt(0).ID">Thêm vào giỏ hàng</button>
                                         </div>
                                     }
 
-                            </form>
-                            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                            var userRole = User.FindFirstValue(ClaimTypes.Role);
-                            @if (userId != null)
-                            {
-                                @if (userRole != "2")
+                                }
+                                else
                                 {
                                     <div class="add_to_cart">
                                         <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
                                     </div>
-                                    <div class="favourite_product">
-                                        <form>
-                                            <button type="submit" disabled><i class="far fa-star"></i></button>
-                                        </form>
-
-                                    </div>
-                                    <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
+                                    <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
                                 }
-                                else
-                                {
-
-                                    <div class="add_to_cart">
-                                        <button type="submit" form="form_card_product" class="btn_3">Thêm vào giỏ hàng</button>
-                                    </div>
-                                    <div class="favourite_product">
-                                        <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" asp-route-id_pro="@Model.ID">
-                                            <button type="submit"><i class="far fa-star"></i></button>
-                                        </form>
-
-
-                                    </div>
-
-                                }
-
-                            }
-                            else
-                            {
-                                <div class="add_to_cart">
-                                    <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
-                                </div>
-                                <div class="favourite_product">
-                                    <form>
-                                        <button type="submit" disabled><i class="far fa-star"></i></button>
-                                    </form>
-
-                                </div>
-                                <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
-                            }
+                            </form>
                         }
                     </div>
                 </div>
@@ -188,9 +154,8 @@
         </div>
     </div>
     <!--================End Single Product Area =================-->
-
     <!--::footer_part start::-->
-    @await Component.InvokeAsync("Footer")
+    @await Component.InvokeAsync("Footer");
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
@@ -211,62 +176,16 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/jquery.counterup.min.js"></script>
     <script src="/js/waypoints.min.js"></script>
-    <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
+    <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="/js/quantitybt.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/noti.addtocart.js"></script>
 </body>
 
 </html>
-
-
-
-
-@*
-@model KingBakery.Models.Bakery
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
-<div>
-    <h4>Bakery</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.ID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
- *@
