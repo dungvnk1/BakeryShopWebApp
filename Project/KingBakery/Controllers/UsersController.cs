@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using KingBakery.Helper;
+using Microsoft.AspNetCore.Authentication.Google;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -91,7 +93,6 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        /*
         public async Task LoginGoogle()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
@@ -145,7 +146,6 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        */
 
         // GET: Users/Create
         public IActionResult Create()
@@ -165,7 +165,6 @@ namespace KingBakery.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role,VertificationCode")] Users users)
@@ -446,7 +445,7 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
-        */
+
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.ID == id);
