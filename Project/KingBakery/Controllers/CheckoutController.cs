@@ -101,9 +101,12 @@ namespace KingBakery.Controllers
                 _context.SaveChanges();
             }
             bill.TotalPrice = total + 20000;
-            if (vch != null)
+            if (vch != null && vch.Quantity > 0)
             {
                 bill.TotalPrice -= (bill.TotalPrice * vch.VPercent / 100);
+                vch.Quantity--;
+                _context.Vouchers.Update(vch);
+                _context.SaveChanges();
             }
             _context.Orders.Update(bill);
             _context.SaveChanges();
@@ -147,12 +150,7 @@ namespace KingBakery.Controllers
                     }
                 }
             }
-            if(remain && !inuse)
-            {
-                voucher.Quantity--;
-                _context.Vouchers.Update(voucher);
-                _context.SaveChanges();
-            }
+            
             return Json(new
             {
                 exist,

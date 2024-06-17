@@ -14,6 +14,7 @@ namespace KingBakery.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
