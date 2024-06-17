@@ -104,7 +104,7 @@
                             <p>
                                 @Model.Description
                             </p>
-                            <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" class="card_area">
+                            <div class="card_area">
                                 <div class="product_count_area">
                                     <p>Còn @ViewData["Quantity"] bánh</p>
                                     <div class="product_count d-inline-block" style="background-color:transparent">
@@ -136,6 +136,11 @@
                                         <div class="add_to_cart">
                                             <button type="button" class="atc btn_3" data-id="@Model.BakeryOptions.ElementAt(0).ID">Thêm vào giỏ hàng</button>
                                         </div>
+                                        <div class="favourite_product">
+                                            <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" asp-route-id_pro="@Model.ID">
+                                                <button type="submit"><i class="far fa-star"></i></button>
+                                            </form>
+                                        </div>
                                     }
 
                                 }
@@ -146,7 +151,7 @@
                                     </div>
                                     <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
                                 }
-                            </form>
+                            </div>
                         }
                     </div>
                 </div>
