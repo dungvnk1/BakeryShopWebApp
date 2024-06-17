@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Bakeries/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Bakeries/Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcTWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Bakeries/_BakeryListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcX0Jha2VyeUxpc3RQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/BakeryOptions/Create.cshtml]
@@ -230,10 +238,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG9wcGluZ0NhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Home/_BakeryListPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQmFrZXJ5TGlzdFBhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/OrderItems/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -286,12 +290,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2lkZWJhclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Shared/Components/TopBar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVG9wQmFyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ29uZmlybUVtYWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/ConfirmForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ29uZmlybUZvcmdvdFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/Create.cshtml]
@@ -310,12 +334,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/ForgotPasswordEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRm9yZ290UGFzc3dvcmRFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Users/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documents/GitHub/BakeryShopWebApp/Project/KingBakery/Views/Vouchers/Create.cshtml]

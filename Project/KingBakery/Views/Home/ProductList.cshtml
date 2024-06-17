@@ -1,5 +1,4 @@
-﻿
-@using X.PagedList.Mvc.Core
+﻿@using X.PagedList.Mvc.Core
 @model X.PagedList.IPagedList<Bakery>
 <!doctype html>
 <html lang="zxx">
@@ -50,48 +49,39 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="product_sidebar">
-                        <div class="single_sedebar">
+                        <form id="searchForm">
                             <input type="text" name="keyword" id="keyword" placeholder="Search keyword">
-                            <i class="ti-search"></i>
-                        </div>
-                        <div class="single_sedebar">
-                            <div class="select_option">
-                                <div class="select_option_dropdown" id="categoryID" name="categoryID">
-                                    @foreach (var category in (IEnumerable<KingBakery.Models.Category>)ViewData["Categories"])
-                                    {
-                                        if (category != null)
-                                        {
-                                            <p><a asp-controller="Bakeries" asp-action="Index" method="POST" asp-route-id="@category.ID">@category.Name</a></p>
-                                        }
-                                    }
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_sedebar">
-                            <div class="select_option">
-                                <select name="priceRange" id="priceRange">
-                                    <option value="">Select Price Range</option>
-                                    <option value="0-100000">0 - 100,000đ</option>
-                                    <option value="100000-200000">100,000đ - 200,000đ</option>
-                                    <option value="200000-500000">200,000đ - 500,000đ</option>
-                                    <option value="500000+">500,000đ+</option>
-                                </select>
-                            </div>
-                        </div>
+                            <select id="categoryID" name="categoryID">
+                                <option value="">Chọn danh mục</option>
+                                @foreach (var category in (IEnumerable<KingBakery.Models.Category>)ViewData["Categories"])
+                                {
+                                    <option value="@category.ID">@category.Name</option>
+                                }
+                            </select>
+                            <select name="priceRange" id="priceRange">
+                                <option value="">Select Price Range</option>
+                                <option value="0-100000">0 - 100,000đ</option>
+                                <option value="100000-200000">100,000đ - 200,000đ</option>
+                                <option value="200000-500000">200,000đ - 500,000đ</option>
+                                <option value="500000+">500,000đ+</option>
+                            </select>
+                            <input type="hidden" name="page" id="page" value="1">
+                            <button type="button" onclick="searchByName()">Search</button>
+                        </form>
 
 
                     </div>
                 </div>
 
-                
+               
                 <div class="col-md-8">
-                    <div class="product_list" id="product" >
-                        <div class="row" >
+
+                    <div class="product_list" id="product">
+                        <div class="row">
                             @foreach (var bakery in Model)
                             {
                                 var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
-                                <div class="col-lg-6 col-sm-6" >
+                                <div class="col-lg-6 col-sm-6">
                                     <div class="single_product_item">
                                         <img style="width:90%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
                                         <h3 style="color:black; font-weight:bold">
@@ -105,15 +95,16 @@
                             }
                         </div>
                     </div>
+                    @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page = page }),
+                             new PagedListRenderOptions()
+                    {
+                        LiElementClasses = new List<String> { "page-item" },
+                        PageClasses = new List<String> { "page-link" }
+                    }
+                             )
                 </div>
-                @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page = page }),
-                         new PagedListRenderOptions()
-                {
-                    LiElementClasses = new List<String> { "page-item" },
-                    PageClasses = new List<String> { "page-link" }
-                }
-                         )
-               
+              
+
 
     </section>
     <!-- product list part end-->
@@ -163,7 +154,7 @@
                         </h3>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-5">
                     <div class="feature_part_content">
                         <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness.</p>
@@ -196,7 +187,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
     <!-- feature part end -->
@@ -298,27 +289,23 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script>
-                function searchByName() {
-            var txtSearch = document.getElementById("keyword").value;
-            var categoryID = document.getElementById("categoryID").value;
-            var priceRange = document.getElementById("priceRange").value;
-
-            $.post("/Bakeries/Index", {
-                keyword: txtSearch,
-                categoryID: categoryID,
-                priceRange: priceRange
-            }, function (data) {
-                var row = document.getElementById("product");
-                row.innerHTML = data;
-            }).fail(function (xhr) {
-                console.error(xhr);
-            });
+        function searchByName() {
+            var form = document.getElementById("searchForm");
+            var formData = new FormData(form);
+           
+            var queryString = new URLSearchParams(formData).toString();
+            fetch(`/Bakeries/Index?${queryString}`, {
+                method: 'POST',
+                        headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("product").innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
         }
-
-        // Add event listeners
-        document.getElementById("keyword").addEventListener("input", searchByName);
-        document.getElementById("categoryID").addEventListener("change", searchByName);
-        document.getElementById("priceRange").addEventListener("change", searchByName);
     </script>
 </body>
 

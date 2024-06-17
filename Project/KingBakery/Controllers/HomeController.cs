@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 using System.Diagnostics;
 using System.Security.Claims;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -94,7 +95,7 @@ namespace KingBakery.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ViewModel.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
     }
