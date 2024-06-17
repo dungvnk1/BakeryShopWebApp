@@ -150,9 +150,9 @@ namespace KingBakery.Controllers
             if(remain && !inuse)
             {
                 voucher.Quantity--;
+                _context.Vouchers.Update(voucher);
+                _context.SaveChanges();
             }
-            _context.Vouchers.Update(voucher);
-            _context.SaveChanges();
             return Json(new
             {
                 exist,
