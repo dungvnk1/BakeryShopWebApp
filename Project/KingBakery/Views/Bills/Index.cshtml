@@ -100,6 +100,13 @@
                                     </td>
                                 }
                                 else
+                                @if (item.Status == "Đã giao hàng")
+                                {
+                                    <td style="text-align:center;width:160px;">
+                                        <a asp-controller="Feedbacks" asp-action="Index" class="genric-btn success-border radius reason" style="width:100%;">Đánh giá</a>
+                                    </td>
+                                }
+                                else
                                 {
                                     <td></td>
                                 }

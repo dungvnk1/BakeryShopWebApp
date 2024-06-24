@@ -93,6 +93,7 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        /*
         public async Task LoginGoogle()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
@@ -445,6 +446,7 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
+        */
 
         private bool UsersExists(int id)
         {
