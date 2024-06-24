@@ -7,6 +7,7 @@
     <UserSecretsId>85c8173a-161e-419f-a085-81c814dc9dfd</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>

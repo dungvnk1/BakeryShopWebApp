@@ -15,7 +15,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: "Cancel",
+                    url: "Bills/Cancel",
                     data: { id: id },
                     success: function () {
                         Swal.fire({
@@ -44,7 +44,7 @@
     $(".reason").click(function () {
         var id = $(this).data("id");
         $.ajax({
-            url: "GetCancelReason",
+            url: "Bills/GetCancelReason",
             data: { id: id },
             success: function (data) {
                 Swal.fire({

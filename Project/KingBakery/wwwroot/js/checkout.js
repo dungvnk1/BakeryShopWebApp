@@ -75,46 +75,63 @@ $(document).ready(function () {
         var note = $(".note").val();
         var voucher = $("#ipv").val();
         console.log(address); console.log(phone); console.log(note); console.log(voucher);
-
-        $.ajax({
-            type: "POST",
-            url: "Checkout/CreateBill",
-            data: {
-                address,
-                number: phone,
-                note,
-                voucher
-            },
-            success: function () {
-                $("#order").css("display", "none");
-                $("#c_quantity").css("display", "none");
-                Swal.fire({
-                    title: "Thành công!",
-                    text: "Bạn đã đặt hàng thành công. Hãy theo dõi trạng thái đơn hàng, đơn hàng sẽ sớm được giao đến bạn.",
-                    icon: "success",
-                    showDenyButton: true,
-                    confirmButtonColor: "#3085d6",
-                    denyButtonColor: "#d33",
-                    denyButtonText: "Lịch sử đặt hàng",
-                    confirmButtonText: "Về Trang chủ"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "/";
-                    }
-                    else if (result.isDenied) {
-                        window.location.href = "/Bills/Index";
-                    }
-                });
-            },
-            error: function () {
-
-                Swal.fire({
-                    icon: "error",
-                    title: "Ôi...",
-                    text: "Đã có lỗi xảy ra!"
-                });
+        var checkad = true, checkph = true;
+        var mess = "Không được để trống ";
+        if (address == null || address.length == 0) {
+            mess += "Địa chỉ"
+            checkad = false;
+        }
+        if (phone == null || phone.length == 0) {
+            if (!checkad) {
+                mess += " và ";
             }
-        });
+            mess += "SĐT";
+            checkph = false;
+        }
+        if (!checkad || !checkph) {
+            Swal.fire(mess + "!");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "Checkout/CreateBill",
+                data: {
+                    address,
+                    number: phone,
+                    note,
+                    voucher
+                },
+                success: function () {
+                    $("#order").css("display", "none");
+                    $("#c_quantity").css("display", "none");
+                    Swal.fire({
+                        title: "Thành công!",
+                        text: "Bạn đã đặt hàng thành công. Hãy theo dõi trạng thái đơn hàng, đơn hàng sẽ sớm được giao đến bạn.",
+                        icon: "success",
+                        showDenyButton: true,
+                        confirmButtonColor: "#3085d6",
+                        denyButtonColor: "#d33",
+                        denyButtonText: "Lịch sử đặt hàng",
+                        confirmButtonText: "Về Trang chủ"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/";
+                        }
+                        else if (result.isDenied) {
+                            window.location.href = "/Bills";
+                        }
+                    });
+                },
+                error: function () {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Ôi...",
+                        text: "Đã có lỗi xảy ra!"
+                    });
+                }
+            });
+        }
     });
 });
 
