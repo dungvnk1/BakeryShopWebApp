@@ -21,5 +21,7 @@ namespace KingBakery.Models
         public virtual Customer? Customer { get; set; }
         public virtual BakeryOption? BakeryOption { get; set; }
         public virtual Orders? Orders { get; set; }
+        public virtual ICollection<Feedback>? Feedbacks { get; set; }
+
     }
 }

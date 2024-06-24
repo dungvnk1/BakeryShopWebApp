@@ -12,5 +12,6 @@ namespace KingBakery.Models
         public DateTime HiredDate { get; set; }
         public string Status { get; set; }
         public virtual Users? Users { get; set; }
+        public virtual ICollection<FeedbackResponse>? FeedbackResponse { get; set; }
     }
 }
