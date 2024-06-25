@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -37,14 +38,23 @@ namespace KingBakery.Controllers
             var bakeryOption = await _context.BakeryOption
                 .Include(b => b.Bakery)
                 .FirstOrDefaultAsync(m => m.ID == id);
+            var bakey = await _context.Bakery.Include(f => f.BakeryOptions.OrderByDescending(f => f.ID)).FirstOrDefaultAsync(m => m.ID == bakeryOption.BakeryID);
 
             if (bakeryOption == null)
             {
                 return NotFound();
             }
+            List<Feedback> feedback = await _context.Feedback.Include(f => f.FeedbackResponses).ThenInclude(f => f.Staff).ThenInclude(f => f.Users).Include(f => f.Customer).ThenInclude(f => f.Users).Where(b => b.BakeryID == id).ToListAsync();
+            var model = new ProductDetailsViewModel
+            {
+                Bakerys = bakey,
+                BakeryOptions = bakeryOption,
+                Feedbacks = feedback
+            };
             ViewData["BakeryOptions"] = _context.BakeryOption.Include(b => b.Bakery).Where(bo => bo.BakeryID == bakeryOption.BakeryID).ToList();
-            return View(bakeryOption);
+            return View(model);
         }
+
 
         // GET: BakeryOptions/Create
         public IActionResult Create()

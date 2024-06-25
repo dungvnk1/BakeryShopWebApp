@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using System.Security.Claims;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -20,30 +22,59 @@ namespace KingBakery.Controllers
         }
 
         // GET: Feedbacks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var kingBakeryContext = _context.Feedback.Include(f => f.BakeryOption).Include(f => f.Customer);
-            return View(await kingBakeryContext.ToListAsync());
+            var items = _context.OrderItem.Include(o => o.BakeryOption).ThenInclude(f=>f.Bakery).Where(o => o.OrderID == id).ToList();
+            var order = _context.Orders.Find(id);
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = int.Parse(userID);
+            }
+            var model = new FeedbackItemViewModel
+            {
+                OrderID = id,
+                Items = items
+            };
+            var user = _context.Users.Find(uid);
+            ViewBag.FullName = user.FullName;
+            ViewBag.Phone = order.PhoneNumber;
+            ViewBag.Address = order.AdrDelivery;
+            ViewBag.Status = order.Status;
+            ViewBag.HasFB = order.HasFB;
+            ViewData["Bakery"] = _context.Bakery.ToList();
+            return View(model);
         }
 
         // GET: Feedbacks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            var items = _context.OrderItem.Include(o => o.BakeryOption).ThenInclude(f => f.Bakery).Where(o => o.OrderID == id).ToList();
+            var order = _context.Orders.Find(id);
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var feedback = await _context.Feedback.Where(u => u.OrderItems.Orders.ID == id).ToListAsync();
+            int uid = 0;
+            if (userID != null)
             {
-                return NotFound();
+                uid = int.Parse(userID);
             }
-
-            var feedback = await _context.Feedback
-                .Include(f => f.BakeryOption)
-                .Include(f => f.Customer)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (feedback == null)
+            var model = new FeedbackItemViewModel
             {
-                return NotFound();
-            }
+                OrderID = order.ID,
+                Items = items,
+                Feedbacks = feedback
+            };
+            var user = _context.Users.Find(uid);
+            ViewBag.FullName = user.FullName;
+            ViewBag.Phone = order.PhoneNumber;
+            ViewBag.Address = order.AdrDelivery;
+            ViewBag.Status = order.Status;
+            ViewBag.HasFB = order.HasFB;
+            ViewData["Bakery"] = _context.Bakery.ToList();
+            return View(model);
 
-            return View(feedback);
+           
         }
 
         // GET: Feedbacks/Create
@@ -59,19 +90,75 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,CustomerID,BakeryID,ContentFB")] Feedback feedback)
+        public async Task<IActionResult> Create(FeedbackItemViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(feedback);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", feedback.BakeryID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", feedback.CustomerID);
-            return View(feedback);
-        }
+                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+                foreach (var feedback in model.Feedbacks)
+                {
+                    var newFeedback = new Feedback
+                    {
+                        OrderID = feedback.OrderID,
+                        ContentFB = feedback.ContentFB,
+                        CustomerID = int.Parse(userID),
+                        BakeryID = feedback.BakeryID
+                    };
+
+                    _context.Feedback.Add(newFeedback);
+                }
+
+                await _context.SaveChangesAsync();
+
+                // Update OrderItem to indicate it has feedbacks
+                var orderItem = await _context.Orders.FindAsync(model.OrderID);
+                if (orderItem != null)
+                {
+                    orderItem.HasFB = true;
+                    await _context.SaveChangesAsync();
+                }
+
+                return RedirectToAction("Index", "Bills", new {});
+            }
+
+            return RedirectToAction("Index", new { id = model.OrderID });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ReplyFeedback(FeedbackItemViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                foreach (var feedback in model.FeedbackResponses)
+                {
+                    if(feedback.ReplyContent != null)
+                    {
+                        var newFeedback = new FeedbackResponse
+                        {
+
+                            FeedbackID = feedback.FeedbackID,
+                            ReplyContent = feedback.ReplyContent,                          
+                            StaffID = int.Parse(userID)
+                        };
+                        _context.FeedbackResponse.Add(newFeedback);
+                    }
+                   
+
+                    
+                }
+
+                await _context.SaveChangesAsync();
+
+                // Update OrderItem to indicate it has feedbacks
+
+
+                return RedirectToAction("Index", "Orders", new { });
+            }
+            return RedirectToAction("Index", "Orders", new {});
+        }
         // GET: Feedbacks/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -136,7 +223,7 @@ namespace KingBakery.Controllers
             }
 
             var feedback = await _context.Feedback
-                .Include(f => f.BakeryOption)
+                .Include(f => f.Bakery)
                 .Include(f => f.Customer)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (feedback == null)

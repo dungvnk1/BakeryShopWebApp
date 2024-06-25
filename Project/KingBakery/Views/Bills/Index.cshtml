@@ -100,10 +100,10 @@
                                     </td>
                                 }
                                 else
-                                @if (item.Status == "Đã giao hàng")
+                                @if (item.Status == "Đã giao hàng" && item.HasFB != true)
                                 {
                                     <td style="text-align:center;width:160px;">
-                                        <a asp-controller="Feedbacks" asp-action="Index" class="genric-btn success-border radius reason" style="width:100%;">Đánh giá</a>
+                                        <a asp-controller="Feedbacks" asp-action="Index" asp-route-id="@item.ID" class="genric-btn success-border radius reason" style="width:100%;">Đánh giá</a>
                                     </td>
                                 }
                                 else

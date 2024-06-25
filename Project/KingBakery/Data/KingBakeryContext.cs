@@ -25,6 +25,7 @@ namespace KingBakery.Data
         public DbSet<KingBakery.Models.OrderItem> OrderItem { get; set; } = default!;
         public DbSet<KingBakery.Models.Feedback> Feedback { get; set; } = default!;
         public DbSet<KingBakery.Models.Favourite> Favourite { get; set; } = default!;
+        public DbSet<KingBakery.Models.FeedbackResponse> FeedbackResponse { get; set; } = default!;
         public DbSet<KingBakery.Models.BlogPosts> BlogPosts { get; set; } = default!;
         public DbSet<KingBakery.Models.Shipper> Shipper { get; set; } = default!;
         public DbSet<KingBakery.Models.Staff> Staff { get; set; } = default!;
@@ -44,5 +45,16 @@ namespace KingBakery.Data
         //    //    .WithMany()
         //    //    .HasForeignKey(o => o.ShipperID);
         //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+
+            modelBuilder.Entity<OrderItem>()
+                .HasMany(oi => oi.Feedbacks)
+                .WithOne(f => f.OrderItems)
+                .HasForeignKey(f => f.OrderID);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
