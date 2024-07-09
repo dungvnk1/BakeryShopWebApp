@@ -255,9 +255,9 @@ INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneN
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL),
 (3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL),
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm'),
-(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 530000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
-(4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 240000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
-(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 860000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
+(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 490000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
+(4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 120000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
+(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
 GO
 SET IDENTITY_INSERT Orders ON;
 INSERT INTO Orders (ID, DateTime) VALUES
@@ -274,7 +274,9 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 1, 1, 3, 1, 200000),
 ( 3, 1, 4, 2, 100000),
 ( 3, 1, 5, 1, 50000),
-( 1, 1, 5, 2, 400000)
+( 1, 1, 5, 2, 400000),
+( 3, 1, 6, 2, 100000),
+( 1, 1, 7, 1, 200000)
 Go
 --select * from OrderItem
 --select * from Orders
