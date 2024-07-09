@@ -22,7 +22,8 @@ CREATE TABLE Users (
 	Email NVARCHAR(100),
     PhoneNumber NVARCHAR(100) NOT NULL,
 	Role INT NOT NULL,
-	VertificationCode NVARCHAR(200)
+	VertificationCode NVARCHAR(200),
+	IsBanned INT
 )
 GO
 
@@ -144,19 +145,19 @@ GO
 
 -----INSERT DATA-----
 --Users
-INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role, VertificationCode)--*Role: 1_admin,2_cus,3_staff,4_shipper
+INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role, VertificationCode, IsBanned)--*Role: 1_admin,2_cus,3_staff,4_shipper
 VALUES
-	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2, ''),  --*Role: 1_admin,2_cus,3_staff,4_shipper
-	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1, ''),
-	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3, ''),
-	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3, ''),
-	(N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2, ''),
-    (N'Hoàng Văn D', N'hoangvand', N'passwordD', 'Ha Noi', '2001-06-30', 'hoangvand@example.com', '0934567890', 1, ''),
-    (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3, ''),
-    (N'Phạm Văn F', N'phamvanf', N'passwordF', N'12 Pham Ngoc Thach', '1999-04-01', 'phamvanf@example.com', '0956789012', 4, ''),
-    (N'Nguyễn Văn G', N'nguyenvang', N'passwordG', 'Ha Noi', '1998-03-15', 'nguyenvang@example.com', '0967890123', 2, ''),
-    (N'Trần Thị H', N'tranthih', N'passwordH', N'34 Tran Quoc Toan', '1997-02-20', 'tranthih@example.com', '0978901234', 3, ''),
-    (N'Đỗ Minh I', N'dominhi', N'passwordI', N'56 Ly Thuong Kiet', '1996-01-10', 'dominhi@example.com', '0989012345', 1, '');
+	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2, '', 0),  --*Role: 1_admin,2_cus,3_staff,4_shipper
+	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1, '', 0),
+	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3, '', 0),
+	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3, '', 0),
+	(N'Nguyễn Thị C', N'nguyenthic', N'passwordC', N'456 Nguyen Trai', '2002-07-15', 'nguyenthic@example.com', '0923456789', 2, '', 0),
+    (N'Hoàng Văn D', N'hoangvand', N'passwordD', 'Ha Noi', '2001-06-30', 'hoangvand@example.com', '0934567890', 1, '', 0),
+    (N'Lê Thị E', N'lethie', N'passwordE', N'789 Tran Hung Dao', '2000-05-25', 'lethie@example.com', '0945678901', 3, '', 0),
+    (N'Phạm Văn F', N'phamvanf', N'passwordF', N'12 Pham Ngoc Thach', '1999-04-01', 'phamvanf@example.com', '0956789012', 4, '', 0),
+    (N'Nguyễn Văn G', N'nguyenvang', N'passwordG', 'Ha Noi', '1998-03-15', 'nguyenvang@example.com', '0967890123', 2, '', 0),
+    (N'Trần Thị H', N'tranthih', N'passwordH', N'34 Tran Quoc Toan', '1997-02-20', 'tranthih@example.com', '0978901234', 3, '', 0),
+    (N'Đỗ Minh I', N'dominhi', N'passwordI', N'56 Ly Thuong Kiet', '1996-01-10', 'dominhi@example.com', '0989012345', 1, '', 0);
 GO
 
 --Employee
@@ -173,8 +174,8 @@ GO
 INSERT INTO Customer(UserID,Ranking)
 VALUES
 	(1,N'Đồng'),
-	(5,N'Bạc '),
-	(9,N'Vàng')
+	(5,N'Đồng'),
+	(9,N'Đồng')
 GO
 
 
@@ -254,7 +255,9 @@ INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneN
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL),
 (3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL),
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm'),
-(3, 8, NULL, getdate(), N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
+(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 530000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
+(4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 240000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
+(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 860000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
 GO
 SET IDENTITY_INSERT Orders ON;
 INSERT INTO Orders (ID, DateTime) VALUES
@@ -276,6 +279,7 @@ Go
 --select * from OrderItem
 --select * from Orders
 --select * from Vouchers
+--select * from Users
 
 --BlogPosts
 INSERT INTO BlogPosts (Title, Content, PublishedDate, ModifiedDate, Author, Image)
@@ -285,3 +289,4 @@ VALUES
     ('Baking Tips and Tricks', 'Get ready to take your baking skills to the next level with these expert tips and tricks!', '2022-02-01 08:00:00', NULL, 'Bob Johnson', 'blog-post-3.jpg'),
     ('New Arrivals: Spring Collection', 'Check out our new spring collection of baked goods, featuring fresh flavors and ingredients!', '2022-03-01 12:00:00', '2022-03-05 10:00:00', 'Emily Chen', 'blog-post-4.jpg'),
     ('Behind the Scenes: Our Bakery', 'Ever wondered what goes on behind the scenes of our bakery? Take a peek at our latest blog post to find out!', '2022-04-01 10:00:00', NULL, 'Michael Brown', 'blog-post-5.jpg');
+
