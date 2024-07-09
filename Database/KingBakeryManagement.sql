@@ -92,7 +92,6 @@ CREATE TABLE Orders(
 	TotalPrice FLOAT,
 	Status NVARCHAR(100),
 	DenyReason NVARCHAR(2000),
-	HasFB bit default 0,
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
 	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID),
 	FOREIGN KEY (VoucherID) REFERENCES Vouchers(VoucherID) ON DELETE CASCADE
@@ -113,25 +112,12 @@ CREATE TABLE OrderItem(
 GO
 
 CREATE TABLE Feedback(
-	[ID] [int] IDENTITY(1,1) PRIMARY KEY,
-	[CustomerID] [int] NULL,
-	[OrderID] [int] NULL,
-	[BakeryID] [int] NULL,
-	[ContentFB] [nvarchar](4000) NULL,
-	[FeedbackDate] [datetime] NULL DEFAULT (getdate()),
+	ID INT Identity(1,1) PRIMARY KEY,
+	CustomerID INT,
+	BakeryID INT,
+	ContentFB NVARCHAR(4000),
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
-	FOREIGN KEY (BakeryID) REFERENCES BakeryOption(ID) ON DELETE CASCADE,
-	FOREIGN KEY (OrderID) REFERENCES OrderItem(ID) ON DELETE NO ACTION
-)
-GO
-CREATE TABLE FeedbackResponse(
-	[ID] [int] IDENTITY(1,1) PRIMARY KEY,
-	[FeedbackID] [int] NULL,
-	[StaffID] [int] NULL,
-	[ReplyContent] [nvarchar](4000) NULL,
-	[ReplyDate] [datetime] NULL DEFAULT (getdate()),
-	FOREIGN KEY (FeedbackID) REFERENCES Feedback(ID) ON DELETE CASCADE,
-	FOREIGN KEY (StaffID) REFERENCES Employee(UserID) ON DELETE NO ACTION
+	FOREIGN KEY (BakeryID) REFERENCES BakeryOption(ID) ON DELETE CASCADE
 )
 GO
 

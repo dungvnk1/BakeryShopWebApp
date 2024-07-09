@@ -126,11 +126,9 @@
                                         <a href="javascript:void(0)" data-id="@item.ID" class="genric-btn success-border radius reason" style="width:100%;">Xem lí do</a>
                                     </td>
                                 }
-                                else if ((item.Status == "Đã giao hàng") && item.HasFB == true)
+                                else
                                 {
-                                    <td>
-                                        <a asp-controller="Feedbacks" asp-action="Details" class="genric-btn success-border radius feedback" asp-route-id="@item.ID">Đánh giá</a>
-                                    </td>
+                                    <td></td>
                                 }
 
                             </tr>

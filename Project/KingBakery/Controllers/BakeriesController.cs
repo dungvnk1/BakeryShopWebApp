@@ -13,7 +13,6 @@ using X.PagedList;
 using KingBakery.Extensions;
 using System.Globalization;
 using System.Text;
-using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -162,19 +161,10 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-            List<Feedback> feedback = await _context.Feedback.Include(f => f.FeedbackResponses).ThenInclude(f => f.Staff).ThenInclude(f => f.Users).Include(f => f.Customer).ThenInclude(f => f.Users).Where(b => b.BakeryID == id).ToListAsync();
-            var model = new ProductDetailsViewModel
-            {
-                Bakerys = bakery,
-                Feedbacks = feedback
-
-            };
-
             ViewData["Quantity"] = bakeryOption.Quantity;
             ViewData["Price"] = bakeryOption.Price;
-            return View(model);
+            return View(bakery);
         }
-
 
         // GET: Bakeries/Create
         public IActionResult Create()

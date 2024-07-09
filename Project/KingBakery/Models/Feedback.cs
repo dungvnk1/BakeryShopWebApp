@@ -11,13 +11,9 @@ namespace KingBakery.Models
         public int CustomerID { get; set; }
         [ForeignKey("BakeryOption")]
         public int BakeryID { get; set; }
-        [ForeignKey("OrderItem")]
-        public int OrderID { get; set; }
-        public DateTime FeedbackDate { get; set; } = DateTime.Now;
-        public string? ContentFB { get; set; }
+        public string ContentFB { get; set; }
+
         public virtual Customer? Customer { get; set; }
-        public virtual BakeryOption? Bakery { get; set; }
-        public virtual OrderItem? OrderItems { get; set; }
-        public virtual ICollection<FeedbackResponse>? FeedbackResponses { get; set; }
+        public virtual BakeryOption? BakeryOption { get; set; }
     }
 }
