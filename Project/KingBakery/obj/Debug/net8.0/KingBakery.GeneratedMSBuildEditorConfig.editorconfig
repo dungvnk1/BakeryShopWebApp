@@ -26,8 +26,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Intern C#\BakeryShopWebApp\BakeryShopWebApp\Project\KingBakery
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Admin/CustomerManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJNYW5hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Admin/FinManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmluTWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Admin/SalaryManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2FsYXJ5TWFuYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Admin/UserDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlckRldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Intern C\#/BakeryShopWebApp/BakeryShopWebApp/Project/KingBakery/Views/Bakeries/Create.cshtml]
