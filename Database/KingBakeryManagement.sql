@@ -91,6 +91,7 @@ CREATE TABLE Orders(
 	PhoneNumber NVARCHAR(100),
 	Note NVARCHAR(2000),
 	TotalPrice FLOAT,
+	Payment VARCHAR(10),
 	Status NVARCHAR(100),
 	DenyReason NVARCHAR(2000),
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
@@ -250,14 +251,14 @@ VALUES
 GO
 
 --Orders
-INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneNumber, TotalPrice, Status, Note, DenyReason) VALUES
-(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Shop vui lòng gửi thêm thìa nhựa nhé',NULL),
-(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL),
-(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL),
-(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm'),
-(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 490000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
-(4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 120000, N'Đã giao hàng',N'Cảm ơn shop',NULL),
-(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL)
+INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneNumber, TotalPrice, Status, Note, DenyReason, Payment) VALUES
+(3, 8, NULL, '2024-05-01 10:30:00', N'123 Đường ABC, Quận 1, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Shop vui lòng gửi thêm thìa nhựa nhé',NULL, 'COD'),
+(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL, 'COD'),
+(3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL, 'COD'),
+(NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm', 'COD'),
+(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 490000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
+(4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 120000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
+(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD')
 GO
 SET IDENTITY_INSERT Orders ON;
 INSERT INTO Orders (ID, DateTime) VALUES
