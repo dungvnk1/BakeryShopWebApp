@@ -21,8 +21,21 @@ namespace KingBakery.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Staff.Include(s => s.Users);
-            return View(await kingBakeryContext.ToListAsync());
+            var orders = _context.Orders.Where(o => o.ShipperID == null).ToList();
+            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
+            var count = orders.Count();
+            var today = DateTime.Now.ToShortDateString();
+
+            var rtd = orders.Where(o => {
+                    var day = o.DateTime.Value.ToShortDateString();
+                    return (day == today) && (o.Status == "Đã giao hàng");
+                })
+                .Sum(o => o.TotalPrice);
+
+            ViewBag.Revenue = sum;
+            ViewBag.NumberOrders = count - 1;
+            ViewBag.RToday = rtd;
+            return View(orders);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -148,48 +161,61 @@ namespace KingBakery.Controllers
             return _context.Staff.Any(e => e.UserID == id);
         }
 
-        public async Task<IActionResult> AssignShipper()
+        public async Task<IActionResult> Orders()
         {
-            // Đảm bảo rằng đơn hàng và shipper có sẵn
-            var orders = await _context.Orders.Include(o => o.Shipper).Where(o => o.ShipperID == null).ToListAsync();
-            var shippers = await _context.Shipper.ToListAsync();
+            var orders = _context.Orders.Include(o => o.Shipper).ToList();
+            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
+            var count = orders.Count();
+            var today = DateTime.Now.ToShortDateString();
 
-            ViewData["ShipperID"] = new SelectList(shippers, "ID", "Name");
+            var rtd = orders.Where(o => {
+                var day = o.DateTime.Value.ToShortDateString();
+                return (day == today) && (o.Status == "Đã giao hàng");
+            })
+                            .Sum(o => o.TotalPrice);
 
+            ViewBag.Revenue = sum;
+            ViewBag.NumberOrders = count - 1;
+            ViewBag.RToday = rtd;
+            return View(orders);
+        }
+        public async Task<IActionResult> AssignShipper1()
+        {
+            var orders = _context.Orders.Where(o => o.ShipperID == null).ToList();
+            var shippers = _context.Users.Where(o => o.Role == 4).ToList();
+            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
+            var count = orders.Count();
+            var today = DateTime.Now.ToShortDateString();
+
+            var rtd = orders.Where(o => {
+                    var day = o.DateTime.Value.ToShortDateString();
+                    return (day == today) && (o.Status == "Đã giao hàng");
+                })
+                .Sum(o => o.TotalPrice);
+
+            ViewBag.Revenue = sum;
+            ViewBag.NumberOrders = count - 1;
+            ViewBag.RToday = rtd;
+            ViewBag.Shippers = shippers;
             return View(orders);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AssignShipper(int[] orderIDs, int shipperID)
+        public async Task<IActionResult> Assign(int orderId, int shipperId)
         {
-            if (orderIDs == null || orderIDs.Length == 0)
+            var order = await _context.Orders.FirstOrDefaultAsync(o => o.ID == orderId && o.ShipperID == null);
+
+            if (order == null)
             {
-                return NotFound("No orders provided.");
+                return NotFound("Không tìm thấy đơn hàng hợp lệ để cập nhật.");
             }
 
-            // Directly check if the shipper exists in the database
-            var shipperExists = await _context.Shipper.AnyAsync(s => s.UserID == shipperID);
-            if (!shipperExists)
-            {
-                return NotFound("Shipper does not exist.");
-            }
-
-            var ordersToUpdate = await _context.Orders.Where(o => orderIDs.Contains(o.ID) && o.ShipperID == null).ToListAsync();
-
-            if (ordersToUpdate.Count == 0)
-            {
-                return NotFound("No valid orders found to update.");
-            }
-
-            foreach (var order in ordersToUpdate)
-            {
-                order.ShipperID = shipperID;
-            }
+            order.ShipperID = shipperId;
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return Json(new { success = true });
         }
+
     }
 }

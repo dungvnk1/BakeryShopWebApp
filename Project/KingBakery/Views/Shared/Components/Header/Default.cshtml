@@ -57,7 +57,11 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <a class="dropdown-item" asp-controller="BlogPosts" asp-action="Index"> blog</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="SingleBlog">Single blog</a>
+                                    @if (userRole == "2")
+                                    {
+                                        <a class="dropdown-item" asp-controller="BlogPosts" asp-action="SingleBlog">Single blog</a>
+                                    }
+                                    
                                 </div>
                             </li>
 
@@ -106,21 +110,22 @@
                                                 Món yêu thích
                                             </a>
                                         }
-                                        @if (userRole == "3")
+                                       
+                                        @if(userRole == "3")
                                         {
-                                            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                            <a class="dropdown-item" asp-controller="Staffs" asp-action="Orders">
                                                 Quản lý đơn hàng
                                             </a>
                                         }
-                                        @if(userRole == "3")
-                                        {
-                                            <a class="dropdown-item" asp-controller="Staffs" asp-action="AssignShipper">
-                                                Nhận đơn hàng
-                                            </a>
-                                        }
+                                         @if (userRole == "3")
+                                                                                {
+                                                                                    <a class="dropdown-item" asp-controller="Staffs" asp-action="AssignShipper1">
+                                                                                        Gán Shipper
+                                                                                    </a>
+                                                                                }
                                         @if(userRole == "4")
                                         {
-                                            <a class="dropdown-item" asp-controller="Shippers" asp-action="Index">
+                                            <a class="dropdown-item" asp-controller="Shippers" asp-action="Order">
                                                 Xem đơn hàng
                                             </a>
                                         }

@@ -26,7 +26,7 @@ namespace KingBakery.Data
         public DbSet<KingBakery.Models.Feedback> Feedback { get; set; } = default!;
         public DbSet<KingBakery.Models.Favourite> Favourite { get; set; } = default!;
         public DbSet<KingBakery.Models.BlogPosts> BlogPosts { get; set; } = default!;
-        public DbSet<KingBakery.Models.Shipper> Shipper { get; set; } = default!;
+        //public DbSet<KingBakery.Models.Shipper> Shipper { get; set; } = default!;
         public DbSet<KingBakery.Models.Staff> Staff { get; set; } = default!;
 
 
