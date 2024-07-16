@@ -9,6 +9,7 @@
       "KingBakery/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Google": "8.0.6",
+          "Microsoft.EntityFrameworkCore": "8.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.4",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",

@@ -41,7 +41,7 @@ namespace KingBakery.Controllers
             {
                 var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 int uid = 0;
-                if(userID != null)
+                if (userID != null)
                 {
                     uid = int.Parse(userID);
                 }
@@ -50,46 +50,59 @@ namespace KingBakery.Controllers
                                              .Where(o => o.CustomerID == uid)
                                              .Where(o => o.OrderID == 0)
                                              .ToList();
-                if(data == null)
+                if (data == null)
                 {
                     data = new List<OrderItem>();
                 }
                 return data;
             }
         }
-        public IActionResult AddToCart(int id, int quantity)
+        public JsonResult AddToCart(int id, int quantity)
         {
             var myCart = Orders;
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //int quan = quantity;//int.Parse(quantity);
             var item = myCart.FirstOrDefault(c => c.BakeryID == id);
-
-            if(item == null)
+            var bakery = _context.BakeryOption.Include(b => b.Bakery).FirstOrDefault(b => b.ID == id);
+            var exist = false;
+            if (item == null)
             {
-                var bakery = _context.BakeryOption.Include(b => b.Bakery).FirstOrDefault(b => b.ID == id);
                 item = new OrderItem()
                 {
                     BakeryID = bakery.ID,
-                    CustomerID = userID==null ? 0:int.Parse(userID),
+                    CustomerID = userID == null ? 0 : int.Parse(userID),
                     OrderID = 0,
-                    Price = bakery.Price,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    Price = bakery.Price * quantity
                 };
                 _context.OrderItem.Add(item);
                 _context.SaveChanges();
             }
             else
             {
+                exist = true;
                 var orderItem = _context.OrderItem.Find(item.ID);
                 orderItem.Quantity = quantity;
+                orderItem.Price = bakery.Price * quantity;
                 _context.OrderItem.Update(orderItem);
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = Int32.Parse(userID);
+            }
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
+
+            return Json(new
+            {
+                exist
+            });
         }
 
-        public IActionResult DeleteItem(int id)
+        public JsonResult DeleteItem(int id)
         {
             var item = _context.OrderItem.Find(id);
 
@@ -99,8 +112,134 @@ namespace KingBakery.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = Int32.Parse(userID);
+            }
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
+
+            var items = _context.OrderItem.Where(o => o.CustomerID == uid && o.OrderID == 0);
+            var total = items.Sum(o => o.Price);
+
+            return Json(new
+            {
+                total
+            });
         }
+
+        public JsonResult IncOne(int id)
+        {
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = Int32.Parse(userID);
+            }
+            var item = _context.OrderItem.Find(id);
+            var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
+
+            var unitprice = bakery.Price;
+            var MaxQuantity = bakery.Quantity;
+            if (item != null && item.Quantity < MaxQuantity)
+            {
+                item.Quantity++;
+                item.Price = unitprice * item.Quantity;
+                _context.OrderItem.Update(item);
+                _context.SaveChanges();
+            }
+
+            var items = _context.OrderItem.Where(o => o.CustomerID == uid && o.OrderID == 0);
+            var total = items.Sum(o => o.Price);
+
+            return Json(new
+            {
+                quantity = item.Quantity,
+                price = item.Price,
+                unitprice,
+                total
+            });
+        }
+
+        public JsonResult DecOne(int id)
+        {
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = Int32.Parse(userID);
+            }
+            var item = _context.OrderItem.Find(id);
+            var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
+
+            var unitprice = bakery.Price;
+            if (item != null && item.Quantity > 1)
+            {
+                item.Quantity--;
+                item.Price = unitprice * item.Quantity;
+                _context.OrderItem.Update(item);
+                _context.SaveChanges();
+            }
+
+            var items = _context.OrderItem.Where(o => o.CustomerID == uid && o.OrderID == 0);
+            var total = items.Sum(o => o.Price);
+
+            return Json(new
+            {
+                quantity = item.Quantity,
+                price = item.Price,
+                unitprice,
+                total
+            });
+        }
+
+        public JsonResult UpdateQuantity(int id, int quantity)
+        {
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = Int32.Parse(userID);
+            }
+            var item = _context.OrderItem.Find(id);
+            var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
+
+            var unitprice = bakery.Price;
+            var MaxQuantity = bakery.Quantity;
+            if (item != null)
+            {
+                if (quantity > MaxQuantity)
+                {
+                    item.Quantity = MaxQuantity;
+                }
+                else
+                {
+                    item.Quantity = quantity;
+                }
+                item.Price = unitprice * item.Quantity;
+                _context.OrderItem.Update(item);
+                _context.SaveChanges();
+            }
+
+            var items = _context.OrderItem.Where(o => o.CustomerID == uid && o.OrderID == 0);
+            var total = items.Sum(o => o.Price);
+
+            return Json(new
+            {
+                quantity = item.Quantity,
+                price = item.Price,
+                unitprice,
+                total
+            });
+        }
+
+
+        /// <summary>
+        /// ///////////////////////////////////////////////////
+        /// </summary>
 
         // GET: OrderItems/Details/5
         public async Task<IActionResult> Details(int? id)

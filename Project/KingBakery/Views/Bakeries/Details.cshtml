@@ -27,6 +27,12 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/detail.css" />
+    <style>
+        .swal2-popup {
+            top: 12% !important; /* Example to move it down from the top */
+            right: 0% !important; /* Center the modal */
+        }
+    </style>
 </head>
 
 <body>
@@ -67,7 +73,7 @@
                         <h3>
                             @Model.Name
                         </h3>
-                        
+
                         @if (Model.BakeryOptions != null)
                         {
                             <p class="sizepart">Kích cỡ của bánh:</p>
@@ -93,17 +99,17 @@
                                 }
 
                             }
-                        
 
-                        <p>
-                            @Model.Description
-                        </p>
-                            <form asp-action="AddToCart" asp-controller="OrderItems" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" class="card_area">
+
+                            <p>
+                                @Model.Description
+                            </p>
+                            <div class="card_area">
                                 <div class="product_count_area">
                                     <p>Còn @ViewData["Quantity"] bánh</p>
                                     <div class="product_count d-inline-block" style="background-color:transparent">
                                         <span class="product_count_item inumber-decrement" onclick="decreaseQuantity()"><i class="ti-minus"></i></span>
-                                        <input class="product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@ViewBag.Quantity">
+                                        <input class="qq product_count_item" type="text" name="quantity" id="quantity" value="1" min="1" max="@ViewBag.Quantity">
                                         <span class="product_count_item number-increment" onclick="increaseQuantity()"> <i class="ti-plus"></i></span>
 
                                         <script type="text/javascript">
@@ -121,14 +127,19 @@
                                     @if (userRole != "2")
                                     {
                                         <div class="add_to_cart">
-                                            <button type="submit" class="btn_3" disabled>Thêm vào giỏ hàng</button>
+                                            <button type="button" class="btn_3" disabled>Thêm vào giỏ hàng</button>
                                         </div>
                                         <p style="color:red;font-style:italic">Đăng nhập bằng tài khoản khách hàng để mua hàng.</p>
                                     }
                                     else
                                     {
                                         <div class="add_to_cart">
-                                            <button type="submit" class="btn_3">Thêm vào giỏ hàng</button>
+                                            <button type="button" class="atc btn_3" data-id="@Model.BakeryOptions.ElementAt(0).ID">Thêm vào giỏ hàng</button>
+                                        </div>
+                                        <div class="favourite_product">
+                                            <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" asp-route-id_pro="@Model.ID">
+                                                <button type="submit"><i class="far fa-star"></i></button>
+                                            </form>
                                         </div>
                                     }
 
@@ -140,7 +151,7 @@
                                     </div>
                                     <p style="color:red;font-style:italic">Vui lòng đăng nhập để mua hàng.</p>
                                 }
-                            </form>
+                            </div>
                         }
                     </div>
                 </div>
@@ -148,76 +159,8 @@
         </div>
     </div>
     <!--================End Single Product Area =================-->
-    <!-- subscribe part here -->
-    <section class="subscribe_part section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="subscribe_part_content">
-                        <h2>Get promotions & updates!</h2>
-                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
-                        <div class="subscribe_form">
-                            <input type="email" placeholder="Enter your mail">
-                            <a href="#" class="btn_1">Subscribe</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- subscribe part end -->
     <!--::footer_part start::-->
-    <footer class="footer_part">
-        <div class="footer_iner">
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-8">
-                        <div class="footer_menu">
-                            <div class="footer_logo">
-                                <a href="index.cshtml"><img src="img/logo.png" alt="#"></a>
-                            </div>
-                            <div class="footer_menu_item">
-                                <a href="index.cshtml">Home</a>
-                                <a href="about.cshtml">About</a>
-                                <a href="product_list.cshtml">Products</a>
-                                <a href="#">Pages</a>
-                                <a href="blog.cshtml">Blog</a>
-                                <a href="contact.cshtml">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="social_icon">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="copyright_part">
-            <div class="container">
-                <div class="row ">
-                    <div class="col-lg-12">
-                        <div class="copyright_text">
-                            <P>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </P>
-                            <div class="copyright_link">
-                                <a href="#">Turms & Conditions</a>
-                                <a href="#">FAQ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @await Component.InvokeAsync("Footer");
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
@@ -238,62 +181,16 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/jquery.counterup.min.js"></script>
     <script src="/js/waypoints.min.js"></script>
-    <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
+    <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="/js/quantitybt.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/noti.addtocart.js"></script>
 </body>
 
 </html>
-
-
-
-
-@*
-@model KingBakery.Models.Bakery
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
-<div>
-    <h4>Bakery</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.ID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
- *@

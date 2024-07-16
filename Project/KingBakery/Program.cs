@@ -22,7 +22,7 @@ namespace KingBakery
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                //options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
             })
                 .AddCookie(options =>
                 {
@@ -31,15 +31,17 @@ namespace KingBakery
                     options.SlidingExpiration = true;
                     //Set the cookie expiration time
                     options.ExpireTimeSpan = TimeSpan.FromDays(2);
-                })
+                });
+            /*
                 .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
                 {
                     options.ClientId = builder.Configuration.GetSection("GoogleKeys:ClientId").Value;
                     options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientSecret").Value;
                 });
-
+            */
             //Add session
             builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddSession(options =>
             {

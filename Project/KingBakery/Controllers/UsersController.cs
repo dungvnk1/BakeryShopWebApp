@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
@@ -57,9 +53,11 @@ namespace KingBakery.Controllers
         }
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
+
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
         {
@@ -88,9 +86,14 @@ namespace KingBakery.Controllers
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
 
+            int uid = user.ID;
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
+
             return RedirectToAction("Index", "Home");
         }
-
+        /*
         public async Task LoginGoogle()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
@@ -443,6 +446,7 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
+        */
 
         private bool UsersExists(int id)
         {
