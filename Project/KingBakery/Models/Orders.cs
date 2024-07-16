@@ -10,7 +10,7 @@ namespace KingBakery.Models
         
         [ForeignKey("Staff")]
         public int? StaffID { get; set; }
-        [ForeignKey("Shipper")]
+        //[ForeignKey("Shipper")]
         public int? ShipperID { get; set; }
         [ForeignKey("Vouchers")]
         public int? VoucherID { get; set; }
@@ -21,7 +21,7 @@ namespace KingBakery.Models
         public string? Status { get; set; }
 
         public virtual Employee? Staff { get; set; }
-        public virtual Employee? Shipper { get; set; }
+        public virtual Users? Shipper { get; set; }
         public virtual Vouchers? Vouchers { get; set; }
     }
 }
