@@ -153,5 +153,11 @@ namespace KingBakery.Controllers
         {
             return _context.BlogPosts.Any(e => e.Id == id);
         }
+
+        public IActionResult SingleBlog()
+        {
+            var blogPosts = _context.BlogPosts.ToList();
+            return View(blogPosts);
+        }
     }
 }
