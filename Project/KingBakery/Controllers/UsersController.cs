@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using KingBakery.Helper;
 using Microsoft.AspNetCore.Authentication.Google;
 using KingBakery.ViewModel;
+using X.PagedList;
 
 namespace KingBakery.Controllers
 {
@@ -24,9 +25,14 @@ namespace KingBakery.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Users.ToListAsync());
+            int pageSize = 8; // Số lượng item trên mỗi trang
+            int pageNumber = (page ?? 1);
+
+            var users = _context.Users.OrderBy(u => u.ID).ToPagedList(pageNumber, pageSize);
+
+            return View(users);
         }
 
         // GET: Users/Details/5
@@ -68,6 +74,11 @@ namespace KingBakery.Controllers
                 ViewBag.LoginError = "Tên đăng nhập hoặc mật khẩu không chính xác!";
                 return View();
             }
+            if(user.IsBanned == 1)
+            {
+                ViewBag.BanLogin = "Tài khoản của bạn đã bị chặn!";
+                return View();
+            }
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
@@ -93,7 +104,7 @@ namespace KingBakery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        /*
+
         public async Task LoginGoogle()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
@@ -114,7 +125,7 @@ namespace KingBakery.Controllers
                 Users user = new Users()
                 {
                     FullName = result.Principal.FindFirstValue(ClaimTypes.Name),
-                    Username = "",
+                    Username = email,
                     Password = "",
                     ConfirmPassword = "",
                     Address = "",
@@ -361,7 +372,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
             TempData["ConfirmEmailSuccess"] = "Xác thực thành công! Vui lòng đăng nhập lại!";
-            return RedirectToAction("ForgotPassword", new {id = user.ID});
+            return RedirectToAction("ForgotPassword", new { id = user.ID });
         }
 
         public IActionResult ForgotPassword()
@@ -446,7 +457,32 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
-        */
+
+        public IActionResult BanUser(int id)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.ID == id);
+            if(user != null)
+            {
+                user.IsBanned = 1;
+            }
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UnBanUser(int id)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.ID == id);
+            if (user != null)
+            {
+                user.IsBanned = 0;
+            }
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         private bool UsersExists(int id)
         {

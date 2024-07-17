@@ -69,6 +69,10 @@
                             {
                                 <p class="text-danger">@ViewBag.LoginError</p>
                             }
+                            @if (!string.IsNullOrEmpty(ViewBag.BanLogin))
+                            {
+                                <p class="text-danger">@ViewBag.BanLogin</p>
+                            }
 
                             <form class="row contact_form" asp-action="Login" asp-controller="Users" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">

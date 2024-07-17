@@ -30,7 +30,41 @@ namespace KingBakery.Controllers
             return View();
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> Search(string searchString)
+        //{
+        //    var users = await _context.Users
+        //    .Where(u => u.FullName.Contains(searchString) || u.Username.Contains(searchString))
+        //    .ToListAsync();
+
+        //    var orders = await _context.Orders
+        //        .Where(o => o.Status.Contains(searchString))
+        //        .ToListAsync();
+
+        //    var viewModel = new SearchResultViewModel
+        //    {
+        //        Users = users,
+        //        Orders = orders,
+        //        SearchString = searchString
+        //    };
+
+        //    if (users.Any())
+        //    {
+        //        return View("Users/Index", viewModel);
+        //    }
+        //    else if (orders.Any())
+        //    {
+        //        return View("Orders/Index", viewModel);
+        //    }
+        //    else
+        //    {
+        //        // Handle case where no results are found
+        //        return View("NoResults");
+        //    }
+        //}
+
         // GET: Users/Details/5
+
         public async Task<IActionResult> UserDetail(int? id)
         {
             if (id == null)
