@@ -1,83 +1,180 @@
-﻿@model IEnumerable<KingBakery.Models.Users>
-
+﻿@using X.PagedList.Mvc.Core
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+@model X.PagedList.IPagedList<Users>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css//styletk.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--================Users Area =================-->
+    <section class="checkout_area">
+        <div class="row" style="padding-left: 30px;padding-right: 30px;">
+            <!--Add new user-->
+            <div class="col-12" style="width: 100%; display: flex; justify-content: right;">
+                <a style="margin-bottom: 10px;" href="@Url.Action("Create", "Users")" class="btn btn-primary">Thêm nhân viên</a>
+            </div>
+
+            <table class="table" style="font-family:Arial">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Tên đăng nhập</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Vai trò</th>
+                        <th scope="col">Tình trạng tài khoản</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FullName</td>
+                            <td>@item.Username</td>
+                            <td>@item.Email</td>
+                            @switch (item.Role)
+                            {
+                                case 1:
+                                    <td>Admin</td>
+                                    break;
+                                case 2:
+                                    <td>Khách hàng</td>
+                                    break;
+                                case 3:
+                                    <td>Nhân viên</td>
+                                    break;
+                                case 4:
+                                    <td>Shipper</td>
+                                    break;
+                                default:
+                                    <td>N/A</td>
+                                    break;
+                            }
+                            @if (item.IsBanned == 0)
+                            {
+                                <td style="position:relative;">
+                                    <p style="color:white; background-color:lightgreen; font-weight:bold; position:absolute; padding:auto 5px;
+                                          border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center;">
+                                        <span style="width:100%;text-align:center;" id="stt_@item.ID">Hoạt động</span>
+                                    </p>
+                                </td>
+                            }
+                            @if (item.IsBanned == 1)
+                            {
+                                <td style="position:relative;">
+                                    <p style="color:white; background-color:darkred; font-weight:bold; position:absolute; padding:auto 5px;
+                                          border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center;">
+                                        <span style="width:100%;text-align:center;" id="stt_@item.ID">Bị cấm</span>
+                                    </p>
+                                </td>
+                            }
+                            
+                            <td style="width:150px;text-align:center;">
+                                <a asp-controller="Admin" asp-action="UserDetail" asp-route-id="@item.ID" class="genric-btn success-border radius">Xem chi tiết</a>
+                            </td>
+
+                            @if (item.IsBanned == 0)
+                            {
+                                <td style="text-align:center;width:160px;">
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="ban_@item.ID" class="genric-btn success-border radius ban">Hoạt động</a>
+                                </td>
+                            }
+                            else
+                            @if (item.IsBanned == 1)
+                            {
+                                <td style="text-align:center;width:160px;">
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="unban_@item.ID" class="genric-btn danger-border radius unban">Bị cấm</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+            @* Pagination part *@
+            <div class="pagination-container" style="width: 100%; display: flex; justify-content: center;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                {
+                    LiElementClasses = new List<String>{ "page-item" },
+                    PageClasses = new List<String>{ "page-link" }
+                })
+            </div>
+        </div>
+    </section>
+    <!--================End User Area =================-->
+    <script>
+        console.log(1);
+    </script>
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/users.js"></script>
+    <script>
+        console.log(2);
+    </script>
+</body>
+
+</html>

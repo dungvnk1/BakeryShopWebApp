@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
@@ -13,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using KingBakery.Helper;
 using Microsoft.AspNetCore.Authentication.Google;
 using KingBakery.ViewModel;
+using X.PagedList;
 
 namespace KingBakery.Controllers
 {
@@ -28,9 +25,14 @@ namespace KingBakery.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Users.ToListAsync());
+            int pageSize = 8; // Số lượng item trên mỗi trang
+            int pageNumber = (page ?? 1);
+
+            var users = _context.Users.OrderBy(u => u.ID).ToPagedList(pageNumber, pageSize);
+
+            return View(users);
         }
 
         // GET: Users/Details/5
@@ -57,9 +59,11 @@ namespace KingBakery.Controllers
         }
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
+
         [HttpPost]
         public IActionResult Login(string username, string password, bool rememberMe)
         {
@@ -68,6 +72,11 @@ namespace KingBakery.Controllers
             if (user == null || _context.Users == null)
             {
                 ViewBag.LoginError = "Tên đăng nhập hoặc mật khẩu không chính xác!";
+                return View();
+            }
+            if(user.IsBanned == 1)
+            {
+                ViewBag.BanLogin = "Tài khoản của bạn đã bị chặn!";
                 return View();
             }
             var claims = new List<Claim>
@@ -88,62 +97,67 @@ namespace KingBakery.Controllers
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
 
+            int uid = user.ID;
+
+            var cartQuantity = _context.OrderItem.Where(o => o.OrderID == 0 && o.CustomerID == uid).Count();
+            HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
+
             return RedirectToAction("Index", "Home");
         }
 
-        //public async Task LoginGoogle()
-        //{
-        //    await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
-        //        new AuthenticationProperties
-        //        {
-        //            RedirectUri = Url.Action("GoogleResponse")
-        //        });
-        //}
+        public async Task LoginGoogle()
+        {
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+                new AuthenticationProperties
+                {
+                    RedirectUri = Url.Action("GoogleResponse")
+                });
+        }
 
-        //public async Task<IActionResult> GoogleResponse()
-        //{
-        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        //    var email = result.Principal.FindFirstValue(ClaimTypes.Email);
-        //    var userCheck = _context.Users.Where(u => u.Email == email).FirstOrDefault<Users>();
-        //    if (userCheck == null)
-        //    {
-        //        Users user = new Users()
-        //        {
-        //            FullName = result.Principal.FindFirstValue(ClaimTypes.Name),
-        //            Username = "",
-        //            Password = "",
-        //            ConfirmPassword = "",
-        //            Address = "",
-        //            BirthDate = DateOnly.MinValue,
-        //            Email = email,
-        //            PhoneNumber = "",
-        //            Role = 2
-        //        };
-        //        userCheck = user;
-        //        _context.Users.Add(user);
-        //        await _context.SaveChangesAsync();
-        //    }
+            var email = result.Principal.FindFirstValue(ClaimTypes.Email);
+            var userCheck = _context.Users.Where(u => u.Email == email).FirstOrDefault<Users>();
+            if (userCheck == null)
+            {
+                Users user = new Users()
+                {
+                    FullName = result.Principal.FindFirstValue(ClaimTypes.Name),
+                    Username = email,
+                    Password = "",
+                    ConfirmPassword = "",
+                    Address = "",
+                    BirthDate = DateOnly.MinValue,
+                    Email = email,
+                    PhoneNumber = "",
+                    Role = 2
+                };
+                userCheck = user;
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }
 
-        //    var claims = new List<Claim>
-        //    {
-        //        new Claim(ClaimTypes.NameIdentifier, userCheck.ID.ToString()),
-        //        new Claim(ClaimTypes.Name, userCheck.FullName),
-        //        new Claim(ClaimTypes.Role, userCheck.Role.ToString())
-        //    };
-        //    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //    var authProperties = new AuthenticationProperties
-        //    {
-        //        IsPersistent = true,
-        //    };
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, userCheck.ID.ToString()),
+                new Claim(ClaimTypes.Name, userCheck.FullName),
+                new Claim(ClaimTypes.Role, userCheck.Role.ToString())
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+            };
 
-        //    HttpContext.SignInAsync(
-        //    CookieAuthenticationDefaults.AuthenticationScheme,
-        //    new ClaimsPrincipal(claimsIdentity),
-        //    authProperties);
+            HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: Users/Create
         public IActionResult Create()
@@ -163,7 +177,6 @@ namespace KingBakery.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role,VertificationCode")] Users users)
@@ -248,7 +261,6 @@ namespace KingBakery.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,FullName,Username,Password,Address,BirthDate,Email,PhoneNumber,Role")] Users users)
@@ -360,7 +372,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
             TempData["ConfirmEmailSuccess"] = "Xác thực thành công! Vui lòng đăng nhập lại!";
-            return RedirectToAction("ForgotPassword", new {id = user.ID});
+            return RedirectToAction("ForgotPassword", new { id = user.ID });
         }
 
         public IActionResult ForgotPassword()
@@ -445,7 +457,32 @@ namespace KingBakery.Controllers
             }
             return View(model);
         }
-        */
+
+        public IActionResult BanUser(int id)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.ID == id);
+            if(user != null)
+            {
+                user.IsBanned = 1;
+            }
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UnBanUser(int id)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.ID == id);
+            if (user != null)
+            {
+                user.IsBanned = 0;
+            }
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         private bool UsersExists(int id)
         {

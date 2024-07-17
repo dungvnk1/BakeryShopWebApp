@@ -20,32 +20,69 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
-        // GET: Orders
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var kingBakeryContext = _context.Orders.Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
-            return View(await kingBakeryContext.ToListAsync());
+            var orders = _context.Orders.ToList();
+            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
+            var count = orders.Count();
+            var today = DateTime.Now.ToShortDateString();
+
+            var rtd = orders.Where(o => {
+                var day = o.DateTime.Value.ToShortDateString();
+                return (day == today) && (o.Status == "Đã giao hàng");
+            })
+                            .Sum(o => o.TotalPrice);
+
+            ViewBag.Revenue = sum;
+            ViewBag.NumberOrders = count - 1;
+            ViewBag.RToday = rtd;
+            return View(orders);
         }
 
-        // GET: Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id == null)
+            var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
+            var order = _context.Orders.Find(id);
+
+            var uid = items.FirstOrDefault().CustomerID;
+
+            var user = _context.Users.Find(uid);
+            ViewBag.FullName = user.FullName;
+            ViewBag.Phone = order.PhoneNumber;
+            ViewBag.Address = order.AdrDelivery;
+            ViewBag.Status = order.Status;
+            ViewBag.Note = order.Note;
+            ViewBag.Payment = order.Payment;
+
+            var voucherPercent = 0;
+            if (order.VoucherID != null)
             {
-                return NotFound();
+                voucherPercent = _context.Vouchers.FirstOrDefault(v => v.VoucherID == order.VoucherID).VPercent;
+            }
+            ViewBag.VoucherPercent = voucherPercent;
+
+            var staff = _context.Users.FirstOrDefault(u => u.ID == order.StaffID);
+            var shipper = _context.Users.FirstOrDefault(u => u.ID == order.ShipperID);
+            var voucher = _context.Vouchers.FirstOrDefault(v => v.VoucherID == order.VoucherID);
+            string staffName = "Chưa có", shipperName = "Chưa có", code = "Không có";
+            if (staff != null)
+            {
+                staffName = staff.FullName;
+            }
+            if (shipper != null)
+            {
+                shipperName = shipper.FullName;
+            }
+            if (voucher != null && voucher.Code != null)
+            {
+                code = voucher.Code;
             }
 
-            var orders = await _context.Orders
-                .Include(o => o.Shipper)
-                .Include(o => o.Staff)
-                .Include(o => o.Vouchers)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (orders == null)
-            {
-                return NotFound();
-            }
-
-            return View(orders);
+            ViewBag.Staff = staffName;
+            ViewBag.Shipper = shipperName;
+            ViewBag.Voucher = code;
+            ViewData["Bakery"] = _context.Bakery.ToList();
+            return View(items);
         }
 
         // GET: Orders/Create
@@ -68,6 +105,27 @@ namespace KingBakery.Controllers
             }
         }
 
+        public IActionResult Cancel(int id, string reason)
+        {
+            var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
+            var order = _context.Orders.Find(id);
+            foreach (var item in items)
+            {
+                var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
+                bakery.Quantity += item.Quantity;
+                _context.BakeryOption.Update(bakery);
+                _context.SaveChanges();
+            }
+
+            if (reason == "default") reason = "Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm.";
+
+            order.Status = "Bị từ chối";
+            order.DenyReason = reason;
+            _context.Orders.Update(order);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -84,7 +142,7 @@ namespace KingBakery.Controllers
             }
             return View();
         }
-    
+
 
 
         // GET: Orders/Edit/5

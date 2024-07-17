@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h2 style="margin-bottom:20px;">Thông tin chi tiết</h2>
-                        <form class="row contact_form" asp-controller="Checkout" asp-action="CreateBill" method="post" novalidate="novalidate">
+                        <form class="row contact_form" novalidate="novalidate" asp-action="CreateBill" asp-controller="Checkout">
                             <div class="check_title" style="margin-bottom:20px;">
                                 <h2>
                                     Thông tin nhận hàng
@@ -66,19 +66,19 @@
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label for="name" style="font-weight:bold;">Tên người mua hàng</label>
-                                <input type="text" class="form-control ip" value="@ViewBag.FullName" id="name" name="name" placeholder="Nhập tên" readonly/>
+                                <input type="text" class="form-control ip" value="@ViewBag.FullName" id="name" name="name" placeholder="Nhập tên" readonly />
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label for="add" style="font-weight:bold;">Địa chỉ nhận hàng</label>
-                                <input type="text" class="form-control ip" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ"/>
+                                <input type="text" class="form-control ip adr" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ" />
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <label for="phone" style="font-weight:bold;">Số điện thoại</label>
-                                <input type="text" class="form-control ip" value="@ViewBag.Phone" id="phone"  name="number" placeholder="Nhập số điện thoại" />
+                                <input type="number" class="form-control ip pho" value="@ViewBag.Phone" id="phone" name="number" placeholder="Nhập số điện thoại" />
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <label for="email" style="font-weight:bold;">Email</label>
-                                <input type="text" class="form-control ip" value="@ViewBag.Email" id="email" name="email" placeholder="Nhập Email" readonly/>
+                                <input type="text" class="form-control ip" value="@ViewBag.Email" id="email" name="email" placeholder="Nhập Email" readonly />
                             </div>
 
                             <div class="cupon_area" style="margin:15px 0;">
@@ -89,24 +89,28 @@
                                     </h2>
                                 </div>
                                 <div id="cpbox" style="display:none;transition: 2s ease;padding: 0 30px;">
-                                    <input type="text" class="ip" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
-                                    <a class="tp_btn" href="#" style="margin:0px;">Áp dụng</a>
+                                    <input type="text" class="ip" id="ipv" name="voucher" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
+                                    <button type="button" class="tp_btn appv" style="margin:0px;">Áp dụng</button>
+                                    <button type="button" class="tp_btn" id="delv" style="margin:0px 10px;background-color:bisque;display:none;">Huỷ áp mã</button>
+
                                 </div>
                             </div>
 
-                            <div class="col-md-12 form-group" style="text-align:center;">
-                                <button type="submit" value="submit" class="btn_3">
-                                    Đặt hàng
-                                </button>
+                            <div class="col-md-12 form-group">
+                                <div class="creat_account">
+                                    <h3 style="margin:0px;padding:0;font-weight:bold;margin-top:20px;">Lưu ý cho Shipper</h3>
+                                </div>
+                                <textarea class="form-control note" name="note" id="message" rows="1"
+                                          placeholder="Yêu cầu..."></textarea>
                             </div>
 
-                            @* <div class="col-md-12 form-group">
-                            <div class="creat_account">
-                            <h2>Lưu ý cho Shipper</h2>
+                            <div class="col-md-12 form-group" style="text-align:center;">
+                                <button type="button" value="submit" name="payment" class="btn_3 order" id="order" style="margin:0 20px;">
+                                    Đặt hàng (COD)
+                                </button>
+
+                                <input type="submit" value="Thanh toán VNPAY" name="payment" class="btn_3" id="ordervnp">
                             </div>
-                            <textarea class="form-control" name="message" id="message" rows="1"
-                            placeholder="Yêu cầu..."></textarea>
-                            </div> *@
                         </form>
 
                     </div>
@@ -135,7 +139,7 @@
                                         }
                                     }
 
-                                    var total = item.Price * item.Quantity;
+                                    var total = item.Price;
                                     subtotal += total;
 
                                     <li>
@@ -157,16 +161,27 @@
                                 <li>
                                     <a href="#" style="font-weight:bold">
                                         Shipping
-                                        <span>COD: 20.000đ</span>
+                                        <span>20.000đ</span>
                                     </a>
                                 </li>
                                 @{
                                     subtotal += 20000;
                                 }
+
+                                <script type="text/javascript">
+                                    var stotal = @subtotal;
+                                </script>
+
+                                <li>
+                                    <a href="#" id="vch" style="font-weight:bold;display:none;">
+                                        Voucher
+                                        <span id="codev"></span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="#" style="font-weight:bold">
                                         Tổng tiền
-                                        <span>@($"{subtotal.ToString("#,##0")}đ")</span>
+                                        <span id="subtotal">@($"{subtotal.ToString("#,##0")}đ")</span>
                                     </a>
                                 </li>
                             </ul>
@@ -177,9 +192,12 @@
             </div>
         </div>
     </section>
+
+
+
     <!--================End Checkout Area =================-->
     <!--::footer_part start::-->
-    @await Component.InvokeAsync("Footer")
+    @await Component.InvokeAsync("Footer");
     <!--::footer_part end::-->
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
@@ -195,19 +213,60 @@
     <script src="/js/mixitup.min.js"></script>
     <!-- particles js -->
     <script src="/js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
     <!-- slick js -->
     <script src="/js/slick.min.js"></script>
     <script src="/js/jquery.counterup.min.js"></script>
     <script src="/js/waypoints.min.js"></script>
-    <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
     <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="/js/custom.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/checkout.js"></script>
+
+    @if (TempData["Message"] != null && TempData["Message"].ToString() == "Thanh toán VN Pay thành công!")
+    {
+        <script>
+            $("#order").css("display", "none");
+            $("#ordervnp").css("display", "none");
+            $("#c_quantity").css("display", "none");
+            Swal.fire({
+                title: "Thành công!",
+                text: "Bạn đã thanh toán thành công. Hãy theo dõi trạng thái đơn hàng, đơn hàng sẽ sớm được giao đến bạn.",
+                icon: "success",
+                showDenyButton: true,
+                confirmButtonColor: "#3085d6",
+                denyButtonColor: "#d33",
+                denyButtonText: "Lịch sử đặt hàng",
+                confirmButtonText: "Về Trang chủ"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/";
+                }
+                else if (result.isDenied) {
+                    window.location.href = "/Bills";
+                }
+            });
+        </script>
+    }
+    else
+    {
+
+        <script>
+            var mess = @TempData["Message"] == null ? "" : TempData["Message"].ToString();
+            Swal.fire({
+                title: "Thất bại!",
+                text: mess,
+                icon: "error",
+            });
+        </script>
+
+
+    }
 </body>
 
 </html>
