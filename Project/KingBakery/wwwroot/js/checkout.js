@@ -74,6 +74,7 @@ $(document).ready(function () {
         var phone = $(".pho").val();
         var note = $(".note").val();
         var voucher = $("#ipv").val();
+        var payment = "COD"
         console.log(address); console.log(phone); console.log(note); console.log(voucher);
         var checkad = true, checkph = true;
         var mess = "Không được để trống ";
@@ -99,7 +100,8 @@ $(document).ready(function () {
                     address,
                     number: phone,
                     note,
-                    voucher
+                    voucher,
+                    payment
                 },
                 success: function () {
                     $("#order").css("display", "none");

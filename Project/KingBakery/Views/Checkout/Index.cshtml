@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h2 style="margin-bottom:20px;">Thông tin chi tiết</h2>
-                        <form class="row contact_form" novalidate="novalidate">
+                        <form class="row contact_form" novalidate="novalidate" asp-action="CreateBill" asp-controller="Checkout">
                             <div class="check_title" style="margin-bottom:20px;">
                                 <h2>
                                     Thông tin nhận hàng
@@ -89,7 +89,7 @@
                                     </h2>
                                 </div>
                                 <div id="cpbox" style="display:none;transition: 2s ease;padding: 0 30px;">
-                                    <input type="text" class="ip" id="ipv" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
+                                    <input type="text" class="ip" id="ipv" name="voucher" placeholder="Nhập mã giảm giá" style="margin:20px 0px;" />
                                     <button type="button" class="tp_btn appv" style="margin:0px;">Áp dụng</button>
                                     <button type="button" class="tp_btn" id="delv" style="margin:0px 10px;background-color:bisque;display:none;">Huỷ áp mã</button>
 
@@ -105,9 +105,11 @@
                             </div>
 
                             <div class="col-md-12 form-group" style="text-align:center;">
-                                <button type="button" value="submit" class="btn_3 order" id="order">
-                                    Đặt hàng
+                                <button type="button" value="submit" name="payment" class="btn_3 order" id="order" style="margin:0 20px;">
+                                    Đặt hàng (COD)
                                 </button>
+
+                                <input type="submit" value="Thanh toán VNPAY" name="payment" class="btn_3" id="ordervnp">
                             </div>
                         </form>
 
@@ -159,7 +161,7 @@
                                 <li>
                                     <a href="#" style="font-weight:bold">
                                         Shipping
-                                        <span>COD: 20.000đ</span>
+                                        <span>20.000đ</span>
                                     </a>
                                 </li>
                                 @{
@@ -190,6 +192,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!--================End Checkout Area =================-->
     <!--::footer_part start::-->
@@ -223,6 +227,46 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/checkout.js"></script>
+
+    @if (TempData["Message"] != null && TempData["Message"].ToString() == "Thanh toán VN Pay thành công!")
+    {
+        <script>
+            $("#order").css("display", "none");
+            $("#ordervnp").css("display", "none");
+            $("#c_quantity").css("display", "none");
+            Swal.fire({
+                title: "Thành công!",
+                text: "Bạn đã thanh toán thành công. Hãy theo dõi trạng thái đơn hàng, đơn hàng sẽ sớm được giao đến bạn.",
+                icon: "success",
+                showDenyButton: true,
+                confirmButtonColor: "#3085d6",
+                denyButtonColor: "#d33",
+                denyButtonText: "Lịch sử đặt hàng",
+                confirmButtonText: "Về Trang chủ"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/";
+                }
+                else if (result.isDenied) {
+                    window.location.href = "/Bills";
+                }
+            });
+        </script>
+    }
+    else
+    {
+
+        <script>
+            var mess = @TempData["Message"] == null ? "" : TempData["Message"].ToString();
+            Swal.fire({
+                title: "Thất bại!",
+                text: mess,
+                icon: "error",
+            });
+        </script>
+
+
+    }
 </body>
 
 </html>

@@ -4,6 +4,7 @@ using KingBakery.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using KingBakery.Helper;
 using Microsoft.AspNetCore.Authentication.Google;
+using KingBakery.Services;
 namespace KingBakery
 {
     public class Program
@@ -49,6 +50,8 @@ namespace KingBakery
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            builder.Services.AddSingleton<IVnPayService, VnPayService>();
 
             var app = builder.Build();
 

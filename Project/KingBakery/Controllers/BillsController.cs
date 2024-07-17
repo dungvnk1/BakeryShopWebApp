@@ -51,6 +51,7 @@ namespace KingBakery.Controllers
             ViewBag.Address = order.AdrDelivery;
             ViewBag.Status = order.Status;
             ViewBag.Note = order.Note;
+            ViewBag.Payment = order.Payment;
 
             var voucherPercent = 0;
             if (order.VoucherID != null)

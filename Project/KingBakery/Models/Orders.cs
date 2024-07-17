@@ -19,6 +19,7 @@ namespace KingBakery.Models
         public string? PhoneNumber { get; set; }
         public string? Note { get; set; }
         public double? TotalPrice { get; set; }
+        public string? Payment { get; set; }
         public string? Status { get; set; }
         public string? DenyReason { get; set; }
         public virtual Employee? Staff { get; set; }

@@ -30,11 +30,11 @@ namespace KingBakery.Controllers
             var rtd = orders.Where(o => {
                 var day = o.DateTime.Value.ToShortDateString();
                 return (day == today) && (o.Status == "Đã giao hàng");
-                            })
+            })
                             .Sum(o => o.TotalPrice);
-            
+
             ViewBag.Revenue = sum;
-            ViewBag.NumberOrders = count-1;
+            ViewBag.NumberOrders = count - 1;
             ViewBag.RToday = rtd;
             return View(orders);
         }
@@ -52,6 +52,7 @@ namespace KingBakery.Controllers
             ViewBag.Address = order.AdrDelivery;
             ViewBag.Status = order.Status;
             ViewBag.Note = order.Note;
+            ViewBag.Payment = order.Payment;
 
             var voucherPercent = 0;
             if (order.VoucherID != null)
@@ -83,34 +84,6 @@ namespace KingBakery.Controllers
             ViewData["Bakery"] = _context.Bakery.ToList();
             return View(items);
         }
-
-        // GET: Orders
-        //public async Task<IActionResult> Index()
-        //{
-        //    var kingBakeryContext = _context.Orders.Include(o => o.Shipper).Include(o => o.Staff).Include(o => o.Vouchers);
-        //    return View(await kingBakeryContext.ToListAsync());
-        //}
-
-        // GET: Orders/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var orders = await _context.Orders
-        //        .Include(o => o.Shipper)
-        //        .Include(o => o.Staff)
-        //        .Include(o => o.Vouchers)
-        //        .FirstOrDefaultAsync(m => m.ID == id);
-        //    if (orders == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(orders);
-        //}
 
         // GET: Orders/Create
         public IActionResult Create()
