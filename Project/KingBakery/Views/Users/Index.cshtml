@@ -1,8 +1,9 @@
-﻿@{
+﻿@using X.PagedList.Mvc.Core
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@model IEnumerable<KingBakery.Models.Users>
+@model X.PagedList.IPagedList<Users>
 
 <!doctype html>
 <html>
@@ -40,6 +41,10 @@
     <!--================Users Area =================-->
     <section class="checkout_area">
         <div class="row" style="padding-left: 30px;padding-right: 30px;">
+            <!--Add new user-->
+            <div class="col-12" style="width: 100%; display: flex; justify-content: right;">
+                <a style="margin-bottom: 10px;" href="@Url.Action("Create", "Users")" class="btn btn-primary">Thêm nhân viên</a>
+            </div>
 
             <table class="table" style="font-family:Arial">
                 <thead class="thead-light">
@@ -104,14 +109,14 @@
                             @if (item.IsBanned == 0)
                             {
                                 <td style="text-align:center;width:160px;">
-                                    <a href="javascript:void(0)" data-id="@item.ID" id="canc_@item.ID" class="genric-btn success-border radius canc">Hoạt động</a>
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="ban_@item.ID" class="genric-btn success-border radius ban">Hoạt động</a>
                                 </td>
                             }
                             else
                             @if (item.IsBanned == 1)
                             {
                                 <td style="text-align:center;width:160px;">
-                                    <a href="javascript:void(0)" data-id="@item.ID" class="genric-btn success-border radius reason" style="width:100%;">Bị cấm</a>
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="unban_@item.ID" class="genric-btn danger-border radius unban">Bị cấm</a>
                                 </td>
                             }
                             else
@@ -126,9 +131,17 @@
                 </tbody>
             </table>
 
+            @* Pagination part *@
+            <div class="pagination-container" style="width: 100%; display: flex; justify-content: center;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                {
+                    LiElementClasses = new List<String>{ "page-item" },
+                    PageClasses = new List<String>{ "page-link" }
+                })
+            </div>
         </div>
     </section>
-    <!--================End Bill Area =================-->
+    <!--================End User Area =================-->
     <script>
         console.log(1);
     </script>
@@ -158,7 +171,7 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/orders.js"></script>
+    <script src="/js/users.js"></script>
     <script>
         console.log(2);
     </script>
