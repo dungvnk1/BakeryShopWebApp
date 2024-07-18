@@ -57,9 +57,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     <a class="dropdown-item" asp-controller="BlogPosts" asp-action="Index"> blog</a>
-                                    @if (userRole == "2")
+                                    @if (userRole == "3")
                                     {
-                                        <a class="dropdown-item" asp-controller="BlogPosts" asp-action="SingleBlog">Single blog</a>
+                                        <a asp-controller="BlogPosts" asp-action="SingleBlog" class="dropdown-item">Single Blog</a>
+                                      
                                     }
                                     
                                 </div>

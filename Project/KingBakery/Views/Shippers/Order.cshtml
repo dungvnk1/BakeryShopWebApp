@@ -25,9 +25,6 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css//styletk.css" />
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -48,7 +45,6 @@
                         <th scope="col">Ngày tạo</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,19 +62,24 @@
                                 <td>@item.DateTime</td>
                                 <td style="position:relative;">
                                     <p style="color:white; background-color:red; font-weight:bold; position:absolute; padding:auto 5px;
-                                              border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center;">
+                              border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center; cursor:pointer;"
+                                       onclick="updateOrderStatus(@item.ID, '@item.Status')">
                                         <span style="width:100%;text-align:center;" id="stt_@item.ID">@item.Status</span>
                                     </p>
                                 </td>
                                 @if (item.Status == "Đã đặt hàng")
                                 {
                                     <td style="width:150px;text-align:center;">
-                                        <button class="btn btn-primary assign-shipper-btn"
-                                            onclick="acceptOrder(@item.ID)">Chấp nhận</button>
+                                        <button class="btn btn-primary assign-shipper-btn" onclick="acceptOrder(@item.ID)">Chấp nhận</button>
                                     </td>
                                     <td style="width:150px;text-align:center;">
-                                        <button class="btn btn-primary assign-shipper-btn"
-                                            onclick="rejectOrder(@item.ID)">Từ chối</button>
+                                        <button class="btn btn-primary assign-shipper-btn" onclick="rejectOrder(@item.ID)">Từ chối</button>
+                                    </td>
+                                }
+                                else if (item.Status == "Đang giao hàng")
+                                {
+                                    <td style="width:150px;text-align:center;">
+                                        <button class="btn btn-primary" onclick="completeOrder(@item.ID)">Đã giao hàng</button>
                                     </td>
                                 }
                                 else
@@ -90,6 +91,7 @@
                         }
                     }
                 </tbody>
+
             </table>
         </div>
     </section>
@@ -132,15 +134,15 @@
                 data: { orderId: orderId },
                 success: function (response) {
                     if (response.success) {
-                        $('#stt_' + orderId).text('Đang giao hàng');
+                        $('#stt_' + orderId).text('Đang giao hàng'); // Cập nhật trạng thái ngay sau khi chấp nhận
                         Swal.fire({
                             icon: 'success',
                             title: 'Chấp nhận đơn hàng thành công',
                             showConfirmButton: false,
                             timer: 1500
                         }).then(() => {
-                                                                      location.reload();
-                                                                  });;
+                            location.reload();
+                        });
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -168,15 +170,15 @@
                 data: { orderId: orderId },
                 success: function (response) {
                     if (response.success) {
-                        $('#stt_' + orderId).text('Đã từ chối');
+                        $('#stt_' + orderId).text('Bị từ chối');
                         Swal.fire({
                             icon: 'success',
                             title: 'Từ chối đơn hàng thành công',
                             showConfirmButton: false,
                             timer: 1500
                         }).then(() => {
-                                                                      location.reload();
-                                                                  });;
+                            location.reload();
+                        });
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -196,6 +198,86 @@
                 }
             });
         }
+
+        function completeOrder(orderId) {
+            $.ajax({
+                url: '/Shippers/Complete',
+                method: 'POST',
+                data: { orderId: orderId },
+                success: function (response) {
+                    if (response.success) {
+                        $('#stt_' + orderId).text('Đã giao hàng'); // Cập nhật trạng thái từ "Đang giao hàng" thành "Đã giao hàng"
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Giao hàng thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đã xảy ra lỗi',
+                            text: 'Không thể cập nhật trạng thái đơn hàng.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã xảy ra lỗi',
+                        text: 'Đã xảy ra lỗi khi gọi API.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
+        function updateOrderStatus(orderId, currentStatus) {
+            let newStatus;
+            if (currentStatus === "Đang giao hàng") {
+                newStatus = "Đã giao hàng";
+            } else {
+                return; // Không thay đổi gì nếu trạng thái không phải là "Đang giao hàng"
+            }
+
+            $.ajax({
+                url: '/Shippers/UpdateStatus',
+                method: 'POST',
+                data: { orderId: orderId, status: newStatus },
+                success: function (response) {
+                    if (response.success) {
+                        $('#stt_' + orderId).text(newStatus);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cập nhật trạng thái thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đã xảy ra lỗi',
+                            text: 'Không thể cập nhật trạng thái đơn hàng.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã xảy ra lỗi',
+                        text: 'Đã xảy ra lỗi khi gọi API.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
     </script>
 </body>
 
