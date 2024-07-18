@@ -1,0 +1,235 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<KingBakery.Models.Employee>
+
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styletk.css" />
+</head>
+
+<body>
+
+    <!--================Bill Area =================-->
+    <section class="checkout_area" style="padding: 50px 0;">
+        <div class="container">
+            <table class="table" style="font-family: Arial">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Tên nhân viên</th>
+                        <th scope="col">Lương</th>
+                        <th scope="col">Ngày thuê</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.UserID</th>
+                                <td>@item.Users.Username</td>
+                                <td id="salary_@item.UserID">@item.Salary</td>
+                                <td>@item.HiredDate.ToString("dd/MM/yyyy")</td>
+                                <td style="position:relative;">
+                                    <p style="color:white; background-color:red; font-weight:bold; position:absolute; padding:auto 5px;
+                                              border:none; border-radius:4px; text-align:center; width:80%; height:40px; display:flex; align-items:center; cursor:pointer;"
+                                       onclick="updateOrderStatus(@item.UserID, '@item.Status')">
+                                        <span style="width:100%; text-align:center;" id="stt_@item.UserID">@item.Status</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="showUpdateSalaryModal(@item.UserID, @item.Salary)">Cập nhật lương</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" style="text-align:center;">No data available</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--================End Bill Area =================-->
+    <!-- Update Salary Modal -->
+    <div class="modal fade" id="updateSalaryModal" tabindex="-1" role="dialog" aria-labelledby="updateSalaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateSalaryModalLabel">Cập nhật lương</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateSalaryForm">
+                        <div class="form-group">
+                            <label for="newSalary">Lương mới</label>
+                            <input type="number" class="form-control" id="newSalary" required>
+                        </div>
+                        <input type="hidden" id="employeeId">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="updateSalary()">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function updateOrderStatus(userId, currentStatus) {
+            let newStatus;
+            if (currentStatus === "Đang làm việc") {
+                newStatus = "Đã nghỉ việc";
+            } else {
+                return; // Không thay đổi gì nếu trạng thái không phải là "Đang làm việc"
+            }
+
+            $.ajax({
+                url: '/Shippers/UpdateStatus',
+                method: 'POST',
+                data: { userId: userId, status: newStatus },
+                success: function (response) {
+                    if (response.success) {
+                        $('#stt_' + userId).text(newStatus);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cập nhật trạng thái thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đã xảy ra lỗi',
+                            text: 'Không thể cập nhật trạng thái nhân viên.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã xảy ra lỗi',
+                        text: 'Đã xảy ra lỗi khi gọi API.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+
+        function showUpdateSalaryModal(userId, currentSalary) {
+            $('#employeeId').val(userId);
+            $('#newSalary').val(currentSalary);
+            $('#updateSalaryModal').modal('show');
+        }
+
+        function updateSalary() {
+            let userId = $('#employeeId').val();
+            let newSalary = $('#newSalary').val();
+
+            console.log(`Calling UpdateSalary API with userId: ${userId}, salary: ${newSalary}`);
+
+            $.ajax({
+                url: '/Admin/UpdateSalary',
+                method: 'POST',
+                data: { userId: userId, salary: newSalary },
+                success: function (response) {
+                    console.log('Response from UpdateSalary API:', response);
+                    if (response.success) {
+                        $('#salary_' + userId).text(newSalary);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cập nhật lương thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            $('#updateSalaryModal').modal('hide');
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đã xảy ra lỗi',
+                            text: 'Không thể cập nhật lương.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error calling UpdateSalary API:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Đã xảy ra lỗi',
+                        text: 'Đã xảy ra lỗi khi gọi API.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
