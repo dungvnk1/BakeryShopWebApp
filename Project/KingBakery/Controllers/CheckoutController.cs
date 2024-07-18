@@ -4,6 +4,8 @@ using KingBakery.Services;
 using KingBakery.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 
 namespace KingBakery.Controllers
@@ -98,12 +100,17 @@ namespace KingBakery.Controllers
                 total += temp.Price;
             }
             total += 20000;
+            double transTotal = total;
+            if(vch != null)
+            {
+                transTotal = total - (total * vch.VPercent / 100);
+            }
 
             if (payment == "Thanh toán VNPAY")
             {
                 var vnPayModel = new VnPaymentRequestModel
                 {
-                    Amount = total,
+                    Amount = transTotal,
                     CreatedDate = DateTime.Now,
                     Description = $"{address}_{number}",
                     FullName = user == null ? "" : user.FullName,
@@ -142,7 +149,7 @@ namespace KingBakery.Controllers
                 _context.BakeryOption.Update(bakery);
                 _context.SaveChanges();
             }
-            bill.TotalPrice = total + 20000;
+            bill.TotalPrice = total;
             if (vch != null && vch.Quantity > 0)
             {
                 bill.TotalPrice -= (bill.TotalPrice * vch.VPercent / 100);
@@ -154,6 +161,10 @@ namespace KingBakery.Controllers
             _context.SaveChanges();
 
             HttpContext.Session.Clear();
+            if (user != null)
+            {
+                SendEmailOrder(user.Email);
+            }
 
             return Redirect("/Home");
 
@@ -177,7 +188,8 @@ namespace KingBakery.Controllers
             {
                 exist = true;
                 percent = voucher.VPercent;
-                if (voucher.Quantity > 0)
+                DateTime currentDate = DateTime.Now;
+                if (voucher.Quantity > 0 && voucher.EndDate >= currentDate && voucher.StartDate <= currentDate)
                 {
                     remain = true;
                 }
@@ -187,7 +199,7 @@ namespace KingBakery.Controllers
                 {
                     var oid = o.ID;
                     var check = _context.OrderItem.FirstOrDefault(i => i.OrderID == oid && i.CustomerID == uid);
-                    if (check != null)
+                    if (check != null || (voucher.UserID != null && voucher.UserID != uid))
                     {
                         inuse = true;
                     }
@@ -271,8 +283,44 @@ namespace KingBakery.Controllers
 
             HttpContext.Session.Clear();
 
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = int.Parse(userID);
+            }
+            var user = _context.Users.FirstOrDefault(o => o.ID == uid);
+
+            if(user != null)
+            {
+                SendEmailOrder(user.Email);
+            }
             TempData["Message"] = $"Thanh toán VN Pay thành công!";
             return RedirectToAction("Index");
+        }
+
+        public void SendEmailOrder(string email)
+        {
+            string fromMail = "hung080104@gmail.com";
+            string fromPassword = "popa aogx skig wdpe";
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "[King Bakery] Đặt hàng thành công";
+            message.To.Add(new MailAddress(email));
+            message.Body = $"<html><body> Quý khách đã đặt hàng thành công. Đơn hàng sẽ được vận chuyển sớm nhất có thể." +
+                           $"<br> Thời gian: {DateTime.Now}" +
+                           $"<br><br>King Bakery trân trọng cảm ơn quý khách! </body></html>";
+            message.IsBodyHtml = true;
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail, fromPassword),
+                EnableSsl = true,
+            };
+
+            smtpClient.Send(message);
         }
     }
 }

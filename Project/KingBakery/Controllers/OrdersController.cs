@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using System.Security.Claims;
+using System.Net.Mail;
+using System.Net;
+using X.PagedList;
 
 namespace KingBakery.Controllers
 {
@@ -20,23 +23,42 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page, DateTime? fromDate, DateTime? toDate)
         {
             var orders = _context.Orders.ToList();
+
+            if (fromDate.HasValue)
+            {
+                orders = orders.Where(o => o.DateTime >= fromDate.Value).ToList();
+                ViewBag.From = fromDate.Value.ToString("yyyy-MM-dd");
+            }
+
+            if (toDate.HasValue)
+            {
+                orders = orders.Where(o => o.DateTime <= toDate.Value.AddDays(1)).ToList();
+                ViewBag.To = toDate.Value.ToString("yyyy-MM-dd");
+            }
+
             var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
-            var count = orders.Count();
+            var count = orders.Where(o => o.Status == "Đã giao hàng").ToList().Count();
             var today = DateTime.Now.ToShortDateString();
 
-            var rtd = orders.Where(o => {
+            var temp = _context.Orders.ToList();
+            var rtd = temp.Where(o => {
                 var day = o.DateTime.Value.ToShortDateString();
                 return (day == today) && (o.Status == "Đã giao hàng");
             })
                             .Sum(o => o.TotalPrice);
 
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            var od = orders.OrderByDescending(o => o.DateTime).ToPagedList(pageNumber, pageSize);
+
             ViewBag.Revenue = sum;
-            ViewBag.NumberOrders = count - 1;
+            ViewBag.NumberOrders = count;
             ViewBag.RToday = rtd;
-            return View(orders);
+            return View(od);
         }
 
         public IActionResult Details(int id)
@@ -108,6 +130,7 @@ namespace KingBakery.Controllers
         public IActionResult Cancel(int id, string reason)
         {
             var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
+
             var order = _context.Orders.Find(id);
             foreach (var item in items)
             {
@@ -123,7 +146,56 @@ namespace KingBakery.Controllers
             order.DenyReason = reason;
             _context.Orders.Update(order);
             _context.SaveChanges();
+
+            var cusId = _context.OrderItem.FirstOrDefault(o => o.OrderID == id).CustomerID;
+            var email = _context.Users.FirstOrDefault(u => u.ID == cusId).Email;
+            SendEmailCancel(email, reason);
+
             return RedirectToAction("Index");
+        }
+
+        public JsonResult GetCancelReason(int id)
+        {
+            var mess = _context.Orders.FirstOrDefault(o => o.ID == id);
+            var reason = "Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm.";
+            if (mess != null)
+            {
+                if (mess.DenyReason != null)
+                {
+                    reason = mess.DenyReason;
+                }
+            }
+            return Json(new
+            {
+                reason
+            });
+        }
+
+        public void SendEmailCancel(string email, string reason)
+        {
+            string fromMail = "hung080104@gmail.com";
+            string fromPassword = "popa aogx skig wdpe";
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "[King Bakery] Đơn hàng bị từ chối";
+            message.To.Add(new MailAddress(email));
+            message.Body = $"<html><body> {reason}" +
+                           $"<br>Nếu quý khách đã thanh toán đơn hàng, cửa hàng sẽ sớm liên hệ và hoàn tiền." +
+                           $"<br><br>Liên hệ:" +
+                           $"<br>SĐT: 0975861471" +
+                           $"<br>Facebook: King Bakery Shop" +
+                           $"<br><br>King Bakery chân thành xin lỗi quý khách vì sự bất tiện này. </body></html>";
+            message.IsBodyHtml = true;
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail, fromPassword),
+                EnableSsl = true,
+            };
+
+            smtpClient.Send(message);
         }
 
         // POST: Orders/Create

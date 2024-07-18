@@ -22,6 +22,7 @@ namespace KingBakery.Models
         public string? Payment { get; set; }
         public string? Status { get; set; }
         public string? DenyReason { get; set; }
+        public bool? HasFB { get; set; } = false;
         public virtual Employee? Staff { get; set; }
         public virtual Users? Shipper { get; set; }
         public virtual Vouchers? Vouchers { get; set; }

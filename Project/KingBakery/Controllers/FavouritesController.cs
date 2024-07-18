@@ -65,31 +65,20 @@ namespace KingBakery.Controllers
         {
 
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var favouriteCheck = _context.Favourite.Any(u => (u.CustomerID == int.Parse(userID)) && (u.BakeryID == id));
-
-            if (!favouriteCheck)
+            Favourite? favourite = null;
+            if (ModelState.IsValid)
             {
-                Favourite favourite = null;
-                if (ModelState.IsValid)
+
+
+                favourite = new Favourite
                 {
+                    BakeryID = id,
+                    CustomerID = int.Parse(userID)
 
-
-                    favourite = new Favourite
-                    {
-                        BakeryID = id,
-                        CustomerID = int.Parse(userID)
-
-                    };
-                    _context.Add(favourite);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Details", "Bakeries", new { id = id_pro });
-                }
-                if (favourite != null)
-                {
-                    ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", id);
-                    ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", int.Parse(userID));
-                    return View(favourite);
-                }
+                };
+                _context.Add(favourite);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", "BakeryOptions", new { id = id });
             }
 
             return RedirectToAction("Details", "Bakeries", new { id = id_pro });
@@ -205,7 +194,7 @@ namespace KingBakery.Controllers
         // POST: Favourites/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int id_pro)
         {
             var favourite = await _context.Favourite.FindAsync(id);
             if (favourite != null)
@@ -214,7 +203,13 @@ namespace KingBakery.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            if (id_pro == 0)
+            {
+                return RedirectToAction("Index", "Favourites");
+            }
+            else
+                return RedirectToAction("Details", "BakeryOptions", new { id = id_pro });
         }
 
         private bool FavouriteExists(int id)

@@ -26,11 +26,94 @@
     <link rel="stylesheet" href="/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+          rel="stylesheet" />
     <link rel="stylesheet" href="/css/detail.css" />
     <style>
         .swal2-popup {
             top: 12% !important; /* Example to move it down from the top */
             right: 0% !important; /* Center the modal */
+        }
+
+        .card {
+            position: relative;
+            background-color: #30344c;
+            padding: 1em;
+            z-index: 5;
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            max-width: 300px;
+            transition: 200ms ease-in-out;
+        }
+
+        .username {
+            color: #C6E1ED;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .body .text {
+                margin: 0 10px 0 0;
+                white-space: pre-line;
+                color: #c0c3d7;
+                font-weight: 400;
+                line-height: 1.5;
+                margin-bottom: 4px;
+            }
+
+        .footer {
+            position: relative;
+            width: 100%;
+            color: #9fa4aa;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+            margin-top: 10px;
+        }
+
+            .footer div {
+                margin-right: 1rem;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .footer svg {
+                margin-right: 5px;
+                height: 100%;
+                stroke: #9fa4aa;
+            }
+
+        .viewer span {
+            height: 20px;
+            width: 20px;
+            background-color: rgb(28, 117, 219);
+            margin-right: -6px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            display: grid;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 8px;
+            color: #fff;
+            padding: 2px;
+        }
+
+            .viewer span svg {
+                stroke: #fff;
+            }
+
+        #favo:hover{
+            background-color:white;
         }
     </style>
 </head>
@@ -60,15 +143,15 @@
                         <div class="single_product_img">
                             <img src="@Model.Image" alt="#" class="img-fluid">
                         </div>
-                        <div class="single_product_img">
-                            <img src="@Model.Image" alt="#" class="img-fluid">
+                        @* <div class="single_product_img">
+                        <img src="@Model.Image" alt="#" class="img-fluid">
                         </div>
                         <div class="single_product_img">
-                            <img src="@Model.Image" alt="#" class="img-fluid">
-                        </div>
+                        <img src="@Model.Image" alt="#" class="img-fluid">
+                        </div> *@
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="single_product_text text-center">
                         <h3>
                             @Model.Name
@@ -136,10 +219,23 @@
                                         <div class="add_to_cart">
                                             <button type="button" class="atc btn_3" data-id="@Model.BakeryOptions.ElementAt(0).ID">Thêm vào giỏ hàng</button>
                                         </div>
-                                        <div class="favourite_product">
-                                            <form method="post" asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" asp-route-id_pro="@Model.ID">
-                                                <button type="submit"><i class="far fa-star"></i></button>
-                                            </form>
+                                        <div class="favourite_product" style="">
+                                            @if (ViewBag.fav == null)
+                                            {
+                                                <form asp-controller="Favourites" asp-action="Create" asp-route-id="@Model.BakeryOptions.ElementAt(0).ID" asp-route-id_pro="@Model.ID">
+                                                    <button type="submit" style="border:solid 1px brown;margin-top:10px;border-radius:8px;padding-top:5px;" id="favo">
+                                                        <ion-icon style="font-size: xx-large; color: red;" name="heart-outline"></ion-icon>
+                                                    </button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <form asp-controller="Favourites" asp-action="Delete" asp-route-id="@ViewBag.fav.ID" asp-route-id_pro="@Model.BakeryOptions.ElementAt(0).ID" method="post">
+                                                    <button type="submit" style="border:solid 1px brown;margin-top:10px;border-radius:8px;padding-top:5px;" id="favo">
+                                                        <ion-icon style="font-size: xx-large; color: red;" name="heart"></ion-icon>
+                                                    </button>
+                                                </form>
+                                            }
                                         </div>
                                     }
 
@@ -154,6 +250,48 @@
                             </div>
                         }
                     </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;border: brown 2px solid;border-radius:10px;padding:30px;">
+                <h2>Đánh giá</h2>
+                @{
+                    var fbs = (IEnumerable<KingBakery.Models.Feedback>)ViewData["Feedbacks"];
+                }
+                <div style="margin:10px 0;">
+                    @if (fbs != null)
+                    {
+                        int i = 0;
+                        @foreach (var feedback in fbs)
+                        {
+                            i++;
+                            
+                            <div class="card col-lg-4" style="display:inline-block;margin:10px 20px;">
+
+                                <div class="body" style="padding-bottom:27px;">
+                                    <p class="text">@feedback.ContentFB</p><span class="username">@feedback.Customer?.Users.FullName</span>
+
+                                    <div class="footer" style="position:absolute;bottom:12px;">
+
+
+                                        <div class="viewer" style="display:flex; justify-content:space-around; width:100%;">
+                                            @feedback.Time
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path stroke-width="2" stroke="#ffffff" d="M17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8Z"></path> <path stroke-linecap="round" stroke-width="2" stroke="#ffffff" d="M3 21C3.95728 17.9237 6.41998 17 12 17C17.58 17 20.0427 17.9237 21 21"></path> </g></svg></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            if (i % 3 == 0)
+                            {
+                                <br>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:lightpink;font-family:Arial;font-style:italic;">Chưa có đánh giá nào.</h3>
+                    }
                 </div>
             </div>
         </div>
@@ -188,6 +326,8 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <script src="/js/quantitybt.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/noti.addtocart.js"></script>

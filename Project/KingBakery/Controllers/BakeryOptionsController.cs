@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -42,6 +43,20 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userID != null)
+            {
+                var fav = _context.Favourite.Where(f => f.BakeryID == id && f.CustomerID == int.Parse(userID)).FirstOrDefault();
+                ViewBag.fav = fav;
+            }
+            ViewBag.userID = userID;
+
+            var kk = _context.Feedback.Where(f => f.BakeryID == id)
+                                      .Include(f => f.Customer)
+                                      .Include(f => f.Customer.Users)
+                                      .ToList();
+            ViewData["Feedbacks"] = kk;
             ViewData["BakeryOptions"] = _context.BakeryOption.Include(b => b.Bakery).Where(bo => bo.BakeryID == bakeryOption.BakeryID).ToList();
             return View(bakeryOption);
         }

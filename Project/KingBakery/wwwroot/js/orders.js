@@ -1,12 +1,17 @@
-﻿//$(document).ready(function () {
+﻿$(document).ready(function () {
 $(".canc").click(function () {
     console.log("canc");
     var id = $(this).data("id");
-
+    var payment = "#payment_" + id;
+    var val = $(payment).val();
+    console.log(val);
+    var mes = "";
+    if (val == "VNP") mes += "(Đơn đã thanh toán, shop cần phải HOÀN TIỀN!)";
     Swal.fire({
         title: "Nhập lí do",
         input: "text",
         inputLabel: "Lí do từ chối đơn hàng",
+        inputPlaceholder: mes,
         showCancelButton: true,
         inputValidator: (value) => {
             if (!value) {
@@ -14,7 +19,7 @@ $(".canc").click(function () {
             }
             else {
                 $.ajax({
-                    url: "Orders/Cancel",
+                    url: "/Orders/Cancel",
                     data: {
                         id: id,
                         reason: value
@@ -22,7 +27,6 @@ $(".canc").click(function () {
                     success: function () {
                         var cancelSelector = "#stt_" + id;
                         var cancSelector = "#canc_" + id;
-                        console.log(cancelSelector);
                         $(cancelSelector).text("Bị từ chối");
                         $(cancSelector).css("display", "none");
 
@@ -54,7 +58,7 @@ $(".reason").click(function () {
     console.log("rs");
     var id = $(this).data("id");
     $.ajax({
-        url: "Bills/GetCancelReason",
+        url: "/Bills/GetCancelReason",
         data: { id: id },
         success: function (data) {
             Swal.fire({
@@ -72,4 +76,4 @@ $(".reason").click(function () {
         }
     })
 });
-//});
+});

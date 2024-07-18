@@ -13,6 +13,7 @@ using X.PagedList;
 using KingBakery.Extensions;
 using System.Globalization;
 using System.Text;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -161,6 +162,20 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
+            var kk = _context.Feedback.Include(f => f.Customer)
+                                      .Include(f => f.Customer.Users)
+                                      .Where(f => f.BakeryID == bakeryOption.ID)
+                                      .ToList();
+            ViewData["Feedbacks"] = kk;
+
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userID != null)
+            {
+                var fav = _context.Favourite.Where(f => f.BakeryID == bakeryOption.ID && f.CustomerID == int.Parse(userID)).FirstOrDefault();
+                ViewBag.fav = fav;
+            }
+            ViewBag.userID = userID;
+
             ViewData["Quantity"] = bakeryOption.Quantity;
             ViewData["Price"] = bakeryOption.Price;
             return View(bakery);

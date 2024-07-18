@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@model IEnumerable<KingBakery.Models.Orders>
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Orders>
 
 <!doctype html>
 <html>
@@ -75,8 +76,28 @@
         </div>
     </div>
     <!-- breadcrumb part end-->
+
+    <!-- Date range filter form -->
+    <div class="container" style="margin-top:40px;">
+        <form method="get" action="/Orders/Index">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="fromDate">Từ ngày:</label>
+                    <input type="date" id="fromDate" value="@ViewBag.From" name="fromDate" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label for="toDate">Đến ngày:</label>
+                    <input type="date" id="toDate" value="@ViewBag.To" name="toDate" class="form-control" />
+                </div>
+                <div class="col-md-3 align-self-end">
+                    <button type="submit" class="btn btn-primary">Lọc</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <!--================Bill Area =================-->
-    <section class="checkout_area" style="padding: 50px 0;">
+    <section class="checkout_area" style="padding: 20px 0;">
         <div class="container">
 
             <table class="table" style="font-family:Arial">
@@ -95,6 +116,9 @@
                     {
                         if (item.ID != 0)
                         {
+                            var color = "red";
+                            if (item.Status == "Đã đặt hàng" || item.Status == "Đang giao hàng") color = "#71BD5D";
+                            if (item.Status == "Đã giao hàng") color = "#ACBF96";
                             <tr>
                                 <th scope="row">@item.ID</th>
                                 @{
@@ -102,9 +126,9 @@
                                     string formattedPrice = price.HasValue ? price.Value.ToString("#,##0") + "đ" : "N/A";
                                 }
                                 <td>@formattedPrice</td>
-                                <td>@item.DateTime</td>
+                                <td>@item.DateTime?.ToString("dd/MM/yyyy HH:mm:ss")</td>
                                 <td style="position:relative;">
-                                    <p style="color:white; background-color:red; font-weight:bold; position:absolute; padding:auto 5px;
+                                    <p style="color:white; background-color:@color; font-weight:bold; position:absolute; padding:auto 5px;
                                           border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center;">
                                         <span style="width:100%;text-align:center;" id="stt_@item.ID">@item.Status</span>
                                     </p>
@@ -117,6 +141,7 @@
                                 {
                                     <td style="text-align:center;width:160px;">
                                         <a href="javascript:void(0)" data-id="@item.ID" id="canc_@item.ID" class="genric-btn success-border radius canc">Từ chối đơn</a>
+                                        <input type="hidden" id="payment_@item.ID" value="@item.Payment" />
                                     </td>
                                 }
                                 else
@@ -139,12 +164,16 @@
                 </tbody>
             </table>
 
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+                     new PagedListRenderOptions()
+            {
+                LiElementClasses = new List<String> { "page-item" },
+                PageClasses = new List<String> { "page-link" }
+            })
+
         </div>
     </section>
     <!--================End Bill Area =================-->
-    <script>
-        console.log(1);
-    </script>
     <!-- jquery plugins here-->
     <script src="/js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
@@ -172,9 +201,6 @@
     <script src="/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/orders.js"></script>
-    <script>
-        console.log(2);
-    </script>
 </body>
 
 </html>
