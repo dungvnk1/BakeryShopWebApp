@@ -77,7 +77,10 @@ CREATE TABLE Vouchers(
 	VoucherID INT Identity(1,1) PRIMARY KEY,
 	Code VARCHAR(255),
 	VPercent INT,
-	Quantity INT
+	Quantity INT,
+	StartDate datetime,
+	EndDate datetime,
+	UserID INT,
 )
 GO
 
@@ -94,6 +97,7 @@ CREATE TABLE Orders(
 	Payment VARCHAR(10),
 	Status NVARCHAR(100),
 	DenyReason NVARCHAR(2000),
+	HasFB BIT DEFAULT 0,
 	FOREIGN KEY (StaffID) REFERENCES Employee(UserID),
 	FOREIGN KEY (ShipperID) REFERENCES Employee(UserID),
 	FOREIGN KEY (VoucherID) REFERENCES Vouchers(VoucherID) ON DELETE CASCADE
@@ -118,6 +122,7 @@ CREATE TABLE Feedback(
 	CustomerID INT,
 	BakeryID INT,
 	ContentFB NVARCHAR(4000),
+	Time DATETIME,
 	FOREIGN KEY (CustomerID) REFERENCES Customer(UserID) ON DELETE CASCADE,
 	FOREIGN KEY (BakeryID) REFERENCES BakeryOption(ID) ON DELETE CASCADE
 )
@@ -148,7 +153,7 @@ GO
 --Users
 INSERT INTO Users(FullName,UserName,Password,Address,BirthDate,Email,PhoneNumber,Role, VertificationCode, IsBanned)--*Role: 1_admin,2_cus,3_staff,4_shipper
 VALUES
-	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung@gmail.com','0123456789',2, '', 0),  --*Role: 1_admin,2_cus,3_staff,4_shipper
+	(N'Mạnh Hùng',N'hung123',N'123','Ha Noi','2004-01-08','hung080104@gmail.com','0123456789',2, '', 0),  --*Role: 1_admin,2_cus,3_staff,4_shipper
 	(N'Năng Dũng',N'dung123',N'123','Ha Noi','2004-05-12','dung@gmail.com','0123456789',1, '', 0),
 	(N'Chử Hồng Phúc',N'hongphuc',N'123','Ha Noi','2004-05-12','phuc@gmail.com','0123456789',3, '', 0),
 	(N'Lê Trường Sơn',N'sonle123',N'123','81 QL21','2004-11-12','sonle@gmail.com','0987654321',3, '', 0),
@@ -229,10 +234,12 @@ VALUES
 GO
 
 --Vouchers
-INSERT INTO Vouchers(Code,VPercent,Quantity)
+INSERT INTO Vouchers(Code,VPercent,Quantity,StartDate,EndDate,UserID)
 VALUES
-	('QUATANG55',15,1),
-	('QUATANG66',10,2)
+	('QUATANG55',15,1, CAST(N'2024-06-12T00:00:00.000' AS DateTime), CAST(N'2024-12-12T00:00:00.000' AS DateTime),NULL),
+	('QUATANG66',10,2, CAST(N'2024-06-12T00:00:00.000' AS DateTime), CAST(N'2024-12-12T00:00:00.000' AS DateTime),NULL),
+	(N'KINGBAKERY', 30, 4, CAST(N'2024-07-17T00:00:00.000' AS DateTime), CAST(N'2024-07-26T00:00:00.000' AS DateTime),NULL),
+	(N'KBGIFT88', 25, 2, CAST(N'2024-07-17T00:00:00.000' AS DateTime), CAST(N'2024-07-17T00:00:00.000' AS DateTime),NULL)
 GO
 
 --Favourite
@@ -243,11 +250,11 @@ VALUES
 GO
 
 --Feedback
-INSERT INTO Feedback(CustomerID,BakeryID,ContentFB)
+INSERT INTO Feedback(CustomerID,BakeryID,ContentFB,Time)
 VALUES
-( 1, 1, N'Bánh rất ngon và phục vụ thân thiện'),
-( 1, 2, N'Không gian quán rất ấm cúng, bánh mì tươi ngon'),
-( 1, 3, N'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng')
+( 1, 1, N'Bánh rất ngon và phục vụ thân thiện',GETDATE()),
+( 1, 2, N'Không gian quán rất ấm cúng, bánh mì tươi ngon',GETDATE()),
+( 1, 3, N'Dịch vụ giao hàng nhanh, bánh đến nơi vẫn còn nóng',GETDATE())
 GO
 
 --Orders
@@ -256,7 +263,7 @@ INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneN
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 378000, N'Đã đặt hàng',NULL,NULL, 'COD'),
 (3, 8, NULL, '2024-05-03 12:15:00', N'789 Đường GHI, Quận 3, TP HCM', '0123456789', 220000, N'Đang giao hàng',NULL,NULL, 'COD'),
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm', 'COD'),
-(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 490000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
+(3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
 (4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 120000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
 (7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD')
 GO
@@ -283,6 +290,8 @@ Go
 --select * from Orders
 --select * from Vouchers
 --select * from Users
+--select * from Feedback
+--select * from Favourite
 
 --BlogPosts
 INSERT INTO BlogPosts (Title, Content, PublishedDate, ModifiedDate, Author, Image)

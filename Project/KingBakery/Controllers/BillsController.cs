@@ -3,6 +3,7 @@ using KingBakery.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using X.PagedList;
 
 namespace KingBakery.Controllers
 {
@@ -15,7 +16,7 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page, DateTime? fromDate, DateTime? toDate)
         {
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
             int uid = 0;
@@ -33,7 +34,28 @@ namespace KingBakery.Controllers
                     orders.Add(order);
                 }
             }
-            return View(orders);
+
+            if (fromDate.HasValue)
+            {
+                orders = orders.Where(o => o.DateTime >= fromDate.Value).ToList();
+                ViewBag.From = fromDate.Value.ToString("yyyy-MM-dd");
+            }
+
+            if (toDate.HasValue)
+            {
+                orders = orders.Where(o => o.DateTime <= toDate.Value.AddDays(1)).ToList();
+                ViewBag.To = toDate.Value.ToString("yyyy-MM-dd"); 
+            }
+
+            
+           
+
+            //Pagination
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            var od = orders.OrderByDescending(o => o.DateTime).ToPagedList(pageNumber, pageSize);
+            return View(od);
         }
         public IActionResult Detail(int id)
         {

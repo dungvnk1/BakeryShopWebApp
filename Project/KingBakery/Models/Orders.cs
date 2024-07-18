@@ -7,7 +7,7 @@ namespace KingBakery.Models
     {
         [Key]
         public int ID { get; set; }
-        
+
         [ForeignKey("Staff")]
         public int? StaffID { get; set; }
         //[ForeignKey("Shipper")]
@@ -17,12 +17,15 @@ namespace KingBakery.Models
         public DateTime? DateTime { get; set; }
         public string? AdrDelivery { get; set; }
         public string? PhoneNumber { get; set; }
+        public string? Note { get; set; }
         public double? TotalPrice { get; set; }
         public string? Payment { get; set; }
         public string? Status { get; set; }
-
+        public string? DenyReason { get; set; }
+        public bool? HasFB { get; set; } = false;
         public virtual Employee? Staff { get; set; }
         public virtual Users? Shipper { get; set; }
         public virtual Vouchers? Vouchers { get; set; }
+        public virtual ICollection<OrderItem>? OrderItems { get; set; }
     }
 }

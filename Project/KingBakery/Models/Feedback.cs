@@ -12,6 +12,7 @@ namespace KingBakery.Models
         [ForeignKey("BakeryOption")]
         public int BakeryID { get; set; }
         public string ContentFB { get; set; }
+        public DateTime Time { get; set; }
 
         public virtual Customer? Customer { get; set; }
         public virtual BakeryOption? BakeryOption { get; set; }

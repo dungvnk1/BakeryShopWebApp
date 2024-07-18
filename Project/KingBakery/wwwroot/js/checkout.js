@@ -21,13 +21,13 @@ $(document).ready(function () {
                 }
                 else {
                     if (data.inuse) {
-                        Swal.fire("Bạn đã sử dụng mã giảm giá này trước đây!");
+                        Swal.fire("Bạn đã sử dụng mã giảm giá này trước đây hoặc mã giảm giá này không dành cho bạn!");
                         $("#ipv").val("");
                         console.log("inuse");
                     }
                     else {
                         if (!data.remain) {
-                            Swal.fire("Mã giảm giá đã hết hạn!");
+                            Swal.fire("Mã giảm giá đã hết hạn hoặc chưa được kích hoạt!");
                             $("#ipv").val("");
                             console.log("not remain");
                         }
@@ -43,6 +43,7 @@ $(document).ready(function () {
                             $("#delv").css("display", "inline-block");
                             $("#codev").text("- (" + dis + "%) " + red + "đ");
                             $("#vch").css("display", "block");
+                            $("#ipv").attr("readonly", true);
                         }
                     }
                 }
@@ -61,8 +62,8 @@ $(document).ready(function () {
 
     $("#delv").click(function () {
         var subtotal = Intl.NumberFormat('en-US').format(stotal);
-
         $("#ipv").val("");
+        $("#ipv").removeAttr("readonly");
         $(this).css("display", "none");
         $("#vch").css("display", "none");
         $("#subtotal").text(subtotal + "đ");
@@ -105,6 +106,7 @@ $(document).ready(function () {
                 },
                 success: function () {
                     $("#order").css("display", "none");
+                    $("#ordervnp").css("display", "none");
                     $("#c_quantity").css("display", "none");
                     Swal.fire({
                         title: "Thành công!",

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -22,7 +23,8 @@ namespace KingBakery.Controllers
         // GET: Favourites
         public async Task<IActionResult> Index()
         {
-            var kingBakeryContext = _context.Favourite.Include(f => f.BakeryOption).Include(f => f.Customer);
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var kingBakeryContext = _context.Favourite.Where(u => u.CustomerID == int.Parse(userID)).Include(f => f.BakeryOption).ThenInclude(f => f.Bakery).Include(f => f.Customer);
             return View(await kingBakeryContext.ToListAsync());
         }
 
@@ -43,7 +45,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            return View(favourite);
+            return RedirectToAction("Details", "BakeryOptions", new { id = favourite.BakeryOption.ID });
         }
 
         // GET: Favourites/Create
@@ -59,17 +61,27 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,CustomerID,BakeryID")] Favourite favourite)
+        public async Task<IActionResult> Create(int id, int id_pro)
         {
+
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Favourite? favourite = null;
             if (ModelState.IsValid)
             {
+
+
+                favourite = new Favourite
+                {
+                    BakeryID = id,
+                    CustomerID = int.Parse(userID)
+
+                };
                 _context.Add(favourite);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "BakeryOptions", new { id = id });
             }
-            ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", favourite.BakeryID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", favourite.CustomerID);
-            return View(favourite);
+
+            return RedirectToAction("Details", "Bakeries", new { id = id_pro });
         }
 
         // GET: Favourites/Edit/5
@@ -80,13 +92,19 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            var favourite = await _context.Favourite.FindAsync(id);
+            var favourite = _context.Favourite.Include(f => f.BakeryOption).ThenInclude(f => f.Bakery).FirstOrDefault(f => f.ID == id);
             if (favourite == null)
             {
                 return NotFound();
             }
-            ViewData["BakeryID"] = new SelectList(_context.BakeryOption, "ID", "ID", favourite.BakeryID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "UserID", "UserID", favourite.CustomerID);
+            var sizeList = await _context.BakeryOption
+    .Where(bo => bo.BakeryID == favourite.BakeryOption.BakeryID)
+    .Select(bo => new { bo.ID, bo.Size })
+    .Distinct()
+    .ToListAsync();
+
+            ViewData["Size"] = new SelectList(sizeList, "ID", "Size", favourite.BakeryOption.ID);
+
             return View(favourite);
         }
 
@@ -95,7 +113,7 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,CustomerID,BakeryID")] Favourite favourite)
+        public async Task<IActionResult> Edit(int id, Favourite favourite)
         {
             if (id != favourite.ID)
             {
@@ -106,8 +124,34 @@ namespace KingBakery.Controllers
             {
                 try
                 {
-                    _context.Update(favourite);
-                    await _context.SaveChangesAsync();
+
+
+                    var existingFavourite = await _context.Favourite
+                        .Include(f => f.BakeryOption)
+                        .FirstOrDefaultAsync(f => f.ID == id);
+
+                    if (existingFavourite != null)
+                    {
+                        var duplicateFavourite = await _context.Favourite
+                    .FirstOrDefaultAsync(f =>
+                        f.ID != id &&
+                        f.CustomerID == existingFavourite.CustomerID &&
+                        f.BakeryID == favourite.BakeryOption.ID);
+
+                        if (duplicateFavourite != null)
+                        {
+                            _context.Favourite.Remove(duplicateFavourite);
+                        }
+
+                        existingFavourite.BakeryID = favourite.BakeryOption.ID;
+
+                        _context.Update(existingFavourite);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -150,7 +194,7 @@ namespace KingBakery.Controllers
         // POST: Favourites/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int id_pro)
         {
             var favourite = await _context.Favourite.FindAsync(id);
             if (favourite != null)
@@ -159,7 +203,13 @@ namespace KingBakery.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            if (id_pro == 0)
+            {
+                return RedirectToAction("Index", "Favourites");
+            }
+            else
+                return RedirectToAction("Details", "BakeryOptions", new { id = id_pro });
         }
 
         private bool FavouriteExists(int id)

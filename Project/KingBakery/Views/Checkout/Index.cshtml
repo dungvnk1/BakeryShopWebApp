@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h2 style="margin-bottom:20px;">Thông tin chi tiết</h2>
-                        <form class="row contact_form" novalidate="novalidate" asp-action="CreateBill" asp-controller="Checkout">
+                        <form class="row contact_form" asp-action="CreateBill" asp-controller="Checkout">
                             <div class="check_title" style="margin-bottom:20px;">
                                 <h2>
                                     Thông tin nhận hàng
@@ -70,11 +70,11 @@
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <label for="add" style="font-weight:bold;">Địa chỉ nhận hàng</label>
-                                <input type="text" class="form-control ip adr" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ" />
+                                <input type="text" class="form-control ip adr" value="@ViewBag.Address" id="add" name="address" placeholder="Nhập địa chỉ" required/>
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <label for="phone" style="font-weight:bold;">Số điện thoại</label>
-                                <input type="number" class="form-control ip pho" value="@ViewBag.Phone" id="phone" name="number" placeholder="Nhập số điện thoại" />
+                                <input type="number" class="form-control ip pho" value="@ViewBag.Phone" id="phone" name="number" placeholder="Nhập số điện thoại" required/>
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <label for="email" style="font-weight:bold;">Email</label>
