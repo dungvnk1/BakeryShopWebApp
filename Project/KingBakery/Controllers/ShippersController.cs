@@ -29,7 +29,7 @@ namespace KingBakery.Controllers
             var orders = await _context.Orders.Where(o => o.ShipperID == shipperId).ToListAsync();
             return View(orders);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Accept(int orderId)
         {
@@ -39,7 +39,7 @@ namespace KingBakery.Controllers
                 return Json(new { success = false });
             }
 
-            order.Status = "Đã chấp nhận";
+            order.Status = "Đang giao hàng"; // Cập nhật trạng thái từ "Đã chấp nhận" sang "Đang giao hàng"
             await _context.SaveChangesAsync();
 
             return Json(new { success = true });
@@ -59,6 +59,35 @@ namespace KingBakery.Controllers
 
             return Json(new { success = true });
         }
+        [HttpPost]
+        public IActionResult UpdateStatus(int orderId, string status)
+        {
+            var order = _context.Orders.Find(orderId); // Assuming Orders is the DbSet for orders
+            if (order != null)
+            {
+                order.Status = status;
+                _context.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Complete(int orderId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                return Json(new { success = false });
+            }
+
+            order.Status = "Đã giao hàng"; // Cập nhật trạng thái từ "Đang giao hàng" sang "Đã giao hàng"
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
+        }
+
+
 
         //
         // // GET: Shippers/Details/5

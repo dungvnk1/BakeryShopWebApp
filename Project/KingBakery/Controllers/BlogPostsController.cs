@@ -154,10 +154,12 @@ namespace KingBakery.Controllers
             return _context.BlogPosts.Any(e => e.Id == id);
         }
 
-        public IActionResult SingleBlog()
+        // GET: BlogPosts/SingleBlog
+        public async Task<IActionResult> SingleBlog()
         {
-            var blogPosts = _context.BlogPosts.ToList();
+            var blogPosts = await _context.BlogPosts.ToListAsync();
             return View(blogPosts);
         }
+
     }
 }
