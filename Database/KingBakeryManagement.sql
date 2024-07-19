@@ -56,7 +56,9 @@ CREATE TABLE Bakery(
 	Description NVARCHAR(4000),
 	ReleaseDate Date,
 	CategoryID INT NOT NULL,
+	[isDeleted] [bit] NULL,
 	FOREIGN KEY (CategoryID) REFERENCES Category(ID) ON DELETE CASCADE
+	
 )
 GO
 
@@ -170,17 +172,17 @@ GO
 INSERT INTO Employee(UserID,Salary,HiredDate,Status)
 VALUES
 	(3, 3000000, '2024-04-24', N'Đang làm việc'),
-    (4, 2500000, '2024-05-01', N'Đang nghỉ'),
+    (4, 2500000, '2024-05-01', N'Đã nghỉ'),
     (7, 3500000, '2024-03-15', N'Đang làm việc'),
-    (8, 2800000, '2024-02-20', N'Đang nghỉ'),
+    (8, 2800000, '2024-02-20', N'Đã nghỉ'),
     (9, 4000000, '2024-01-10', N'Đang làm việc')
 GO
 
 --Customer
 INSERT INTO Customer(UserID,Ranking)
 VALUES
-	(1,N'Đồng'),
-	(5,N'Đồng'),
+	(1,N'Vàng'),
+	(5,N'Bạc'),
 	(9,N'Đồng')
 GO
 
@@ -200,29 +202,30 @@ VALUES
 GO
 
 --Bakery
-INSERT INTO Bakery(Name,Image,Description,ReleaseDate,CategoryID)
-VALUES   --Image tạm thời để NULL hết nhé
-(N'Bánh kem Socola','/BakeryImg/ChocoSanta.png',N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...','2024-05-29',3),
-(N'Bánh quy nho khô','/BakeryImg/BanhQuyNhoKho.png',N'Món ăn vặt hấp dẫn...','2024-05-29',4),
-(N'Apple Crepe','/BakeryImg/AppleCrepe.png',N'Bánh crepe ngọt có nhân táo thơm ngon và phủ kem ngọt lên trên.','2024-05-29',2),
-(N'Apple Danish','/BakeryImg/AppleDanish.png',N'Món ăn thú vị kết hợp hương vị dễ chịu của táo và gia vị với kết cấu mềm mại, dễ chịu của bánh ngọt Đan Mạch.', '2024-05-29',2),
-(N'Bánh Croissant','/BakeryImg/BanhCroissant.png',N'Lớp vỏ giòn tan và hình dáng hình lưỡi liềm. Được làm từ bột mì, men, sữa, bơ, đường và muối, croissant là một món bánh yêu thích vào bữa sáng hay bữa ăn nhẹ','2024-05-29',2),
-(N'Bánh Cuộn socola','/BakeryImg/BanhCuonChocolate.png',N'Bánh ngọt hấp dẫn với lớp bánh bông lan mềm mại cuộn quanh lớp nhân socola thơm ngon', '2024-05-29', 4),
-(N'Bánh Dứa','/BakeryImg/BanhDua.png',N'Hương vị đặc trưng của dừa, với lớp bánh mềm mại kết hợp cùng lớp dừa nạo giòn ngọt hoặc dừa khô', '2024-05-29', 3),
-(N'Bánh Mỳ Ruốc','/BakeryImg/BanhMyRuoc.png',N'Đây là loại bánh mỳ mềm, thường có nhân hoặc phủ ruốc, hương vị mặn ngọt hài hòa, với lớp bánh mềm mịn kết hợp cùng ruốc thơm ngon.', '2024-05-29', 2),
-(N'Bánh Ốc Quế Kem','/BakeryImg/BanhOcQueKem.png',N'Một món ăn độc đáo và hấp dẫn, kết hợp giữa hai yếu tố: lớp bánh mì mềm mại và phần kem ngọt mát bên trong', '2024-05-29', 4),
-(N'Bánh Paté chaud','/BakeryImg/BanhPateChaud.png',N'Được làm từ lớp vỏ bánh giòn và nhân pâté thơm ngon bên trong', '2024-05-29', 1),
-(N'Black Croffle Chocolate','/BakeryImg/BlackCroffleChocolate.png',N'Sự kết hợp độc đáo giữa croissant và sô cô la', '2024-05-29', 2),
-(N'Bánh Caramel','/BakeryImg/Caramel.png',N'Lớp bánh ẩm mịn, phủ trên cùng bởi lớp caramel sệt và thường được trang trí bằng các hạt đậu, hạt dẻ cười hoặc sô cô la.', '2024-05-29', 2),
-(N'Bánh Choco Santa','/BakeryImg/ChocoSanta.png',N'Hình dạng và trang trí giống như xe quà của ông già Noel, được làm từ sô cô la và bánh ngọt.', '2024-05-29', 4),
-(N'Bánh Crepe Xoài','/BakeryImg/CrepeXoai.png',N'Món ăn vừa ngon miệng, vừa hấp dẫn, kết hợp giữa chiếc crepe mềm mịn và mùi vị ngọt ngào của xoài', '2024-05-29', 2),
-(N'Bánh Plan','/BakeryImg/FlanCake.png',N'Nước sốt caramel mịn mượt được làm từ đường và nước, lót dưới đáy khuôn, được chế biến với hỗn hợp trứng, sữa đặc có đường và đôi khi là nước cốt dừa, mang lại kết cấu béo ngậy', '2024-05-29', 2),
-(N'Bánh Madeleines','/BakeryImg/MadeleinesPie.png',N'Bánh nhỏ, có hình dạng và kích thước tương tự như chiếc vỏ sò,được làm từ bột mì, bơ, đường, trứng và hương vani', '2024-05-29', 2),
-(N'NewYork Cheese Rolls','/BakeryImg/NewYorkCheeseRolls.png',N'Bánh cuộn được làm từ bột mì mềm mịn và nhân phô mai đậm đà', '2024-05-29', 3),
-(N'NewYork Strawberry Rolls','/BakeryImg/NewYorkStrawberryRolls.png',N'Hình dạng cuộn tròn, với lớp vỏ ngoài giòn và màu vàng đẹp, bên trong là lớp nhân dâu ngọt ngào và mềm mịn', '2024-05-29', 3),
-(N'Bánh Ruốc Cheese Croffle','/BakeryImg/RuocCheeseCroffle.png',N'Sự kết hợp giữa hai món ăn ngon là ruốc (ruột cá) và croffle (bánh waffle được làm từ croissant),Ruốc được phối trộn với phô mai và các gia vị khác, sau đó được đặt giữa hai lớp croffle và nướng cho đến khi phô mai tan chảy và bánh croffle giòn rụm.', '2024-05-29', 1),
-(N'Salted Egg Pastry','/BakeryImg/SaltedEggPastry.png',N'Một món ăn phổ biến trong nhiều nền văn hóa, thường được làm từ bột mì và nhân trứng muối', '2024-05-29', 1),
-(N'Swedish Princess Pie','/BakeryImg/SwedishPrincessPie.png',N'Được làm từ mứt, trứng, sữa, kem và cốt bánh bông lan, bao phủ phía trên là lớp bánh hạnh nhân (thường có màu xanh)', '2024-05-29', 2);
+SET IDENTITY_INSERT [dbo].[Bakery] ON 
+
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (1, N'Bánh kem Socola', N'/BakeryImg/ChocoSanta.png', N'Bánh sinh nhật phủ Socola và nhân chanh leo phù hợp với mọi lứa tuổi...', CAST(N'2024-05-29' AS Date), 3, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (2, N'Bánh quy nho khô', N'/BakeryImg/BanhQuyNhoKho.png', N'Món ăn vặt hấp dẫn...', CAST(N'2024-05-29' AS Date), 4, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (3, N'Apple Crepe', N'/BakeryImg/AppleCrepe.png', N'Bánh crepe ngọt có nhân táo thơm ngon và phủ kem ngọt lên trên.', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (4, N'Apple Danish', N'/BakeryImg/AppleDanish.png', N'Món ăn thú vị kết hợp hương vị dễ chịu của táo và gia vị với kết cấu mềm mại, dễ chịu của bánh ngọt Đan Mạch.', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (5, N'Bánh Croissant', N'/BakeryImg/BanhCroissant.png', N'Lớp vỏ giòn tan và hình dáng hình lưỡi liềm. Được làm từ bột mì, men, sữa, bơ, đường và muối, croissant là một món bánh yêu thích vào bữa sáng hay bữa ăn nhẹ', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (6, N'Bánh Cuộn socola', N'/BakeryImg/BanhCuonChocolate.png', N'Bánh ngọt hấp dẫn với lớp bánh bông lan mềm mại cuộn quanh lớp nhân socola thơm ngon', CAST(N'2024-05-29' AS Date), 4, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (7, N'Bánh Dứa', N'/BakeryImg/BanhDua.png', N'Hương vị đặc trưng của dừa, với lớp bánh mềm mại kết hợp cùng lớp dừa nạo giòn ngọt hoặc dừa khô', CAST(N'2024-05-29' AS Date), 3, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (8, N'Bánh Mỳ Ruốc', N'/BakeryImg/BanhMyRuoc.png', N'Đây là loại bánh mỳ mềm, thường có nhân hoặc phủ ruốc, hương vị mặn ngọt hài hòa, với lớp bánh mềm mịn kết hợp cùng ruốc thơm ngon.', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (9, N'Bánh Ốc Quế Kem', N'/BakeryImg/BanhOcQueKem.png', N'Một món ăn độc đáo và hấp dẫn, kết hợp giữa hai yếu tố: lớp bánh mì mềm mại và phần kem ngọt mát bên trong', CAST(N'2024-05-29' AS Date), 4, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (10, N'Bánh Paté chaud', N'/BakeryImg/BanhPateChaud.png', N'Được làm từ lớp vỏ bánh giòn và nhân pâté thơm ngon bên trong', CAST(N'2024-05-29' AS Date), 1, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (11, N'Black Croffle Chocolate', N'/BakeryImg/BlackCroffleChocolate.png', N'Sự kết hợp độc đáo giữa croissant và sô cô la', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (12, N'Bánh Caramel', N'/BakeryImg/Caramel.png', N'Lớp bánh ẩm mịn, phủ trên cùng bởi lớp caramel sệt và thường được trang trí bằng các hạt đậu, hạt dẻ cười hoặc sô cô la.', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (13, N'Bánh Choco Santa', N'/BakeryImg/ChocoSanta.png', N'Hình dạng và trang trí giống như xe quà của ông già Noel, được làm từ sô cô la và bánh ngọt.', CAST(N'2024-05-29' AS Date), 4, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (14, N'Bánh Crepe Xoài', N'/BakeryImg/CrepeXoai.png', N'Món ăn vừa ngon miệng, vừa hấp dẫn, kết hợp giữa chiếc crepe mềm mịn và mùi vị ngọt ngào của xoài', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (15, N'Bánh Plan', N'/BakeryImg/FlanCake.png', N'Nước sốt caramel mịn mượt được làm từ đường và nước, lót dưới đáy khuôn, được chế biến với hỗn hợp trứng, sữa đặc có đường và đôi khi là nước cốt dừa, mang lại kết cấu béo ngậy', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (16, N'Bánh Madeleines', N'/BakeryImg/MadeleinesPie.png', N'Bánh nhỏ, có hình dạng và kích thước tương tự như chiếc vỏ sò,được làm từ bột mì, bơ, đường, trứng và hương vani', CAST(N'2024-05-29' AS Date), 2, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (17, N'NewYork Cheese Rolls', N'/BakeryImg/NewYorkCheeseRolls.png', N'Bánh cuộn được làm từ bột mì mềm mịn và nhân phô mai đậm đà', CAST(N'2024-05-29' AS Date), 3, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (18, N'NewYork Strawberry Rolls', N'/BakeryImg/NewYorkStrawberryRolls.png', N'Hình dạng cuộn tròn, với lớp vỏ ngoài giòn và màu vàng đẹp, bên trong là lớp nhân dâu ngọt ngào và mềm mịn', CAST(N'2024-05-29' AS Date), 3, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (19, N'Bánh Ruốc Cheese Croffle', N'/BakeryImg/RuocCheeseCroffle.png', N'Sự kết hợp giữa hai món ăn ngon là ruốc (ruột cá) và croffle (bánh waffle được làm từ croissant),Ruốc được phối trộn với phô mai và các gia vị khác, sau đó được đặt giữa hai lớp croffle và nướng cho đến khi phô mai tan chảy và bánh croffle giòn rụm.', CAST(N'2024-05-29' AS Date), 1, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (20, N'Salted Egg Pastry', N'/BakeryImg/SaltedEggPastry.png', N'Một món ăn phổ biến trong nhiều nền văn hóa, thường được làm từ bột mì và nhân trứng muối', CAST(N'2024-05-29' AS Date), 1, 0)
+INSERT [dbo].[Bakery] ([ID], [Name], [Image], [Description], [ReleaseDate], [CategoryID], [isDeleted]) VALUES (21, N'Swedish Princess Pie', N'/BakeryImg/SwedishPrincessPie.png', N'Được làm từ mứt, trứng, sữa, kem và cốt bánh bông lan, bao phủ phía trên là lớp bánh hạnh nhân (thường có màu xanh)', CAST(N'2024-05-29' AS Date), 2, 0)
+SET IDENTITY_INSERT [dbo].[Bakery] OFF
 GO
 
 --BakeryDetail
@@ -265,7 +268,8 @@ INSERT INTO Orders (StaffID, ShipperID, VoucherID, DateTime, AdrDelivery, PhoneN
 (NULL, NULL, 2, '2024-05-02 11:00:00', N'456 Đường DEF, Quận 2, TP HCM', '0123456789', 108000, N'Bị từ chối',NULL,N'Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm', 'COD'),
 (3, 8, NULL, '2024-06-02', N'123 Đường ABC, Quận 2, TP HCM', '0123456789', 470000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
 (4, 8, NULL, '2024-06-12', N'456 Đường XYZ, Quận 3, TP HCM', '0123456789', 120000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
-(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD')
+(7, 8, NULL, getdate(), N'789 Đường ABC, Quận 4, TP HCM', '0123456789', 220000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD'),
+(7, 8, NULL, '2024-07-12', N'JQKA Đường ABC, Quận 5, HN', '0123456789', 520000, N'Đã giao hàng',N'Cảm ơn shop',NULL, 'COD')
 GO
 SET IDENTITY_INSERT Orders ON;
 INSERT INTO Orders (ID, DateTime) VALUES
@@ -284,7 +288,8 @@ INSERT INTO OrderItem ( BakeryID, CustomerID, OrderID, Quantity, Price) VALUES
 ( 3, 1, 5, 1, 50000),
 ( 1, 1, 5, 2, 400000),
 ( 3, 1, 6, 2, 100000),
-( 1, 1, 7, 1, 200000)
+( 1, 1, 7, 1, 200000),
+( 2, 1, 8, 2, 500000)
 Go
 --select * from OrderItem
 --select * from Orders
@@ -301,4 +306,3 @@ VALUES
     ('Baking Tips and Tricks', 'Get ready to take your baking skills to the next level with these expert tips and tricks!', '2022-02-01 08:00:00', NULL, 'Bob Johnson', 'blog-post-3.jpg'),
     ('New Arrivals: Spring Collection', 'Check out our new spring collection of baked goods, featuring fresh flavors and ingredients!', '2022-03-01 12:00:00', '2022-03-05 10:00:00', 'Emily Chen', 'blog-post-4.jpg'),
     ('Behind the Scenes: Our Bakery', 'Ever wondered what goes on behind the scenes of our bakery? Take a peek at our latest blog post to find out!', '2022-04-01 10:00:00', NULL, 'Michael Brown', 'blog-post-5.jpg');
-
