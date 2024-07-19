@@ -1,4 +1,5 @@
 ﻿using KingBakery.Data;
+using KingBakery.Models;
 using KingBakery.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,12 @@ namespace KingBakery.Controllers
     public class AdminController : Controller
     {
         private readonly KingBakeryContext _context;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(KingBakeryContext context)
+        public AdminController(KingBakeryContext context, ILogger<AdminController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Dashboard()
@@ -27,7 +30,44 @@ namespace KingBakery.Controllers
 
         public IActionResult SalaryManage()
         {
-            return View();
+            var employees = _context.Employee
+                .Select(e => new Employee
+                {
+                    UserID = e.UserID,
+                    Salary = e.Salary,
+                    HiredDate = e.HiredDate,
+                    Status = e.Status,
+                    Users = e.Users
+                })
+                .ToList();
+
+            return View(employees);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateSalary(int userId, decimal salary)
+        {
+            _logger.LogInformation($"UpdateSalary called with userId: {userId}, salary: {salary}");
+            try
+            {
+                var employee = _context.Employee.FirstOrDefault(e => e.UserID == userId);
+                if (employee == null)
+                {
+                    _logger.LogWarning($"Employee not found with userId: {userId}");
+                    return Json(new { success = false, message = "Employee not found." });
+                }
+
+                employee.Salary = (double)salary; // or decimal
+                _context.SaveChanges();
+
+                _logger.LogInformation($"Salary updated successfully for userId: {userId}");
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating salary for userId: {userId}", userId);
+                return Json(new { success = false, message = ex.Message });
+            }
         }
 
         //[HttpGet]

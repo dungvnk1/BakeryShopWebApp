@@ -1,0 +1,116 @@
+﻿@model KingBakery.Models.Users
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<head></head>
+<body>
+    <div class='container'>
+        <div class='panel panel-primary dialog-panel'>
+            <div class='panel-heading' style="text-align:center; background-color:#B08EAD">
+                <h5 style="font-weight:bold; font-size:16px">Cập nhật tài khoản</h5>
+            </div>
+            <div class='panel-body'>
+                <form asp-action="Edit" method="post" class='form-horizontal' role='form'>
+                    <input type="hidden" asp-for="ID" />
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Họ và tên</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="FullName" class='form-control' id='id_first_name' placeholder='Full Name' type='text'>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Tên đăng nhập</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Username" value="@Model.Username" class='form-control' id='id_user_name' placeholder='@Model.Username' type='text' readonly>
+                                    @* <span asp-validation-for="Username" class="text-danger"></span> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Mật khẩu</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Password" value="@Model.Password" class='form-control' id='id_password' placeholder='@Model.Password' type='password' readonly>
+                                    @* <span asp-validation-for="Password" class="text-danger"></span> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Địa chỉ</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Address" class='form-control' id='id_address' placeholder='Address' type='text'>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Ngày sinh</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8'>
+                                <div class='form-group internal input-group'>
+                                    <input asp-for="BirthDate" type="date" class='form-control datepicker' id='id_checkin'>
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Email</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="Email" class='form-control' id='id_email' placeholder='Email' type='email'>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Số điện thoại</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-8 indent-small'>
+                                <div class='form-group internal'>
+                                    <input asp-for="PhoneNumber" class='form-control' id='id_phone_number' placeholder='PhoneNumber' type='text'>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Role" value="@Model.Role" />
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit' style="background-color:#B08EAD">Cập nhật tài khoản</button>
+                        </div>
+                    </div>
+                </form>
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                <div class='form-group'>
+                    <label class="control-label col-md-2 col-md-offset-2">Thay đổi mật khẩu</label>
+                    <div class='col-md-3'>
+                        <a asp-action="ChangePassword" asp-controller="Users" class='btn-lg btn-info'>Thay đổi mật khẩu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
