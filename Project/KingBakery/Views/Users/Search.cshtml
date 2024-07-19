@@ -1,9 +1,8 @@
-﻿@using X.PagedList.Mvc.Core
-@{
+﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@model X.PagedList.IPagedList<Users>
+@model IEnumerable<Users>
 
 <!doctype html>
 <html>
@@ -112,7 +111,7 @@
                                     </p>
                                 </td>
                             }
-                            
+
                             <td style="width:150px;text-align:center;">
                                 <a asp-controller="Admin" asp-action="UserDetail" asp-route-id="@item.ID" class="genric-btn success-border radius">Xem chi tiết</a>
                             </td>
@@ -142,13 +141,6 @@
                 </tbody>
             </table>
 
-            @* Pagination part *@
-            <div class="pagination-container" style="width: 100%; display: flex; justify-content: center;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
-                {
-                    LiElementClasses = new List<String>{ "page-item" },
-                    PageClasses = new List<String>{ "page-link" }
-                })
             </div>
         </div>
     </section>

@@ -27,7 +27,7 @@ namespace KingBakery.Controllers
         // GET: Users
         public async Task<IActionResult> Index(int? page)
         {
-            int pageSize = 8; // Số lượng item trên mỗi trang
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
 
             var users = _context.Users.OrderBy(u => u.ID).ToPagedList(pageNumber, pageSize);
@@ -164,13 +164,11 @@ namespace KingBakery.Controllers
         {
             var isAdmin = User.IsInRole("1");
             ViewBag.IsAdmin = isAdmin;
-            ViewData["RoleSelectList"] = new SelectList(new[]
-                {
-                        new { Value = "1", Text = "Admin" },
-                        new { Value = "2", Text = "Khách hàng" },
-                        new { Value = "3", Text = "Nhân viên" },
-                        new { Value = "4", Text = "Shipper" }
-                    }, "Value", "Text");
+            ViewBag.RoleList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "3", Text = "Nhân viên" },
+                new SelectListItem { Value = "4", Text = "Shipper" }
+            };
             return View();
         }
 
@@ -487,6 +485,21 @@ namespace KingBakery.Controllers
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.ID == id);
+        }
+
+        [HttpGet]
+        public IActionResult Search(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return View(new List<Users>());
+            }
+
+            var users = _context.Users
+                .Where(u => u.Username.Contains(query) || u.FullName.Contains(query) || u.Email.Contains(query))
+                .ToList();
+
+            return View(users);
         }
     }
 }
