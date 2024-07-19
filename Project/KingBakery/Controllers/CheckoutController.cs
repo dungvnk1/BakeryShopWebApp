@@ -199,10 +199,14 @@ namespace KingBakery.Controllers
                 {
                     var oid = o.ID;
                     var check = _context.OrderItem.FirstOrDefault(i => i.OrderID == oid && i.CustomerID == uid);
-                    if (check != null || (voucher.UserID != null && voucher.UserID != uid))
+                    if (check != null)
                     {
                         inuse = true;
                     }
+                }
+                if ( (voucher.UserID != null && voucher.UserID != uid))
+                {
+                    inuse = true;
                 }
             }
 

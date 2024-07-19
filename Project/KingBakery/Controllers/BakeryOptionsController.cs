@@ -64,7 +64,7 @@ namespace KingBakery.Controllers
         // GET: BakeryOptions/Create
         public IActionResult Create()
         {
-            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID");
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name");
             return View();
         }
 
@@ -81,11 +81,10 @@ namespace KingBakery.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name", bakeryOption.BakeryID);
             return View(bakeryOption);
         }
 
-        // GET: BakeryOptions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,7 +97,7 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name", bakeryOption.BakeryID);
             return View(bakeryOption);
         }
 
@@ -134,7 +133,7 @@ namespace KingBakery.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "ID", bakeryOption.BakeryID);
+            ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name", bakeryOption.BakeryID);
             return View(bakeryOption);
         }
 

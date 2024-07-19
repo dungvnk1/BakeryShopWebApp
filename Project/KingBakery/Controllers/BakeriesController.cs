@@ -14,6 +14,7 @@ using KingBakery.Extensions;
 using System.Globalization;
 using System.Text;
 using System.Security.Claims;
+using KingBakery.ViewModel;
 
 namespace KingBakery.Controllers
 {
@@ -193,8 +194,10 @@ namespace KingBakery.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Bakery bakery, IFormFile uploadhinh)
+        public async Task<IActionResult> Create(CreateBackeryViewModel bakeryView, IFormFile uploadhinh)
         {
+            var bakery = bakeryView.Backery;
+            var bakeryOption = bakeryView.BackeryOption;
             if (uploadhinh == null)
             {
                 ViewBag.error = "Vui lòng chọn file";
@@ -227,6 +230,10 @@ namespace KingBakery.Controllers
                 bake.Image = Path.Combine("/BakeryImg/", uploadhinh.FileName);
                 await _context.SaveChangesAsync();
             }
+            bakeryOption.BakeryID = bakery.ID;
+            _context.Add(bakeryOption);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Manage));
 
             ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
 
@@ -339,14 +346,8 @@ namespace KingBakery.Controllers
             var bakery = await _context.Bakery.FindAsync(id);
             if (bakery != null)
             {
-                var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", bakery.Image.TrimStart('/'));
-                if (System.IO.File.Exists(imagePath))
-                {
-                    System.IO.File.Delete(imagePath);
-                }
-
-                _context.Bakery.Remove(bakery);
-
+                bakery.isDeleted = true;
+                _context.Update(bakery);
             }
 
             await _context.SaveChangesAsync();

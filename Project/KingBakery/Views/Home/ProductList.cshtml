@@ -68,8 +68,24 @@
                             <input type="hidden" name="page" id="page" value="1">
                             <button type="button" onclick="searchByName()">Search</button>
                         </form>
+                        @{
+                            var bestSeller = ViewData["bestseller"] as dynamic;
+                            var newestProduct = ViewData["newestProduct"] as dynamic;
+                        }
+                        @if (bestSeller != null)
+                        {
+                            <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@bestSeller.BakeryID" class="btn btn-primary" style="margin-top:16px">
+                                Best Seller
+                            </a>
 
-
+                            <br />
+                        }
+                        @if (newestProduct != null)
+                        {
+                            <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@newestProduct.ID" class="btn btn-primary" style="margin-top:8px">
+                                Newest Backery
+                            </a>
+                        }
                     </div>
                 </div>
 
@@ -90,6 +106,7 @@
                                             </a>
                                         </h3>
                                         <p>@($"Price: {minPrice.ToString("#,##0")}đ")</p>
+
                                     </div>
                                 </div>
                             }
@@ -108,7 +125,6 @@
 
     </section>
     <!-- product list part end-->
-    
     <!--::footer_part start::-->
     @await Component.InvokeAsync("Footer")
     <!--::footer_part end::-->

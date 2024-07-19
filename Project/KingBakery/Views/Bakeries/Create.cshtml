@@ -1,21 +1,57 @@
-﻿@model KingBakery.Models.Bakery
+﻿@model KingBakery.ViewModel.CreateBackeryViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<h1>Create</h1>
+<!doctype html>
+<html>
 
-<h4>Bakery</h4>
-<hr />
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pillloMart</title>
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <section class="confirmation_part" style="padding-bottom:70px;">
+<div class="container">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-12 col-lx-4">
+        <div class="single_confirmation_details">
         <form asp-action="Create" method="POST" enctype="multipart/form-data">
+            <h4>Bakery</h4>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Backery.Name" class="control-label"></label>
+                <input asp-for="Backery.Name" class="form-control" />
+                <span asp-validation-for="Backery.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label for="uploadhinh">Upload hình:</label>
@@ -23,13 +59,130 @@
                 <p style="color: red">@ViewBag.error</p>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Backery.Description" class="control-label"></label>
+                <input asp-for="Backery.Description" class="form-control" />
+                <span asp-validation-for="Backery.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryID" class="control-label"></label>
-                <select asp-for="CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+                <label asp-for="Backery.CategoryID" class="control-label"></label>
+                <select asp-for="Backery.CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+            </div>
+           
+            <h4>Bakery Option</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="BackeryOption.Size" class="control-label"></label>
+                <input asp-for="BackeryOption.Size" class="form-control" />
+                <span asp-validation-for="BackeryOption.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Quantity" class="control-label"></label>
+                <input asp-for="BackeryOption.Quantity" class="form-control" />
+                <span asp-validation-for="BackeryOption.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Price" class="control-label"></label>
+                <input asp-for="BackeryOption.Price" class="form-control" />
+                <span asp-validation-for="BackeryOption.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Discount" class="control-label"></label>
+                <input asp-for="BackeryOption.Discount" class="form-control" />
+                <span asp-validation-for="BackeryOption.Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+    </div>
+    </section>
+    <!--================End Bill Area =================-->
+    <!-- jquery plugins here-->
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+
+</html>
+
+
+@* <h1>Create</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="POST" enctype="multipart/form-data">
+            <h4>Bakery</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Backery.Name" class="control-label"></label>
+                <input asp-for="Backery.Name" class="form-control" />
+                <span asp-validation-for="Backery.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="uploadhinhs">Upload hình:</label>
+                <input type="file" name="uploadhinhs" class="form-control" multiple />
+                <p style="color: red">@ViewBag.error</p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Backery.Description" class="control-label"></label>
+                <input asp-for="Backery.Description" class="form-control" />
+                <span asp-validation-for="Backery.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Backery.CategoryID" class="control-label"></label>
+                <select asp-for="Backery.CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
+            </div>
+            <h4>Bakery Option</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="BackeryOption.Size" class="control-label"></label>
+                <input asp-for="BackeryOption.Size" class="form-control" />
+                <span asp-validation-for="BackeryOption.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Quantity" class="control-label"></label>
+                <input asp-for="BackeryOption.Quantity" class="form-control" />
+                <span asp-validation-for="BackeryOption.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Price" class="control-label"></label>
+                <input asp-for="BackeryOption.Price" class="form-control" />
+                <span asp-validation-for="BackeryOption.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackeryOption.Discount" class="control-label"></label>
+                <input asp-for="BackeryOption.Discount" class="form-control" />
+                <span asp-validation-for="BackeryOption.Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -44,4 +197,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+} *@

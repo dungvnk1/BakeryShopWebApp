@@ -2844,3 +2844,4 @@ C:\Users\hatda\Downloads\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\re
 C:\Users\hatda\Downloads\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.pdb
 C:\Users\hatda\Downloads\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\KingBakery.genruntimeconfig.cache
 C:\Users\hatda\Downloads\BakeryShopWebApp\Project\KingBakery\obj\Debug\net8.0\ref\KingBakery.dll
+D:\Documents\GitHub\BakeryShopWebApp\Project\KingBakery\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
