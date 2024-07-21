@@ -34,8 +34,8 @@ namespace KingBakery
                     {
                         OnRedirectToLogin = context =>
                         {
-                            if (context.Request.Path.StartsWithSegments("/Admin") || context.Request.Path.StartsWithSegments("/BlogPosts") || context.Request.Path.StartsWithSegments("/Staffs") 
-                            || context.Request.Path.StartsWithSegments("/Shippers") || context.Request.Path.StartsWithSegments("/Bills") || context.Request.Path.StartsWithSegments("/Checkout") 
+                            if (context.Request.Path.StartsWithSegments("/Admin") || context.Request.Path.StartsWithSegments("/BlogPosts") || context.Request.Path.StartsWithSegments("/Staffs")
+                            || context.Request.Path.StartsWithSegments("/Shippers") || context.Request.Path.StartsWithSegments("/Bills") || context.Request.Path.StartsWithSegments("/Checkout")
                             || context.Request.Path.StartsWithSegments("/Feedback") || context.Request.Path.StartsWithSegments("/Vouchers") || context.Request.Path.StartsWithSegments("/Bakeries")
                             || context.Request.Path.StartsWithSegments("/BakeryOptions") || context.Request.Path.StartsWithSegments("/Orders"))
                             {
@@ -51,12 +51,12 @@ namespace KingBakery
                     options.SlidingExpiration = true;
                     //Set the cookie expiration time
                     options.ExpireTimeSpan = TimeSpan.FromDays(2);
-                })
-                .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
-                {
-                    options.ClientId = builder.Configuration.GetSection("GoogleKeys:ClientId").Value;
-                    options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientSecret").Value;
                 });
+                //.AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+                //{
+                //    options.ClientId = builder.Configuration.GetSection("GoogleKeys:ClientId").Value;
+                //    options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientSecret").Value;
+                //});
 
             //Add session
             builder.Services.AddDistributedMemoryCache();
