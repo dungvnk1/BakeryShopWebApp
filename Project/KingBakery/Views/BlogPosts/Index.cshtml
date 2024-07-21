@@ -56,7 +56,7 @@
                                 <div class="blog_img">
                                     <img class="img-fluid" src="@blogPost.Image" alt="">
                                 </div>
-                                <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blogPost.Id">@blogPost.Title</a>
+                                <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a>
                                 <p>@blogPost.Content</p>
                                 <p>Posted on @blogPost.PublishedDate by @blogPost.Author</p>
                                 <a href="#" class="btn_3">Read More</a>

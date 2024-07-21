@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "2")]
     public class FavouritesController : Controller
     {
         private readonly KingBakeryContext _context;

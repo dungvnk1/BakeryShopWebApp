@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Text;
 using System.Security.Claims;
 using KingBakery.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -29,7 +30,7 @@ namespace KingBakery.Controllers
 
 
 
-
+        [Authorize(Roles = "1")]
         // GET: Bakeries manager
         public async Task<IActionResult> Manage(int? page)
         {
@@ -122,6 +123,8 @@ namespace KingBakery.Controllers
 
             return View(bakeryList);
         }
+
+        [Authorize(Roles = "1")]
         private string RemoveDiacritics(string text)
         {
             var normalizedString = text.Normalize(NormalizationForm.FormD);
@@ -182,6 +185,7 @@ namespace KingBakery.Controllers
             return View(bakery);
         }
 
+        [Authorize(Roles = "1")]
         // GET: Bakeries/Create
         public IActionResult Create()
         {
@@ -189,6 +193,7 @@ namespace KingBakery.Controllers
             return View();
         }
 
+        [Authorize(Roles = "1")]
         // POST: Bakeries/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -240,6 +245,7 @@ namespace KingBakery.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "1")]
         // GET: Bakeries/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -257,6 +263,7 @@ namespace KingBakery.Controllers
             return View(bakery);
         }
 
+        [Authorize(Roles = "1")]
         // POST: Bakeries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -320,6 +327,7 @@ namespace KingBakery.Controllers
             return View(bakery);
         }
 
+        [Authorize(Roles = "1")]
         // GET: Bakeries/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -338,6 +346,7 @@ namespace KingBakery.Controllers
             return View(bakery);
         }
 
+        [Authorize(Roles = "1")]
         // POST: Bakeries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

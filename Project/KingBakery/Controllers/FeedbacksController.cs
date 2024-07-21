@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "2")]
     public class FeedbacksController : Controller
     {
         private readonly KingBakeryContext _context;

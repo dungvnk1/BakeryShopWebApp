@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "1")]
     public class VouchersController : Controller
     {
         private readonly KingBakeryContext _context;

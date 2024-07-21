@@ -501,5 +501,10 @@ namespace KingBakery.Controllers
 
             return View(users);
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

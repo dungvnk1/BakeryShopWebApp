@@ -9,6 +9,7 @@ using System.Security.Claims;
 using KingBakery.ViewModel;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -37,6 +38,8 @@ namespace KingBakery.Controllers
             HttpContext.Session.SetString("CartQuantity", cartQuantity.ToString());
             return View();
         }
+
+        [Authorize(Roles = "2")]
         public async Task<IActionResult> Vouchers()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

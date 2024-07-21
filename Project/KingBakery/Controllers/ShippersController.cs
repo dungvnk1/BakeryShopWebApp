@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -19,9 +20,9 @@ namespace KingBakery.Controllers
         {
             _context = context;
         }
-        
-        
 
+
+        [Authorize(Roles = "4")]
         // GET: Shippers
         public async Task<IActionResult> Order()
         {

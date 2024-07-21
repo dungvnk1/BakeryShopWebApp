@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
 using System.Net;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "2")]
     public class CheckoutController : Controller
     {
         private readonly KingBakeryContext _context;

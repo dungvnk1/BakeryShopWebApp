@@ -11,9 +11,11 @@ using System.Security.Claims;
 using System.Net.Mail;
 using System.Net;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "1, 3")]
     public class OrdersController : Controller
     {
         private readonly KingBakeryContext _context;

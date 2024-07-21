@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "1")]
     public class BakeryOptionsController : Controller
     {
         private readonly KingBakeryContext _context;
@@ -20,6 +22,7 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: BakeryOptions
         public async Task<IActionResult> Index()
         {
@@ -27,6 +30,7 @@ namespace KingBakery.Controllers
             return View(await kingBakeryContext.ToListAsync());
         }
 
+        [AllowAnonymous]
         // GET: BakeryOptions/Details/5
         public async Task<IActionResult> Details(int? id)
         {

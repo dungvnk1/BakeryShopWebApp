@@ -1,5 +1,6 @@
 ﻿using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using X.PagedList;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "2")]
     public class BillsController : Controller
     {
         private readonly KingBakeryContext _context;

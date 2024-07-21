@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -154,6 +155,7 @@ namespace KingBakery.Controllers
             return _context.BlogPosts.Any(e => e.Id == id);
         }
 
+        [Authorize(Roles = "3")]
         // GET: BlogPosts/SingleBlog
         public async Task<IActionResult> SingleBlog()
         {

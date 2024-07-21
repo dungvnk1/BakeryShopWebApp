@@ -1,12 +1,15 @@
 ﻿using KingBakery.Data;
+using KingBakery.Helper;
 using KingBakery.Models;
 using KingBakery.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace KingBakery.Controllers
 {
+    [Authorize(Roles = "1")]
     public class AdminController : Controller
     {
         private readonly KingBakeryContext _context;

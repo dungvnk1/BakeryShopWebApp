@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -179,6 +180,8 @@ namespace KingBakery.Controllers
             ViewBag.RToday = rtd;
             return View(orders);
         }
+
+        [Authorize(Roles = "3")]
         public async Task<IActionResult> AssignShipper1()
         {
             var orders = _context.Orders.Where(o => o.ShipperID == null).ToList();
