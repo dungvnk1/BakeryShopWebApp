@@ -91,11 +91,13 @@
                             </td>
                             <td>
                                 <div style="display:flex">
-                                    <a asp-action="Edit" asp-route-id="@bakery.ID" class="genric-btn success-border radius" style="margin-right:6px">Sửa </a>
+                                   
                                     @* <a asp-action="Details" asp-route-id="@item.ID">Details</a> | *@
-                                    @if (bakery.isDeleted == false)
+                                    @if (bakery.isDeleted == false )
                                     {
+                                        <a asp-action="Edit" asp-route-id="@bakery.ID" class="genric-btn success-border radius" style="margin-right:6px">Sửa </a>
                                         <a asp-action="Delete" asp-route-id="@bakery.ID" class="genric-btn danger-border radius">Xóa</a>
+                                        
                                     }
                                 </div>
                             </td>
