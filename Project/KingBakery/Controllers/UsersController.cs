@@ -52,8 +52,11 @@ namespace KingBakery.Controllers
             {
                 return NotFound();
             }
-
-            ViewBag.CustomerRanking = _context.Customer.FirstOrDefaultAsync(c => c.UserID == id).Result.Ranking;
+            if (users.Role == 2)
+            {
+                ViewBag.CustomerRanking = _context.Customer.FirstOrDefaultAsync(c => c.UserID == id).Result.Ranking;
+                return View(users);
+            }
             return View(users);
         }
 
@@ -576,48 +579,32 @@ namespace KingBakery.Controllers
 
         public void UpdateCustomerRankings()
         {
-            // Assuming you have a DbSet<OrderItem> in your context
-            var orderItemsWithCustomers = _context.OrderItem
-                                            .Include(oi => oi.Orders) // Assuming each OrderItem has an Order
-                                            .Where(oi => oi.Orders.Status == "Đã giao hàng")
-                                            .ToList(); // Retrieve all OrderItems and their Orders
+            var users = _context.Customer.ToList();
 
-            // Project OrderItems by CustomerID and aggregate TotalPrice
-            var customerTotalSpends = orderItemsWithCustomers
-                                        .GroupBy(oi => oi.CustomerID)
-                                        .Select(group => new
-                                        {
-                                            CustomerID = group.Key,
-                                            TotalSpent = group.Sum(oi => oi.Orders.TotalPrice)
-                                        })
-                                        .ToList();
-
-            foreach (var customerSpend in customerTotalSpends)
+            foreach (var user in users)
             {
-                var customer = _context.Customer.Find(customerSpend.CustomerID); // Find each customer based on ID
-
-                if (customer != null)
+                int uid = user.UserID;
+                var totalPaid = _context.Orders.Include(o => o.OrderItems)
+                                               .Where(o => o.OrderItems.FirstOrDefault().CustomerID == uid)
+                                               .Sum(o => o.TotalPrice);
+                if (totalPaid < 1000000)
                 {
-                    // Update ranking based on TotalSpent
-                    if (customerSpend.TotalSpent < 1000000)
-                    {
-                        customer.Ranking = "Đồng";
-                        _context.Customer.Update(customer);
-                    }
-                    else if (customerSpend.TotalSpent >= 1000000 && customerSpend.TotalSpent <= 3000000)
-                    {
-                        customer.Ranking = "Bạc";
-                        _context.Customer.Update(customer);
-                    }
-                    else
-                    {
-                        customer.Ranking = "Vàng";
-                        _context.Customer.Update(customer);
-                    }
+                    user.Ranking = "Đồng";
+                    _context.Customer.Update(user);
                 }
-            }
+                else if (totalPaid >= 1000000 && totalPaid <= 3000000)
+                {
+                    user.Ranking = "Bạc";
+                    _context.Customer.Update(user);
+                }
+                else
+                {
+                    user.Ranking = "Vàng";
+                    _context.Customer.Update(user);
+                }
 
-            _context.SaveChanges(); // Save changes once at the end for efficiency
+                _context.SaveChanges();
+            }
         }
     }
 }

@@ -152,19 +152,22 @@
                         <div class="row justify-content-center">
                             @foreach (var bakery in Model)
                             {
-                                var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
-                                <div class="col-lg-4 col-sm-4" style="margin-top: 20px;">
-                                    <div class="single_product_item">
-                                        <img style="width:95%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
-                                        <h3 style="color:black; font-weight:bold">
-                                            <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@bakery.ID">
-                                                @bakery.Name
-                                            </a>
-                                        </h3>
-                                        <p>@($"Price: {minPrice.ToString("#,##0")}đ")</p>
+                                @if (!bakery.isDeleted)
+                                {
+                                    var minPrice = bakery.BakeryOptions.Any() ? bakery.BakeryOptions.Min(bo => bo.Price) : 0;
+                                    <div class="col-lg-4 col-sm-4" style="margin-top: 20px;">
+                                        <div class="single_product_item">
+                                            <img style="width:95%;height:300px;" src="@bakery.Image" alt="#" class="img-fluid">
+                                            <h3 style="color:black; font-weight:bold">
+                                                <a asp-controller="Bakeries" asp-action="Details" asp-route-id="@bakery.ID">
+                                                    @bakery.Name
+                                                </a>
+                                            </h3>
+                                            <p>@($"Price: {minPrice.ToString("#,##0")}đ")</p>
 
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             }
                         </div>
                     </div>

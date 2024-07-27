@@ -388,11 +388,7 @@ namespace KingBakery.Controllers
             {
                 bakery.isDeleted = true;
                 _context.Update(bakery);
-                var bakeryOptions = _context.BakeryOption.Where(bo => bo.BakeryID == id).ToList();
-                foreach (var option in bakeryOptions)
-                {      
-                    _context.Remove(option);
-                }
+                
             }
 
             await _context.SaveChangesAsync();
