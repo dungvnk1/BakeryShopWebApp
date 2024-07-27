@@ -9,6 +9,7 @@ using KingBakery.Data;
 using KingBakery.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
 
 namespace KingBakery.Controllers
 {
@@ -50,12 +51,20 @@ namespace KingBakery.Controllers
         public async Task<IActionResult> Reject(int orderId)
         {
             var order = await _context.Orders.FindAsync(orderId);
+            var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == orderId).ToList();
             if (order == null)
             {
                 return Json(new { success = false });
             }
-
-            order.Status = "Đã từ chối";
+            foreach (var item in items)
+            {
+                var bakery = _context.BakeryOption.FirstOrDefault(b => b.ID == item.BakeryID);
+                bakery.Quantity += item.Quantity;
+                _context.BakeryOption.Update(bakery);
+                _context.SaveChanges();
+            }
+            order.DenyReason = "Xin lỗi quý khách, hiện tại shop không thể ship hàng. Mong quý khách thông cảm.";
+            order.Status = "Bị từ chối";
             await _context.SaveChangesAsync();
 
             return Json(new { success = true });

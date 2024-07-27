@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KingBakery.Data;
 using KingBakery.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace KingBakery.Controllers
 {
@@ -22,20 +23,8 @@ namespace KingBakery.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var orders = _context.Orders.Where(o => o.ShipperID == null).ToList();
-            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
-            var count = orders.Count();
-            var today = DateTime.Now.ToShortDateString();
-
-            var rtd = orders.Where(o => {
-                    var day = o.DateTime.Value.ToShortDateString();
-                    return (day == today) && (o.Status == "Đã giao hàng");
-                })
-                .Sum(o => o.TotalPrice);
-
-            ViewBag.Revenue = sum;
-            ViewBag.NumberOrders = count - 1;
-            ViewBag.RToday = rtd;
+            var orders = _context.Orders.Where(o => o.ShipperID == null && o.Status == "Đã đặt hàng").ToList();
+            
             return View(orders);
         }
 
@@ -184,21 +173,8 @@ namespace KingBakery.Controllers
         [Authorize(Roles = "3")]
         public async Task<IActionResult> AssignShipper1()
         {
-            var orders = _context.Orders.Where(o => o.ShipperID == null).ToList();
+            var orders = _context.Orders.Where(o => o.ShipperID == null && o.Status == "Đã đặt hàng").ToList();
             var shippers = _context.Users.Where(o => o.Role == 4).ToList();
-            var sum = orders.Where(o => o.Status == "Đã giao hàng").Sum(o => o.TotalPrice);
-            var count = orders.Count();
-            var today = DateTime.Now.ToShortDateString();
-
-            var rtd = orders.Where(o => {
-                    var day = o.DateTime.Value.ToShortDateString();
-                    return (day == today) && (o.Status == "Đã giao hàng");
-                })
-                .Sum(o => o.TotalPrice);
-
-            ViewBag.Revenue = sum;
-            ViewBag.NumberOrders = count - 1;
-            ViewBag.RToday = rtd;
             ViewBag.Shippers = shippers;
             return View(orders);
         }
@@ -207,6 +183,12 @@ namespace KingBakery.Controllers
         public async Task<IActionResult> Assign(int orderId, int shipperId)
         {
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.ID == orderId && o.ShipperID == null);
+            var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int uid = 0;
+            if (userID != null)
+            {
+                uid = int.Parse(userID);
+            }
 
             if (order == null)
             {
@@ -214,6 +196,7 @@ namespace KingBakery.Controllers
             }
 
             order.ShipperID = shipperId;
+            order.StaffID = uid;
 
             await _context.SaveChangesAsync();
 
