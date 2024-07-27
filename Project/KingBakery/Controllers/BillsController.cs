@@ -8,7 +8,7 @@ using X.PagedList;
 
 namespace KingBakery.Controllers
 {
-    [Authorize(Roles = "2")]
+    
     public class BillsController : Controller
     {
         private readonly KingBakeryContext _context;
@@ -18,6 +18,7 @@ namespace KingBakery.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "2")]
         public IActionResult Index(int? page, DateTime? fromDate, DateTime? toDate)
         {
             var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -59,6 +60,8 @@ namespace KingBakery.Controllers
             var od = orders.OrderByDescending(o => o.DateTime).ToPagedList(pageNumber, pageSize);
             return View(od);
         }
+
+        [Authorize(Roles = "1,2")]
         public IActionResult Detail(int id)
         {
             var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
@@ -108,6 +111,7 @@ namespace KingBakery.Controllers
             return View(items);
         }
 
+        [Authorize(Roles = "2")]
         public IActionResult Delete(int id)
         {
             var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
@@ -124,6 +128,7 @@ namespace KingBakery.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "2")]
         public IActionResult Cancel(int id)
         {
             var items = _context.OrderItem.Include(o => o.BakeryOption).Where(o => o.OrderID == id).ToList();
@@ -141,6 +146,7 @@ namespace KingBakery.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "1,2")]
         public JsonResult GetCancelReason(int id)
         {
             var mess = _context.Orders.FirstOrDefault(o => o.ID == id);
