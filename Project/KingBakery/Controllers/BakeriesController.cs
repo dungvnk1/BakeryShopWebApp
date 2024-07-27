@@ -17,6 +17,7 @@ using System.Security.Claims;
 using KingBakery.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace KingBakery.Controllers
 {
@@ -300,21 +301,26 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+           
 
-            {
                 try
                 {
+                    if (_context.Bakery.Any(b => b.Name == bakery.Name) )
+                    {
+                        ViewBag.Errorness = "bánh đã tồn tại";
+                        ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                        return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+                    }
                     if (uploadhinh == null)
                     {
-                        ViewBag.error = "Vui lòng chọn file";
+                        ViewBag.errorrr = "Vui lòng chọn file";
                         ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
                         return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
                     }
 
                     if (uploadhinh.Length == 0)
                     {
-                        ViewBag.error = "File không có nội dung";
+                        ViewBag.errorrr = "File không có nội dung";
                         ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
                         return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
                     }
@@ -347,7 +353,7 @@ namespace KingBakery.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Manage));
-            }
+            
             ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "ID", bakery.CategoryID);
             return View(bakery);
         }
@@ -377,11 +383,16 @@ namespace KingBakery.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bakery = await _context.Bakery.FindAsync(id);
+            var bakery = await _context.Bakery.FindAsync(id);        
             if (bakery != null)
             {
                 bakery.isDeleted = true;
                 _context.Update(bakery);
+                var bakeryOptions = _context.BakeryOption.Where(bo => bo.BakeryID == id).ToList();
+                foreach (var option in bakeryOptions)
+                {      
+                    _context.Remove(option);
+                }
             }
 
             await _context.SaveChangesAsync();
