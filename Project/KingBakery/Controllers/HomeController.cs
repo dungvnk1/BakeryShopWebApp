@@ -10,6 +10,8 @@ using KingBakery.ViewModel;
 using System.Net.Mail;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
+using System.Text;
 
 namespace KingBakery.Controllers
 {
@@ -66,7 +68,24 @@ namespace KingBakery.Controllers
         {
             return View();
         }
-        public IActionResult ProductList(int? page)
+        [Authorize(Roles = "1")]
+        private string RemoveDiacritics(string text)
+        {
+            var normalizedString = text.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (var c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
+        public async Task<IActionResult> ProductList(string? keyword, int? categoryID, string? priceRange, int? page)
         {
             var bakeries = _context.Bakery
             .Include(b => b.BakeryOptions)
@@ -74,9 +93,64 @@ namespace KingBakery.Controllers
 
             .Where(b => b.isDeleted == false)
             .ToList();
-            int pageSize = 6;
+            //int pageSize = 6;
+            //int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            //PagedList<Bakery> lst = new PagedList<Bakery>(bakeries, pageNumber, pageSize);
+
+            // Bắt đầu với truy vấn cơ bản
+            //var bakeries = from b in _context.Bakery select b;
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.Trim();
+                if (keyword.Length > 100)
+                {
+                    ModelState.AddModelError("Keyword", "Từ khóa tìm kiếm không được vượt quá 100 ký tự.");
+                    keyword = null;
+                }
+                keyword = RemoveDiacritics(keyword);
+            }
+
+            var bakeryQuery = _context.Bakery.Include(b => b.Category)
+                                             .Include(b => b.BakeryOptions);
+
+            var bakeryList = await bakeryQuery.ToListAsync();
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                bakeryList = bakeryList.Where(b => RemoveDiacritics(b.Name).Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (categoryID.HasValue)
+            {
+                bakeryList = bakeryList.Where(b => b.CategoryID == categoryID.Value).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(priceRange))
+            {
+                var priceParts = priceRange.Split('-');
+                if (priceParts.Length == 2)
+                {
+                    if (Decimal.TryParse(priceParts[0], out decimal minPrice) && Decimal.TryParse(priceParts[1], out decimal maxPrice))
+                    {
+                        bakeryList = bakeryList.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPrice && (decimal)bo.Price <= maxPrice)).ToList();
+                    }
+                }
+                else if (priceRange.EndsWith("+") && Decimal.TryParse(priceRange.TrimEnd('+'), out decimal minPriceOnly))
+                {
+                    bakeryList = bakeryList.Where(b => b.BakeryOptions.Any(bo => (decimal)bo.Price >= minPriceOnly)).ToList();
+                }
+            }
+
+            //var categories = await _context.Category.ToListAsync();
+            //ViewData["Categories"] = categories;
+
+            int pageSize = 9;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
-            PagedList<Bakery> lst = new PagedList<Bakery>(bakeries, pageNumber, pageSize);
+            PagedList<Bakery> lst = new PagedList<Bakery>(bakeryList, pageNumber, pageSize);
+            ViewData["keyword"] = keyword;
+            ViewData["categoryID"] = categoryID;
+            ViewData["priceRange"] = priceRange;
 
             //bestseller
             var bestSellingProduct = _context.OrderItem

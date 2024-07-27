@@ -45,11 +45,11 @@
     <div class="col-lg-12 col-lx-4">
         <div class="single_confirmation_details">
         <form asp-action="Create" method="POST" enctype="multipart/form-data">
-            <h4>Bakery</h4>
+            <h4>Bánh</h4>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Backery.Name" class="control-label"></label>
+                <label asp-for="Backery.Name" class="control-label"> Tên bánh</label>
                 <input asp-for="Backery.Name" class="form-control" />
                 <span asp-validation-for="Backery.Name" class="text-danger"></span>
             </div>
@@ -59,39 +59,36 @@
                 <p style="color: red">@ViewBag.error</p>
             </div>
             <div class="form-group">
-                <label asp-for="Backery.Description" class="control-label"></label>
+                <label asp-for="Backery.Description" class="control-label"> Mô tả</label>
                 <input asp-for="Backery.Description" class="form-control" />
                 <span asp-validation-for="Backery.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Backery.CategoryID" class="control-label"></label>
+                <label asp-for="Backery.CategoryID" class="control-label"> Loại bánh</label>
                 <select asp-for="Backery.CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
             </div>
            
-            <h4>Bakery Option</h4>
+            <h4>Chi tiết bánh</h4>
             <hr />
             <div class="form-group">
-                <label asp-for="BackeryOption.Size" class="control-label"></label>
+                <label asp-for="BackeryOption.Size" class="control-label"> Size bánh</label>
                 <input asp-for="BackeryOption.Size" class="form-control" />
                 <span asp-validation-for="BackeryOption.Size" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BackeryOption.Quantity" class="control-label"></label>
+                <label asp-for="BackeryOption.Quantity" class="control-label"> Số lượng</label>
                 <input asp-for="BackeryOption.Quantity" class="form-control" />
                 <span asp-validation-for="BackeryOption.Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BackeryOption.Price" class="control-label"></label>
+                <label asp-for="BackeryOption.Price" class="control-label"> Giá tiền</label>
                 <input asp-for="BackeryOption.Price" class="form-control" />
                 <span asp-validation-for="BackeryOption.Price" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="BackeryOption.Discount" class="control-label"></label>
-                <input asp-for="BackeryOption.Discount" class="form-control" />
-                <span asp-validation-for="BackeryOption.Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Tạo" class="btn btn-primary" />
+                                <p style="color: red">@ViewBag.Errorness</p>
             </div>
         </form>
         </div>

@@ -40,18 +40,18 @@
     <section class="checkout_area">
         <div class="row" style="padding-left: 30px;padding-right: 30px;">
             <div style="margin-bottom:16px">
-                <a asp-action="Create" class="genric-btn success-border radius">Create Voucher</a>
+                <a asp-action="Create" class="genric-btn success-border radius">Tạo Voucher</a>
             </div>
 
             <table class="table" style="font-family:Arial">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Code</th>
-                        <th scope="col">VPercent</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col" style="text-align:center;">Action</th>
+                        <th scope="col">Phần trăm giảm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Ngày bắt đầu</th>
+                        <th scope="col">Ngày hết hạn</th>
+                        <th scope="col" style="text-align:center;">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,9 +67,9 @@
 
 
                             <td style="text-align:center;">
-                                <a asp-action="Edit" asp-route-id="@item.VoucherID" class="genric-btn success-border radius">Edit</a>
-                                <a asp-action="Details" asp-route-id="@item.VoucherID" class="genric-btn info-border radius">Details</a>
-                                <a asp-action="Delete" asp-route-id="@item.VoucherID" class="genric-btn danger-border radius">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.VoucherID" class="genric-btn success-border radius">Sửa</a>
+                                <a asp-action="Details" asp-route-id="@item.VoucherID" class="genric-btn info-border radius">Chi tiết</a>
+                                <a asp-action="Delete" asp-route-id="@item.VoucherID" class="genric-btn danger-border radius">Xóa</a>
                             </td>
 
 

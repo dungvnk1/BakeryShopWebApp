@@ -81,9 +81,16 @@ namespace KingBakery.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bakeryOption);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (_context.BakeryOption.Any(bo => bo.Size == bakeryOption.Size) && _context.BakeryOption.Any(bo => bo.BakeryID == bakeryOption.BakeryID))
+                {
+                    ViewBag.error = "Đã tồn tại size bánh";
+                }
+                else
+                {
+                    _context.Add(bakeryOption);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name", bakeryOption.BakeryID);
             return View(bakeryOption);
@@ -119,20 +126,29 @@ namespace KingBakery.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if (_context.BakeryOption.Any(bo => bo.Size == bakeryOption.Size) && _context.BakeryOption.Any(bo => bo.BakeryID == bakeryOption.BakeryID))
                 {
-                    _context.Update(bakeryOption);
-                    await _context.SaveChangesAsync();
+                    ViewBag.error = "Đã tồn tại size bánh";
+                    ViewData["BakeryID"] = new SelectList(_context.Bakery, "ID", "Name", bakeryOption.BakeryID);
+                    return View(bakeryOption);
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!BakeryOptionExists(bakeryOption.ID))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(bakeryOption);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!BakeryOptionExists(bakeryOption.ID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
                 return RedirectToAction(nameof(Index));

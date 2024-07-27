@@ -50,38 +50,38 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input type="hidden" asp-for="VoucherID" />
                             <div class="form-group">
-                                <label asp-for="Code" class="control-label"></label>
+                                <label asp-for="Code" class="control-label"> </label>
                                 <input asp-for="Code" class="form-control" readonly />
                                 <span asp-validation-for="Code" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="VPercent" class="control-label"></label>
+                                <label asp-for="VPercent" class="control-label"> Phần trăm giảm</label>
                                 <input asp-for="VPercent" class="form-control" />
                                 <span asp-validation-for="VPercent" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Quantity" class="control-label"></label>
+                                <label asp-for="Quantity" class="control-label"> Số lượng</label>
                                 <input asp-for="Quantity" class="form-control" />
                                 <span asp-validation-for="Quantity" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="StartDate" class="control-label"></label>
+                                <label asp-for="StartDate" class="control-label"> Ngày bắt đầu</label>
                                 <input asp-for="StartDate" class="form-control" />
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="EndDate" class="control-label"></label>
+                                <label asp-for="EndDate" class="control-label"> Ngày hết hạn</label>
                                 <input asp-for="EndDate" class="form-control" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="UserID" class="control-label">For User</label>
+                                <label asp-for="UserID" class="control-label">Khách hàng</label>
                                 <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
                                 <span asp-validation-for="UserID" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" /> |
-                                <a asp-action="Index">Back to List</a>
+                                <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                                <a asp-action="Index">Quay lại</a>
                             </div>
                         </form>
                     </div>

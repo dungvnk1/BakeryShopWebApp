@@ -16,6 +16,7 @@ using System.Text;
 using System.Security.Claims;
 using KingBakery.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
 
 namespace KingBakery.Controllers
 {
@@ -60,7 +61,7 @@ namespace KingBakery.Controllers
 
         //Search Bakery
         [HttpPost]
-        public async Task<IActionResult> Index(string? keyword, int? categoryID, string? priceRange)
+        public async Task<IActionResult> Index(string? keyword, int? categoryID, string? priceRange, int? page)
         {
             // Bắt đầu với truy vấn cơ bản
             var bakeries = from b in _context.Bakery select b;
@@ -68,6 +69,16 @@ namespace KingBakery.Controllers
             if (!string.IsNullOrEmpty(keyword))
             {
                 keyword = keyword.Trim();
+                string tempstr = "" + keyword[0];
+                for (int i = 1; i < keyword.Length; i++)
+                {
+                    if (keyword[i] == ' ' && tempstr[tempstr.Length - 1] == ' ') { }
+                    else
+                    {
+                        tempstr += keyword[i];
+                    }
+                }
+                keyword = tempstr.Trim();
                 if (keyword.Length > 100)
                 {
                     ModelState.AddModelError("Keyword", "Từ khóa tìm kiếm không được vượt quá 100 ký tự.");
@@ -110,18 +121,25 @@ namespace KingBakery.Controllers
             var categories = await _context.Category.ToListAsync();
             ViewData["Categories"] = categories;
 
+            int pageSize = 6;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            PagedList<Bakery> lst = new PagedList<Bakery>(bakeryList, pageNumber, pageSize);
+            ViewData["keyword"] = keyword;
+            ViewData["categoryID"] = categoryID;
+            ViewData["priceRange"] = priceRange;
+
             if (!ModelState.IsValid)
             {
                 return View("Error");
             }
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
-                return PartialView("_BakeryListPartial", bakeryList);
+                return PartialView("_BakeryListPartial", lst);
             }
 
 
 
-            return View(bakeryList);
+            return View(lst);
         }
 
         [Authorize(Roles = "1")]
@@ -203,18 +221,24 @@ namespace KingBakery.Controllers
         {
             var bakery = bakeryView.Backery;
             var bakeryOption = bakeryView.BackeryOption;
-            if (uploadhinh == null)
+            if (_context.Bakery.Any(b => b.Name == bakery.Name) && _context.BakeryOption.Any(bo => bo.Size == bakeryOption.Size))
+            {
+                ViewBag.Errorness = "bánh đã tồn tại";
+                ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
+                return View(bakeryView); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+            }
+                if (uploadhinh == null)
             {
                 ViewBag.error = "Vui lòng chọn file";
                 ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
-                return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+                return View(bakeryView); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
             }
 
             if (uploadhinh.Length == 0)
             {
                 ViewBag.error = "File không có nội dung";
                 ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Name", bakery.CategoryID); // Thiết lập lại SelectList
-                return View(bakery); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
+                return View(bakeryView); // Trả lại view cùng với đối tượng bakery để duy trì dữ liệu nhập
             }
 
             // Lưu dữ liệu vào cơ sở dữ liệu
@@ -277,6 +301,7 @@ namespace KingBakery.Controllers
             }
 
             if (ModelState.IsValid)
+
             {
                 try
                 {
