@@ -59,7 +59,7 @@
                                 <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a>
                                 <p>@blogPost.Content</p>
                                 <p>Posted on @blogPost.PublishedDate by @blogPost.Author</p>
-                                <a href="#" class="btn_3">Read More</a>
+                                <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id" class="btn_3">Read More</a>
                                 @if (User.IsInRole("Staff"))
                                 {
                                     <a asp-controller="Blog" asp-action="CreatePost" asp-route-id="@blogPost.Id" class="btn btn-secondary">Create</a>
@@ -76,13 +76,9 @@
                         <ul>
                             @foreach (var recentPost in Model)
                             {
-                                <li><a href="#">@recentPost.Title</a></li>
+                                <li><div>@recentPost.Title</div></li>
                             }
                         </ul>
-                        <div class="blog_sidebar_search">
-                            <input type="text" placeholder="Search Here">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
                     </div>
                 </div>
             </div>
