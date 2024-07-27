@@ -70,7 +70,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th scope="col" colspan="2">Bánh</th>
+                                        <th scope="col" style="width: 40%">Bánh</th>
                                         <th scope="col">Chi tiết đánh giá</th>
                                     </tr>
                                 </thead>
@@ -93,10 +93,18 @@
                                         }
 
                                         <tr>
-                                            <th colspan="2">
-                                                <span>@bakeryName (Size: @item.BakeryOption.Size cm)</span>
-                                                <input type="hidden" name="feedbacks[@i].CustomerID" value="@item.CustomerID" />
-                                                <input type="hidden" name="feedbacks[@i].BakeryID" value="@item.BakeryOption.ID" />
+                                            <th style="display: flex;position:relative;">
+                                                <div>
+                                                    <span>@bakeryName (Size: @item.BakeryOption.Size cm)</span>
+                                                    <br />
+                                                    <span>@($"Giá: {item.BakeryOption.Price.ToString("#,##0")}đ")</span>
+                                                </div>
+                                                
+                                                <div style="width: 25%; position:absolute; right: 20px;">
+                                                    <img src="@bakeryImg" alt="Image of bakery" style="width: 100%; height:60px; border-radius: 20px;" />
+                                                </div> 
+                                                <input style="width:5px;" type="hidden" name="feedbacks[@i].CustomerID" value="@item.CustomerID" />
+                                                <input style="width:5px;" type="hidden" name="feedbacks[@i].BakeryID" value="@item.BakeryOption.ID" />
                                             </th>
                                             <td>
                                                 <div class="form-group">

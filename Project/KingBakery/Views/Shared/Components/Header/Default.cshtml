@@ -12,7 +12,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="Index.cshtml"> <img src="~/img/logo-2.png" alt="logo"> </a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"> <img src="~/img/logo-2.png" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -22,34 +22,51 @@
                     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Index" style="white-space:nowrap">Trang chủ</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="About">about</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Blog" id="navbarDropdown_1"
+                            @* <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_user"
                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    product
+                                    Thông tin
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="About">
+                                        Về chúng tôi
+                                    </a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Contact">
+                                        Liên hệ
+                                    </a>
+                                </div>
+                            </li> *@
+                            <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About" style="white-space:nowrap">Thông tin Shop</a>
+                            </li> 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" id="navbarDropdown_1"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bánh
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="ProductList"> product list</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="ProductList"> Danh sách bánh</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Blog" id="navbarDropdown_3"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    pages
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" asp-controller="OrderItems" asp-action="Index">shopping cart</a>
-                                    @if (userRole == "2")
-                                    {
+                            @if (userRole == "2")
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" id="navbarDropdown_3"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Chức năng
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                        <a class="dropdown-item" asp-controller="OrderItems" asp-action="Index">shopping cart</a>
+
+
                                         <a class="dropdown-item" asp-controller="Home" asp-action="Vouchers">Vouchers</a>
-                                        <a asp-controller="Bills" asp-action="Index" class="dropdown-item">Bill history</a>
-                                    }
-                                </div>
-                            </li>
+                                        <a asp-controller="Bills" asp-action="Index" class="dropdown-item">Lịch sử mua</a>
+
+                                    </div>
+                                </li>
+                            }
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" asp-controller="BlogPosts" asp-action="Index" id="navbarDropdown_2"
@@ -60,33 +77,33 @@
                                     <a class="dropdown-item" asp-controller="BlogPosts" asp-action="Index"> blog</a>
                                     @if (userRole == "3")
                                     {
-                                        <a asp-controller="BlogPosts" asp-action="SingleBlog" class="dropdown-item">Single Blog</a>
+                                        <a asp-controller="BlogPosts" asp-action="SingleBlog" class="dropdown-item">Viết Blog</a>
 
                                     }
                                 </div>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
-                            </li>
+                                <a class="nav-link" asp-controller="Home" asp-action="Contact" style="white-space:nowrap">Liên hệ</a>
+                            </li> 
 
-                            @if (userRole == "1")
+                            @* @if (userRole == "1")
                             {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_user"
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Quản lí cửa hàng
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
-                                        <a class="dropdown-item" asp-controller="Users" asp-action="Index">
-                                            Quản lí người dùng
-                                        </a>
-                                        <a class="dropdown-item" asp-controller="Bakeries" asp-action="Manage">
-                                            Quản lí sản phẩm
-                                        </a>
-                                    </div>
-                                </li>
-                            }
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_user"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Quản lí cửa hàng
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
+                            <a class="dropdown-item" asp-controller="Users" asp-action="Index">
+                            Quản lí người dùng
+                            </a>
+                            <a class="dropdown-item" asp-controller="Bakeries" asp-action="Manage">
+                            Quản lí sản phẩm
+                            </a>
+                            </div>
+                            </li>
+                            } *@
 
                             @if (User.Identity.IsAuthenticated)
                             {
@@ -111,26 +128,26 @@
                                                 Món yêu thích
                                             </a>
                                         }
-                                        @if (userRole == "3")
-                                        {
-                                            <a class="dropdown-item" asp-controller="Staffs" asp-action="Orders">
-                                                Quản lí đơn hàng
-                                            </a>                                                
-                                        }
+                                        @* @if (userRole == "3")
+                                    {
+                                    <a class="dropdown-item" asp-controller="Staffs" asp-action="Orders">
+                                    Quản lí đơn hàng
+                                    </a>
+                                    } *@
                                         @if (userRole == "3")
                                         {
                                             <a class="dropdown-item" asp-controller="Staffs" asp-action="AssignShipper1">
                                                 Gán Shipper
                                             </a>
                                         }
-                                        @if(userRole == "4")
+                                        @if (userRole == "4")
                                         {
                                             <a class="dropdown-item" asp-controller="Shippers" asp-action="Order">
                                                 Xem đơn hàng
                                             </a>
                                         }
                                         <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
-                                            Logout
+                                            Đăng xuất
                                         </a>
                                     </div>
                                 </li>
@@ -138,7 +155,7 @@
                             else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Users" asp-action="Login">login</a>
+                                    <a class="nav-link" asp-controller="Users" asp-action="Login" style="white-space:nowrap">Đăng nhập</a>
                                 </li>
                             }
                         </ul>
@@ -170,7 +187,7 @@
     <div class="search_input" id="search_input_box">
         <div class="container ">
             <form asp-controller="Bakeries" asp-action="Index" class="d-flex justify-content-between search-inner">
-                <input type="text" name="keyword" class="form-control" id="search_input" placeholder="Search Here">
+                <input type="text" name="keyword" class="form-control" id="search_input" placeholder="Tìm kiếm">
                 <button type="submit" class="btn"></button>
                 <span class="ti-close" id="close_search" title="Close Search"></span>
             </form>
