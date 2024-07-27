@@ -51,6 +51,9 @@
             <div style="margin-bottom:16px">
                 <a asp-action="Index" asp-controller="BakeryOptions" class="genric-btn success-border radius">Thêm size</a>
             </div>
+            <div style="margin-bottom:16px">
+                <a asp-action="Index" asp-controller="Categories" class="genric-btn success-border radius">Thêm loại bánh</a>
+            </div>
 
             <table class="table">
                 <thead class="thead-light">
@@ -67,7 +70,7 @@
                         <th scope="col">
                             Phân loại
                         </th>
-                        <th scope="col" style="text-align:center;">Action</th>
+                        <th scope="col" style="text-align:center;">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,11 +91,11 @@
                             </td>
                             <td>
                                 <div style="display:flex">
-                                    <a asp-action="Edit" asp-route-id="@bakery.ID" class="genric-btn success-border radius" style="margin-right:6px">Edit</a>
+                                    <a asp-action="Edit" asp-route-id="@bakery.ID" class="genric-btn success-border radius" style="margin-right:6px">Sửa </a>
                                     @* <a asp-action="Details" asp-route-id="@item.ID">Details</a> | *@
                                     @if (bakery.isDeleted == false)
                                     {
-                                        <a asp-action="Delete" asp-route-id="@bakery.ID" class="genric-btn danger-border radius">Delete</a>
+                                        <a asp-action="Delete" asp-route-id="@bakery.ID" class="genric-btn danger-border radius">Xóa</a>
                                     }
                                 </div>
                             </td>

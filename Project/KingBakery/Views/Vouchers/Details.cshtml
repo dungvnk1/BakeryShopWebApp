@@ -51,21 +51,21 @@
                                 <p>Code</p><span>: @Model.Code</span>
                             </li>
                             <li style="padding-left: 40%;">
-                                <p>VPercent</p><span>: @Model.VPercent</span>
+                                <p>Phần trăm giảm</p><span>: @Model.VPercent</span>
                             </li>
                             <li style="padding-left: 40%;">
-                                <p>Start Date</p><span>: @Model.StartDate?.ToString("dd/MM/yyyy")</span>
+                                <p>Ngày bắt đầu</p><span>: @Model.StartDate?.ToString("dd/MM/yyyy")</span>
                             </li>
                             <li style="padding-left: 40%;">
-                                <p>End Date</p><span>: @Model.EndDate?.ToString("dd/MM/yyyy")</span>
+                                <p>Ngày hết hạn</p><span>: @Model.EndDate?.ToString("dd/MM/yyyy")</span>
                             </li>
                             <li style="padding-left: 40%;">
-                                <p>Quantity</p><span>: @Model.Quantity</span>
+                                <p>Số lượng</p><span>: @Model.Quantity</span>
                             </li>
                             <li style="padding-left: 40%;">
                                 @if (Model.Users != null)
                                 {
-                                    <p>For User</p>
+                                    <p>Khách hàng</p>
 
                                     <span>
                                         : @Model.Users?.FullName
@@ -73,7 +73,7 @@
                                 }
                                 else
                                 {
-                                    <p>For User</p>
+                                    <p>Khách hàng</p>
 
                                     <span>
                                         : All
