@@ -10,6 +10,7 @@ using KingBakery.Helper;
 using Microsoft.AspNetCore.Authentication.Google;
 using KingBakery.ViewModel;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KingBakery.Controllers
 {
@@ -38,6 +39,8 @@ namespace KingBakery.Controllers
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            UpdateCustomerRankings();
+
             if (id == null)
             {
                 return NotFound();
@@ -50,6 +53,7 @@ namespace KingBakery.Controllers
                 return NotFound();
             }
 
+            ViewBag.CustomerRanking = _context.Customer.FirstOrDefaultAsync(c => c.UserID == id).Result.Ranking;
             return View(users);
         }
 
@@ -74,7 +78,7 @@ namespace KingBakery.Controllers
                 ViewBag.LoginError = "Tên đăng nhập hoặc mật khẩu không chính xác!";
                 return View();
             }
-            if(user.IsBanned == 1)
+            if (user.IsBanned == 1)
             {
                 ViewBag.BanLogin = "Tài khoản của bạn đã bị chặn!";
                 return View();
@@ -159,6 +163,8 @@ namespace KingBakery.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        [Authorize(Roles = "1")]
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -175,11 +181,43 @@ namespace KingBakery.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,FullName,Username,Password,ConfirmPassword,Address,BirthDate,Email,PhoneNumber,Role,VertificationCode")] Users users)
         {
             ModelState.Remove("VertificationCode");
+
+            if (_context.Users.FirstOrDefault(u => u.Email.Equals(users.Email)) != null)
+            {
+                ViewBag.InvalidEmail = "Email đã tồn tại! Hãy dùng một tài khoản email khác!";
+                return View();
+            }
+            if (_context.Users.FirstOrDefault(u => u.Username.Equals(users.Username)) != null)
+            {
+                ViewBag.InvalidUsername = "Tên đăng nhập đã tồn tại! Hãy dùng một tên đăng nhập khác!";
+                return View();
+            }
+            if (users.Password.Length < 6)
+            {
+                ViewBag.InvalidPassword = "Mật khẩu phải chứa ít nhất 6 ký tự!";
+                return View();
+            }
+            if (_context.Users.FirstOrDefault(u => u.PhoneNumber.Equals(users.PhoneNumber)) != null)
+            {
+                ViewBag.InvalidPhoneNumber = "Số điện thoại đã tồn tại! Hãy dùng một số điện thoại khác!";
+                return View();
+            }
+            if (users.PhoneNumber.Length >= 12)
+            {
+                ViewBag.InvalidPhoneLength = "Số điện thoại không hợp lệ!";
+                return View();
+            }
+            if ((DateTime.Now.Year - users.BirthDate.Year) <= 18)
+            {
+                ViewBag.InvalidBirthDate = "Bạn phải lớn hơn 18 tuổi để tạo tài khoản!";
+                return View();
+            }
 
             if (ModelState.IsValid)
             {
@@ -206,6 +244,37 @@ namespace KingBakery.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
+            if (_context.Users.FirstOrDefault(u => u.Email.Equals(model.Email)) != null)
+            {
+                ViewBag.InvalidEmail = "Email đã tồn tại! Hãy dùng một tài khoản email khác!";
+                return View();
+            }
+            if (_context.Users.FirstOrDefault(u => u.Username.Equals(model.Username)) != null)
+            {
+                ViewBag.InvalidUsername = "Tên đăng nhập đã tồn tại! Hãy dùng một tên đăng nhập khác!";
+                return View();
+            }
+            if (model.Password.Length < 6)
+            {
+                ViewBag.InvalidPassword = "Mật khẩu phải chứa ít nhất 6 ký tự!";
+                return View();
+            }
+            if (_context.Users.FirstOrDefault(u => u.PhoneNumber.Equals(model.PhoneNumber)) != null)
+            {
+                ViewBag.InvalidPhoneNumber = "Số điện thoại đã tồn tại! Hãy dùng một số điện thoại khác!";
+                return View();
+            }
+            if (model.PhoneNumber.Length >= 12)
+            {
+                ViewBag.InvalidPhoneLength = "Số điện thoại không hợp lệ!";
+                return View();
+            }
+            if ((DateTime.Now.Year - model.Birthdate.Year) <= 18)
+            {
+                ViewBag.InvalidBirthDate = "Bạn phải lớn hơn 18 tuổi để tạo tài khoản!";
+                return View();
+            }
+
             var verificationCode = CreateVerificationCode();
 
             var user = new Users()
@@ -419,7 +488,10 @@ namespace KingBakery.Controllers
             var user = _context.Users.FirstOrDefault(u => u.ID == id);
             if (code != user.VertificationCode)
             {
-                return NotFound();
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+                TempData["FailedEmail"] = "Email không hợp lệ! Vui lòng nhập email hợp lệ!";
+                return RedirectToAction("Register");
             }
             TempData["ConfirmEmailSuccess"] = "Xác thực thành công! Vui lòng đăng nhập lại!";
             return RedirectToAction("Login");
@@ -459,7 +531,7 @@ namespace KingBakery.Controllers
         public IActionResult BanUser(int id)
         {
             var user = _context.Users.FirstOrDefault(u => u.ID == id);
-            if(user != null)
+            if (user != null)
             {
                 user.IsBanned = 1;
             }
@@ -502,9 +574,50 @@ namespace KingBakery.Controllers
             return View(users);
         }
 
-        public IActionResult AccessDenied()
+        public void UpdateCustomerRankings()
         {
-            return View();
+            // Assuming you have a DbSet<OrderItem> in your context
+            var orderItemsWithCustomers = _context.OrderItem
+                                            .Include(oi => oi.Orders) // Assuming each OrderItem has an Order
+                                            .Where(oi => oi.Orders.Status == "Đã giao hàng")
+                                            .ToList(); // Retrieve all OrderItems and their Orders
+
+            // Project OrderItems by CustomerID and aggregate TotalPrice
+            var customerTotalSpends = orderItemsWithCustomers
+                                        .GroupBy(oi => oi.CustomerID)
+                                        .Select(group => new
+                                        {
+                                            CustomerID = group.Key,
+                                            TotalSpent = group.Sum(oi => oi.Orders.TotalPrice)
+                                        })
+                                        .ToList();
+
+            foreach (var customerSpend in customerTotalSpends)
+            {
+                var customer = _context.Customer.Find(customerSpend.CustomerID); // Find each customer based on ID
+
+                if (customer != null)
+                {
+                    // Update ranking based on TotalSpent
+                    if (customerSpend.TotalSpent < 1000000)
+                    {
+                        customer.Ranking = "Đồng";
+                        _context.Customer.Update(customer);
+                    }
+                    else if (customerSpend.TotalSpent >= 1000000 && customerSpend.TotalSpent <= 3000000)
+                    {
+                        customer.Ranking = "Bạc";
+                        _context.Customer.Update(customer);
+                    }
+                    else
+                    {
+                        customer.Ranking = "Vàng";
+                        _context.Customer.Update(customer);
+                    }
+                }
+            }
+
+            _context.SaveChanges(); // Save changes once at the end for efficiency
         }
     }
 }

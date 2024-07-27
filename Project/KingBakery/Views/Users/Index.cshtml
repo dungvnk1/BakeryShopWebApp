@@ -108,7 +108,7 @@
                                 <td style="position:relative;">
                                     <p style="color:white; background-color:darkred; font-weight:bold; position:absolute; padding:auto 5px;
                                           border:none; border-radius:4px;text-align:center; width:80%; height:40px; display:flex;align-items:center;">
-                                        <span style="width:100%;text-align:center;" id="stt_@item.ID">Bị cấm</span>
+                                        <span style="width:100%;text-align:center;" id="stt_@item.ID">Bị chặn</span>
                                     </p>
                                 </td>
                             }
@@ -120,14 +120,14 @@
                             @if (item.IsBanned == 0)
                             {
                                 <td style="text-align:center;width:160px;">
-                                    <a href="javascript:void(0)" data-id="@item.ID" id="ban_@item.ID" class="genric-btn success-border radius ban">Hoạt động</a>
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="ban_@item.ID" class="genric-btn danger-border radius ban">Chặn</a>
                                 </td>
                             }
                             else
                             @if (item.IsBanned == 1)
                             {
                                 <td style="text-align:center;width:160px;">
-                                    <a href="javascript:void(0)" data-id="@item.ID" id="unban_@item.ID" class="genric-btn danger-border radius unban">Bị cấm</a>
+                                    <a href="javascript:void(0)" data-id="@item.ID" id="unban_@item.ID" class="genric-btn success-border radius unban">Bỏ chặn</a>
                                 </td>
                             }
                             else

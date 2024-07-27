@@ -1,9 +1,10 @@
-﻿@model KingBakery.Models.Users
+﻿@using System.Security.Claims
+@model KingBakery.Models.Users
 
 @{
     ViewData["Title"] = "Details";
-
-    var isAdmin = ViewBag.IsAdmin as bool? ?? false;
+    var customerRanking = ViewBag.CustomerRanking;
+    var userRole = User.FindFirstValue(ClaimTypes.Role);
 }
 
 <!DOCTYPE html>
@@ -123,6 +124,19 @@
                             </div>
                         </div>
                     </div>
+                    @if (userRole.Equals("2"))
+                    {
+                        <div class='form-group'>
+                            <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Hạng thành viên</label>
+                            <div class='col-md-8'>
+                                <div class='col-md-8 indent-small'>
+                                    <div class='form-group internal'>
+                                        <a class='form-control' type='text'>@customerRanking</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </form>
                 <div class='form-group'>
                     <label class="control-label col-md-2 col-md-offset-2"></label>
