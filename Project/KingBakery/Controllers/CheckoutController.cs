@@ -307,8 +307,8 @@ namespace KingBakery.Controllers
 
         public void SendEmailOrder(string email)
         {
-            string fromMail = "hung080104@gmail.com";
-            string fromPassword = "popa aogx skig wdpe";
+            string fromMail = "your_email";
+            string fromPassword = "your password key";
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
